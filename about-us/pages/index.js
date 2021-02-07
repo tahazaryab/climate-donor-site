@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
-import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -17,20 +16,8 @@ export default function Home() {
         </h1>
 
         <h2>
-        <Link href="/home">
-          <a>Home</a>
-        </Link>
-        </h2>
-      
-        <h2>
-        <Link href="/contact">
-          <a>Contact Us!</a>
-         </Link>
-        </h2>
-    
-        <h2>
-        <Link href="/takeaction">
-          <a>Take Action!</a>
+        <Link href="/about">
+          <a>About us</a>
         </Link>
         </h2>
 
