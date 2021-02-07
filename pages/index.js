@@ -16,6 +16,13 @@ export default function Home() {
         </h1>
 
         <h2>
+        <Link href="/contact">
+          <a>Contact Us!</a>
+         </Link>
+        </h2>
+    
+        <h2>
+
         <Link href="/takeaction">
           <a>Take Action!</a>
         </Link>
