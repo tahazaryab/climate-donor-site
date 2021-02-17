@@ -27,7 +27,7 @@ class NavBar extends Component {
                 <Link href="/takeaction">Take Action</Link>
             </Menu.Item>,
             <Menu.Item key="/login">
-                <Link href="/login">Log In</Link>
+                <Link href="/signin">Log In</Link>
             </Menu.Item>
         ];
 
