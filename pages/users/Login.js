@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { login } from '../../util/APIUtils';
-import './Login.css';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ACCESS_TOKEN } from '../../constants';
 
-import { Form, Input, Button, Icon, notification } from 'antd';
+import { Form, Input, Button, notification } from 'antd';
 const FormItem = Form.Item;
 
 class Login extends Component {
     render() {
-        const AntWrappedLoginForm = Form.create()(LoginForm)
+        // const AntWrappedLoginForm = Form.create()(LoginForm)
         return (
             <div className="login-container">
                 <h1 className="page-title">Login</h1>
@@ -62,7 +61,7 @@ class LoginForm extends Component {
                         rules: [{ required: true, message: 'Please input your username or email!' }],
                     })(
                     <Input 
-                        prefix={<Icon type="user" />}
+                        // prefix={<Icon type="user" />}
                         size="large"
                         name="usernameOrEmail" 
                         placeholder="Username or Email" />    
@@ -82,7 +81,7 @@ class LoginForm extends Component {
                 </FormItem>
                 <FormItem>
                     <Button type="primary" htmlType="submit" size="large" className="login-form-button">Login</Button>
-                    Or <Link to="/signup">register now!</Link>
+                    Or <Link href="/signup">register now!</Link>
                 </FormItem>
             </Form>
         );

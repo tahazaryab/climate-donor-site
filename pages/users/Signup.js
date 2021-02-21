@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { signup, checkUsernameAvailability, checkEmailAvailability } from '../../util/APIUtils';
-import './Signup.css';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { 
     NAME_MIN_LENGTH, NAME_MAX_LENGTH, 
     USERNAME_MIN_LENGTH, USERNAME_MAX_LENGTH,
@@ -146,7 +145,7 @@ class Signup extends Component {
                                 size="large" 
                                 className="signup-form-button"
                                 disabled={this.isFormInvalid()}>Sign up</Button>
-                            Already registed? <Link to="/login">Login now!</Link>
+                            Already registed? <Link href="/login">Login now!</Link>
                         </FormItem>
                     </Form>
                 </div>

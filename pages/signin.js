@@ -1,8 +1,12 @@
 import Link from 'next/link'
+import NavBar from "../components/NavBar";
+import React from "react";
 
 export default function Signin() {
   return (
   	<>
+      <NavBar>
+      </NavBar>
   	<h1>Sign In</h1>
     
 
