@@ -1,8 +1,8 @@
 import React from 'react'
 import {Component} from 'react'
-import {Layout, Menu, Dropdown} from 'antd';
+import {Layout, Menu, Dropdown, Button} from 'antd';
+import './Navbar.module.css';
 import Link from 'next/link'
-
 
 const Header = Layout.Header;
 
@@ -11,9 +11,6 @@ class NavBar extends Component {
     render() {
         let menuItems;
         menuItems = [
-            <Menu.Item key="logo">
-                <img className="logo" src={'vercel.svg'}></img>
-            </Menu.Item>,
             <Menu.Item key="/home">
                 <Link href="/home">Home</Link>
             </Menu.Item>,
@@ -27,7 +24,10 @@ class NavBar extends Component {
                 <Link href="/takeaction">Take Action</Link>
             </Menu.Item>,
             <Menu.Item key="/login">
-                <Link href="/signin">Log In</Link>
+                <Button href="/signin">Log In</Button>
+            </Menu.Item>,
+            <Menu.Item key="/donate">
+                <Button type="primary">Donate</Button>
             </Menu.Item>
         ];
 
@@ -36,7 +36,7 @@ class NavBar extends Component {
                 <Menu
                     className="site-menu"
                     mode="horizontal"
-                    style={{lineHeight: '64px'}}>
+                    >
                     {menuItems}
                 </Menu>
             </Header>
