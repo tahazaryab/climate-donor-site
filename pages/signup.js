@@ -67,7 +67,7 @@ export default function Signup() {
                 <div className="container">
                     <Col>
                         <Button type="primary">Continue</Button>
-                        <h6>Already have an account? Sign In</h6>
+                        <h6>Already have an account? <span> <Button href="/signin" type="link">Sign In</Button> </span></h6>
                     </Col>
                 </div>
 
@@ -75,8 +75,6 @@ export default function Signup() {
 
             <Footer>
             </Footer>
-
-
         </>
-    )
+)
 }

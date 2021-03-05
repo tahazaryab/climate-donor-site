@@ -78,7 +78,7 @@ export default function Index() {
                     <div className="container">
                         <Col>
                             <Button type="link">Forgot password?</Button>
-                            <h5>Don't have an account? <span> <Button type="link">Sign Up</Button> </span> </h5>
+                            <h5>Don't have an account? <span> <Button href = "/signup"type="link">Sign Up</Button> </span> </h5>
                         </Col>
                     </div>
                 </Col>
