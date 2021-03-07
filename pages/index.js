@@ -5,6 +5,8 @@ import Button from 'antd/lib/button';
 import styles from '../styles/Home.module.css'
 import NavBar from "../components/NavBar";
 import AppFooter from "../components/Footer";
+// import '~antd/dist/antd.css';
+
 
 import {
   useAuthUser,

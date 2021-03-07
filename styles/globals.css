@@ -12,14 +12,20 @@ body {
   justify-content: center;
 }
 
-
+.ant-btn-primary {
+  color: #048A81;
+  /* &:hover {
+    background-color: #048A81 !important;
+    border-color: #048A81 !important;
+  } */
+}
 
 a {
   color: inherit;
   text-decoration: none;
 }
 
-Button {
+.Button {
   color: #048A81;
 }
 

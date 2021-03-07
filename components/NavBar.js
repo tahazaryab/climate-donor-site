@@ -1,22 +1,26 @@
 import React from 'react'
 import {Component} from 'react'
 import {Layout, Menu, Dropdown, Button} from 'antd';
-import './Navbar.module.css';
+import styles from '../styles/Navbar.module.css';
 import Link from 'next/link'
 
 const Header = Layout.Header;
+
+const buttonStyle = {
+    backgroundColor: '#048A81',
+};
 
 
 const NavBar = ({ userId, signOut }) => {
         let authenticationItem = (userId ? 
         (<Menu.Item key="/logout">
-            <Button onClick={() => {
+            <Button  onClick={() => {
             signOut()
           }}>Logout</Button>
         </Menu.Item>)
         : 
             (<Menu.Item key="/signin">
-            <Button href="/signin">Sign In</Button>
+            <Button style={buttonStyle} href="/signin">Sign In</Button>
         </Menu.Item>))
 
         let menuItems;
@@ -40,9 +44,9 @@ const NavBar = ({ userId, signOut }) => {
         ];
 
         return (
-            <Header className="app-header">
+            <Header className={styles.appHeader}>
                 <Menu
-                    className="site-menu"
+                    className={styles.siteMenu}
                     mode="horizontal"
                     >
                     {menuItems}
