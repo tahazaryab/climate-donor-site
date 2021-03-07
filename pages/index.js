@@ -6,10 +6,18 @@ import styles from '../styles/Home.module.css'
 import NavBar from "../components/NavBar";
 import AppFooter from "../components/Footer";
 
-export default function Home() {
+import {
+  useAuthUser,
+  withAuthUser,
+  withAuthUserTokenSSR,
+} from 'next-firebase-auth'
+
+
+const Home = () => {
+  const AuthUser = useAuthUser()
   return (
     <>
-        <NavBar>
+        <NavBar userId={AuthUser.id} signOut={AuthUser.signOut}>
         </NavBar>
       <Head>
         <title>Create Next App</title>
@@ -35,3 +43,5 @@ export default function Home() {
     </>
   )
 }
+
+export default withAuthUser()(Home)

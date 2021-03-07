@@ -6,9 +6,19 @@ import Link from 'next/link'
 
 const Header = Layout.Header;
 
-class NavBar extends Component {
 
-    render() {
+const NavBar = ({ userId, signOut }) => {
+        let authenticationItem = (userId ? 
+        (<Menu.Item key="/logout">
+            <Button onClick={() => {
+            signOut()
+          }}>Logout</Button>
+        </Menu.Item>)
+        : 
+            (<Menu.Item key="/signin">
+            <Button href="/signin">Sign In</Button>
+        </Menu.Item>))
+
         let menuItems;
         menuItems = [
             <Menu.Item key="/home">
@@ -23,9 +33,7 @@ class NavBar extends Component {
             <Menu.Item key="/takeaction">
                 <Link href="/takeaction">Take Action</Link>
             </Menu.Item>,
-            <Menu.Item key="/login">
-                <Button href="/signin">Log In</Button>
-            </Menu.Item>,
+            authenticationItem,
             <Menu.Item key="/donate">
                 <Button type="primary">Donate</Button>
             </Menu.Item>
@@ -41,7 +49,6 @@ class NavBar extends Component {
                 </Menu>
             </Header>
         );
-    }
 }
 
 export default NavBar;

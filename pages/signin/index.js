@@ -1,7 +1,10 @@
 import Link from 'next/link'
 import NavBar from "../../components/NavBar";
-import React from "react";
 import {Layout, Col, Row, Button, Form, Input, Checkbox} from 'antd';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { signIn } from '../../lib/firebase';
+import { withAuthUser, AuthAction } from 'next-firebase-auth'
 
 const {Content} = Layout;
 const layout = {
@@ -19,7 +22,46 @@ const tailLayout = {
     },
 };
 
-export default function Index() {
+const SignInPage = () => {
+
+    const router = useRouter();  
+    // const [user, userLoading] = useAuth();  
+    // const [values, setValues] = useState({ email: '', password: '' });   
+    // if (userLoading) {    
+    //     return <h1>Loading...</h1>;  
+    // }   
+    // if (user && typeof window !== 'undefined') {
+    //     router.push('/');    
+    //     return null;  
+    // }   
+    // const handleChange = (e) => {    
+    //     const id = e.target.id;    
+    //     const newValue = e.target.value;     
+    //     setValues({ ...values, [id]: newValue });  
+    // };   
+    const onFinish = (values) => { 
+        
+        let missingValues = [];    
+        Object.entries(values).forEach(([key, value]) => {      
+            if (!value) {        
+                missingValues.push(key);      
+            }    
+        });     
+        if (missingValues.length > 1) {      
+            alert(`You're missing these fields: ${missingValues.join(', ')}`);      
+            return;    
+        }     
+        signIn(values.email, values.password).catch((err) => {      
+            alert(err);    
+        });  
+    };  
+
+    const onFinishFailed = (errorInfo) => {
+        // TODO: show error on UI. 
+        console.log('Failed:', errorInfo);
+    };
+    // TODO: Remember me, validation of fields, forgot password
+
     return (
         <>
             <NavBar>
@@ -36,16 +78,16 @@ export default function Index() {
                         initialValues={{
                             remember: true,
                         }}
-                        // onFinish={onFinish}
-                        // onFinishFailed={onFinishFailed}
+                        onFinish={onFinish}
+                        onFinishFailed={onFinishFailed}
                     >
                         <Form.Item
-                            label="Username"
-                            name="username"
+                            label="Email"
+                            name="email"
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Please input your username!',
+                                    message: 'Please input your email!',
                                 },
                             ]}
                         >
@@ -61,10 +103,12 @@ export default function Index() {
                                     message: 'Please input your password!',
                                 },
                             ]}
+                            type="password"          
                         >
                             <Input.Password />
                         </Form.Item>
 
+                        
                         <Form.Item {...tailLayout} name="remember" valuePropName="checked">
                             <Checkbox>Remember me</Checkbox>
                         </Form.Item>
@@ -89,3 +133,12 @@ export default function Index() {
         </>
     )
 }
+
+const MyLoader = () => <div>Loading...</div>
+
+export default withAuthUser({
+    whenAuthed: AuthAction.REDIRECT_TO_APP,
+    whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
+    whenUnauthedAfterInit: AuthAction.RENDER,
+    LoaderComponent: MyLoader,
+  })(SignInPage)
