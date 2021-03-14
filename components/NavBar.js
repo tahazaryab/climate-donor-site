@@ -1,6 +1,5 @@
 import React from 'react'
-import {Component} from 'react'
-import {Layout, Menu, Dropdown, Button} from 'antd';
+import {Layout, Menu, Button} from 'antd';
 import styles from '../styles/Navbar.module.css';
 import Link from 'next/link'
 
