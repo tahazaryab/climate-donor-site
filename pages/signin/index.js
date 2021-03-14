@@ -1,20 +1,18 @@
-import Link from 'next/link'
 import NavBar from "../../components/NavBar";
 import {Layout, Col, Row, Button, Form, Input, Checkbox} from 'antd';
-import { useState } from 'react';
-import { useRouter } from 'next/router';
 import { signIn } from '../../lib/firebase';
 import { withAuthUser, AuthAction } from 'next-firebase-auth'
+import { useState } from 'react';
 
 const {Content} = Layout;
-const layout = {
-    labelCol: {
-        span: 8,
-    },
-    wrapperCol: {
-        span: 16,
-    },
-};
+// const layout = {
+//     labelCol: {
+//         span: 8,
+//     },
+//     wrapperCol: {
+//         span: 16,
+//     },
+// };
 const tailLayout = {
     wrapperCol: {
         offset: 8,
@@ -23,22 +21,7 @@ const tailLayout = {
 };
 
 const SignInPage = () => {
-
-    const router = useRouter();  
-    // const [user, userLoading] = useAuth();  
-    // const [values, setValues] = useState({ email: '', password: '' });   
-    // if (userLoading) {    
-    //     return <h1>Loading...</h1>;  
-    // }   
-    // if (user && typeof window !== 'undefined') {
-    //     router.push('/');    
-    //     return null;  
-    // }   
-    // const handleChange = (e) => {    
-    //     const id = e.target.id;    
-    //     const newValue = e.target.value;     
-    //     setValues({ ...values, [id]: newValue });  
-    // };   
+    const [errorMessage, setErrorMessage ] = useState("");
     const onFinish = (values) => { 
         
         let missingValues = [];    
@@ -48,32 +31,55 @@ const SignInPage = () => {
             }    
         });     
         if (missingValues.length > 1) {      
-            alert(`You're missing these fields: ${missingValues.join(', ')}`);      
+            setErrorMessage(`You're missing these fields: ${missingValues.join(', ')}`);      
             return;    
         }     
-        signIn(values.email, values.password).catch((err) => {      
-            alert(err);    
+        signIn(values.email, values.password)
+        .then((error) => {
+            if(error != null) {
+                if (error.code === "auth/invalid-email") {
+                    setErrorMessage("Email address is invalid.")
+                } else if (error.code === "auth/user-disabled") {
+                    setErrorMessage("The account with the given email address has been disabled.")
+                } else if (error.code === "auth/user-not-found") {
+                    setErrorMessage("There is no user account corresponding to the given email.")
+                } else if (error.code === "auth/wrong-password") {
+                    setErrorMessage("Wrong password.")
+                } else {
+                    setErrorMessage("There was an error signing in.")
+                }
+
+            }
+        })
+        .catch((err) => {
+            setErrorMessage("There was an error signing in.");    
+            console.log(err);
         });  
     };  
 
     const onFinishFailed = (errorInfo) => {
-        // TODO: show error on UI. 
+        setErrorMessage("You're missing these fields.")
         console.log('Failed:', errorInfo);
     };
     // TODO: Remember me, validation of fields, forgot password
 
     return (
-        <>
+        <Layout>
             <NavBar>
             </NavBar>
-            <Content>
-                <Col>
+            <Content className="siteContent">
+            <Row type="flex" align="middle">
+            <Col span={8}></Col>
+                <Col span={8}>
                     <div className="container">
 
                         <h1>Sign In</h1>
                     </div>
+
+                    <p style={{color: "red"}}>{errorMessage}</p>
                     <Form
-                        {...layout}
+                        // {...layout}
+                        layout="vertical"
                         name="basic"
                         initialValues={{
                             remember: true,
@@ -84,19 +90,24 @@ const SignInPage = () => {
                         <Form.Item
                             label="Email"
                             name="email"
+                            colon="true"
                             rules={[
                                 {
                                     required: true,
+                                    type: 'email',
                                     message: 'Please input your email!',
                                 },
                             ]}
                         >
-                            <Input />
+                            <Input 
+                            placeholder="Your Email"
+                            />
                         </Form.Item>
 
                         <Form.Item
                             label="Password"
                             name="password"
+                            colon="true"
                             rules={[
                                 {
                                     required: true,
@@ -105,7 +116,9 @@ const SignInPage = () => {
                             ]}
                             type="password"          
                         >
-                            <Input.Password />
+                            <Input.Password 
+                            placeholder="Your Password"
+                            />
                         </Form.Item>
 
                         
@@ -126,11 +139,12 @@ const SignInPage = () => {
                         </Col>
                     </div>
                 </Col>
-
+                <Col span={8}></Col>
+                </Row>
 
             </Content>
 
-        </>
+        </Layout>
     )
 }
 

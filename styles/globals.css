@@ -32,3 +32,9 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.siteContent {
+  margin-top: 64px;
+  padding-top: 50px;
+  background-color: white
+}

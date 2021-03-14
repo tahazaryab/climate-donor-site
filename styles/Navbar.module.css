@@ -1,7 +1,7 @@
 .appHeader {
     position: fixed;
     width: 100%;
-    box-shadow: 0 2px 8px #f0f1f2;
+    box-shadow: 0 2px 8px #bdbdbd;
     z-index: 10;
     padding: 0;
     background-color: white;
@@ -26,6 +26,8 @@
 
 .siteMenu {
     float: right;
+    border-bottom: none;
+    background: none;
 }
 
 .signinButton {
