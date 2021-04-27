@@ -37,13 +37,22 @@ const DonorSignUpInterestsPage = ({ formData, interests, setInterests, errorMess
                 if (!value) {        
                     missingValues.push(key);      
                 }    
-            });     
+            });  
+            Object.entries(interests).forEach(([key, value]) => {
+                if (value) {
+                    if (interests in formData) {
+                        formData.interests.push(key)
+                    }
+                    else {
+                        formData.interests = [key]
+                    }
+                }
+            });
             if (missingValues.length > 1) {    
                 setErrorMessage(`You're missing these fields: ${missingValues.join(', ')}`);
                 previous();      
                 return;    
             }
-
 
             signUp('donor', formData.email, formData.password, formData.fullName, formData.interests)
             .then((error) => {
