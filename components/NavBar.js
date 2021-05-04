@@ -24,8 +24,8 @@ const NavBar = ({ userId, signOut }) => {
 
         let menuItems;
         menuItems = [
-            <Menu.Item key="/home">
-                <Link href="/home">Home</Link>
+            <Menu.Item key="/">
+                <Link href="/">Home</Link>
             </Menu.Item>,
             <Menu.Item key="/about">
                 <Link href="/about">About</Link>

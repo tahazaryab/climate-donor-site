@@ -177,7 +177,7 @@ const DonorSignUpInterestsPage = ({ formData, interests, setInterests, errorMess
                                 Clean energy
                             </Button>
 
-                            <Button type="default" id="coastalInhabitants" onClick={(e) => onClick(e)} style={{border: (interests["coastalInhabitatns"] ? "1px solid #048A81" : "1px solid #d9d9d9")}}>
+                            <Button type="default" id="coastalInhabitants" onClick={(e) => onClick(e)} style={{border: (interests["coastalInhabitants"] ? "1px solid #048A81" : "1px solid #d9d9d9")}}>
                                 Coastal inhabitants
                             </Button>
 

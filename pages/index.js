@@ -1,17 +1,14 @@
 import Head from 'next/head'
-import Link from 'next/link'
-import React, { Component } from 'react';
-import Button from 'antd/lib/button';
+import React from 'react';
 import styles from '../styles/Home.module.css'
 import NavBar from "../components/NavBar";
 import AppFooter from "../components/Footer";
-// import '~antd/dist/antd.css';
 
 
 import {
   useAuthUser,
   withAuthUser,
-  withAuthUserTokenSSR,
+  AuthAction,
 } from 'next-firebase-auth'
 
 
@@ -46,4 +43,10 @@ const Home = () => {
   )
 }
 
-export default withAuthUser()(Home)
+const MyLoader = () => <div>Loading...</div>
+export default withAuthUser({
+  whenAuthed: AuthAction.REDIRECT_TO_APP,
+  whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
+  whenUnauthedAfterInit: AuthAction.RENDER,
+  LoaderComponent: MyLoader,
+})(Home)
