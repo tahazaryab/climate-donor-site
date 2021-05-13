@@ -9,6 +9,7 @@ import {
   AuthAction
 } from 'next-firebase-auth'
 import ProjectCard from '../components/ProjectCard';
+import SearchBar from "../components/SearchBar";
 
 const {Content} = Layout;
 
@@ -16,16 +17,29 @@ const DonorDashboard = () => {
   const AuthUser = useAuthUser()
 
   return (
+    <>
   <Layout>
-            <NavBar userId={AuthUser.id} signOut={AuthUser.signOut}>
-        </NavBar>
+          <NavBar userId={AuthUser.id} signOut={AuthUser.signOut}/>
+            
 
             <Content className="siteContent">
+
+                <div className="search" style={{float: 'right'}} >
+                  <SearchBar/>
+                </div>
+
                 <Row>
                     Donor Dashboard for {AuthUser.firebaseUser.email}
                 </Row>
                 
+                
+
+
+                <br/>
                 {/* Testing projectCard Component */}
+
+
+
                 <Row>
                   <ProjectCard
                     tagName='Clean Energy'
@@ -60,6 +74,8 @@ const DonorDashboard = () => {
 
             </Content>
         </Layout>
+        
+        </>
   )
 }
 
