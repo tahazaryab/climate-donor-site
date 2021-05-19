@@ -9,10 +9,10 @@ const onSearch = value => console.log(value);
 const SearchBox = () =>{
     return(
         <Search
-            placeholder="Search Projects"
-            size="large"
+            placeholder="Search projects"
+            size="default"
             onSearch={onSearch}
-            style={{ float: "right", margin: "25px" }}
+            style={{ width: 250 }} 
         />
     )
     

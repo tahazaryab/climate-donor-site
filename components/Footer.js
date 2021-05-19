@@ -7,9 +7,7 @@ import styles from "../styles/Home.module.css";
 const Footer = Layout.Footer;
 
 class AppFooter extends Component {
-
     render() {
-
         return (
             <Footer className={styles.footer}>
                 <a

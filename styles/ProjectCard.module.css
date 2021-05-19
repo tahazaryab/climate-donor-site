@@ -1,16 +1,17 @@
 .projectCard {
-	width: 800px;
+	width: 1090px;
 	height: 220px;
 	box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
-	padding: 5px 20px;
+	padding: 3px 15px;
 	display: flex;
 	align-items: center;
-    margin: 25px 30px;
+	margin: 25px 30px 0 30px;
+	background-color: #fff;
 }
 
 .cardContent {
-	margin-left: 10px;
-	height: 180px;
+	margin-left: 30px;
+	height: 150px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
@@ -23,7 +24,7 @@
 	box-sizing: border-box;
 	border-radius: 2px;
 	text-align: center;
-    width: fit-content;
+	width: fit-content;
 }
 
 .tag_red {
@@ -32,34 +33,31 @@
 }
 
 .tag_blue {
-	background: #CDDEE9;
+	background: #cddee9;
 	border: 1px solid #9fbef2;
 }
 
 .labels {
-	width: 500px;
+	width: 700px;
 	display: flex;
-    align-items: center;
+	align-items: center;
 	justify-content: space-between;
 	font-size: 12px;
 	color: #888;
 	/* margin-top: 10px; */
 }
 
-
-.progressBar{
+.progressBar {
 	margin-bottom: 10px;
 }
 
-.cardContent__info{
+.cardContent__info {
 	width: 450px;
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: column;
 }
 
-
-.smallFont{
+.smallFont {
 	font-size: 12px;
 }
-

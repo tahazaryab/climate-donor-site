@@ -1,0 +1,16 @@
+.contentDisplay {
+	margin: 0 25px;
+}
+
+.titleBar {
+	padding: 30px;
+    padding-bottom: 0;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+.titleBar h2 {
+	font-weight: 600;
+	font-size: 36px;
+	line-height: 42px;
+}
