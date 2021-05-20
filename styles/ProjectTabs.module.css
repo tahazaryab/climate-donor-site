@@ -1,0 +1,30 @@
+.projectTabs {
+    align-items: center;
+}
+
+.title {
+    margin-left: 28px;
+}
+
+.appHeader {
+    margin-left: 15px;
+}
+
+.button1,
+.button2,
+.button3 {
+    color: black;
+}
+
+.button1 {
+    margin-left: 15px;
+    border-bottom: 3px solid #048A81;
+    font-weight: bold;
+}
+
+.button2:hover,
+.button3:hover {
+    color: black;
+    border-bottom: 3px solid #048A81;
+}
+

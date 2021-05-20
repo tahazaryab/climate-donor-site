@@ -1,6 +1,7 @@
 import {Button, Layout, Row} from 'antd';
 import React from 'react';
 import NavBar from "../components/NavBar";
+import ProjectTabs from "../components/ProjectTabs";
 
 
 import {
@@ -23,6 +24,18 @@ const DonorDashboard = () => {
             <Content className="siteContent">
                 <Row>
                     Donor Dashboard for {AuthUser.firebaseUser.email}
+                </Row>
+
+                <Row>
+                  <ProjectTabs
+                    title='My Projects'
+                    link1='ALL'
+                    link2='ACTIVE'
+                    link3='COMPLETED'
+                    onClick={() => {
+                      console.log("Option Clicked")
+                      }}
+                    />
                 </Row>
                 
                 {/* Testing projectCard Component */}
