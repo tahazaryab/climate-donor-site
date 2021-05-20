@@ -58,7 +58,7 @@ const NavBar = ({ userId, signOut, userName }) => {
             </Menu> */}
 
             <div className={styles.iconsList}>
-                <div className={styles.nameIcon}>{userName.charAt(0)}</div>
+                <div className={styles.nameIcon}>{userName?.charAt(0)}</div>
                 <p>{userName}</p>
                 <div><FontAwesomeIcon icon={faBell} /></div>
                 <div><FontAwesomeIcon icon={faPlus} /></div>
