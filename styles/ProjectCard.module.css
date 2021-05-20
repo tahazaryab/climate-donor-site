@@ -2,7 +2,7 @@
 	width: 1090px;
 	height: 220px;
 	box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
-	padding: 3px 15px;
+	padding: 10px 15px;
 	display: flex;
 	align-items: center;
 	margin: 25px 30px 0 30px;
@@ -11,6 +11,7 @@
 
 .cardContent {
 	margin-left: 30px;
+	padding: 3px 0;
 	height: 150px;
 	display: flex;
 	flex-direction: column;
@@ -56,6 +57,15 @@
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: column;
+}
+.cardContent__info h3 {
+	font-weight: bold;
+	font-size: 24px;
+}
+
+.cardContent__info h3,
+.cardContent__info p {
+	margin: 0;
 }
 
 .smallFont {

@@ -2,6 +2,8 @@ import React from 'react'
 import { Layout, Menu, Button } from 'antd';
 import styles from '../styles/Navbar.module.css';
 import Link from 'next/link'
+import { faBell, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Header = Layout.Header;
 
@@ -10,7 +12,7 @@ const buttonStyle = {
 };
 
 
-const NavBar = ({ userId, signOut }) => {
+const NavBar = ({ userId, signOut, userName }) => {
     let authenticationItem = (userId ?
         (<Menu.Item key="/logout">
             <Button onClick={() => {
@@ -48,12 +50,19 @@ const NavBar = ({ userId, signOut }) => {
                 <img src="logo2.png" alt="logo of Climate Donor" />
                 <p>Climate Donor</p>
             </div>
-            <Menu
+            {/* <Menu
                 className={styles.siteMenu}
                 mode="horizontal"
             >
                 {menuItems}
-            </Menu>
+            </Menu> */}
+
+            <div className={styles.iconsList}>
+                <div className={styles.nameIcon}>{userName.charAt(0)}</div>
+                <p>{userName}</p>
+                <div><FontAwesomeIcon icon={faBell} /></div>
+                <div><FontAwesomeIcon icon={faPlus} /></div>
+            </div>
         </Header>
     );
 }

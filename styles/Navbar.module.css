@@ -38,6 +38,7 @@
 }
 .siteLogo img {
 	margin: 0 20px;
+	margin-bottom: 8px;
 	width: 40px;
 	height: 40px;
 }
@@ -49,6 +50,32 @@
 }
 .signinButton {
 	color: #048a81;
+}
+.iconsList {
+	margin-right: 5%;
+	min-width: 15%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.iconsList div {
+	cursor: pointer;
+	height: 36px;
+	width: 36px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	background: #f5f5f5;
+	border-radius: 4px;
+	font-size: 20px;
+}
+.iconsList p {
+	margin: 0;
+}
+.nameIcon {
+	color: #ddd;
+	background: #e5e5e5;
 }
 
 @media (max-width: 768px) {

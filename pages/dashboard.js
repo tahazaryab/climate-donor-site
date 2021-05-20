@@ -15,11 +15,13 @@ const { Content } = Layout;
 
 const DonorDashboard = () => {
   const AuthUser = useAuthUser()
-
+  const displayName = AuthUser.firebaseUser.displayName
   return (
     <>
       <Layout>
-        <NavBar userId={AuthUser.id} signOut={AuthUser.signOut} />
+        <NavBar userId={AuthUser.id}
+          userName={displayName != null ? displayName : 'Name'}
+          signOut={AuthUser.signOut} />
         <Content className="siteContent">
           <Sidebar />
           <div className={styles.contentDisplay}>
