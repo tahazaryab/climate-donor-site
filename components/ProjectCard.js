@@ -28,7 +28,7 @@ const ProjectCard = (props) => {
                 <div className={styles.progressBar} style={{width: 300}}>
                     <Progress 
                         percent={calPercentage(curAmt, totalAmt)} 
-                        strokeColor="gray" 
+                        strokeColor="#048a81" 
                         size="default" 
                         format={() => <p><b>${curAmt} raised</b> <span className={styles.smallFont}> of ${totalAmt}</span></p>} 
                     />
