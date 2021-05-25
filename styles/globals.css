@@ -35,17 +35,16 @@ a {
 
 .siteContent {
 	margin-top: 64px;
-	/* padding-top: 50px;  */
-	background-color: #fafafa;
-	height: calc(100vh - 64px);
-	display: flex;
+	padding-top: 50px; 
+	background-color: #fff;
 }
+
 
 .ant-btn-default:focus {
 	color: rgba(0, 0, 0, 0.85) !important;
 }
 
-/* Ant design menu overwrite */
+/* Ant design menu Style overwrite */
 .ant-menu-submenu-title,
 .ant-menu-submenu-title:hover {
   font-size: 17px;
@@ -58,7 +57,7 @@ a {
 
 .ant-menu-item:hover,
 .ant-menu-item-active {
-	color: black !important;
+	color: #048a81 !important;
 }
 .ant-menu-sub.ant-menu-inline {
 	background-color: #fff !important;
@@ -67,6 +66,14 @@ a {
 	color: #048a81;
 	background-color: #d4efde !important;
 }
+
 .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected::after {
 	border-right: 3px solid #048a81;
+}
+
+.ant-dropdown-menu-item:hover, 
+.ant-dropdown-menu-submenu-title:hover{
+	background-color: #d4efde !important;
+	border-right: 3px solid #048a81;
+	color: #048a81;
 }

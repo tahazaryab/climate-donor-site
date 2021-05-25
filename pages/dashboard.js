@@ -1,6 +1,6 @@
 import { Button, Layout, Row } from 'antd';
 import React from 'react';
-import NavBar from "../components/NavBar";
+import DBNavBar from "../components/DBNavBar";
 import ProjectTabs from "../components/ProjectTabs";
 import Sidebar from "../components/Sidebar";
 import SearchBar from '../components/SearchBar';
@@ -18,13 +18,13 @@ const { Content } = Layout;
 const DonorDashboard = () => {
   const AuthUser = useAuthUser()
   const displayName = AuthUser.firebaseUser.displayName
-
+  console.log(AuthUser.firebaseUser)
   return (
     <Layout>
-      <NavBar userId={AuthUser.id}
+      <DBNavBar userId={AuthUser.id}
         userName={displayName != null ? displayName : 'Name'}
         signOut={AuthUser.signOut} />
-      <Content className="siteContent">
+      <Content className={styles.dashboardContent}>
         <Sidebar />
         <div className={styles.contentDisplay}>
           <div className={styles.titleBar}>
