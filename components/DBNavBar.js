@@ -21,7 +21,7 @@ const DBNavBar = ({ userId, signOut, userName }) => {
             </div>
             <div className={styles.iconsList}>
                 <Dropdown overlay={menu}>
-                    <a className="ant-dropdown-link" onClick={e => toggleDropdown(e)}>
+                    <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
                         <div className={styles.nameIcon}>{userName?.charAt(0)}</div>
                         <p>{userName}</p>
                         <span><FontAwesomeIcon icon={faChevronDown} /></span>
