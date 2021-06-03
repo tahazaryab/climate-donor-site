@@ -1,5 +1,5 @@
 import { Button, Layout, Row } from 'antd';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import NavBar from "../components/NavBar";
 import ProjectTabs from "../components/ProjectTabs";
 import Sidebar from "../components/Sidebar";
@@ -11,13 +11,41 @@ import {
   withAuthUser,
   AuthAction
 } from 'next-firebase-auth'
-
+import { getRecommendedProjects } from '../lib/firebase'
 
 const { Content } = Layout;
 
 const DonorDashboard = () => {
   const AuthUser = useAuthUser()
   const displayName = AuthUser.firebaseUser.displayName
+  const [selectedMenu, setSelectedMenu] = useState("1")
+
+  const [projects, setProjects] = useState([]);
+
+  const getProjects = async () => {
+
+    if (selectedMenu === '1') {
+      //let projects = await getProjectsByDonor()
+      //setProjects(projects);
+      setProjects([])
+    } else if (selectedMenu === '2') {
+      //let projects = await getSavedProjects()
+      //setProjects(projects);
+      setProjects([])
+    } else if (selectedMenu === '3') {
+      let projects = await getRecommendedProjects()
+      setProjects(projects);
+    } else {
+      // Donation History
+      setProjects([])
+    }
+
+  }
+
+  useEffect(() => {
+    getProjects()
+  }, [selectedMenu])
+
 
   return (
     <Layout>
@@ -25,7 +53,7 @@ const DonorDashboard = () => {
         userName={displayName != null ? displayName : 'Name'}
         signOut={AuthUser.signOut} />
       <Content className="siteContent">
-        <Sidebar />
+        <Sidebar setSelectedMenu={setSelectedMenu} />
         <div className={styles.contentDisplay}>
           <div className={styles.titleBar}>
             <h2>My Projects</h2>
@@ -41,35 +69,27 @@ const DonorDashboard = () => {
               }}
             />
           </Row>
-          {/* Testing projectCard Component */}
-          <Row>
-            <ProjectCard
-              tagName='Clean Energy'
-              src="https://via.placeholder.com/150"
-              projectTitle="Repurposing Oil Platforms"
-              projectDescription="Imagine if all offshore oil platforms were converted to clearn energy producing wind turbine platforms..."
-              author="Climate Donor"
-              location="Stanford, CA"
-              published={new Date().toLocaleDateString() + ''}
-              updated={new Date().toLocaleDateString() + ''}
-              curAmt="75,890"
-              totalAmt="89,000"
-            />
-          </Row>
-          <Row>
-            <ProjectCard
-              tagName='Transportation'
-              src="https://via.placeholder.com/150"
-              projectTitle="Saving the Melting Polar Caps"
-              projectDescription="Dedicated researchers and biologist, focused on saving and salvaging the melting polar caps..."
-              author="Climate Donor"
-              location="Stanford, CA"
-              published={new Date().toLocaleDateString() + ''}
-              updated={new Date().toLocaleDateString() + ''}
-              curAmt="26,000"
-              totalAmt="89,000"
-            />
-          </Row>
+          {
+            projects && projects.map((project, index) => {
+              return (
+                <Row key={index}>
+                  <ProjectCard
+                    key={project.id}
+                    tagName={project.tagName}
+                    src={project.src}
+                    projectTitle={project.title}
+                    projectDescription={project.description}
+                    author={project.author}
+                    location={project.location}
+                    published={project.published.toDate().toLocaleDateString() + ""}
+                    updated={project.updated.toDate().toLocaleDateString() + ""}
+                    curAmt={project.curAmt}
+                    totalAmt={project.totalAmt}
+                  />
+                </Row>
+              )
+            })
+          }
         </div>
       </Content>
     </Layout>
