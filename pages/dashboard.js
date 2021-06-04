@@ -1,11 +1,13 @@
 import { Button, Layout, Row } from 'antd';
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import NavBar from "../components/NavBar";
 import ProjectTabs from "../components/ProjectTabs";
 import Sidebar from "../components/Sidebar";
 import SearchBar from '../components/SearchBar';
 import ProjectCard from '../components/ProjectCard';
 import styles from '../styles/Dashboard.module.css';
+import { getUserDonatedProjects } from '../lib/firebase';
+
 import {
   useAuthUser,
   withAuthUser,
@@ -18,12 +20,28 @@ const { Content } = Layout;
 const DonorDashboard = () => {
   const AuthUser = useAuthUser()
   const displayName = AuthUser.firebaseUser.displayName
+  const [donorProjects,setDonorProjects]=useState()
+  const [isLoading, setIsLoading] = useState(true);
+  
+  const fetchDonorProjects= async()=>{
+    let donation = await getUserDonatedProjects(AuthUser.id)
+    var projects = await Promise.all(donation);
+    setDonorProjects(projects)
+    setIsLoading(false)
+  }
+  
+  useEffect(() => {
+
+    fetchDonorProjects();
+  }, [])
 
   return (
+    <React.Fragment>
     <Layout>
       <NavBar userId={AuthUser.id}
         userName={displayName != null ? displayName : 'Name'}
         signOut={AuthUser.signOut} />
+      {!isLoading && 
       <Content className="siteContent">
         <Sidebar />
         <div className={styles.contentDisplay}>
@@ -42,37 +60,35 @@ const DonorDashboard = () => {
             />
           </Row>
           {/* Testing projectCard Component */}
-          <Row>
-            <ProjectCard
-              tagName='Clean Energy'
-              src="https://via.placeholder.com/150"
-              projectTitle="Repurposing Oil Platforms"
-              projectDescription="Imagine if all offshore oil platforms were converted to clearn energy producing wind turbine platforms..."
-              author="Climate Donor"
-              location="Stanford, CA"
-              published={new Date().toLocaleDateString() + ''}
-              updated={new Date().toLocaleDateString() + ''}
-              curAmt="75,890"
-              totalAmt="89,000"
-            />
-          </Row>
-          <Row>
-            <ProjectCard
-              tagName='Transportation'
-              src="https://via.placeholder.com/150"
-              projectTitle="Saving the Melting Polar Caps"
-              projectDescription="Dedicated researchers and biologist, focused on saving and salvaging the melting polar caps..."
-              author="Climate Donor"
-              location="Stanford, CA"
-              published={new Date().toLocaleDateString() + ''}
-              updated={new Date().toLocaleDateString() + ''}
-              curAmt="26,000"
-              totalAmt="89,000"
-            />
-          </Row>
+          
+                  { donorProjects &&  
+                
+                    donorProjects.map((project, value) => {
+                        return (
+                          <Row key={value}>
+                            <ProjectCard
+                              key={project?.id}
+                              tagName={project?.tagName}
+                              src={project?.src}
+                              projectTitle={project?.title}
+                              projectDescription={project?.description}
+                              author={project?.author}
+                              location={project?.location}
+                              published={project?.published.toDate().toLocaleDateString() + ''}
+                              updated={project?.updated.toDate().toLocaleDateString() + ''}
+                              curAmt={project?.curAmt}
+                              totalAmt = {project?.totalAmt}
+                            />
+                          </Row>
+                        )
+
+                      })
+                    } 
         </div>
-      </Content>
+      </Content> 
+      }
     </Layout>
+    </React.Fragment>
   )
 }
 

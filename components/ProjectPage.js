@@ -2,6 +2,12 @@ import styles from '../styles/ProjectPage.module.css'
 import {Button, Image, Progress} from 'antd';
 import {faUser, faMapMarkerAlt} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {
+    useAuthUser,
+    withAuthUser,
+    AuthAction
+} from 'next-firebase-auth'
+import {addDonation} from '../lib/firebase'
 
 const tag_text1 = "Clean Energy"
 const tag_text2 = "Transportation"
@@ -27,6 +33,11 @@ const ProjectPage = (props) => {
         curAmt,
         totalAmt
     } = props
+    const AuthUser = useAuthUser()
+
+    const handleDonate= () => {
+        addDonation(AuthUser.id, "", 0)
+    }
     return (
         <div className={styles.projectPage}>
             <div className={styles.col}>
@@ -64,7 +75,7 @@ const ProjectPage = (props) => {
                         <p>Climate Donor ${totalAmt} </p>
                         <p>Other Sources ${totalAmt}</p>
                     </div>
-                    <Button type="primary" className={styles.Button}>Donate</Button>
+                    <Button type="primary" className={styles.Button} onClick={handleDonate}>Donate</Button>
                 </div>
             </div>
             <div className={styles.col}>
@@ -77,4 +88,10 @@ const ProjectPage = (props) => {
     )
 }
 
-export default ProjectPage;
+const MyLoader = () => <div>Loading...</div>
+export default withAuthUser({
+    whenAuthed: AuthAction.RENDER,
+    whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
+    whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
+    LoaderComponent: MyLoader,
+})(ProjectPage)
