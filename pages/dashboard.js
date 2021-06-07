@@ -6,14 +6,13 @@ import Sidebar from "../components/Sidebar";
 import SearchBar from '../components/SearchBar';
 import ProjectCard from '../components/ProjectCard';
 import styles from '../styles/Dashboard.module.css';
-import { getUserDonatedProjects } from '../lib/firebase';
+import { getUserDonatedProjects, getRecommendedProjects } from '../lib/firebase';
 
 import {
   useAuthUser,
   withAuthUser,
   AuthAction
 } from 'next-firebase-auth'
-
 
 const { Content } = Layout;
 
@@ -22,14 +21,41 @@ const DonorDashboard = () => {
   const displayName = AuthUser.firebaseUser.displayName
   const [donorProjects,setDonorProjects]=useState()
   const [isLoading, setIsLoading] = useState(true)
+  const [selectedMenu, setSelectedMenu] = useState("1")
+  const [projects, setProjects] = useState([]);
   
   const fetchDonorProjects= async()=>{
     let donation = await getUserDonatedProjects(AuthUser.id)
-    console.log(donation)
     var projects = await Promise.all(donation)
     setDonorProjects(projects)
-    setIsLoading(false)
+    setProjects(projects)
   }
+  
+
+  const getProjects = async () => {
+
+    if (selectedMenu === '1') {
+      setProjects(donorProjects)
+    } else if (selectedMenu === '2') {
+      //let projects = await getSavedProjects()
+      //setProjects(projects);
+      setProjects([])
+    } else if (selectedMenu === '3') {
+      let projects = await getRecommendedProjects()
+      setProjects(projects);
+    } else {
+      // Donation History
+      setProjects(donorProjects)
+    }
+
+  }
+
+  useEffect(() => {
+    fetchDonorProjects()
+    getProjects()
+    setIsLoading(false)
+  }, [selectedMenu])
+
 
   const getProject = (value) =>{
     var project = {...donorProjects[value]}
@@ -37,10 +63,6 @@ const DonorDashboard = () => {
     project.updated=project.updated.toDate().toLocaleDateString() + ''
     return project
   }
-  
-  useEffect(() => {
-    fetchDonorProjects();
-  }, [])
 
   return (
     <React.Fragment>
@@ -50,7 +72,8 @@ const DonorDashboard = () => {
         signOut={AuthUser.signOut} />
       {!isLoading && 
       <Content className={styles.dashboardContent}>
-        <Sidebar />
+        <Sidebar setSelectedMenu={setSelectedMenu}/>
+
         <div className={styles.contentDisplay}>
           <div className={styles.titleBar}>
             <h2>My Projects</h2>
@@ -68,9 +91,9 @@ const DonorDashboard = () => {
           </Row>
           {/* Testing projectCard Component */}
           
-                  { donorProjects &&  
+                  { projects &&  
                 
-                    donorProjects.map((project, value) => {
+                    projects.map((project, value) => {
                         const singleProject = getProject(value)
                         return (
                           <Row key={value}>
