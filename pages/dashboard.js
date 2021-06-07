@@ -1,6 +1,6 @@
-import { Button, Layout, Row } from 'antd';
-import React, {useState,useEffect} from 'react';
-import NavBar from "../components/NavBar";
+import { Layout, Row } from 'antd';
+import DBNavBar from "../components/DBNavBar";
+import React, { useState, useEffect } from 'react';
 import ProjectTabs from "../components/ProjectTabs";
 import Sidebar from "../components/Sidebar";
 import SearchBar from '../components/SearchBar';
@@ -21,28 +21,35 @@ const DonorDashboard = () => {
   const AuthUser = useAuthUser()
   const displayName = AuthUser.firebaseUser.displayName
   const [donorProjects,setDonorProjects]=useState()
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true)
   
   const fetchDonorProjects= async()=>{
     let donation = await getUserDonatedProjects(AuthUser.id)
-    var projects = await Promise.all(donation);
+    console.log(donation)
+    var projects = await Promise.all(donation)
     setDonorProjects(projects)
     setIsLoading(false)
   }
+
+  const getProject = (value) =>{
+    var project = {...donorProjects[value]}
+    project.published = project.published.toDate().toLocaleDateString() + ''
+    project.updated=project.updated.toDate().toLocaleDateString() + ''
+    return project
+  }
   
   useEffect(() => {
-
     fetchDonorProjects();
   }, [])
 
   return (
     <React.Fragment>
     <Layout>
-      <NavBar userId={AuthUser.id}
+      <DBNavBar userId={AuthUser.id}
         userName={displayName != null ? displayName : 'Name'}
         signOut={AuthUser.signOut} />
       {!isLoading && 
-      <Content className="siteContent">
+      <Content className={styles.dashboardContent}>
         <Sidebar />
         <div className={styles.contentDisplay}>
           <div className={styles.titleBar}>
@@ -64,20 +71,12 @@ const DonorDashboard = () => {
                   { donorProjects &&  
                 
                     donorProjects.map((project, value) => {
+                        const singleProject = getProject(value)
                         return (
                           <Row key={value}>
                             <ProjectCard
-                              key={project?.id}
-                              tagName={project?.tagName}
-                              src={project?.src}
-                              projectTitle={project?.title}
-                              projectDescription={project?.description}
-                              author={project?.author}
-                              location={project?.location}
-                              published={project?.published.toDate().toLocaleDateString() + ''}
-                              updated={project?.updated.toDate().toLocaleDateString() + ''}
-                              curAmt={project?.curAmt}
-                              totalAmt = {project?.totalAmt}
+                              key={value}
+                              project = {singleProject}
                             />
                           </Row>
                         )

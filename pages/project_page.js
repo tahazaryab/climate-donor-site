@@ -2,6 +2,10 @@ import styles from '../styles/ProjectPage.module.css'
 import {Button, Image, Progress} from 'antd';
 import {faUser, faMapMarkerAlt} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+import { getDoc } from '../lib/firebase'
+
 import {
     useAuthUser,
     withAuthUser,
@@ -19,52 +23,63 @@ const calPercentage = (currentAmt, total) => {
 }
 
 
-const ProjectPage = (props) => {
-    const {
-        src,
-        projectTitle,
-        projectShortDescription,
-        projectFullDescription,
-        tagName,
-        author,
-        location,
-        published,
-        updated,
-        curAmt,
-        totalAmt
-    } = props
+const ProjectPage = () => {
     const AuthUser = useAuthUser()
+    const router = useRouter()
+    const [amount, setAmount] = useState(0)
+    const [project, setProject] = useState()
+    const [isLoading, setIsLoading] = useState(true)
+
+    const {
+        query: { projectId },
+    } = router
+
+    const getProject= async() => { 
+        var proj = (await getDoc("projects", projectId)) 
+        proj = await Promise.resolve(proj)
+        proj.published = proj?.published.toDate().toLocaleDateString() + ''
+        proj.updated = proj?.updated.toDate().toLocaleDateString() + ''
+        setProject(proj)
+        setIsLoading(false)
+    }
+    
+    getProject()
+    
 
     const handleDonate= () => {
-        addDonation(AuthUser.id, "", 0)
+        addDonation(AuthUser.id, projectId, amount)
     }
+
     return (
+        
         <div className={styles.projectPage}>
+            { !isLoading && 
+            <>
             <div className={styles.col}>
                 <div className={styles.title__info}>
-                    <h1>{projectTitle}</h1>
-                    {tagName == tag_text1 && <div className={styles.tag_red}>{tagName}</div>}
-                    {tagName == tag_text2 && <div className={styles.tag_blue}>{tagName}</div>}
-                    <p>{projectShortDescription}</p>
+                    <h1>{project?.title}</h1>
+                    {project?.tagName == tag_text1 && <div className={styles.tag_red}>{project?.tagName}</div>}
+                    {project?.tagName == tag_text2 && <div className={styles.tag_blue}>{project?.tagName}</div>}
+                    <p>{project?.description}</p>
                 </div>
                 <div className={styles.labels}>
-                    <span><FontAwesomeIcon icon={faUser}/> {author}</span>
-                    <span><FontAwesomeIcon icon={faMapMarkerAlt}/> {location}</span>
-                    <span>Published {published}</span>
-                    <span>Last Updated {updated}</span>
+                    <span><FontAwesomeIcon icon={faUser}/> {project?.author}</span>
+                    <span><FontAwesomeIcon icon={faMapMarkerAlt}/> {project?.location}</span>
+                    <span>Published {project?.published}</span>
+                    <span>Last Updated {project?.updated}</span>
                 </div>
             </div>
             <div className={styles.row}>
-                <Image width={600} height={400} src={src} fallback="error_project.png"/>
+                <Image width={600} height={400} src={project?.src} fallback="error_project?.png"/>
                 <div className={styles.cardContent}>
                     <div className={styles.cardContent__info}>
                         <p>Funds Raised (USD)</p>
-                        <h1>{curAmt}</h1>
-                        <p>Target Amount: ${totalAmt}</p>
+                        <h1>{project?.curAmt}</h1>
+                        <p>Target Amount: ${project?.totalAmt}</p>
                     </div>
                     <div className={styles.progressBar} style={{width: 250}}>
                         <Progress
-                            percent={calPercentage(curAmt, totalAmt)}
+                            percent={calPercentage(project?.curAmt, project?.totalAmt)}
                             strokeColor="#048A81"
                             strokeWidth={20}
                             strokeLinecap={"square"}
@@ -72,18 +87,20 @@ const ProjectPage = (props) => {
                         />
                     </div>
                     <div className={styles.cardContent__info}>
-                        <p>Climate Donor ${totalAmt} </p>
-                        <p>Other Sources ${totalAmt}</p>
+                        <p>Climate Donor ${project?.totalAmt} </p>
+                        <p>Other Sources ${project?.totalAmt}</p>
                     </div>
                     <Button type="primary" className={styles.Button} onClick={handleDonate}>Donate</Button>
                 </div>
             </div>
             <div className={styles.col}>
-                <p>{projectFullDescription}</p>
+                <p>{project?.description}</p>
             </div>
             <div className={styles.projectUpdates}>
 
             </div>
+            </>
+        }   
         </div>
     )
 }
