@@ -1,4 +1,5 @@
 import { Button, Layout, Row } from 'antd';
+import DBNavBar from "../components/DBNavBar";
 import React, { useState, useEffect } from 'react';
 import NavBar from "../components/NavBar";
 import ProjectTabs from "../components/ProjectTabs";
@@ -6,6 +7,8 @@ import Sidebar from "../components/Sidebar";
 import SearchBar from '../components/SearchBar';
 import ProjectCard from '../components/ProjectCard';
 import styles from '../styles/Dashboard.module.css';
+import { getProjectsByDonor } from '../lib/firebase';
+
 import {
   useAuthUser,
   withAuthUser,
@@ -47,13 +50,24 @@ const DonorDashboard = () => {
   }, [selectedMenu])
 
 
+  const [donorProjects, setDonorProjects] = useState([])
+  const fetchDonorProjects = async () => {
+    let projects = await getProjectsByDonor(AuthUser.id)
+    setDonorProjects(projects);
+  }
+  useEffect(() => {
+    fetchDonorProjects();
+  }, [])
+
   return (
     <Layout>
-      <NavBar userId={AuthUser.id}
+      <DBNavBar userId={AuthUser.id}
         userName={displayName != null ? displayName : 'Name'}
         signOut={AuthUser.signOut} />
-      <Content className="siteContent">
-        <Sidebar setSelectedMenu={setSelectedMenu} />
+
+      <Content className={styles.dashboardContent}>
+        <Sidebar setSelectedMenu={setSelectedMenu}/>
+
         <div className={styles.contentDisplay}>
           <div className={styles.titleBar}>
             <h2>My Projects</h2>
@@ -69,8 +83,12 @@ const DonorDashboard = () => {
               }}
             />
           </Row>
+
           {
             projects && projects.map((project, index) => {
+
+          {/* Testing projectCard Component */}
+
               return (
                 <Row key={index}>
                   <ProjectCard
