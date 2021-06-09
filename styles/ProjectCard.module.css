@@ -8,7 +8,10 @@
 	margin: 25px 30px 0 30px;
 	background-color: #fff;
 }
-
+.Link:hover {
+	color: grey;
+	cursor: pointer;
+}
 .cardContent {
 	margin-left: 30px;
 	padding: 3px 0;

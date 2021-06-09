@@ -2,6 +2,7 @@ import styles from '../styles/ProjectCard.module.css'
 import { Image, Progress } from 'antd';
 import { faUser, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Link  from 'next/link';
 
 const tag_text1 = "Clean Energy"
 const tag_text2 = "Transportation"
@@ -12,32 +13,36 @@ const calPercentage = (currentAmt, total) => {
     return ((100 * currentAmt) / total).toFixed(2);
 }
 
+const ProjectCard = ({ project }) => {
 
-const ProjectCard = (props) => {
-    const { src, projectTitle, projectDescription, tagName, author, location, published, updated, curAmt, totalAmt } = props
     return (
         <div className={styles.projectCard}>
-            <Image width={200} height={180} src={src} fallback="error_project.png" />
+            <Image width={200} height={180} src={project.src} fallback="error_project.png" />
             <div className={styles.cardContent}>
-                {tagName == tag_text1 && <div className={styles.tag_red}>{tagName}</div>}
-                {tagName == tag_text2 && <div className={styles.tag_blue}>{tagName}</div>}
+                {project.tagName == tag_text1 && <div className={styles.tag_red}>{project.tagName}</div>}
+                {project.tagName == tag_text2 && <div className={styles.tag_blue}>{project.tagName}</div>}
                 <div className={styles.cardContent__info}>
-                    <h3>{projectTitle}</h3>
-                    <p>{projectDescription}</p>
+                    <Link href={{
+                        pathname: '/project_page',
+                        query: { projectId : project.id },
+                    }}>    
+                    <h3 className={styles.Link}>{project.title}</h3>
+                    </Link>
+                    <p>{project.description}</p>
                 </div>
                 <div className={styles.progressBar} style={{width: 300}}>
                     <Progress 
-                        percent={calPercentage(curAmt, totalAmt)} 
+                        percent={calPercentage(project.curAmt, project.totalAmt)} 
                         strokeColor="#048a81" 
                         size="default" 
-                        format={() => <p><b>${curAmt} raised</b> <span className={styles.smallFont}> of ${totalAmt}</span></p>} 
+                        format={() => <p><b>${project.curAmt} raised</b> <span className={styles.smallFont}> of ${project.totalAmt}</span></p>} 
                     />
                 </div>
                 <div className={styles.labels}>
-                    <span><FontAwesomeIcon icon={faUser} /> {author}</span>
-                    <span><FontAwesomeIcon icon={faMapMarkerAlt} /> {location}</span>
-                    <span>Published {published}</span>
-                    <span>Last Updated {updated}</span>
+                    <span><FontAwesomeIcon icon={faUser} /> {project.author}</span>
+                    <span><FontAwesomeIcon icon={faMapMarkerAlt} /> {project.location}</span>
+                    <span>Published {project.published}</span>
+                    <span>Last Updated {project.updated}</span>
                 </div>
             </div>
         </div>

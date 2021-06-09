@@ -1,36 +1,41 @@
-import { Button, Layout, Row } from 'antd';
+import { Layout, Row } from 'antd';
 import DBNavBar from "../components/DBNavBar";
 import React, { useState, useEffect } from 'react';
-import NavBar from "../components/NavBar";
 import ProjectTabs from "../components/ProjectTabs";
 import Sidebar from "../components/Sidebar";
 import SearchBar from '../components/SearchBar';
 import ProjectCard from '../components/ProjectCard';
 import styles from '../styles/Dashboard.module.css';
-import { getProjectsByDonor } from '../lib/firebase';
+import { getUserDonatedProjects, getRecommendedProjects } from '../lib/firebase';
 
 import {
   useAuthUser,
   withAuthUser,
   AuthAction
 } from 'next-firebase-auth'
-import { getRecommendedProjects } from '../lib/firebase'
 
 const { Content } = Layout;
 
 const DonorDashboard = () => {
   const AuthUser = useAuthUser()
   const displayName = AuthUser.firebaseUser.displayName
+  const [donorProjects,setDonorProjects]=useState()
+  const [isLoading, setIsLoading] = useState(true)
   const [selectedMenu, setSelectedMenu] = useState("1")
-
   const [projects, setProjects] = useState([]);
+  
+  const fetchDonorProjects= async()=>{
+    let donation = await getUserDonatedProjects(AuthUser.id)
+    var projects = await Promise.all(donation)
+    setDonorProjects(projects)
+    setProjects(projects)
+  }
+  
 
   const getProjects = async () => {
 
     if (selectedMenu === '1') {
-      //let projects = await getProjectsByDonor()
-      //setProjects(projects);
-      setProjects([])
+      setProjects(donorProjects)
     } else if (selectedMenu === '2') {
       //let projects = await getSavedProjects()
       //setProjects(projects);
@@ -40,31 +45,32 @@ const DonorDashboard = () => {
       setProjects(projects);
     } else {
       // Donation History
-      setProjects([])
+      setProjects(donorProjects)
     }
 
   }
 
   useEffect(() => {
+    fetchDonorProjects()
     getProjects()
+    setIsLoading(false)
   }, [selectedMenu])
 
 
-  const [donorProjects, setDonorProjects] = useState([])
-  const fetchDonorProjects = async () => {
-    let projects = await getProjectsByDonor(AuthUser.id)
-    setDonorProjects(projects);
+  const getProject = (value) =>{
+    var project = {...donorProjects[value]}
+    project.published = project.published.toDate().toLocaleDateString() + ''
+    project.updated=project.updated.toDate().toLocaleDateString() + ''
+    return project
   }
-  useEffect(() => {
-    fetchDonorProjects();
-  }, [])
 
   return (
+    <React.Fragment>
     <Layout>
       <DBNavBar userId={AuthUser.id}
         userName={displayName != null ? displayName : 'Name'}
         signOut={AuthUser.signOut} />
-
+      {!isLoading && 
       <Content className={styles.dashboardContent}>
         <Sidebar setSelectedMenu={setSelectedMenu}/>
 
@@ -83,34 +89,28 @@ const DonorDashboard = () => {
               }}
             />
           </Row>
-
-          {
-            projects && projects.map((project, index) => {
-
           {/* Testing projectCard Component */}
+          
+                  { projects &&  
+                
+                    projects.map((project, value) => {
+                        const singleProject = getProject(value)
+                        return (
+                          <Row key={value}>
+                            <ProjectCard
+                              key={value}
+                              project = {singleProject}
+                            />
+                          </Row>
+                        )
 
-              return (
-                <Row key={index}>
-                  <ProjectCard
-                    key={project.id}
-                    tagName={project.tagName}
-                    src={project.src}
-                    projectTitle={project.title}
-                    projectDescription={project.description}
-                    author={project.author}
-                    location={project.location}
-                    published={project.published.toDate().toLocaleDateString() + ""}
-                    updated={project.updated.toDate().toLocaleDateString() + ""}
-                    curAmt={project.curAmt}
-                    totalAmt={project.totalAmt}
-                  />
-                </Row>
-              )
-            })
-          }
+                      })
+                    } 
         </div>
-      </Content>
+      </Content> 
+      }
     </Layout>
+    </React.Fragment>
   )
 }
 
