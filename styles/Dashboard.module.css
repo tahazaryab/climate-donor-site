@@ -10,6 +10,7 @@
 }
 
 .titleBar {
+	min-width: 1090px;
 	padding: 30px;
     padding-bottom: 0;
 	width: 100%;
@@ -20,4 +21,10 @@
 	font-weight: 600;
 	font-size: 36px;
 	line-height: 42px;
+}
+
+.noProject{
+	font-size: 25px;
+	text-align: center;
+	margin-top: 50px;
 }

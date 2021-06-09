@@ -19,21 +19,20 @@ const { Content } = Layout;
 const DonorDashboard = () => {
   const AuthUser = useAuthUser()
   const displayName = AuthUser.firebaseUser.displayName
-  const [donorProjects,setDonorProjects]=useState()
+  const [donorProjects, setDonorProjects] = useState()
   const [isLoading, setIsLoading] = useState(true)
   const [selectedMenu, setSelectedMenu] = useState("1")
   const [projects, setProjects] = useState([]);
-  
-  const fetchDonorProjects= async()=>{
+
+  const fetchDonorProjects = async () => {
     let donation = await getUserDonatedProjects(AuthUser.id)
-    var projects = await Promise.all(donation)
-    setDonorProjects(projects)
-    setProjects(projects)
+    let donationResult = await Promise.all(donation)
+    setDonorProjects(donationResult)
+    setProjects(donationResult)
   }
-  
+
 
   const getProjects = async () => {
-
     if (selectedMenu === '1') {
       setProjects(donorProjects)
     } else if (selectedMenu === '2') {
@@ -41,13 +40,12 @@ const DonorDashboard = () => {
       //setProjects(projects);
       setProjects([])
     } else if (selectedMenu === '3') {
-      let projects = await getRecommendedProjects()
-      setProjects(projects);
+      let recommended = await getRecommendedProjects()
+      setProjects(recommended);
     } else {
       // Donation History
       setProjects(donorProjects)
     }
-
   }
 
   useEffect(() => {
@@ -57,59 +55,59 @@ const DonorDashboard = () => {
   }, [selectedMenu])
 
 
-  const getProject = (value) =>{
-    var project = {...donorProjects[value]}
+  const getProject = (value) => {
+    let project = { ...projects[value] }
     project.published = project.published.toDate().toLocaleDateString() + ''
-    project.updated=project.updated.toDate().toLocaleDateString() + ''
+    project.updated = project.updated.toDate().toLocaleDateString() + ''
     return project
   }
 
   return (
     <React.Fragment>
-    <Layout>
-      <DBNavBar userId={AuthUser.id}
-        userName={displayName != null ? displayName : 'Name'}
-        signOut={AuthUser.signOut} />
-      {!isLoading && 
-      <Content className={styles.dashboardContent}>
-        <Sidebar setSelectedMenu={setSelectedMenu}/>
+      <Layout>
+        <DBNavBar userId={AuthUser.id}
+          userName={displayName != null ? displayName : 'Name'}
+          signOut={AuthUser.signOut} />
+        {!isLoading &&
+          <Content className={styles.dashboardContent}>
+            <Sidebar setSelectedMenu={setSelectedMenu} />
 
-        <div className={styles.contentDisplay}>
-          <div className={styles.titleBar}>
-            <h2>My Projects</h2>
-            <SearchBar />
-          </div>
-          <Row>
-            <ProjectTabs
-              link1='ALL'
-              link2='ACTIVE'
-              link3='COMPLETED'
-              onClick={() => {
-                console.log("Option Clicked")
-              }}
-            />
-          </Row>
-          {/* Testing projectCard Component */}
-          
-                  { projects &&  
-                
-                    projects.map((project, value) => {
-                        const singleProject = getProject(value)
-                        return (
-                          <Row key={value}>
-                            <ProjectCard
-                              key={value}
-                              project = {singleProject}
-                            />
-                          </Row>
-                        )
-
-                      })
-                    } 
-        </div>
-      </Content> 
-      }
-    </Layout>
+            <div className={styles.contentDisplay}>
+              <div className={styles.titleBar}>
+                <h2>My Projects</h2>
+                <SearchBar />
+              </div>
+              <Row>
+                <ProjectTabs
+                  link1='ALL'
+                  link2='ACTIVE'
+                  link3='COMPLETED'
+                  onClick={() => {
+                    console.log("Option Clicked")
+                  }}
+                />
+              </Row>
+              {/* Testing projectCard Component */}
+              {
+                projects && projects.length 
+                  ? projects.map((project, value) => {
+                    const singleProject = getProject(value)
+                    console.log("project mapped")
+                    return (
+                      <Row key={value}>
+                        <ProjectCard
+                          key={value}
+                          project={singleProject}
+                        />
+                      </Row>
+                    )
+                  })
+                  : <div className={styles.noProject}>No Project Available</div>
+              }
+            </div>
+          </Content>
+        }
+      </Layout>
     </React.Fragment>
   )
 }

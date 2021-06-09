@@ -1,17 +1,18 @@
 import styles from '../styles/ProjectPage.module.css'
-import {Button, Image, Progress} from 'antd';
-import {faUser, faMapMarkerAlt} from '@fortawesome/free-solid-svg-icons'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { Button, Image, Progress, Row, Layout } from 'antd';
+import { faUser, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { getDoc } from '../lib/firebase'
-
 import {
     useAuthUser,
     withAuthUser,
     AuthAction
 } from 'next-firebase-auth'
-import {addDonation} from '../lib/firebase'
+import { addDonation } from '../lib/firebase'
+import DBNavBar from "../components/DBNavBar";
+import Link from 'next/link';
 
 const tag_text1 = "Clean Energy"
 const tag_text2 = "Transportation"
@@ -22,7 +23,6 @@ const calPercentage = (currentAmt, total) => {
     return ((100 * currentAmt) / total).toFixed(2);
 }
 
-
 const ProjectPage = () => {
     const AuthUser = useAuthUser()
     const router = useRouter()
@@ -30,78 +30,90 @@ const ProjectPage = () => {
     const [project, setProject] = useState()
     const [isLoading, setIsLoading] = useState(true)
 
-    const {
-        query: { projectId },
-    } = router
+    const { query: { projectId } } = router;
+    const { Content } = Layout;
 
-    const getProject= async() => { 
-        var proj = (await getDoc("projects", projectId)) 
+    const getProject = async () => {
+        var proj = (await getDoc("projects", projectId))
         proj = await Promise.resolve(proj)
         proj.published = proj?.published.toDate().toLocaleDateString() + ''
         proj.updated = proj?.updated.toDate().toLocaleDateString() + ''
         setProject(proj)
         setIsLoading(false)
     }
-    
-    getProject()
-    
 
-    const handleDonate= () => {
+    getProject()
+
+    const handleDonate = () => {
         addDonation(AuthUser.id, projectId, amount)
     }
 
-    return (
-        
-        <div className={styles.projectPage}>
-            { !isLoading && 
-            <>
-            <div className={styles.col}>
-                <div className={styles.title__info}>
-                    <h1>{project?.title}</h1>
-                    {project?.tagName == tag_text1 && <div className={styles.tag_red}>{project?.tagName}</div>}
-                    {project?.tagName == tag_text2 && <div className={styles.tag_blue}>{project?.tagName}</div>}
-                    <p>{project?.description}</p>
-                </div>
-                <div className={styles.labels}>
-                    <span><FontAwesomeIcon icon={faUser}/> {project?.author}</span>
-                    <span><FontAwesomeIcon icon={faMapMarkerAlt}/> {project?.location}</span>
-                    <span>Published {project?.published}</span>
-                    <span>Last Updated {project?.updated}</span>
-                </div>
-            </div>
-            <div className={styles.row}>
-                <Image width={600} height={400} src={project?.src} fallback="error_project?.png"/>
-                <div className={styles.cardContent}>
-                    <div className={styles.cardContent__info}>
-                        <p>Funds Raised (USD)</p>
-                        <h1>{project?.curAmt}</h1>
-                        <p>Target Amount: ${project?.totalAmt}</p>
-                    </div>
-                    <div className={styles.progressBar} style={{width: 250}}>
-                        <Progress
-                            percent={calPercentage(project?.curAmt, project?.totalAmt)}
-                            strokeColor="#048A81"
-                            strokeWidth={20}
-                            strokeLinecap={"square"}
-                            size="default"
-                        />
-                    </div>
-                    <div className={styles.cardContent__info}>
-                        <p>Climate Donor ${project?.totalAmt} </p>
-                        <p>Other Sources ${project?.totalAmt}</p>
-                    </div>
-                    <Button type="primary" className={styles.Button} onClick={handleDonate}>Donate</Button>
-                </div>
-            </div>
-            <div className={styles.col}>
-                <p>{project?.description}</p>
-            </div>
-            <div className={styles.projectUpdates}>
 
-            </div>
-            </>
-        }   
-        </div>
+    return (
+        <Layout>
+            <DBNavBar userId={AuthUser.id} signOut={AuthUser.signOut} />
+            <Content className="siteContent projectPageContent">
+                <Row>
+                    <div style={{ marginLeft: '30px' }}>
+                        <Link href="/dashboard">
+                            <span className={styles.breadcrumb}>Projects / </span>
+                        </Link>
+                        <span>{project?.title}</span>
+                    </div>
+                </Row>
+                <div className={styles.projectPage}>
+                    {!isLoading &&
+                        <>
+
+                            <div className={styles.col}>
+                                <div className={styles.title__info}>
+                                    <h1>{project?.title}</h1>
+                                    {project?.tagName == tag_text1 && <div className={styles.tag_red}>{project?.tagName}</div>}
+                                    {project?.tagName == tag_text2 && <div className={styles.tag_blue}>{project?.tagName}</div>}
+                                    <p>{project?.description}</p>
+                                </div>
+                                <div className={styles.labels}>
+                                    <span><FontAwesomeIcon icon={faUser} /> {project?.author}</span>
+                                    <span><FontAwesomeIcon icon={faMapMarkerAlt} /> {project?.location}</span>
+                                    <span>Published {project?.published}</span>
+                                    <span>Last Updated {project?.updated}</span>
+                                </div>
+                            </div>
+                            <div className={styles.row}>
+                                <Image width={630} height={420} src={project?.src} fallback="error_project?.png" />
+                                <div className={styles.cardContent}>
+                                    <div className={styles.cardContent__info}>
+                                        <p>Funds Raised (USD)</p>
+                                        <h1>{project?.curAmt}</h1>
+                                        <p>Target Amount: ${project?.totalAmt}</p>
+                                    </div>
+                                    <div className={styles.progressBar} style={{ width: 250 }}>
+                                        <Progress
+                                            percent={calPercentage(project?.curAmt, project?.totalAmt)}
+                                            strokeColor="#048A81"
+                                            strokeWidth={20}
+                                            strokeLinecap={"square"}
+                                            size="default"
+                                        />
+                                    </div>
+                                    <div className={styles.cardContent__info}>
+                                        <p>Climate Donor ${project?.totalAmt} </p>
+                                        <p>Other Sources ${project?.totalAmt}</p>
+                                    </div>
+                                    <Button type="primary" className={styles.Button} onClick={handleDonate}>Donate</Button>
+                                </div>
+                            </div>
+                            <div className={styles.col}>
+                                <p>{project?.description}</p>
+                            </div>
+                            <div className={styles.projectUpdates}>
+                                <h2 className={styles.projectUpdates_title}>Project Updates</h2>
+                            </div>
+                        </>
+                    }
+                </div>
+            </Content>
+        </Layout>
     )
 }
 
