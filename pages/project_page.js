@@ -25,6 +25,7 @@ const calPercentage = (currentAmt, total) => {
 
 const ProjectPage = () => {
     const AuthUser = useAuthUser()
+    const displayName = AuthUser.firebaseUser.displayName
     const router = useRouter()
     const [amount, setAmount] = useState(0)
     const [project, setProject] = useState()
@@ -51,7 +52,9 @@ const ProjectPage = () => {
 
     return (
         <Layout>
-            <DBNavBar userId={AuthUser.id} signOut={AuthUser.signOut} />
+            <DBNavBar userId={AuthUser.id}
+                userName={displayName != null ? displayName : 'Name'}
+                signOut={AuthUser.signOut} />
             <Content className="siteContent projectPageContent">
                 <Row>
                     <div style={{ marginLeft: '30px' }}>
