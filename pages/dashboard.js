@@ -28,7 +28,9 @@ const DonorDashboard = () => {
     let donation = await getUserDonatedProjects(AuthUser.id)
     let donationResult = await Promise.all(donation)
     setDonorProjects(donationResult)
-    setProjects(donationResult)
+    if(selectedMenu == '1') {
+      setProjects(donationResult)
+    }
   }
 
 
