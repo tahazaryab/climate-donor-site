@@ -18,7 +18,6 @@ const { Content } = Layout;
 
 const DonorDashboard = () => {
   const AuthUser = useAuthUser()
-  const displayName = AuthUser.firebaseUser.displayName
   const [donorProjects, setDonorProjects] = useState()
   const [isLoading, setIsLoading] = useState(true)
   const [selectedMenu, setSelectedMenu] = useState("1")
@@ -65,9 +64,7 @@ const DonorDashboard = () => {
   return (
     <React.Fragment>
       <Layout>
-        <DBNavBar userId={AuthUser.id}
-          userName={displayName != null ? displayName : 'Name'}
-          signOut={AuthUser.signOut} />
+        <DBNavBar />
         {!isLoading &&
           <Content className={styles.dashboardContent}>
             <Sidebar setSelectedMenu={setSelectedMenu} />
@@ -89,7 +86,7 @@ const DonorDashboard = () => {
               </Row>
               {/* Testing projectCard Component */}
               {
-                projects && projects.length 
+                projects && projects.length
                   ? projects.map((project, value) => {
                     const singleProject = getProject(value)
                     console.log("project mapped")
