@@ -3,6 +3,8 @@ import DBNavBar from '../../components/DBNavBar';
 import OwnerSidebar from '../../components/OwnerSidebar';
 import styles from '../../styles/OwnerDB.module.css';
 import { Layout, Button, Form, Input, DatePicker, Select } from 'antd';
+import { addProject } from '../../lib/firebase'
+import { faTags } from '@fortawesome/free-solid-svg-icons';
 
 const { Content } = Layout;
 const { TextArea } = Input;
@@ -14,6 +16,17 @@ const OwnerDashboard = () => {
 
     const onFinish = (fieldsValue) => {
         //handle form submit
+        const project = {
+            title: fieldsValue.projectName,
+            description: fieldsValue.description,
+            totalAmt: fieldsValue.funding,
+            src: fieldsValue.website,
+            curAmt: 0,
+            tagName: fieldsValue.tag,
+            location: fieldsValue.location,
+        }
+        addProject(project)
+        console.log(fieldsValue)
     }
 
     return (
@@ -70,6 +83,37 @@ const OwnerDashboard = () => {
                             </Form.Item>
 
                             <Form.Item
+                                name="location"
+                                label="Location"
+                                required
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: 'Please input your project head quarters location',
+                                    },
+                                ]}
+                            >
+                                <Input
+                                    placeholder="Your Response"
+                                />
+                            </Form.Item>
+                            <Form.Item
+                                name="website"
+                                label="website"
+                                required
+                                rules={[
+                                    {
+                                        type: "url",
+                                        message: 'Enter a valid url',
+                                    },
+                                ]}
+                            >
+                                <Input
+                                    placeholder="Your Response"
+                                />
+                            </Form.Item>
+
+                            <Form.Item
                                 name="range"
                                 label="Project Time Frame"
                                 required
@@ -99,7 +143,26 @@ const OwnerDashboard = () => {
                                     placeholder="Your Response"
                                 />
                             </Form.Item>
-
+                            <Form.Item
+                                name="tag"
+                                label="Tag"
+                                extra="Categorise your project as one of the tags."
+                                required
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: 'Please select a suitable tag',
+                                    },
+                                ]}
+                            >
+                                <Select
+                                    placeholder="Select a suitable tag"
+                                    allowClear
+                                >
+                                    <Option value="Transportation">Transportation</Option>
+                                    <Option value="Environment">Environment</Option>
+                                </Select>
+                            </Form.Item>
 
                             <Form.Item
                                 name="usage"
