@@ -99,7 +99,6 @@ const DonorSignUpInterestsPage = ({ formData, interests, setInterests, errorMess
 
                 <Row span={8} type="flex" align="middle" justify="space-around">
                     <Col span={6}>
-
                         <Button type="default" onClick={() => goBack()}> Back </Button>
                     </Col>
                 <Col span={10}>
@@ -126,66 +125,65 @@ const DonorSignUpInterestsPage = ({ formData, interests, setInterests, errorMess
                         <Form.Item
                         >
                     
-                            <Row type="flex" align="middle" justify="space-around">
-                                <Space>
-                            <Button type="default" id="closeToMe" onClick={(e) => onClick(e)} style={{border: (interests["closeToMe"] ? "1px solid #048A81" : "1px solid #d9d9d9")}}>
-                                Close to me
-                            </Button>
+                        <Row type="flex" align="middle" justify="space-around">
+                            <Space>
+                                <Button type="default" id="closeToMe" onClick={(e) => onClick(e)} style={{border: (interests["closeToMe"] ? "1px solid #048A81" : "1px solid #d9d9d9")}}>
+                                    Close to me
+                                </Button>
 
-                            <Button type="default" id="agriculturalInnovation" onClick={(e) => onClick(e)} style={{border: (interests["agriculturalInnovation"] ? "1px solid #048A81" : "1px solid #d9d9d9")}}>
-                                Agricultural innovation
-                            </Button>
+                                <Button type="default" id="agriculturalInnovation" onClick={(e) => onClick(e)} style={{border: (interests["agriculturalInnovation"] ? "1px solid #048A81" : "1px solid #d9d9d9")}}>
+                                    Agricultural innovation
+                                </Button>
 
-                            <Button type="default" id="marketResearch" onClick={(e) => onClick(e)} style={{border: (interests["marketResearch"] ? "1px solid #048A81" : "1px solid #d9d9d9")}}>
-                                Market research
-                            </Button>
+                                <Button type="default" id="marketResearch" onClick={(e) => onClick(e)} style={{border: (interests["marketResearch"] ? "1px solid #048A81" : "1px solid #d9d9d9")}}>
+                                    Market research
+                                </Button>
 
-                            <Button type="default" id="energyEfficiency" onClick={(e) => onClick(e)} style={{border: (interests["energyEfficiency"] ? "1px solid #048A81" : "1px solid #d9d9d9")}}>
-                                Energy efficiency
-                            </Button>
+                                <Button type="default" id="energyEfficiency" onClick={(e) => onClick(e)} style={{border: (interests["energyEfficiency"] ? "1px solid #048A81" : "1px solid #d9d9d9")}}>
+                                    Energy efficiency
+                                </Button>
                             </Space>
-                            </Row>
+                        </Row>
 
-                            <Row type="flex" align="middle" justify="space-around">
-                                <Space>
-                            <Button type="default" id="academicResearch" onClick={(e) => onClick(e)} style={{border: (interests["academicResearch"] ? "1px solid #048A81" : "1px solid #d9d9d9")}}>
-                                Academic Research
-                            </Button>
+                        <Row type="flex" align="middle" justify="space-around">
+                            <Space>
+                                <Button type="default" id="academicResearch" onClick={(e) => onClick(e)} style={{border: (interests["academicResearch"] ? "1px solid #048A81" : "1px solid #d9d9d9")}}>
+                                    Academic Research
+                                </Button>
 
-                            <Button type="default" id="nationalLaboratoryResearch" onClick={(e) => onClick(e)} style={{border: (interests["nationalLaboratoryResearch"] ? "1px solid #048A81" : "1px solid #d9d9d9")}}>
-                                National Laboratory resarch
-                            </Button>
+                                <Button type="default" id="nationalLaboratoryResearch" onClick={(e) => onClick(e)} style={{border: (interests["nationalLaboratoryResearch"] ? "1px solid #048A81" : "1px solid #d9d9d9")}}>
+                                    National Laboratory resarch
+                                </Button>
 
-                            <Button type="default" id="grantProposalFunding" onClick={(e) => onClick(e)} style={{border: (interests["grantProposalFunding"] ? "1px solid #048A81" : "1px solid #d9d9d9")}}>
-                                Grant proposal funding
-                            </Button>
+                                <Button type="default" id="grantProposalFunding" onClick={(e) => onClick(e)} style={{border: (interests["grantProposalFunding"] ? "1px solid #048A81" : "1px solid #d9d9d9")}}>
+                                    Grant proposal funding
+                                </Button>
 
-                            <Button type="default" id="transportation" onClick={(e) => onClick(e)} style={{border: (interests["transportation"] ? "1px solid #048A81" : "1px solid #d9d9d9")}}>
-                                Transportation
-                            </Button>
+                                <Button type="default" id="transportation" onClick={(e) => onClick(e)} style={{border: (interests["transportation"] ? "1px solid #048A81" : "1px solid #d9d9d9")}}>
+                                    Transportation
+                                </Button>
                             </Space>
+                        </Row>
 
-                            </Row>
+                        <Row type="flex" align="middle" justify="space-around">
+                            <Space>
+                                <Button type="default" id="limitingDeforestation" onClick={(e) => onClick(e)} style={{border: (interests["limitingDeforestation"] ? "1px solid #048A81" : "1px solid #d9d9d9")}}>
+                                    Limiting deforestation
+                                </Button>
 
-                            <Row type="flex" align="middle" justify="space-around">
-                                <Space>
-                            <Button type="default" id="limitingDeforestation" onClick={(e) => onClick(e)} style={{border: (interests["limitingDeforestation"] ? "1px solid #048A81" : "1px solid #d9d9d9")}}>
-                                Limiting deforestation
-                            </Button>
+                                <Button type="default" id="cleanEnergy" onClick={(e) => onClick(e)} style={{border: (interests["cleanEnergy"] ? "1px solid #048A81" : "1px solid #d9d9d9")}}>
+                                    Clean energy
+                                </Button>
 
-                            <Button type="default" id="cleanEnergy" onClick={(e) => onClick(e)} style={{border: (interests["cleanEnergy"] ? "1px solid #048A81" : "1px solid #d9d9d9")}}>
-                                Clean energy
-                            </Button>
+                                <Button type="default" id="coastalInhabitants" onClick={(e) => onClick(e)} style={{border: (interests["coastalInhabitants"] ? "1px solid #048A81" : "1px solid #d9d9d9")}}>
+                                    Coastal inhabitants
+                                </Button>
 
-                            <Button type="default" id="coastalInhabitants" onClick={(e) => onClick(e)} style={{border: (interests["coastalInhabitants"] ? "1px solid #048A81" : "1px solid #d9d9d9")}}>
-                                Coastal inhabitants
-                            </Button>
-
-                            <Button type="default" id="homeAndOfficeEnergyUsage" onClick={(e) => onClick(e)} style={{border: (interests["homeAndOfficeEnergyUsage"] ? "1px solid #048A81" : "1px solid #d9d9d9")}}>
-                                Home and office energy usage
-                            </Button>
+                                <Button type="default" id="homeAndOfficeEnergyUsage" onClick={(e) => onClick(e)} style={{border: (interests["homeAndOfficeEnergyUsage"] ? "1px solid #048A81" : "1px solid #d9d9d9")}}>
+                                    Home and office energy usage
+                                </Button>
                             </Space>
-                            </Row>
+                        </Row>
                             
                         </Form.Item>
 

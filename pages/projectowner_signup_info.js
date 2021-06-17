@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import {Col, Row, Button, Form, Input} from 'antd';
 import { useRouter } from 'next/router';
-import { useState} from 'react';
+
 
 const tailLayout = {
     wrapperCol: {
@@ -9,12 +10,12 @@ const tailLayout = {
     },
 };
 
-const DonorSignUpInfoPage = ({formData,setForm, errorMessage, setErrorMessage, navigation }) =>  {
-
+const ProjectownerSignUpInfoPage = ({formData, setForm, errorMessage, setErrorMessage, navigation }) =>  {
     const { fullName, email, password } = formData;
 
     const { next } = navigation;
-    const router = useRouter()
+    const router = useRouter();
+
       
     const onFinish = (values) => {    
         let missingValues = [];    
@@ -35,23 +36,23 @@ const DonorSignUpInfoPage = ({formData,setForm, errorMessage, setErrorMessage, n
         setErrorMessage("You're missing these fields.");
         console.log('Failed:', errorInfo);
     };
-
-    const goBack =() => {
-        // TODO: change back button to be arrow?
-        router.push("/signup")
-    }
-
-
+   
     return (
-        <Row type="flex" align="top">
-            <Col span={8}>
-                <Button type="default" onClick={() => goBack()}>Back</Button>
-            </Col>
-            <Col span={8}>
+        <Row type="flex" align="middle" justify="space-around">
+            <Col span = {8}>
                 <div className="container">
-                    <h1>Sign Up</h1>
+                    <h1 className= "global_h1">Create an account with us.</h1>
+                    <p>Whether you want to make a donation or post a project, creating an account allows you to keep track fo your contributions and progress.</p>
+
+                    <div>
+                        <p>
+                            I (my organization) would like to: 
+                            {/* TODO: DONATE BUTTON AND POST PTOJECT BUTTON OPTION */}
+                        </p>
+                    </div>
                 </div>
-                <div>
+
+                <div className="container">
                     <p style={{color: "red"}}>{errorMessage}</p>
                 </div>
                 <Form
@@ -71,12 +72,12 @@ const DonorSignUpInfoPage = ({formData,setForm, errorMessage, setErrorMessage, n
                                 message: 'Please input your first and last name!',
                             },
                         ]}
-                        
                     >
                         <Input
-                        placeholder="Your First and Last Name"
-                         />
+                            placeholder="Your First and Last Name"
+                        />
                     </Form.Item>
+
                     <Form.Item
                         label="Email"
                         name="email"
@@ -90,13 +91,14 @@ const DonorSignUpInfoPage = ({formData,setForm, errorMessage, setErrorMessage, n
                         ]}
                     >
                         <Input 
-                        placeholder="Your Email"
+                            placeholder="Your Email"
                         />
                     </Form.Item>
                     <Form.Item
                         label="Password"
                         name="password"
                         colon="true"
+                        
                         rules={[
                             {
                                 required: true,
@@ -106,26 +108,27 @@ const DonorSignUpInfoPage = ({formData,setForm, errorMessage, setErrorMessage, n
                         type="password"
                            
                     >
-                        <Input.Password 
-                        placeholder="Your Password"
+                        <Input.Password
+                            placeholder="Your Password"
                         />
                     </Form.Item>
-                    
-                    <Form.Item {...tailLayout}>
-                        <Button type="primary" htmlType="submit">
+
+                     <Form.Item {...tailLayout}>
+                        <Button className="projectowner_btn" type="primary" htmlType="submit">
                             Continue
                         </Button>
                     </Form.Item>
                 </Form>
                 <div className="container">
                     <Col>
-                        <h5>Already have an account? <span> <Button href = "/signin"type="link">Sign In</Button> </span> </h5>
+                        <h5>Already have an account? <span> <Button href = "/signin" type="link">Sign In</Button> </span> </h5>
                     </Col>
                 </div>
             </Col>
-            <Col span={8}></Col>
+
         </Row>
     )
+
 }
 
-export default DonorSignUpInfoPage;
+export default ProjectownerSignUpInfoPage;

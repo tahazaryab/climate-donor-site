@@ -12,12 +12,29 @@ body {
 	justify-content: center;
 }
 
+.global_h1{
+	font-size: 2.5rem;
+	font-weight: 600;
+}
+.global_h4 { 
+	font-weight: 500;
+	font-size: 1.3rem;
+}
+.password_reminder{
+	color: #048a81c7;
+}
+
 .ant-btn-primary {
 	color: #048a81;
 	/* &:hover {
     background-color: #048A81 !important;
     border-color: #048A81 !important;
   } */
+}
+
+.projectowner_btn{
+	color: #d4efde !important;
+	background-color: #048A81 !important;
 }
 
 a {
