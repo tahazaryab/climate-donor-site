@@ -80,3 +80,9 @@ a {
 	border-right: 3px solid #048a81;
 	color: #048a81;
 }
+
+.ant-btn-link,
+.ant-btn-link:hover,
+.ant-btn-link:focus {
+	color: black !important;
+}
