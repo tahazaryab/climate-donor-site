@@ -1,72 +1,43 @@
-.content {
+.dashboardContent{
 	margin-top: 64px;
 	display: flex;
 	min-height: calc(100vh - 64px);
 	background-color: #fafafa;
 }
-.breadcrumb{
-    margin-top: 30px;
-    margin-left: 50px;
+.contentDisplay {
+	margin: 0 25px;
 }
-.titleArea {
-	margin: 0 auto;
-	width: 500px;
-	text-align: center;
-}
-.titleArea h1 {
-	font-weight: bold;
-	font-size: 24px;
-	line-height: 28px;
-}
-.titleArea p {
-	font-size: 14px;
-	line-height: 20px;
-}
-.formContent {
-	margin: 0 auto;
+.titleBar {
+	min-width: 1090px;
+	padding: 30px;
+    padding-bottom: 0;
+	width: 100%;
 	display: flex;
-	flex-direction: column;
+	justify-content: space-between;
+}
+.titleBar h2 {
+	font-weight: 600;
+	font-size: 36px;
+	line-height: 42px;
+}
+.titleContainer{
+	width: 500px;
+	display: flex;
 	align-items: center;
-	min-width: calc(100vw - 256px);
 }
-.formContent p {
-	margin-top: 0;
-	text-align: left;
+.titleContainer button{
+	border: none;
+	background-color: transparent;
+	color: #048A81;
+	font-size: 30px;
+	width: 40px;
+	margin-top: -10px;
+	margin-left: 10px;
+	cursor: pointer;
 }
-.formContent input,
-.formContent textarea {
-	margin: 0;
-}
-.formContent label {
-	margin-top: 20px !important;
-}
-
-.formContent div,
-.formContent input,
-.formContent textarea {
-	width: 450px;
-}
-.datepicker input {
-	width: auto;
-}
-.btnWrapper {
-	margin-top: 80px;
-	text-align: center;
-}
-.submitBtn {
-	width: 216px;
-	height: 40px;
-	background: #048a81;
-	border: 1px solid #048a81;
-	color: #fff;
-	box-sizing: border-box;
-	box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
-	border-radius: 2px;
-}
-.submitBtn:hover,
-.submitBtn:focus {
+.titleContainer button:hover{
 	opacity: 0.8;
-	background: #048a81;
-	border: 1px solid #048a81;
-	color: #fff;
+}
+.description{
+	margin-left: 30px;
 }

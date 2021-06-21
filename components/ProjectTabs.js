@@ -1,12 +1,17 @@
 import styles from '../styles/ProjectTabs.module.css'
 import { Button } from 'antd'
 
-const ProjectTabs = ({ link1, link2, link3, onClick }) => {
+const ProjectTabs = ({ links, onClick }) => {
+    console.log('links', links)
     return (
         <div className={styles.projectTabs}>
-            <Button className={styles.button1} type="link" onClick={onClick}>{link1}</Button>
-            <Button className={styles.button2} type="link" onClick={onClick}>{link2}</Button>
-            <Button className={styles.button3} type="link" onClick={onClick}>{link3}</Button>
+            {
+                links.map((link, index) =>
+                    <Button key={index} type="link" onClick={onClick}
+                        className={index == 0 ? styles.tabbuttonSelected : styles.tabbutton}>
+                        {link}
+                    </Button>)
+            }
         </div>
     )
 }

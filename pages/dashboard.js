@@ -27,7 +27,7 @@ const DonorDashboard = () => {
     let donation = await getUserDonatedProjects(AuthUser.id)
     let donationResult = await Promise.all(donation)
     setDonorProjects(donationResult)
-    if(selectedMenu == '1') {
+    if (selectedMenu == '1') {
       setProjects(donationResult)
     }
   }
@@ -78,9 +78,7 @@ const DonorDashboard = () => {
               </div>
               <Row>
                 <ProjectTabs
-                  link1='ALL'
-                  link2='ACTIVE'
-                  link3='COMPLETED'
+                  links={['ALL', 'ACTIVE', 'COMPLETED']}
                   onClick={() => {
                     console.log("Option Clicked")
                   }}
@@ -91,7 +89,7 @@ const DonorDashboard = () => {
                 projects && projects.length
                   ? projects.map((project, value) => {
                     const singleProject = getProject(value)
-                    console.log("project mapped")
+                    console.log("project mapped", singleProject)
                     return (
                       <Row key={value}>
                         <ProjectCard
