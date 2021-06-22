@@ -23,7 +23,8 @@ export default function Signup() {
         if(userType === "donor") {
             router.push("/donor_signup")
         } else if (userType === "projectOwner") {
-            console.log("not implemented");
+            router.push("/projectowner_signup")
+            // console.log("not implemented");
         } else if (userType === "corporatePartner") {
             console.log("not implemented");
         } else {
