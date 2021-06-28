@@ -70,7 +70,6 @@ const ProjectInfoCard = () => {
 }
 
 const ProjectPage = () => {
-
     return (
         <>
             <Layout>

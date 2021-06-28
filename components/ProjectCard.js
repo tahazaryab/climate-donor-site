@@ -13,12 +13,15 @@ const calPercentage = (currentAmt, total) => {
     return ((100 * currentAmt) / total).toFixed(2);
 }
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project, isOwner }) => {
     return (
-        <Link href={{
-            pathname: '/project_page',
-            query: { projectId: project.id },
-        }}>
+        <Link href={isOwner
+            ? '/owner/projectPage'
+            : {
+                pathname: '/project_page',
+                query: { projectId: project.id }
+            }
+        }>
             <div className={styles.projectCard}>
                 <Image width={200} height={180} src={project.src} fallback="error_project.png" />
                 <div className={styles.cardContent}>

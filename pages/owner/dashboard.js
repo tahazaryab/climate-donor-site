@@ -51,8 +51,7 @@ const OwnerDashboard = () => {
                         </Row>
                         <Row>
                             {/* this is just a placeholder project, delete this later */}
-                            <ProjectCard project={dummyProject}
-                            />
+                            <ProjectCard project={dummyProject} isOwner={true}/>
                         </Row>
                     </div>
                 </Content>
