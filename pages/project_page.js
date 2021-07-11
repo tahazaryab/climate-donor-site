@@ -13,6 +13,7 @@ import {
 import { addDonation } from '../lib/firebase'
 import DBNavBar from "../components/DBNavBar";
 import Link from 'next/link';
+import axios from 'axios'
 
 const tag_text1 = "Clean Energy"
 const tag_text2 = "Transportation"
@@ -23,11 +24,16 @@ const calPercentage = (currentAmt, total) => {
     return ((100 * currentAmt) / total).toFixed(2);
 }
 
+import { loadStripe } from '@stripe/stripe-js';
+// Make sure to call `loadStripe` outside of a component’s render to avoid
+// recreating the `Stripe` object on every render.
+const stripePromise = loadStripe("pk_test_51IxaV3F5vfOiEA1nfuxbNPRsY9uau3v5VdiTpgbXpjdE7zk579ANk7WTsmpeHNqjfSd7xvVCNnNDrwsrl2CqdMG5008y9RBnIJ");
+
 const ProjectPage = () => {
     const AuthUser = useAuthUser()
     const displayName = AuthUser.firebaseUser.displayName
     const router = useRouter()
-    const [amount, setAmount] = useState(0)
+    const [amount, setAmount] = useState(10)
     const [project, setProject] = useState()
     const [isLoading, setIsLoading] = useState(true)
 
@@ -45,8 +51,28 @@ const ProjectPage = () => {
 
     getProject()
 
-    const handleDonate = () => {
-        addDonation(AuthUser.id, projectId, amount)
+    const handleDonate = async() => {
+        const projectDetails = {
+            name: project.title,
+            amount: amount
+        }
+        const stripe = await stripePromise;
+
+        const response = await axios.post('/api/checkout', projectDetails)
+        console.log(response)
+    
+        // When the customer clicks on the button, redirect them to Checkout.
+        const result = await stripe.redirectToCheckout({
+          sessionId: response.data.id,
+        });
+    
+        if (result.error) {
+          // If `redirectToCheckout` fails due to a browser or network
+          // error, display the localized error message to your customer
+          // using `result.error.message`.
+        }
+        console.log("Success")
+        // addDonation(AuthUser.id, projectId, amount)
     }
 
 

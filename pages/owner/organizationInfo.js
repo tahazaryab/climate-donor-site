@@ -1,6 +1,6 @@
 import {Col, Row, Button, Form, Space, Input} from 'antd';
 import { useState, useEffect } from 'react';
-import { signUp } from '../lib/firebase';
+import { signUp } from '../../lib/firebase';
 import update from 'immutability-helper';
 
 const tailLayout = {

@@ -1,7 +1,7 @@
 import { Layout, Row } from 'antd'
 import React, { useState, useEffect } from 'react'
-import  OwnerDashboard  from './owner_dashboard'
-import  DonorDashboard  from './donor_dashboard'
+import  OwnerDashboard  from './owner/dashboard'
+import  DonorDashboard  from './donor/dashboard'
 import {getDoc} from '../lib/firebase'
 
 import {

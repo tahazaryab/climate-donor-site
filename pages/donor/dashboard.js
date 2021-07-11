@@ -1,12 +1,12 @@
 import { Layout, Row } from 'antd';
-import DBNavBar from "../components/DBNavBar";
+import DBNavBar from "../../components/DBNavBar";
 import React, { useState, useEffect } from 'react';
-import ProjectTabs from "../components/ProjectTabs";
-import Sidebar from "../components/Sidebar";
-import SearchBar from '../components/SearchBar';
-import ProjectCard from '../components/ProjectCard';
-import styles from '../styles/Dashboard.module.css';
-import { getUserDonatedProjects, getRecommendedProjects } from '../lib/firebase';
+import ProjectTabs from "../../components/ProjectTabs";
+import Sidebar from "../../components/Sidebar";
+import SearchBar from '../../components/SearchBar';
+import ProjectCard from '../../components/ProjectCard';
+import styles from '../../styles/Dashboard.module.css';
+import { getUserDonatedProjects, getRecommendedProjects } from '../../lib/firebase';
 
 import {
   useAuthUser,

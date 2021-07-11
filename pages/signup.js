@@ -21,9 +21,9 @@ export default function Signup() {
 
     const handleContinue = () => {
         if(userType === "donor") {
-            router.push("/donor_signup")
+            router.push("/donor/signup")
         } else if (userType === "projectOwner") {
-            router.push("/projectowner_signup")
+            router.push("/owner/signup")
             // console.log("not implemented");
         } else if (userType === "corporatePartner") {
             console.log("not implemented");
