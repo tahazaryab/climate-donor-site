@@ -12,15 +12,15 @@ body {
 	justify-content: center;
 }
 
-.global_h1{
+.global_h1 {
 	font-size: 2.5rem;
 	font-weight: 600;
 }
-.global_h4 { 
+.global_h4 {
 	font-weight: 500;
 	font-size: 1.3rem;
 }
-.password_reminder{
+.password_reminder {
 	color: #048a81c7;
 }
 
@@ -32,9 +32,9 @@ body {
   } */
 }
 
-.projectowner_btn{
+.projectowner_btn {
 	color: #d4efde !important;
-	background-color: #048A81 !important;
+	background-color: #048a81 !important;
 }
 
 a {
@@ -58,6 +58,26 @@ a {
 
 .projectPageContent {
 	background-color: #fafafa;
+}
+
+.tag_red,
+.tag_blue {
+	font-size: 14px;
+	padding: 1px 8px;
+	box-sizing: border-box;
+	border-radius: 2px;
+	text-align: center;
+	width: fit-content;
+}
+
+.tag_red {
+	background: #fac9b8;
+	border: 1px solid #fe938c;
+}
+
+.tag_blue {
+	background: #cddee9;
+	border: 1px solid #9fbef2;
 }
 
 .ant-btn-default:focus {
@@ -102,4 +122,17 @@ a {
 .ant-btn-link:hover,
 .ant-btn-link:focus {
 	color: black !important;
+}
+.ant-btn-primary {
+	background: #048a81 !important;
+	border: 1px solid #048a81 !important;
+}
+.ant-btn-text {
+	color: #048a81 !important;
+}
+
+.ant-typography-expand svg,
+.ant-typography-edit svg,
+.ant-typography-copy svg {
+	color: #888888;
 }

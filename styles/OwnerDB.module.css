@@ -1,4 +1,4 @@
-.dashboardContent{
+.dashboardContent {
 	margin-top: 64px;
 	display: flex;
 	min-height: calc(100vh - 64px);
@@ -10,7 +10,7 @@
 .titleBar {
 	min-width: 1090px;
 	padding: 30px;
-    padding-bottom: 0;
+	padding-bottom: 0;
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
@@ -20,24 +20,81 @@
 	font-size: 36px;
 	line-height: 42px;
 }
-.titleContainer{
+.titleContainer {
 	width: 500px;
 	display: flex;
 	align-items: center;
 }
-.titleContainer button{
+.titleContainer button {
 	border: none;
 	background-color: transparent;
-	color: #048A81;
+	color: #048a81;
 	font-size: 30px;
 	width: 40px;
 	margin-top: -10px;
 	margin-left: 10px;
 	cursor: pointer;
 }
-.titleContainer button:hover{
+.titleContainer button:hover {
 	opacity: 0.8;
 }
-.description{
+.description {
 	margin-left: 30px;
 }
+
+/*Owner Project Page*/
+.infoContainer {
+	margin: 20px 0 30px 30px;
+	padding: 24px 33px;
+	width: 1100px;
+	background: #ffffff;
+	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+}
+.infoContainer > div:not(:first-child) {
+	margin-top: 18px;
+	margin-bottom: 18px;
+}
+.infoTitle {
+	font-weight: bold;
+	font-size: 36px;
+	line-height: 42px;
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+}
+.infoTag {
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 24px;
+	color: #000000;
+}
+.infoStatus {
+	display: flex;
+	align-items: center;
+	padding: 0px;
+}
+.statusTag {
+	display: flex;
+	align-items: center;
+}
+.greenLight {
+	width: 6px;
+	height: 6px;
+	left: 0px;
+	top: 9.5px;
+	background: #52c41a;
+	border-radius: 10px;
+}
+.statusText {
+	margin-left: 10px;
+	font-size: 18px;
+	line-height: 25px;
+	color: rgba(0, 0, 0, 0.65);
+}
+.infoPublish {
+	margin-left: 30px;
+	font-size: 14px;
+	line-height: 20px;
+	color: #888888;
+}
+
