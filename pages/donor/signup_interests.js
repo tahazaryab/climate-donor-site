@@ -1,7 +1,7 @@
-import {Col, Row, Button, Form, Space} from 'antd';
-import { useState, useEffect } from 'react';
-import { signUp } from '../../lib/firebase';
-import update from 'immutability-helper';
+import {Col, Row, Button, Form, Space} from 'antd'
+import { useState, useEffect } from 'react'
+import { signUp } from '../../lib/firebase'
+import update from 'immutability-helper'
 
 const tailLayout = {
     wrapperCol: {

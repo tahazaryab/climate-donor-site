@@ -16,7 +16,6 @@ const projectowner_organizationInfo = ({formData, organizationInfo, setOrganizat
     const [data, setData] = useState();
     const onFinish = (fieldValues) => { 
         setData(fieldValues)
-        console.log(data)
         setFormSubmitted(true);
     }; 
 

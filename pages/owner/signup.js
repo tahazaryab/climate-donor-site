@@ -3,8 +3,8 @@ import NavBar from "../../components/NavBar";
 import {Layout} from 'antd';
 import { withAuthUser, AuthAction } from 'next-firebase-auth'
 import { useStep } from "react-hooks-helper";
-import ProjectownerSignUpInfoPage from './projectowner_signup_info';
-import OrganizationRegistration from './projectowner_organizationInfo';
+import ProjectownerSignUpInfoPage from './signup_info';
+import OrganizationRegistration from './organizationInfo';
 
 const steps = [
     { id: "info" },

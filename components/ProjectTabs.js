@@ -2,7 +2,7 @@ import styles from '../styles/ProjectTabs.module.css'
 import { Button } from 'antd'
 
 const ProjectTabs = ({ links, onClick }) => {
-    console.log('links', links)
+
     return (
         <div className={styles.projectTabs}>
             {

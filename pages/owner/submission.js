@@ -1,10 +1,16 @@
-import React from 'react';
-import DBNavBar from '../../components/DBNavBar';
-import OwnerSidebar from '../../components/OwnerSidebar';
-import styles from '../../styles/OwnerSub.module.css';
-import { Layout, Button, Form, Input, DatePicker, Select } from 'antd';
+import React, { useEffect } from 'react'
+import DBNavBar from '../../components/DBNavBar'
+import OwnerSidebar from '../../components/OwnerSidebar'
+import styles from '../../styles/OwnerSub.module.css'
+import { Layout, Button, Form, Input, DatePicker, Select } from 'antd'
 import { addProject } from '../../lib/firebase'
-import { faTags } from '@fortawesome/free-solid-svg-icons';
+import { faTags } from '@fortawesome/free-solid-svg-icons'
+import { useRouter } from 'next/router'
+import {
+    useAuthUser,
+    withAuthUser,
+    AuthAction
+} from 'next-firebase-auth'
 
 const { Content } = Layout;
 const { TextArea } = Input;
@@ -13,6 +19,8 @@ const { Option } = Select;
 
 const ProjectSubmission = () => {
     const [form] = Form.useForm();
+    const router = useRouter();
+    const AuthUser = useAuthUser();
 
     const onFinish = (fieldsValue) => {
         //handle form submit
@@ -20,14 +28,21 @@ const ProjectSubmission = () => {
             title: fieldsValue.projectName,
             description: fieldsValue.description,
             totalAmt: fieldsValue.funding,
-            src: fieldsValue.website,
-            curAmt: 0,
+            src: "https://via.placeholder.com/150",
+            website: fieldsValue.website,
+            curAmt: 1000,
             tagName: fieldsValue.tag,
             location: fieldsValue.location,
+            ownerId: AuthUser.id,
         }
+        
         addProject(project)
-        console.log(fieldsValue)
+        router.push("/dashboard")
     }
+    useEffect(()=>{
+        console.log(AuthUser.id)
+    })
+    
 
     return (
         <>
@@ -231,4 +246,10 @@ const ProjectSubmission = () => {
     );
 }
 
-export default ProjectSubmission;
+const MyLoader = () => <div>Loading...</div>
+export default withAuthUser({
+    whenAuthed: AuthAction.RENDER,
+    whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
+    whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
+    LoaderComponent: MyLoader,
+})(ProjectSubmission)

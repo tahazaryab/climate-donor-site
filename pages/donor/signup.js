@@ -1,8 +1,8 @@
-import NavBar from "../../components/NavBar";
-import {Layout} from 'antd';
-import { useState } from 'react';
+import NavBar from '../../components/NavBar'
+import {Layout} from 'antd'
+import { useState } from 'react'
 import { withAuthUser, AuthAction } from 'next-firebase-auth'
-import { useStep } from "react-hooks-helper";
+import { useStep } from 'react-hooks-helper'
 import DonorSignUpInfoPage from './donor_signup_info'
 import DonorSignUpInterestsPage from './donor_signup_interests'
 

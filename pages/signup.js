@@ -1,6 +1,4 @@
-import Link from 'next/link'
 import NavBar from "../components/NavBar";
-import Footer from "../components/Footer"
 import React from "react";
 import { useState } from 'react';
 import {Layout, Card, Col, Row, Button, Space} from 'antd';
@@ -24,7 +22,6 @@ export default function Signup() {
             router.push("/donor/signup")
         } else if (userType === "projectOwner") {
             router.push("/owner/signup")
-            // console.log("not implemented");
         } else if (userType === "corporatePartner") {
             console.log("not implemented");
         } else {

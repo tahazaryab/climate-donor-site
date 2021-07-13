@@ -24,16 +24,16 @@ const Home = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
+        <h2 className={styles.title}>
           CALL TO ACTION!
-        </h1>
+        </h2>
         <div> </div>
-        <h2 className={styles.subtitle}>
+        <h3 className={styles.subtitle}>
           This is YOUR platform to enable you and other’s like you to engage in the fight against
           #ClimateChange and #SpeciesExtinction. Your tax deductible donation will be targeted at climate
           change and species extinction projects of your choosing. Your contribution to current projects in
           need of funding will make a difference. Act and Donate now.
-        </h2>
+        </h3>
 
       </main>
 
