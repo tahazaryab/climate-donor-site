@@ -1,12 +1,12 @@
-import { Layout, Row } from 'antd';
-import DBNavBar from "../components/DBNavBar";
-import React, { useState, useEffect } from 'react';
-import ProjectTabs from "../components/ProjectTabs";
-import Sidebar from "../components/Sidebar";
-import SearchBar from '../components/SearchBar';
-import ProjectCard from '../components/ProjectCard';
-import styles from '../styles/Dashboard.module.css';
-import { getUserDonatedProjects, getRecommendedProjects } from '../lib/firebase';
+import { Layout, Row } from 'antd'
+import DBNavBar from "../../components/DBNavBar";
+import React, { useState, useEffect } from 'react'
+import ProjectTabs from "../../components/ProjectTabs";
+import Sidebar from "../../components/Sidebar";
+import SearchBar from '../../components/SearchBar'
+import ProjectCard from '../../components/ProjectCard'
+import styles from '../../styles/Dashboard.module.css'
+import { getUserProjects, getRecommendedProjects } from '../../lib/firebase'
 
 import {
   useAuthUser,
@@ -24,14 +24,13 @@ const DonorDashboard = () => {
   const [projects, setProjects] = useState([]);
 
   const fetchDonorProjects = async () => {
-    let donation = await getUserDonatedProjects(AuthUser.id)
+    let donation = await getUserProjects(AuthUser.id)
     let donationResult = await Promise.all(donation)
     setDonorProjects(donationResult)
     if (selectedMenu == '1') {
       setProjects(donationResult)
     }
   }
-  console.log("donor dashboard")
 
   const getProjects = async () => {
     if (selectedMenu === '1') {
@@ -80,7 +79,7 @@ const DonorDashboard = () => {
                 <ProjectTabs
                   links={['ALL', 'ACTIVE', 'COMPLETED']}
                   onClick={() => {
-                    console.log("Option Clicked")
+                    
                   }}
                 />
               </Row>
@@ -89,7 +88,7 @@ const DonorDashboard = () => {
                 projects && projects.length
                   ? projects.map((project, value) => {
                     const singleProject = getProject(value)
-                    console.log("project mapped", singleProject)
+                  
                     return (
                       <Row key={value}>
                         <ProjectCard

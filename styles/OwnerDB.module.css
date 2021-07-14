@@ -97,4 +97,8 @@
 	line-height: 20px;
 	color: #888888;
 }
-
+.noProject{
+	align-items: center;
+	margin-left: 250px;
+	padding: 30px;
+}

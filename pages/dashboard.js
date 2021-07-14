@@ -1,7 +1,6 @@
-import { Layout, Row } from 'antd'
 import React, { useState, useEffect } from 'react'
-import  OwnerDashboard  from './owner_dashboard'
-import  DonorDashboard  from './donor_dashboard'
+import  OwnerDashboard  from './owner/dashboard'
+import  DonorDashboard  from './donor/dashboard'
 import {getDoc} from '../lib/firebase'
 
 import {
@@ -13,19 +12,18 @@ import {
 
 const Dashboard = () => {
   const AuthUser = useAuthUser()
-  const [userType, setUserType] = useState('donor')
+  const [userType, setUserType] = useState('')
 
-  const getUserType = async() => {
-    const user =  await getDoc('users', AuthUser.id)
-                .then((ans)=> { return ans})
-    setUserType(user.userType)
-  }
-
-  getUserType()
+  useEffect(()=>{
+    const getUserType = async() => {
+      const user =  await getDoc('users', AuthUser.id)
+                  .then((ans)=> { return ans})
+      setUserType(user.userType)
+    }
   
-  console.log(userType)
+    getUserType()
+  })
   
-
   return (  
     <>
     {

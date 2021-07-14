@@ -5,14 +5,15 @@ import React from "react";
 export default function About() {
   return (
   	<>
-        <NavBar>
-        </NavBar>
-  	<h1>About</h1>
-  	<h2>
-        <Link href="/">
-          <a>Back to home</a>
-        </Link>
-      </h2>
+      <NavBar />
+      <div>
+        <h1>About</h1>
+        <h2>
+            <Link href="/">
+              <a>Back to home</a>
+            </Link>
+        </h2>
+      </div>
      </>
     )
 }

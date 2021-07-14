@@ -6,14 +6,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/router'
 
 const { Content } = Layout;
-// const layout = {
-//     labelCol: {
-//         span: 8,
-//     },
-//     wrapperCol: {
-//         span: 16,
-//     },
-// };
+
 const tailLayout = {
     wrapperCol: {
         offset: 8,

@@ -1,18 +1,19 @@
-import styles from '../styles/ProjectPage.module.css'
-import { Button, Image, Progress, Row, Layout } from 'antd';
+import styles from '../../styles/ProjectPage.module.css'
+import { Button, Image, Progress, Row, Layout } from 'antd'
 import { faUser, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { getDoc } from '../lib/firebase'
+import { getDoc } from '../../lib/firebase'
 import {
     useAuthUser,
     withAuthUser,
     AuthAction
 } from 'next-firebase-auth'
-import { addDonation } from '../lib/firebase'
-import DBNavBar from "../components/DBNavBar";
-import Link from 'next/link';
+import { addDonation } from '../../lib/firebase'
+import DBNavBar from "../../components/DBNavBar";
+import Link from 'next/link'
+import axios from 'axios'
 
 const tag_text1 = "Clean Energy"
 const tag_text2 = "Transportation"
@@ -23,30 +24,70 @@ const calPercentage = (currentAmt, total) => {
     return ((100 * currentAmt) / total).toFixed(2);
 }
 
+import { loadStripe } from '@stripe/stripe-js'
+// Make sure to call `loadStripe` outside of a component’s render to avoid
+// recreating the `Stripe` object on every render.
+const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
+
 const ProjectPage = () => {
     const AuthUser = useAuthUser()
     const displayName = AuthUser.firebaseUser.displayName
     const router = useRouter()
-    const [amount, setAmount] = useState(0)
+    const [amount] = useState(10)
     const [project, setProject] = useState()
     const [isLoading, setIsLoading] = useState(true)
 
-    const { query: { projectId } } = router;
+    const { id } = router.query;
     const { Content } = Layout;
 
-    const getProject = async () => {
-        var proj = (await getDoc("projects", projectId))
-        proj = await Promise.resolve(proj)
-        proj.published = proj?.published.toDate().toLocaleDateString() + ''
-        proj.updated = proj?.updated.toDate().toLocaleDateString() + ''
-        setProject(proj)
-        setIsLoading(false)
-    }
+    useEffect(()=>{
+        const getProject = async () => {
+            var proj = (await getDoc("projects", id))
+            proj = await Promise.resolve(proj)
+            proj.published = proj?.published.toDate().toLocaleDateString() + ''
+            proj.updated = proj?.updated.toDate().toLocaleDateString() + ''
+            setProject(proj)
+            setIsLoading(false)
+        }
+    
+        getProject()
 
-    getProject()
+        // Check to see if this is a redirect back from Checkout
+        const query = new URLSearchParams(window.location.search);
+        if (query.get('success')) {
+            addDonation(AuthUser.id, id, amount)
+            console.log('Order placed! You will receive an email confirmation.');
+        }
+        if (query.get('canceled')) {
+            console.log('Order canceled -- continue to shop around and checkout when you’re ready.');
+        }
+          
+    }, [])
+    
 
-    const handleDonate = () => {
-        addDonation(AuthUser.id, projectId, amount)
+    const handleDonate = async() => {
+        const projectDetails = {
+            name: project.title,
+            id: project.id,
+            amount: amount
+        }
+
+        const stripe = await stripePromise;
+        const response = await axios.post('/api/payment/checkout', projectDetails)
+    
+        // When the customer clicks on the button, redirect them to Checkout.
+        console.log(response)
+        const result = await stripe.redirectToCheckout({
+          sessionId: response.data.id,
+        });
+
+        console.log(result)
+    
+        if (result.error) {
+          // If `redirectToCheckout` fails due to a browser or network
+          // error, display the localized error message to your customer
+          // using `result.error.message`.
+        }
     }
 
 

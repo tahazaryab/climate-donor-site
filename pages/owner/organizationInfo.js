@@ -1,6 +1,6 @@
 import {Col, Row, Button, Form, Space, Input} from 'antd';
 import { useState, useEffect } from 'react';
-import { signUp } from '../lib/firebase';
+import { signUp } from '../../lib/firebase';
 import update from 'immutability-helper';
 
 const tailLayout = {
@@ -16,7 +16,6 @@ const projectowner_organizationInfo = ({formData, organizationInfo, setOrganizat
     const [data, setData] = useState();
     const onFinish = (fieldValues) => { 
         setData(fieldValues)
-        console.log(data)
         setFormSubmitted(true);
     }; 
 
