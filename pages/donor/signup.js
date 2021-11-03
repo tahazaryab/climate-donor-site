@@ -3,8 +3,8 @@ import {Layout} from 'antd'
 import { useState } from 'react'
 import { withAuthUser, AuthAction } from 'next-firebase-auth'
 import { useStep } from 'react-hooks-helper'
-import DonorSignUpInfoPage from './donor_signup_info'
-import DonorSignUpInterestsPage from './donor_signup_interests'
+import DonorSignUpInfoPage from './signup_info'
+import DonorSignUpInterestsPage from './signup_interests'
 
 const {Content} = Layout;
 
