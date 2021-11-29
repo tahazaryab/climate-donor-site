@@ -1,0 +1,20 @@
+[
+	{
+		"name": "Donor",
+		"userType": "donor",
+		"image": "/1.png",
+		"description": "For foundations, corporations, or individuals who would like to donate to ClimateDonor.org and the projects we support."
+	},
+	{
+		"name": "Project Owner",
+		"userType": "projectOwner",
+		"image": "/2.png",
+		"description": "For a nonprofit, academic institution, national lab or local government with projects focused on addressing climate change, that would like to obtain funding through ClimateDonor.org."
+	},
+	{
+		"name": "Corporate Partner",
+		"userType": "corporatePartner",
+		"image": "/3.png",
+		"description": "For corporations who want to donate funds, sponsor programs, provide in-kind products or services, sponsor employee volunteer programs, or promote climate change projects."
+	}
+]

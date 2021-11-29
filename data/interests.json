@@ -1,0 +1,62 @@
+[
+	{
+		"id": "closeToMe",
+		"name": "Close to me",
+		"checked": false
+	},
+	{
+		"id": "agriculturalInnovation",
+		"name": "Agricultural innovation",
+		"checked": false
+	},
+	{
+		"id": "marketResearch",
+		"name": "Market research",
+		"checked": false
+	},
+	{
+		"id": "energyEfficiency",
+		"name": "Energy efficiency",
+		"checked": false
+	},
+	{
+		"id": "academicResearch",
+		"name": "Academic Research",
+		"checked": false
+	},
+	{
+		"id": "nationalLaboratoryResearch",
+		"name": "National Laboratory research",
+		"checked": false
+	},
+	{
+		"id": "grantProposalFunding",
+		"name": "Grant proposal funding",
+		"checked": false
+	},
+	{
+		"id": "transportation",
+		"name": "Transportation",
+		"checked": false
+	},
+	{
+		"id": "limitingDeforestation",
+		"name": "Limiting deforestation",
+		"checked": false
+	},
+	{
+		"id": "cleanEnergy",
+		"name": "Clean energy",
+		"checked": false
+	},
+	{
+		"id": "coastalInhabitants",
+		"name": "Coastal inhabitants",
+		"checked": false
+	},
+	{
+		"id": "homeAndOfficeEnergyUsage",
+		"name": "Home and office energy usage",
+		"checked": false
+	}
+]
