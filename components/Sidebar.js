@@ -11,7 +11,7 @@ const Sidebar = (props) => {
   return (
     <>
       <Menu
-        style={{ width: 256 }}
+        style={{ width: 230 }}
         defaultSelectedKeys={["1"]}
         defaultOpenKeys={["sub1"]}
         mode="inline"
