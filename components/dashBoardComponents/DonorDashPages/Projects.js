@@ -79,7 +79,9 @@ const Projects = () => {
             );
           })
         ) : (
-          <div className={styles.noProject}>No Project Available</div>
+          <div className={styles.noProject}>
+            You have no projects to display.
+          </div>
         )}
       </div>
     </div>

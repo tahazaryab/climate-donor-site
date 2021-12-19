@@ -16,6 +16,7 @@
   display: flex;
   justify-content: space-between;
 }
+
 .titleBar h2 {
   font-weight: 600;
   font-size: 36px;
@@ -31,20 +32,33 @@
 
 .resultsBoxTitle {
   width: 1092px;
-  padding-top: 13px;
-  padding-bottom: 3px;
-  padding-left: 16px;
   background: #ffffff;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .resultsBoxTitle h2 {
+  padding-top: 13px;
+  padding-bottom: 13px;
+  margin-bottom: 0px;
+  padding-left: 16px;
   color: #000000;
 }
+
+.filterTitle {
+  min-width: 309px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+}
+
+.numResultsTitle {
+  min-width: 782px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+}
+
 .noProject {
   font-size: 25px;
   text-align: center;
   padding: 25px;
+  min-width: 782px;
   margin-top: 4px;
   background-color: #fafafa;
 }
