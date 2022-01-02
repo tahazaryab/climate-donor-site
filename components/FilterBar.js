@@ -21,10 +21,6 @@ const options = [
   { label: "Limiting Deforestation", value: "Limiting Deforestation" },
   { label: "Clean Energy", value: "Clean Energy" },
   { label: "Coastal Inhabitants", value: "Coastal Inhabitants" },
-  {
-    label: "Home and office energy usage",
-    value: "Home and office energy usage",
-  },
 ];
 
 class FilterBar extends Component {

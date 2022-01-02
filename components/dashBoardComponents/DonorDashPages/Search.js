@@ -18,7 +18,7 @@ const Search = () => {
 
   const getProjects = async () => {
     console.log(searchLoc + " " + searchCat + " " + searchKey);
-    let recommended = await getSearchProjects(searchLoc, searchCat, searchKey);
+    let recommended = await getSearchProjects(searchKey, searchCat, searchLoc);
     setProjects(recommended);
   };
 
