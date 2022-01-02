@@ -40,7 +40,7 @@ const initAuth = () => {
       path: "/",
       sameSite: "strict",
       secure: process.env.NODE_ENV === "production", // set this to false in local (non-HTTPS) development
-      signed: false,
+      signed: true,
     },
   });
 };

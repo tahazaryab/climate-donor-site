@@ -18,7 +18,6 @@ const Search = () => {
   const [showFilter, setShowFilter] = useState(true);
 
   const getProjects = async () => {
-    console.log(searchLoc + " " + searchCat + " " + searchKey);
     let recommended = await getSearchProjects(searchKey, searchCat, searchLoc);
     setProjects(recommended);
   };
