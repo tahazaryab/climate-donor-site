@@ -60,5 +60,10 @@
   padding: 25px;
   min-width: 782px;
   margin-top: 4px;
-  background-color: #fafafa;
+}
+
+.scroll {
+  height: 600px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }

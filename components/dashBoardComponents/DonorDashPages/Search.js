@@ -3,10 +3,10 @@ import React, { useState, useEffect } from "react";
 import ProjectTabs from "../../../components/ProjectTabs";
 import SearchBar from "../../../components/SearchBar";
 import FilterBar from "../../../components/FilterBar";
-import ProjectCard from "../../../components/ProjectCard";
+import SmallProjectCard from "../../../components/SmallProjectCard";
 import styles from "../../../styles/Dashboard.module.css";
 
-import { getUserProjects, getRecommendedProjects } from "../../../lib/firebase";
+import { getUserProjects, getSearchProjects } from "../../../lib/firebase";
 import { useAuthUser } from "next-firebase-auth";
 
 const Search = () => {
@@ -26,16 +26,8 @@ const Search = () => {
   };
 
   const getProjects = async () => {
-    if (selectedMenu === "1") {
-    } else if (selectedMenu === "2") {
-      setProjects([]);
-    } else if (selectedMenu === "3") {
-      let recommended = await getRecommendedProjects();
-      setProjects(recommended);
-    } else {
-      // Donation History
-      setProjects(donorProjects);
-    }
+    let recommended = await getSearchProjects("hi", ["Environment"], "USA");
+    setProjects(recommended);
   };
 
   useEffect(() => {
@@ -70,19 +62,21 @@ const Search = () => {
         </div>
         <Row>
           <FilterBar />
-          {projects && projects.length ? (
-            projects.map((project, value) => {
-              const singleProject = getProject(value);
+          <Col>
+            <div className={styles.scroll}>
+              {projects && projects.length ? (
+                projects.map((project, value) => {
+                  const singleProject = getProject(value);
 
-              return (
-                <Row key={value}>
-                  <ProjectCard key={value} project={singleProject} />
-                </Row>
-              );
-            })
-          ) : (
-            <div className={styles.noProject}>No Projects Found</div>
-          )}
+                  return (
+                    <SmallProjectCard key={value} project={singleProject} />
+                  );
+                })
+              ) : (
+                <div className={styles.noProject}>No Projects</div>
+              )}
+            </div>
+          </Col>
         </Row>
       </div>
     </div>

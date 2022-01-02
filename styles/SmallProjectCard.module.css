@@ -1,0 +1,79 @@
+.projectCard {
+  width: 779px;
+  height: 220px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 15px;
+  margin: 2px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  cursor: pointer;
+}
+.projectCard:hover {
+  opacity: 0.8;
+}
+.Link:hover {
+  color: grey;
+}
+.cardContent {
+  margin-left: 30px;
+  padding: 3px 0;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.tag_red,
+.tag_blue {
+  font-size: 14px;
+  padding: 1px 8px;
+  box-sizing: border-box;
+  border-radius: 2px;
+  text-align: center;
+  width: fit-content;
+}
+
+.tag_red {
+  background: #fac9b8;
+  border: 1px solid #fe938c;
+}
+
+.tag_blue {
+  background: #cddee9;
+  border: 1px solid #9fbef2;
+}
+
+.labels {
+  width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #888;
+  /* margin-top: 10px; */
+}
+
+.progressBar {
+  margin-bottom: 10px;
+}
+
+.cardContent__info {
+  width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.cardContent__info h3 {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.cardContent__info h3,
+.cardContent__info p {
+  margin: 0;
+}
+
+.smallFont {
+  font-size: 12px;
+}

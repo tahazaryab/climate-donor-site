@@ -1,5 +1,5 @@
 import { Row } from "antd";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Col } from "react";
 import ProjectTabs from "../../../components/ProjectTabs";
 
 import ProjectCard from "../../../components/ProjectCard";
@@ -68,21 +68,23 @@ const Projects = () => {
         <div className={styles.resultsBoxTitle}>
           <h2> {projects.length} Project(s)</h2>
         </div>
-        {projects && projects.length ? (
-          projects.map((project, value) => {
-            const singleProject = getProject(value);
+        <div className={styles.scroll}>
+          {projects && projects.length ? (
+            projects.map((project, value) => {
+              const singleProject = getProject(value);
 
-            return (
-              <Row key={value}>
-                <ProjectCard key={value} project={singleProject} />
-              </Row>
-            );
-          })
-        ) : (
-          <div className={styles.noProject}>
-            You have no projects to display.
-          </div>
-        )}
+              return (
+                <Row key={value}>
+                  <ProjectCard key={value} project={singleProject} />
+                </Row>
+              );
+            })
+          ) : (
+            <div className={styles.noProject}>
+              You have no projects to display.
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
