@@ -6,7 +6,7 @@ import FilterBar from "../../../components/FilterBar";
 import SmallProjectCard from "../../../components/SmallProjectCard";
 import styles from "../../../styles/Dashboard.module.css";
 
-import { getUserProjects, getSearchProjects } from "../../../lib/firebase";
+import { getSearchProjects } from "../../../lib/firebase";
 import { useAuthUser } from "next-firebase-auth";
 
 const Search = () => {
