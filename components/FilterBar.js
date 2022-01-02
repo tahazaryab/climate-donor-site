@@ -35,18 +35,45 @@ class FilterBar extends Component {
     return (
       <div className={styles.container}>
         <div className={styles.location}>
-          <h3 className={styles.title}> Location </h3>{" "}
-          <Search
-            placeholder="Search location"
-            size="default"
-            onSearch={this.props.onSearchLoc}
-            style={{ marginLeft: 14, marginTop: 2, width: 280 }}
-          />
+          <h3 className={styles.title}>
+            {" "}
+            <Row>
+              Location
+              <div style={{ width: 174 }} />{" "}
+              {this.state.location ? (
+                <Button
+                  style={{ borderWidth: 0 }}
+                  onClick={() => {
+                    this.setState({ location: false });
+                  }}
+                >
+                  x
+                </Button>
+              ) : (
+                <Button
+                  style={{ borderWidth: 0 }}
+                  onClick={() => {
+                    this.setState({ location: true });
+                  }}
+                >
+                  +
+                </Button>
+              )}
+            </Row>
+          </h3>{" "}
+          {this.state.location ? (
+            <Search
+              placeholder="Search location"
+              size="default"
+              onSearch={this.props.onSearchLoc}
+              style={{ marginLeft: 14, marginTop: 2, width: 280 }}
+            />
+          ) : null}
         </div>
         <div className={styles.category}>
           <h3 className={styles.title}>
             <Row>
-              Category <div style={{ width: 170 }} />{" "}
+              Category <div style={{ width: 168 }} />{" "}
               {this.state.category ? (
                 <Button
                   style={{ borderWidth: 0 }}
@@ -79,21 +106,73 @@ class FilterBar extends Component {
           ) : null}
         </div>
         <div className={styles.keyword}>
-          <h3 className={styles.title}> Keyword </h3>
-          <Search
-            placeholder="Search keyword"
-            size="default"
-            onSearch={this.props.onSearchKey}
-            style={{ marginLeft: 14, marginTop: 2, width: 280 }}
-          />
+          <h3 className={styles.title}>
+            {" "}
+            <Row>
+              Keyword <div style={{ width: 170 }} />{" "}
+              {this.state.keyword ? (
+                <Button
+                  style={{ borderWidth: 0 }}
+                  onClick={() => {
+                    this.setState({ keyword: false });
+                  }}
+                >
+                  x
+                </Button>
+              ) : (
+                <Button
+                  style={{ borderWidth: 0 }}
+                  onClick={() => {
+                    this.setState({ keyword: true });
+                  }}
+                >
+                  +
+                </Button>
+              )}
+            </Row>{" "}
+          </h3>
+          {this.state.keyword ? (
+            <Search
+              placeholder="Search keyword"
+              size="default"
+              onSearch={this.props.onSearchKey}
+              style={{ marginLeft: 14, marginTop: 2, width: 280 }}
+            />
+          ) : null}
         </div>
         <div className={styles.status}>
-          <h3 className={styles.title}>Status </h3>
-          <Row style={{ marginLeft: 40 }}>
-            <Button>All</Button>
-            <Button>Active</Button>
-            <Button>Completed</Button>
-          </Row>
+          <h3 className={styles.title}>
+            {" "}
+            <Row>
+              Status <div style={{ width: 186 }} />{" "}
+              {this.state.status ? (
+                <Button
+                  style={{ borderWidth: 0 }}
+                  onClick={() => {
+                    this.setState({ status: false });
+                  }}
+                >
+                  x
+                </Button>
+              ) : (
+                <Button
+                  style={{ borderWidth: 0 }}
+                  onClick={() => {
+                    this.setState({ status: true });
+                  }}
+                >
+                  +
+                </Button>
+              )}
+            </Row>{" "}
+          </h3>
+          {this.state.status ? (
+            <Row style={{ marginLeft: 40 }}>
+              <Button>All</Button>
+              <Button>Active</Button>
+              <Button>Completed</Button>
+            </Row>
+          ) : null}
         </div>
       </div>
     );
