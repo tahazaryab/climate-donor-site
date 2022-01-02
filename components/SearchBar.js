@@ -4,9 +4,7 @@ import { Input } from "antd";
 
 const { Search } = Input;
 
-const onSearch = (value) => console.log(value);
-
-const SearchBar = ({ width, defaultTerm, marginLeft, marginTop }) => {
+const SearchBar = ({ width, defaultTerm, marginLeft, marginTop, onSearch }) => {
   return (
     <Search
       placeholder={"Search " + defaultTerm}

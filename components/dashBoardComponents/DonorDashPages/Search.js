@@ -11,29 +11,24 @@ import { useAuthUser } from "next-firebase-auth";
 
 const Search = () => {
   const AuthUser = useAuthUser();
-  const [donorProjects, setDonorProjects] = useState();
-
-  const [selectedMenu, setSelectedMenu] = useState("1");
+  const [searchLoc, setSearchLoc] = useState("");
+  const [searchKey, setSearchKey] = useState("");
+  const [searchCat, setSearchCat] = useState([""]);
   const [projects, setProjects] = useState([]);
 
-  const fetchDonorProjects = async () => {
-    let donation = await getUserProjects(AuthUser.id);
-    let donationResult = await Promise.all(donation);
-    setDonorProjects(donationResult);
-    if (selectedMenu == "1") {
-      setProjects(donationResult);
-    }
-  };
-
   const getProjects = async () => {
-    let recommended = await getSearchProjects("hi", ["Environment"], "USA");
+    console.log(searchLoc + " " + searchCat + " " + searchKey);
+    let recommended = await getSearchProjects(searchLoc, searchCat, searchKey);
     setProjects(recommended);
   };
 
+  const setSearchCatHelper = (value) => {
+    value.length == 0 ? setSearchCat([""]) : setSearchCat(value);
+  };
+
   useEffect(() => {
-    fetchDonorProjects();
     getProjects();
-  }, [selectedMenu]);
+  }, [searchCat, searchKey, searchLoc]);
 
   const getProject = (value) => {
     let project = { ...projects[value] };
@@ -47,9 +42,13 @@ const Search = () => {
       <div className={styles.titleBar}>
         <h2>Search</h2>
       </div>
-
-      <SearchBar width={1092} defaultTerm={"projects"} marginLeft={26} />
-
+      <SearchBar
+        width={1092}
+        defaultTerm={"projects"}
+        marginLeft={26}
+        marginTop={0}
+        onSearch={setSearchKey}
+      />
       <div className={styles.resultsBox}>
         <div className={styles.resultsBoxTitle}>
           <Row>
@@ -61,7 +60,11 @@ const Search = () => {
           </Row>
         </div>
         <Row>
-          <FilterBar />
+          <FilterBar
+            onSearchCat={setSearchCatHelper}
+            onSearchKey={setSearchKey}
+            onSearchLoc={setSearchLoc}
+          />
           <Col>
             <div className={styles.scroll}>
               {projects && projects.length ? (

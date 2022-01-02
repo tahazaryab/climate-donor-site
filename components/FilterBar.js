@@ -3,21 +3,28 @@ import "antd/dist/antd.css";
 import { Menu, Space, Checkbox, Row, Button } from "antd";
 import styles from "../styles/FilterBar.module.css";
 import SearchBar from "./SearchBar";
+import { Input } from "antd";
 
-const onChange = (checked) => console.log(checked);
+const { Search } = Input;
 
 const options = [
-  { label: "Agricultural Innovation", value: "ai" },
-  { label: "Market Research", value: "mr" },
-  { label: "Environment", value: "e" },
-  { label: "Academic Research", value: "ar" },
-  { label: "National Laboratory Research", value: "nlr" },
-  { label: "Grant Proposal Funding", value: "gpf" },
-  { label: "Transportation", value: "t" },
-  { label: "Limiting Deforestation", value: "ld" },
-  { label: "Clean Energy", value: "ce" },
-  { label: "Coastal Inhabitants", value: "ci" },
-  { label: "Home and office energy usage", value: "haoeu" },
+  { label: "Agricultural Innovation", value: "Agricultural Innovation" },
+  { label: "Market Research", value: "Market Research" },
+  { label: "Environment", value: "Environment" },
+  { label: "Academic Research", value: "Academic Research" },
+  {
+    label: "National Laboratory Research",
+    value: "National Laboratory Research",
+  },
+  { label: "Grant Proposal Funding", value: "Grant Proposal Funding" },
+  { label: "Transportation", value: "Transportation" },
+  { label: "Limiting Deforestation", value: "Limiting Deforestation" },
+  { label: "Clean Energy", value: "Clean Energy" },
+  { label: "Coastal Inhabitants", value: "Coastal Inhabitants" },
+  {
+    label: "Home and office energy usage",
+    value: "Home and office energy usage",
+  },
 ];
 
 class FilterBar extends Component {
@@ -27,16 +34,17 @@ class FilterBar extends Component {
     keyword: false,
     status: false,
   };
+
   render() {
     return (
       <div className={styles.container}>
         <div className={styles.location}>
           <h3 className={styles.title}> Location </h3>{" "}
-          <SearchBar
-            width={280}
-            defaultTerm={"location"}
-            marginLeft={14}
-            marginTop={2}
+          <Search
+            placeholder="Search location"
+            size="default"
+            onSearch={this.props.onSearchLoc}
+            style={{ marginLeft: 14, marginTop: 2, width: 280 }}
           />
         </div>
         <div className={styles.category}>
@@ -59,7 +67,6 @@ class FilterBar extends Component {
                     this.setState({ category: true });
                   }}
                 >
-                  {" "}
                   +
                 </Button>
               )}
@@ -67,18 +74,21 @@ class FilterBar extends Component {
           </h3>
           {this.state.category ? (
             <div style={{ margin: 20 }}>
-              <Checkbox.Group options={options} onChange={onChange} />
+              <Checkbox.Group
+                options={options}
+                onChange={this.props.onSearchCat}
+              />
               <div style={{ height: 10 }}> </div>
             </div>
           ) : null}
         </div>
         <div className={styles.keyword}>
           <h3 className={styles.title}> Keyword </h3>
-          <SearchBar
-            width={280}
-            defaultTerm={"keyword"}
-            marginLeft={14}
-            marginTop={2}
+          <Search
+            placeholder="Search location"
+            size="default"
+            onSearch={this.props.onSearchKey}
+            style={{ marginLeft: 14, marginTop: 2, width: 280 }}
           />
         </div>
         <div className={styles.status}>
