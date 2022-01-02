@@ -60,7 +60,6 @@ const Projects = () => {
           onClick={(index) => {
             //Had to typecast it since index was numerical but the switch is string
             setSelectedMenu(index + "");
-            console.log(index);
           }}
         />
       </Row>

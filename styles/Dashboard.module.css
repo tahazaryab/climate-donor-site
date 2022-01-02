@@ -31,7 +31,6 @@
 }
 
 .resultsBoxTitle {
-  width: 1092px;
   background: #ffffff;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -63,7 +62,17 @@
 }
 
 .scroll {
-  height: 600px;
+  max-height: 600px;
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+.topVector {
+  position: absolute;
+  left: 11.33%;
+  right: 11.33%;
+  top: 73.3%;
+  bottom: -19.87%;
+  background: #048a81;
+  transform: matrix(1, 0, 0, -1, 0, 0);
 }

@@ -81,7 +81,7 @@ class FilterBar extends Component {
         <div className={styles.keyword}>
           <h3 className={styles.title}> Keyword </h3>
           <Search
-            placeholder="Search location"
+            placeholder="Search keyword"
             size="default"
             onSearch={this.props.onSearchKey}
             style={{ marginLeft: 14, marginTop: 2, width: 280 }}
