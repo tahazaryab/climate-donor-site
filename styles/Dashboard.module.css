@@ -1,27 +1,78 @@
-.dashboardContent{
-	margin-top: 64px;
-	display: flex;
-	min-height: calc(100vh - 64px);
-	background-color: #fafafa;
+.dashboardContent {
+  margin-top: 64px;
+  display: flex;
+  min-height: calc(100vh - 64px);
+  background-color: #fafafa;
 }
 .contentDisplay {
-	margin: 0 25px;
+  margin: 0 25px;
+  background-color: #fafafa;
 }
 .titleBar {
-	min-width: 1090px;
-	padding: 30px;
-    padding-bottom: 0;
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
+  min-width: 1090px;
+  padding: 30px;
+  padding-bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
+
 .titleBar h2 {
-	font-weight: 600;
-	font-size: 36px;
-	line-height: 42px;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 42px;
 }
-.noProject{
-	font-size: 25px;
-	text-align: center;
-	margin-top: 50px;
+
+.resultsBox {
+  width: 1092px;
+  margin-left: 27px;
+  margin-top: 25px;
+  background-color: white;
+}
+
+.resultsBoxTitle {
+  background: #ffffff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.resultsBoxTitle h2 {
+  padding-top: 13px;
+  padding-bottom: 13px;
+  margin-bottom: 0px;
+  padding-left: 16px;
+  color: #000000;
+}
+
+.filterTitle {
+  min-width: 309px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+}
+
+.numResultsTitle {
+  min-width: 782px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+}
+
+.noProject {
+  font-size: 25px;
+  text-align: center;
+  padding: 25px;
+  min-width: 782px;
+  margin-top: 4px;
+}
+
+.scroll {
+  max-height: 600px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.topVector {
+  position: absolute;
+  left: 11.33%;
+  right: 11.33%;
+  top: 73.3%;
+  bottom: -19.87%;
+  background: #048a81;
+  transform: matrix(1, 0, 0, -1, 0, 0);
 }
