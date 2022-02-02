@@ -3,7 +3,8 @@
 	margin-left: 25px;
 }
 
-.tabbutton,.tabbuttonSelected {
+.tabbutton,
+.tabbuttonSelected {
 	padding: 2px;
 	margin-right: 50px;
 	font-size: 14px;
@@ -11,10 +12,10 @@
 }
 
 .tabbuttonSelected {
-	border-bottom: 3px solid #048a81;
+	border-bottom: 3px solid #124095;
 	font-weight: bold;
 }
 .tabbutton:hover {
 	color: black;
-	border-bottom: 3px solid #048a81;
+	border-bottom: 3px solid #124095;
 }

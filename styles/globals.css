@@ -26,10 +26,6 @@ body {
 
 .ant-btn-primary {
 	color: #048a81;
-	/* &:hover {
-    background-color: #048A81 !important;
-    border-color: #048A81 !important;
-  } */
 }
 
 .projectowner_btn {
@@ -97,25 +93,25 @@ a {
 
 .ant-menu-item:hover,
 .ant-menu-item-active {
-	color: #048a81 !important;
+	color: #124095 !important;
 }
 .ant-menu-sub.ant-menu-inline {
 	background-color: #fff !important;
 }
 .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
-	color: #048a81;
-	background-color: #d4efde !important;
+	color: #124095;
+	background-color: #9fbef2 !important;
 }
 
 .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected::after {
-	border-right: 3px solid #048a81;
+	border-right: 3px solid #124095;
 }
 
 .ant-dropdown-menu-item:hover,
 .ant-dropdown-menu-submenu-title:hover {
-	background-color: #d4efde !important;
-	border-right: 3px solid #048a81;
-	color: #048a81;
+	background-color: #9fbef2 !important;
+	border-right: 3px solid #124095;
+	color: #124095;
 }
 
 .ant-btn-link,

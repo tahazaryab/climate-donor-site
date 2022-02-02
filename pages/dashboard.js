@@ -3,6 +3,7 @@ import OwnerDashboard from "../components/dashBoardComponents/OwnerDashboard";
 import DonorDashboard from "../components/dashBoardComponents/DonorDashboard";
 import { getDoc } from "../lib/firebase";
 import DBNavBar from "../components/DBNavBar";
+import AdminDashboard from "./admin/dashboard";
 
 import { useAuthUser, withAuthUser, AuthAction } from "next-firebase-auth";
 const MyLoader = () => <div>Loading...</div>;
@@ -27,7 +28,7 @@ const Dashboard = () => {
 	return (
 		<>
 			<DBNavBar />
-			{user.userType == "donor" ? <DonorDashboard /> : <OwnerDashboard />}
+			{userType == "donor" ? <DonorDashboard /> : <OwnerDashboard />}
 		</>
 	);
 };
