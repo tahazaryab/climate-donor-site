@@ -8,25 +8,22 @@ import { useAuthUser, withAuthUser, AuthAction } from "next-firebase-auth";
 const Home = () => {
 	const AuthUser = useAuthUser();
 	return (
-		<>
-			<NavBar userId={AuthUser.id} signOut={AuthUser.signOut}></NavBar>
+    <>
+      <NavBar userId={AuthUser.id} signOut={AuthUser.signOut}></NavBar>
 
-			<main className={styles.main}>
-				<h2 className={styles.title}>CALL TO ACTION!</h2>
-				<div> </div>
-				<h3 className={styles.subtitle}>
-					This is YOUR platform to enable you and other’s like you to engage in
-					the fight against #ClimateChange and #SpeciesExtinction. Your tax
-					deductible donation will be targeted at climate change and species
-					extinction projects of your choosing. Your contribution to current
-					projects in need of funding will make a difference. Act and Donate
-					now.
-				</h3>
-			</main>
+      <main className={styles.main}>
+        <h1 className={styles.title}>
+          The Planet And All Living Things Need Your Help.
+        </h1>
+        <h2 className={styles.subtitle}>
+          Join in the fight against #climatechange and #speciesextinction. Act
+          and donate now.
+        </h2>
+      </main>
 
-			<AppFooter></AppFooter>
-		</>
-	);
+      <AppFooter></AppFooter>
+    </>
+  );
 };
 
 const MyLoader = () => <div>Loading...</div>;

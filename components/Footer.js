@@ -1,7 +1,7 @@
 import React from 'react'
 import {Component} from 'react'
 import {Layout, Menu, Dropdown} from 'antd';
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Footer.module.css";
 
 
 const Footer = Layout.Footer;
