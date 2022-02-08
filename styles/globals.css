@@ -1,9 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600&display=swap');
+
 html,
 body {
 	padding: 0;
 	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+.global-h1, .global-h2, .global-h3, .global-p, .subtitle {
+	font-family: 'Work Sans', sans-serif;
 }
 
 .container {
@@ -12,14 +16,38 @@ body {
 	justify-content: center;
 }
 
-.global_h1 {
-	font-size: 2.5rem;
+.global-h1 {
+	font-size: 48px;
+	font-weight: 600;
+	line-height: normal;
+}
+
+.global-h2 {
+	font-size: 36px;
 	font-weight: 600;
 }
-.global_h4 {
-	font-weight: 500;
-	font-size: 1.3rem;
+
+.global-h3 {
+	font-size: 24px;
+	font-weight: 600;
 }
+
+.subtitle {
+	font-size: 24px;
+	font-weight: 300;
+}
+
+.global-p {
+	font-size: 18px;
+	font-weight: 400;
+}
+
+.btn {
+	border-radius: 2px;
+	box-sizing: border-box;
+	padding: 8px 16px;
+}
+
 .password_reminder {
 	color: #048a81c7;
 }

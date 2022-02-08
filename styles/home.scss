@@ -11,7 +11,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: url(../public/home_img/hero.png) no-repeat center/cover;
+  background: url(../public/home_img/hero.png) no-repeat center / cover;
   height: 100vh;
 }
 
@@ -23,22 +23,24 @@
 
 .title {
   display: inline-block;
-}
-.title h1 {
-  color: white;
-  max-width: 400px;
-}
-.title h2 {
-  margin: 0;
-  color: white;
-  max-width: 552px;
-}
-.title div {
-  margin-top: 16px;
-}
-.title div p {
-  display: inline;
-  color: #c8c8c8;
+  h1 {
+    color: white;
+    max-width: 400px;
+  }
+
+  h2 {
+    margin: 0;
+    color: white;
+    max-width: 552px;
+  }
+
+  div {
+    margin-top: 16px;
+    p {
+      display: inline;
+      color: #c8c8c8;
+    }
+  }
 }
 
 .media {
@@ -65,12 +67,12 @@
   align-items: center;
   flex-direction: column;
   padding: 100px 0;
-}
-.involve > div:last-child {
-  background-color: #124095;
-  width: 118px;
-  text-align: center;
-  color: white;
+  > div:last-child {
+    background-color: #124095;
+    width: 118px;
+    text-align: center;
+    color: white;
+  }
 }
 
 .involveIcons {
@@ -79,14 +81,14 @@
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
-}
-.involveIcons div {
-  flex: 1;
-  text-align: center;
-}
-.involveIcons div img {
-  display: block;
-  margin: auto;
+  div {
+    flex: 1;
+    text-align: center;
+    img {
+      display: block;
+      margin: auto;
+    }
+  }
 }
 
 .grid {
@@ -134,5 +136,3 @@
     flex-direction: column;
   }
 }
-
-/*# sourceMappingURL=Home.module.css.map */

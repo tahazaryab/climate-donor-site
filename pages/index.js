@@ -11,15 +11,65 @@ const Home = () => {
     <>
       <NavBar userId={AuthUser.id} signOut={AuthUser.signOut}></NavBar>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          The Planet And All Living Things Need Your Help.
-        </h1>
-        <h2 className={styles.subtitle}>
-          Join in the fight against #climatechange and #speciesextinction. Act
-          and donate now.
+      <div className={styles.hero}>
+        <div className={styles.heroContainer}>
+          <div className={styles.title}>
+            <h1 className="global-h1">
+              The Planet And All Living Things Need Your Help.
+            </h1>
+            <h2 className="subtitle">
+              Join in the fight against #climatechange and #speciesextinction.
+              Act and donate now.
+            </h2>
+            <div>
+              <p className="global-p">
+                Check out our current
+                <span className={styles.heroButton + " btn"}>Projects</span>
+              </p>
+            </div>
+          </div>
+          <div className={styles.media}>
+            <a href="" target="_blank">
+              <img src="./home_img/icons/twitter.svg" alt="twitter"></img>
+            </a>
+            <a href="" target="_blank">
+              <img src="./home_img/icons/instagram.svg" alt="instagram"></img>
+            </a>
+            <a href="" target="_blank">
+              <img src="./home_img/icons/linkedin.svg" alt="linkedin"></img>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div className={styles.involve}>
+        <h1 className="global-h1">Get Involved</h1>
+        <h2 className="subtitle">
+          Explore different ways to take action with us
         </h2>
-      </main>
+        <div className={styles.involveIcons}>
+          <div>
+            <img src="./home_img/icons/donate.svg" alt="donate"></img>
+            <h3 className="global-h3">Donate</h3>
+          </div>
+          <div>
+            <img src="./home_img/icons/project.svg" alt="project"></img>
+            <h3 className="global-h3">Post a project</h3>
+          </div>
+          <div>
+            <img src="./home_img/icons/volunteer.svg" alt="volunteer"></img>
+            <h3 className="global-h3">Volunteer</h3>
+          </div>
+          <div>
+            <img src="./home_img/icons/upload.svg" alt="upload"></img>
+            <h3 className="global-h3">Upload an app</h3>
+          </div>
+          <div>
+            <img src="./home_img/icons/advise.svg" alt="advise"></img>
+            <h3 className="global-h3">Advise us</h3>
+          </div>
+        </div>
+        <div className="btn">Learn More</div>
+      </div>
 
       <AppFooter></AppFooter>
     </>
