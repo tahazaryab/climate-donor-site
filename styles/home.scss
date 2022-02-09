@@ -115,9 +115,10 @@
     display: flex;
     margin: 20px auto;
     border-radius: 8px;
-    width: 80%;
+    width: 75%;
     background-color: #f5f5f5;
     img {
+      width: 33.3%;
       object-fit: cover;
       border-radius: 8px 0 0 8px;
     }
@@ -166,7 +167,7 @@
   line-height: 1.5;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
   .grid {
     width: 100%;
     flex-direction: column;

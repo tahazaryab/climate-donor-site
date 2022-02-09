@@ -86,42 +86,39 @@ const Home = () => {
             <h2 className="global-h2">01</h2>
             <h3 className="global-h3">Citizen engagement and empowerment.</h3>
             <p className="global-p">
-              We believe that addressing climate change and species extinction
-              is everyone's responsibility. Besides relying on big players,
-              broad based, grassroots support is required. By offering a curated
-              app library and our "one-stop-shop" portal, we make it easy to
-              find specific apps, programs and projects of interest to each and
-              every individual prospective donor.
+              There are many well funded programs addressing things like public
+              policy, impact investing in large scale clean energy projects, and
+              corporate initiatives. However, there are thousands of smaller
+              "long tail" projects, that in aggregate represent major
+              contributions to climate change and species extinction mitigation.
             </p>
           </div>
         </div>
         <div className={styles.emphasisCard}>
-          <img src="./home_img/emphasis_1.png" alt="pic1"></img>
+          <img src="./home_img/emphasis_2.png" alt="pic2"></img>
           <div>
-            <h2 className="global-h2">01</h2>
-            <h3 className="global-h3">Citizen engagement and empowerment.</h3>
+            <h2 className="global-h2">02</h2>
+            <h3 className="global-h3">Wide range of projects.</h3>
             <p className="global-p">
-              We believe that addressing climate change and species extinction
-              is everyone's responsibility. Besides relying on big players,
-              broad based, grassroots support is required. By offering a curated
-              app library and our "one-stop-shop" portal, we make it easy to
-              find specific apps, programs and projects of interest to each and
-              every individual prospective donor.
+              There are many well funded programs addressing things like public
+              policy, impact investing in large scale clean energy projects, and
+              corporate initiatives. However, there are thousands of smaller
+              "long tail" projects, that in aggregate represent major
+              contributions to climate change and species extinction mitigation.
             </p>
           </div>
         </div>
         <div className={styles.emphasisCard}>
-          <img src="./home_img/emphasis_1.png" alt="pic1"></img>
+          <img src="./home_img/emphasis_3.png" alt="pic3"></img>
           <div>
-            <h2 className="global-h2">01</h2>
-            <h3 className="global-h3">Citizen engagement and empowerment.</h3>
+            <h2 className="global-h2">03</h2>
+            <h3 className="global-h3">Supporting the existing network.</h3>
             <p className="global-p">
-              We believe that addressing climate change and species extinction
-              is everyone's responsibility. Besides relying on big players,
-              broad based, grassroots support is required. By offering a curated
-              app library and our "one-stop-shop" portal, we make it easy to
-              find specific apps, programs and projects of interest to each and
-              every individual prospective donor.
+              Our goal is to support the many organizations and initiatives
+              already working to address climate change and species extinction.
+              The ClimateDonor.org platform provides an effective, efficient way
+              to match individuals with the organizations, programs, and
+              projects of interest to them.
             </p>
           </div>
         </div>
