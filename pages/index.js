@@ -11,7 +11,7 @@ const Home = () => {
     <>
       <NavBar userId={AuthUser.id} signOut={AuthUser.signOut}></NavBar>
 
-      <div className={styles.hero}>
+      <section className={styles.hero}>
         <div className={styles.heroContainer}>
           <div className={styles.title}>
             <h1 className="global-h1">
@@ -40,8 +40,8 @@ const Home = () => {
             </a>
           </div>
         </div>
-      </div>
-      <div className={styles.involve + " flex-column"}>
+      </section>
+      <section className={styles.involve + " flex-column"}>
         <h1 className="global-h1">Get Involved</h1>
         <h2 className="subtitle">
           Explore different ways to take action with us
@@ -69,8 +69,8 @@ const Home = () => {
           </div>
         </div>
         <div className="btn">Learn More</div>
-      </div>
-      <div className={styles.about + "  flex-column"}>
+      </section>
+      <section className={styles.about + "  flex-column"}>
         <h1 className="global-h1">About Climate Donor</h1>
         <p className="global-p">
           ClimateDonor.org is a 501(c)(3) nonprofit organization that is focused
@@ -78,8 +78,54 @@ const Home = () => {
           extinction.
         </p>
         <div className="btn">About Us</div>
-      </div>
-
+      </section>
+      <section className={styles.emphasis}>
+        <div className={styles.emphasisCard}>
+          <img src="./home_img/emphasis_1.png" alt="pic1"></img>
+          <div>
+            <h2 className="global-h2">01</h2>
+            <h3 className="global-h3">Citizen engagement and empowerment.</h3>
+            <p className="global-p">
+              We believe that addressing climate change and species extinction
+              is everyone's responsibility. Besides relying on big players,
+              broad based, grassroots support is required. By offering a curated
+              app library and our "one-stop-shop" portal, we make it easy to
+              find specific apps, programs and projects of interest to each and
+              every individual prospective donor.
+            </p>
+          </div>
+        </div>
+        <div className={styles.emphasisCard}>
+          <img src="./home_img/emphasis_1.png" alt="pic1"></img>
+          <div>
+            <h2 className="global-h2">01</h2>
+            <h3 className="global-h3">Citizen engagement and empowerment.</h3>
+            <p className="global-p">
+              We believe that addressing climate change and species extinction
+              is everyone's responsibility. Besides relying on big players,
+              broad based, grassroots support is required. By offering a curated
+              app library and our "one-stop-shop" portal, we make it easy to
+              find specific apps, programs and projects of interest to each and
+              every individual prospective donor.
+            </p>
+          </div>
+        </div>
+        <div className={styles.emphasisCard}>
+          <img src="./home_img/emphasis_1.png" alt="pic1"></img>
+          <div>
+            <h2 className="global-h2">01</h2>
+            <h3 className="global-h3">Citizen engagement and empowerment.</h3>
+            <p className="global-p">
+              We believe that addressing climate change and species extinction
+              is everyone's responsibility. Besides relying on big players,
+              broad based, grassroots support is required. By offering a curated
+              app library and our "one-stop-shop" portal, we make it easy to
+              find specific apps, programs and projects of interest to each and
+              every individual prospective donor.
+            </p>
+          </div>
+        </div>
+      </section>
       <AppFooter></AppFooter>
     </>
   );
