@@ -109,11 +109,18 @@
   color: #c8c8c8;
 }
 .emphasis .emphasisCard {
-  display: block;
+  display: flex;
   margin: 20px auto;
   border-radius: 8px;
   width: 80%;
   background-color: #f5f5f5;
+}
+.emphasis .emphasisCard img {
+  object-fit: cover;
+  border-radius: 8px 0 0 8px;
+}
+.emphasis .emphasisCard div {
+  padding: 20px;
 }
 
 .grid {
@@ -176,6 +183,7 @@
   }
 
   .emphasis .emphasisCard {
+    display: block;
     padding: 1.5rem;
   }
   .emphasis .emphasisCard img {
