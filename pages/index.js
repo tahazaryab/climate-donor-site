@@ -70,6 +70,15 @@ const Home = () => {
         </div>
         <div className="btn">Learn More</div>
       </div>
+      <div className={styles.involve}>
+        <h1 className="global-h1">About Climate Donor</h1>
+        <p className="global-p">
+          ClimateDonor.org is a 501(c)(3) nonprofit organization that is focused
+          on mitigation and reversal of global climate change and species
+          extinction.
+        </p>
+        <div className="btn">About Us</div>
+      </div>
 
       <AppFooter></AppFooter>
     </>
