@@ -41,7 +41,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className={styles.involve}>
+      <div className={styles.involve + " flex-column"}>
         <h1 className="global-h1">Get Involved</h1>
         <h2 className="subtitle">
           Explore different ways to take action with us
@@ -70,7 +70,7 @@ const Home = () => {
         </div>
         <div className="btn">Learn More</div>
       </div>
-      <div className={styles.involve}>
+      <div className={styles.about + "  flex-column"}>
         <h1 className="global-h1">About Climate Donor</h1>
         <p className="global-p">
           ClimateDonor.org is a 501(c)(3) nonprofit organization that is focused

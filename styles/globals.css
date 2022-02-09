@@ -1,162 +1,174 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600&display=swap");
 
 html,
 body {
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
-.global-h1, .global-h2, .global-h3, .global-p, .subtitle {
-	font-family: 'Work Sans', sans-serif;
+.global-h1,
+.global-h2,
+.global-h3,
+.global-p,
+.subtitle {
+  font-family: "Work Sans", sans-serif;
 }
 
 .container {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .global-h1 {
-	font-size: 48px;
-	font-weight: 600;
-	line-height: normal;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: normal;
 }
 
 .global-h2 {
-	font-size: 36px;
-	font-weight: 600;
+  font-size: 36px;
+  font-weight: 600;
 }
 
 .global-h3 {
-	font-size: 24px;
-	font-weight: 600;
+  font-size: 24px;
+  font-weight: 600;
 }
 
 .subtitle {
-	font-size: 24px;
-	font-weight: 300;
+  font-size: 24px;
+  font-weight: 300;
 }
 
 .global-p {
-	font-size: 18px;
-	font-weight: 400;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.flex-column {
+	padding: 100px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .btn {
-	border-radius: 2px;
-	box-sizing: border-box;
-	padding: 8px 16px;
+  border-radius: 2px;
+  box-sizing: border-box;
+  padding: 8px 16px;
 }
 
 .password_reminder {
-	color: #048a81c7;
+  color: #048a81c7;
 }
 
 .ant-btn-primary {
-	color: #048a81;
+  color: #048a81;
 }
 
 .projectowner_btn {
-	color: #d4efde !important;
-	background-color: #048a81 !important;
+  color: #d4efde !important;
+  background-color: #048a81 !important;
 }
 
 a {
-	color: inherit;
-	text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 .Button {
-	color: #048a81;
+  color: #048a81;
 }
 
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .siteContent {
-	margin-top: 64px;
-	padding-top: 50px;
-	background-color: #fff;
+  margin-top: 64px;
+  padding-top: 50px;
+  background-color: #fff;
 }
 
 .projectPageContent {
-	background-color: #fafafa;
+  background-color: #fafafa;
 }
 
 .tag_red,
 .tag_blue {
-	font-size: 14px;
-	padding: 1px 8px;
-	box-sizing: border-box;
-	border-radius: 2px;
-	text-align: center;
-	width: fit-content;
+  font-size: 14px;
+  padding: 1px 8px;
+  box-sizing: border-box;
+  border-radius: 2px;
+  text-align: center;
+  width: fit-content;
 }
 
 .tag_red {
-	background: #fac9b8;
-	border: 1px solid #fe938c;
+  background: #fac9b8;
+  border: 1px solid #fe938c;
 }
 
 .tag_blue {
-	background: #cddee9;
-	border: 1px solid #9fbef2;
+  background: #cddee9;
+  border: 1px solid #9fbef2;
 }
 
 .ant-btn-default:focus {
-	color: rgba(0, 0, 0, 0.85) !important;
+  color: rgba(0, 0, 0, 0.85) !important;
 }
 
 /* Ant design menu Style overwrite */
 .ant-menu-submenu-title,
 .ant-menu-submenu-title:hover {
-	font-size: 17px;
-	color: black !important;
+  font-size: 17px;
+  color: black !important;
 }
 .ant-menu-submenu-arrow,
 .ant-menu-submenu-arrow:hover {
-	color: black !important;
+  color: black !important;
 }
 
 .ant-menu-item:hover,
 .ant-menu-item-active {
-	color: #124095 !important;
+  color: #124095 !important;
 }
 .ant-menu-sub.ant-menu-inline {
-	background-color: #fff !important;
+  background-color: #fff !important;
 }
 .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
-	color: #124095;
-	background-color: #9fbef2 !important;
+  color: #124095;
+  background-color: #9fbef2 !important;
 }
 
 .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected::after {
-	border-right: 3px solid #124095;
+  border-right: 3px solid #124095;
 }
 
 .ant-dropdown-menu-item:hover,
 .ant-dropdown-menu-submenu-title:hover {
-	background-color: #9fbef2 !important;
-	border-right: 3px solid #124095;
-	color: #124095;
+  background-color: #9fbef2 !important;
+  border-right: 3px solid #124095;
+  color: #124095;
 }
 
 .ant-btn-link,
 .ant-btn-link:hover,
 .ant-btn-link:focus {
-	color: black !important;
+  color: black !important;
 }
 .ant-btn-primary {
-	background: #048a81 !important;
-	border: 1px solid #048a81 !important;
+  background: #048a81 !important;
+  border: 1px solid #048a81 !important;
 }
 .ant-btn-text {
-	color: #048a81 !important;
+  color: #048a81 !important;
 }
 
 .ant-typography-expand svg,
 .ant-typography-edit svg,
 .ant-typography-copy svg {
-	color: #888888;
+  color: #888888;
 }

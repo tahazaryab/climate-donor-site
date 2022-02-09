@@ -59,13 +59,6 @@
   color: white;
 }
 
-.involve {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 100px 0;
-}
 .involve > div:last-child {
   background-color: #124095;
   width: 118px;
@@ -90,13 +83,23 @@
 }
 
 .about {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background: url(../public/home_img/about.png) center/cover no-repeat;
+}
+.about h1 {
+  color: white;
 }
 .about p {
+  width: 50%;
   font-size: 24px;
+  margin: 80px 0;
+  text-align: center;
+  color: white;
+}
+.about > div:last-child {
+  background-color: #048a81;
+  width: 118px;
+  text-align: center;
+  color: white;
 }
 
 .grid {
