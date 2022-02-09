@@ -128,6 +128,30 @@
   }
 }
 
+.portal {
+  padding: 100px 100px;
+  background: url(../public/home_img/portal.png) center/cover no-repeat;
+  > h2 {
+    text-align: center;
+    margin: 20px 0 70px 0;
+  }
+  h1, h2, h3, p {
+    color: white;
+  }
+  .portalCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    img {
+      width: 40%;
+    }
+    div {
+      width: 50%;
+    }
+  }
+}
+
 .grid {
   display: flex;
   align-items: center;
@@ -185,6 +209,7 @@
 
   .about p {
     width: 90%;
+    font-size: 18px;
   }
 
   .emphasis {
@@ -198,5 +223,9 @@
         margin: auto;
       }
     }
+  }
+
+  .portal {
+    display: block;
   }
 }

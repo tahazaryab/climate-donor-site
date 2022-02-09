@@ -123,6 +123,44 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <section className={styles.portal + " flex-column"}>
+        <h1 className="global-h1">The Climate Donor Portal</h1>
+        <h2 className="subtitle">
+          Our new portal aims to connect organizations engaged in climate change
+          and/or species extinction mitigation initiatives with concerned
+          citizens who want to make a difference.
+        </h2>
+        <div className={styles.portalCard}>
+          <div>
+            <p>ORGANIZATIONS</p>
+            <h2 className="global-h2">
+              A toolkit for all your project-related endeavors.
+            </h2>
+            <p className="global-p">
+              Organizations looking for project funding can now access a
+              dashboard where they can post about their newest initiatives,
+              provide progress updates to their pool of donors, keep track of
+              their fund usage, and more.
+            </p>
+          </div>
+          <img src="./home_img/portal_1.png"></img>
+        </div>
+        <div className={styles.portalCard}>
+          <img src="./home_img/portal_2.png"></img>
+          <div>
+            <p>ORGANIZATIONS</p>
+            <h2 className="global-h2">
+              A toolkit for all your project-related endeavors.
+            </h2>
+            <p className="global-p">
+              Organizations looking for project funding can now access a
+              dashboard where they can post about their newest initiatives,
+              provide progress updates to their pool of donors, keep track of
+              their fund usage, and more.
+            </p>
+          </div>
+        </div>
+      </section>
       <AppFooter></AppFooter>
     </>
   );
