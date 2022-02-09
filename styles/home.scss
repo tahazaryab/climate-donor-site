@@ -62,6 +62,7 @@
 }
 
 .involve {
+  text-align: center;
   > div:last-child {
     background-color: #124095;
     width: 118px;
@@ -76,6 +77,7 @@
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
+  flex-wrap: wrap;
   div {
     flex: 1;
     text-align: center;
@@ -88,20 +90,20 @@
 
 .about {
   background: url(../public/home_img/about.png) center/cover no-repeat;
+  text-align: center;
   h1 {
     color: white
   }
   p {
-    width: 50%;
+    width: 45%;
     font-size: 24px;
     margin: 80px 0;
-    text-align: center;
+    
     color: white;
   }
     > div:last-child {
     background-color: #048a81;
     width: 118px;
-    text-align: center;
     color: white;
   }
 }
@@ -149,5 +151,19 @@
   .grid {
     width: 100%;
     flex-direction: column;
+  }
+
+  .involveIcons {
+    flex-wrap: wrap;
+    h3 {
+      font-size: 16px;
+    }
+    div {
+      flex: 0 0 33%;
+    }
+  }
+
+  .about p {
+    width: 90%;
   }
 }
