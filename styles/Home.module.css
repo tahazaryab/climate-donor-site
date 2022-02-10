@@ -125,14 +125,20 @@
 }
 
 .portal {
-  padding: 100px 100px;
+  padding: 100px 20px;
   background: url(../public/home_img/portal.png) center/cover no-repeat;
 }
+.portal > h1,
 .portal > h2 {
   text-align: center;
+}
+.portal > h2 {
   margin: 20px 0 70px 0;
 }
-.portal h1, .portal h2, .portal h3, .portal p {
+.portal h1,
+.portal h2,
+.portal h3,
+.portal p {
   color: white;
 }
 .portal .portalCard {
@@ -146,6 +152,19 @@
 }
 .portal .portalCard div {
   width: 50%;
+}
+.portal .portalCard div > p:first-child {
+  color: #9fbef2;
+}
+.portal > p:last-child {
+  font-size: 24px;
+  transition: 0.2s;
+}
+.portal > p:last-child span {
+  margin-left: 1rem;
+}
+.portal > p:last-child:hover {
+  transform: scale(1.1);
 }
 
 .grid {
@@ -209,8 +228,11 @@
   }
 
   .emphasis .emphasisCard {
+    width: calc(100% - 40px);
     display: block;
-    padding: 1.5rem;
+    padding: 1.5rem 0;
+    margin-left: 20px;
+    margin-right: 20px;
   }
   .emphasis .emphasisCard img {
     width: 60%;
@@ -219,8 +241,17 @@
     margin: auto;
   }
 
-  .portal {
+  .portal .portalCard {
+    margin-bottom: 0;
     display: block;
+  }
+  .portal .portalCard div {
+    width: 100%;
+  }
+  .portal .portalCard img {
+    width: 100%;
+    margin: 50px 0;
+    border-radius: 8px;
   }
 }
 

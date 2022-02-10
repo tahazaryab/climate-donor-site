@@ -2,6 +2,7 @@ import React from "react";
 import styles from "../styles/Home.module.css";
 import NavBar from "../components/NavBar";
 import AppFooter from "../components/Footer";
+import Link from "next/link";
 
 import { useAuthUser, withAuthUser, AuthAction } from "next-firebase-auth";
 
@@ -68,7 +69,9 @@ const Home = () => {
             <h3 className="global-h3">Advise us</h3>
           </div>
         </div>
-        <div className="btn">Learn More</div>
+        <Link href="/">
+          <div className="btn">Learn More</div>
+        </Link>
       </section>
       <section className={styles.about + "  flex-column"}>
         <h1 className="global-h1">About Climate Donor</h1>
@@ -132,7 +135,7 @@ const Home = () => {
         </h2>
         <div className={styles.portalCard}>
           <div>
-            <p>ORGANIZATIONS</p>
+            <p className="inner">ORGANIZATIONS</p>
             <h2 className="global-h2">
               A toolkit for all your project-related endeavors.
             </h2>
@@ -148,7 +151,7 @@ const Home = () => {
         <div className={styles.portalCard}>
           <img src="./home_img/portal_2.png"></img>
           <div>
-            <p>ORGANIZATIONS</p>
+            <p className="inner">ORGANIZATIONS</p>
             <h2 className="global-h2">
               A toolkit for all your project-related endeavors.
             </h2>
@@ -160,6 +163,14 @@ const Home = () => {
             </p>
           </div>
         </div>
+        <Link href="">
+          <p className="btn global-p">
+            Explore our portal
+            <span>
+              <img src="./home_img/icons/arrow.svg" alt=""></img>
+            </span>
+          </p>
+        </Link>
       </section>
       <AppFooter></AppFooter>
     </>
