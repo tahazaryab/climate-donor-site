@@ -42,12 +42,12 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className={styles.involve + " flex-column"}>
+      <section className={styles.plain + " flex-column"}>
         <h1 className="global-h1">Get Involved</h1>
         <h2 className="subtitle">
           Explore different ways to take action with us
         </h2>
-        <div className={styles.involveIcons}>
+        <div className={styles.plainIcons}>
           <div>
             <img src="./home_img/icons/donate.svg" alt="donate"></img>
             <h3 className="global-h3">Donate</h3>
@@ -171,6 +171,35 @@ const Home = () => {
               <img src="./home_img/icons/arrow.svg" alt=""></img>
             </span>
           </p>
+        </Link>
+      </section>
+      <section className={styles.plain + " flex-column"}>
+        <h1 className="global-h1">Our Values, Your Expectations</h1>
+        <h1 className="global-h1">Trust & transparency</h1>
+        <div className={styles.plainIcons}>
+          <div>
+            <img src="./home_img/icons/active.svg" alt="active"></img>
+            <h1 className="global-h1">XX</h1>
+            <h4 className="subtitle">Active Projects</h4>
+          </div>
+          <div>
+            <img src="./home_img/icons/fund.svg" alt="fund"></img>
+            <h1 className="global-h1">$XX</h1>
+            <h4 className="subtitle">Fund Raised</h4>
+          </div>
+          <div>
+            <img src="./home_img/icons/donors.svg" alt="donors"></img>
+            <h1 className="global-h1">XX</h1>
+            <h4 className="subtitle">Total Donors</h4>
+          </div>
+        </div>
+        <p className="global-p">
+          We put transparency at the top, because we know that our donors care
+          about seeing where their money is going. Let's work together to make
+          an effective, responsible impact.
+        </p>
+        <Link href="/">
+          <div className="btn">Financials</div>
         </Link>
       </section>
       <AppFooter></AppFooter>

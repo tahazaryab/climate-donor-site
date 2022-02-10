@@ -59,29 +59,33 @@
   color: white;
 }
 
-.involve {
+.plain {
   text-align: center;
 }
-.involve > div:last-child {
+.plain > div:last-child {
   background-color: #124095;
   width: 118px;
   text-align: center;
   color: white;
 }
+.plain > p {
+  width: 60%;
+  margin-bottom: 50px;
+}
 
-.involveIcons {
-  margin: 80px 0 117px 0;
+.plainIcons {
+  margin: 80px 0;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
   flex-wrap: wrap;
 }
-.involveIcons div {
+.plainIcons div {
   flex: 1;
   text-align: center;
 }
-.involveIcons div img {
+.plainIcons div img {
   display: block;
   margin: auto;
 }
@@ -169,6 +173,7 @@
 .portal > p:last-child {
   font-size: 24px;
   transition: 0.2s;
+  margin-top: 50px;
 }
 .portal > p:last-child span {
   margin-left: 1rem;
@@ -222,13 +227,17 @@
     flex-direction: column;
   }
 
-  .involveIcons {
+  .plain > p {
+    width: 100%;
+  }
+
+  .plainIcons {
     flex-wrap: wrap;
   }
-  .involveIcons h3 {
+  .plainIcons h3 {
     font-size: 16px;
   }
-  .involveIcons div {
+  .plainIcons div {
     flex: 0 0 33%;
   }
 
