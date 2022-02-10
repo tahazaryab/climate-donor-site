@@ -83,6 +83,7 @@ const Home = () => {
         <div className="btn">About Us</div>
       </section>
       <section className={styles.emphasis}>
+        <h1 className="global-h1">Our Areas of Emphasis</h1>
         <div className={styles.emphasisCard}>
           <img src="./home_img/emphasis_1.png" alt="pic1"></img>
           <div>
