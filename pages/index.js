@@ -202,6 +202,27 @@ const Home = () => {
           <div className="btn">Financials</div>
         </Link>
       </section>
+      <section className={styles.podcast + " flex-column"}>
+        <h1 className="global-h1">Sustainability Accelerator</h1>
+        <h2 className="subtitle">A podcast presented by Climate Donor</h2>
+        <div className={styles.podcastContainer}></div>
+        <Link href="">
+          <p className={styles.arrowBtn + " btn global-p"}>
+            Listen now
+            <span>
+              <img src="./home_img/icons/arrow.svg" alt=""></img>
+            </span>
+          </p>
+        </Link>
+      </section>
+      <section className={styles.blog + " flex-column"}>
+        <h1 className="global-h1">Blog Posts</h1>
+        <div className={styles.blogCardContainer}>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </section>
       <AppFooter></AppFooter>
     </>
   );

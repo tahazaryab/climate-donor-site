@@ -152,7 +152,7 @@
 .portal > h2 {
   margin: 20px 0 70px 0;
   width: 70%;
-  color: #F5F5F5;
+  color: #f5f5f5;
 }
 .portal .portalCard {
   display: flex;
@@ -179,7 +179,56 @@
   margin-left: 1rem;
 }
 .portal > p:last-child:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
+}
+
+.podcast {
+  background: url(../public/home_img/podcast.png) center/cover no-repeat;
+}
+.podcast h1,
+.podcast h2 {
+  text-align: center;
+}
+.podcast h1 {
+  color: white;
+}
+.podcast h2 {
+  color: #f5f5f5;
+}
+.podcast .podcastContainer {
+  margin: 50px 0;
+  padding-top: 33.75%;
+  width: 60%;
+  background-color: white;
+  border-radius: 10px;
+}
+.podcast > p:last-child {
+  color: white;
+  font-size: 24px;
+  transition: 0.2s;
+}
+.podcast > p:last-child span {
+  margin-left: 1rem;
+}
+.podcast > p:last-child:hover {
+  transform: scale(1.05);
+}
+
+.blog .blogCardContainer {
+  width: 80%;
+  align-items: center;
+  justify-content: space-evenly;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 8px;
+}
+.blog .blogCardContainer div {
+  margin: 30px 0;
+  width: 326px;
+  height: 442px;
+  background: #ffffff;
+  box-shadow: 0px 0px 25px rgba(200, 200, 200, 0.25);
+  border-radius: 8px;
 }
 
 .grid {
@@ -276,6 +325,11 @@
     width: 100%;
     margin: 50px 0;
     border-radius: 8px;
+  }
+
+  .podcast .podcastContainer {
+    width: 100%;
+    padding-top: 56.25%;
   }
 }
 
