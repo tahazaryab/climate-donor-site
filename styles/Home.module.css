@@ -2,6 +2,19 @@
   max-width: 20px;
 }
 
+.arrowBtn {
+  font-size: 24px;
+  transition: 0.2s;
+  margin-top: 50px;
+}
+.arrowBtn span {
+  margin-left: 1rem;
+}
+
+.arrowBtn:hover {
+  transform: scale(1.05);
+}
+
 .media img {
   width: 16px;
 }
@@ -170,17 +183,6 @@
 .portal .portalCard div > p:first-child {
   color: #9fbef2;
 }
-.portal > p:last-child {
-  font-size: 24px;
-  transition: 0.2s;
-  margin-top: 50px;
-}
-.portal > p:last-child span {
-  margin-left: 1rem;
-}
-.portal > p:last-child:hover {
-  transform: scale(1.05);
-}
 
 .podcast {
   background: url(../public/home_img/podcast.png) center/cover no-repeat;
@@ -204,14 +206,6 @@
 }
 .podcast > p:last-child {
   color: white;
-  font-size: 24px;
-  transition: 0.2s;
-}
-.podcast > p:last-child span {
-  margin-left: 1rem;
-}
-.podcast > p:last-child:hover {
-  transform: scale(1.05);
 }
 
 .blog .blogCardContainer {
@@ -229,6 +223,9 @@
   background: #ffffff;
   box-shadow: 0px 0px 25px rgba(200, 200, 200, 0.25);
   border-radius: 8px;
+}
+.blog :global(.btn) img {
+  filter: invert(1);
 }
 
 .grid {

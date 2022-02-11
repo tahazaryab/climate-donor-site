@@ -7,8 +7,8 @@ import Link from "next/link";
 import { useAuthUser, withAuthUser, AuthAction } from "next-firebase-auth";
 
 const Home = () => {
-	const AuthUser = useAuthUser();
-	return (
+  const AuthUser = useAuthUser();
+  return (
     <>
       <NavBar userId={AuthUser.id} signOut={AuthUser.signOut}></NavBar>
 
@@ -164,11 +164,12 @@ const Home = () => {
             </p>
           </div>
         </div>
+        <></>
         <Link href="">
-          <p className="btn global-p">
+          <p className={styles.arrowBtn + " btn global-p"}>
             Explore our portal
             <span>
-              <img src="./home_img/icons/arrow.svg" alt=""></img>
+              <img src="./home_img/icons/arrow.svg" alt="arrow"></img>
             </span>
           </p>
         </Link>
@@ -210,7 +211,7 @@ const Home = () => {
           <p className={styles.arrowBtn + " btn global-p"}>
             Listen now
             <span>
-              <img src="./home_img/icons/arrow.svg" alt=""></img>
+              <img src="./home_img/icons/arrow.svg" alt="arrow"></img>
             </span>
           </p>
         </Link>
@@ -222,6 +223,14 @@ const Home = () => {
           <div></div>
           <div></div>
         </div>
+        <Link href="">
+          <p className={styles.arrowBtn + " btn global-p"}>
+            See more
+            <span>
+              <img src="./home_img/icons/arrow.svg" alt="arrow"></img>
+            </span>
+          </p>
+        </Link>
       </section>
       <AppFooter></AppFooter>
     </>
@@ -230,8 +239,8 @@ const Home = () => {
 
 const MyLoader = () => <div>Loading...</div>;
 export default withAuthUser({
-	whenAuthed: AuthAction.REDIRECT_TO_APP,
-	whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
-	whenUnauthedAfterInit: AuthAction.RENDER,
-	LoaderComponent: MyLoader,
+  whenAuthed: AuthAction.REDIRECT_TO_APP,
+  whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
+  whenUnauthedAfterInit: AuthAction.RENDER,
+  LoaderComponent: MyLoader,
 })(Home);
