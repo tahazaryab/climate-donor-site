@@ -38,6 +38,8 @@ const ProjectPage = () => {
     const [project, setProject] = useState()
     const [isLoading, setIsLoading] = useState(true)
     const [isModalVisible, setIsModalVisible] = useState(false)
+    const [deleteLoading, setDeleteLoading] = React.useState(false);
+    const [modalText, setModalText] = React.useState("This action is permanent and can not be reversed");
 
     const { id } = router.query;
     const { Content } = Layout;
@@ -97,9 +99,14 @@ const ProjectPage = () => {
       };
     
     const handleDelete = async () => {
+        setModalText("Deleting your project...");
+        setDeleteLoading(true);
         await deleteProj(id);
-        setIsModalVisible(false);
-        router.push("/dashboard/")
+        setTimeout(() => {
+            setIsModalVisible(false);
+            setDeleteLoading(false);
+            router.push("/dashboard/")
+        }, 2000);
     };
 
     const handleCancel = () => {
@@ -167,11 +174,12 @@ const ProjectPage = () => {
                                         title="Do you want to delete this project?"
                                         closable={false}
                                         centered={true} 
+                                        confirmLoading={deleteLoading}
                                         visible={isModalVisible} 
                                         onOk={handleDelete} 
                                         onCancel={handleCancel}
                                         okText={"Delete"}>
-                                        <p>This action is permanent and can not be reversed.</p>
+                                        <p>{modalText}</p>
                                     </Modal>
                                 </div>
                             </div>
