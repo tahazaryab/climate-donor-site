@@ -1,5 +1,5 @@
 import styles from '../../styles/ProjectPage.module.css'
-import { Button, Image, Progress, Row, Layout } from 'antd'
+import { Button, Image, Progress, Row, Layout, Modal} from 'antd'
 import { faUser, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useState } from 'react'
@@ -11,6 +11,7 @@ import {
     AuthAction
 } from 'next-firebase-auth'
 import { addDonation } from '../../lib/firebase'
+import { deleteProj } from '../../lib/firebase'
 import DBNavBar from "../../components/DBNavBar";
 import Link from 'next/link'
 import axios from 'axios'
@@ -36,6 +37,9 @@ const ProjectPage = () => {
     const [amount] = useState(10)
     const [project, setProject] = useState()
     const [isLoading, setIsLoading] = useState(true)
+    const [isModalVisible, setIsModalVisible] = useState(false)
+    const [deleteLoading, setDeleteLoading] = React.useState(false);
+    const [modalText, setModalText] = React.useState("This action is permanent and can not be reversed");
 
     const { id } = router.query;
     const { Content } = Layout;
@@ -89,6 +93,25 @@ const ProjectPage = () => {
           // using `result.error.message`.
         }
     }
+
+    const showModal = () => {
+        setIsModalVisible(true);
+      };
+    
+    const handleDelete = async () => {
+        setModalText("Deleting your project...");
+        setDeleteLoading(true);
+        await deleteProj(id);
+        setTimeout(() => {
+            setIsModalVisible(false);
+            setDeleteLoading(false);
+            router.push("/dashboard/")
+        }, 2000);
+    };
+
+    const handleCancel = () => {
+        setIsModalVisible(false);
+    };
 
 
     return (
@@ -145,6 +168,19 @@ const ProjectPage = () => {
                                         <p>Other Sources ${project?.totalAmt}</p>
                                     </div>
                                     <Button type="primary" className={styles.Button} onClick={handleDonate}>Donate</Button>
+                                    <Button type='danger' onClick={showModal}>Delete</Button>
+
+                                    <Modal 
+                                        title="Do you want to delete this project?"
+                                        closable={false}
+                                        centered={true} 
+                                        confirmLoading={deleteLoading}
+                                        visible={isModalVisible} 
+                                        onOk={handleDelete} 
+                                        onCancel={handleCancel}
+                                        okText={"Delete"}>
+                                        <p>{modalText}</p>
+                                    </Modal>
                                 </div>
                             </div>
                             <div className={styles.col}>
