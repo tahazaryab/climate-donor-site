@@ -25,18 +25,23 @@ const Home = () => {
             <div>
               <p className="global-p">
                 Check out our current
-                <span className={styles.heroButton + " btn"}>Projects</span>
+                <Link href="./projects">
+                  <span className={styles.heroButton + " btn"}>Projects</span>
+                </Link>
               </p>
             </div>
           </div>
           <div className={styles.media}>
-            <a href="" target="_blank">
+            <a href="https://twitter.com/ClimateDonor/" target="_blank">
               <img src="./home_img/icons/twitter.svg" alt="twitter"></img>
             </a>
-            <a href="" target="_blank">
+            <a href="https://www.instagram.com/climatedonor/" target="_blank">
               <img src="./home_img/icons/instagram.svg" alt="instagram"></img>
             </a>
-            <a href="" target="_blank">
+            <a
+              href="https://www.linkedin.com/company/climatedonor-org/"
+              target="_blank"
+            >
               <img src="./home_img/icons/linkedin.svg" alt="linkedin"></img>
             </a>
           </div>
@@ -80,7 +85,9 @@ const Home = () => {
           on mitigation and reversal of global climate change and species
           extinction.
         </p>
-        <div className="btn">About Us</div>
+        <Link href="/about">
+          <div className="btn">About Us</div>
+        </Link>
       </section>
       <section className={styles.emphasis}>
         <h1 className="global-h1">Our Areas of Emphasis</h1>
@@ -165,7 +172,7 @@ const Home = () => {
           </div>
         </div>
         <></>
-        <Link href="">
+        <Link href="/signin">
           <p className={styles.arrowBtn + " btn global-p"}>
             Explore our portal
             <span>
