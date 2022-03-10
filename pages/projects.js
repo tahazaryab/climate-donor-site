@@ -1,4 +1,3 @@
-import Link from "next/link";
 import NavBar from "../components/NavBar";
 import React from "react";
 import styles from "../styles/Home.module.css";
@@ -22,13 +21,10 @@ export default function Projects() {
 
   const getProject = (value) => {
     let project = projects[value];
-    console.log(project);
     project.published = project?.published?.toDate()?.toLocaleDateString() + "";
     project.updated = project?.updated?.toDate()?.toLocaleDateString() + "";
     return project;
   };
-
-  //searchCat, searchKey, searchLoc
 
   return (
     <>
@@ -60,10 +56,12 @@ export default function Projects() {
         </div>
       </section>
       <section className={Cardstyles.plain + " flex-column"}>
-        <h1 className="global-h1" style={{"margin-bottom": "102px"}}>Ongoing Projects</h1>
+        <h1 className="global-h1" style={{ "margin-bottom": "102px" }}>
+          Ongoing Projects
+        </h1>
 
         {projects && projects.length ? (
-          projects.map((project, value) => {
+          projects.map((_, value) => {
             const singleProject = getProject(value);
 
             return (
