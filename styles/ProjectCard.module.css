@@ -7,6 +7,7 @@
   align-items: center;
   background-color: #fff;
   cursor: pointer;
+  margin-bottom: 32px;
 }
 .projectCard:hover {
   opacity: 0.8;
