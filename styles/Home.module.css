@@ -28,6 +28,15 @@
   height: 100vh;
 }
 
+.projectHero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url(../public/home_img/projectHero.png) no-repeat center/cover;
+  height: 100vh;
+}
+
 .heroContainer {
   width: 80%;
   display: flex;
