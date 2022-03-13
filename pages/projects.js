@@ -7,9 +7,13 @@ import ProjectCard from "../components/ProjectCard";
 import { Row } from "antd";
 import { useEffect, useState } from "react";
 import { getAllProjects } from "../lib/firebase";
+import ReactPaginate from "react-paginate";
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
+  const [pageNumber, setPageNumber] = useState(0);
+  const projectsPerPage = 3;
+  const pagesVisited = pageNumber * projectsPerPage;
 
   const getProjects = async () => {
     setProjects(await getAllProjects());
@@ -21,9 +25,34 @@ export default function Projects() {
 
   const getProject = (value) => {
     let project = projects[value];
-    project.published = project?.published?.toDate()?.toLocaleDateString() + "";
-    project.updated = project?.updated?.toDate()?.toLocaleDateString() + "";
+    if (typeof project.published === "object") {
+      project.published =
+        project?.published?.toDate().toLocaleDateString() + "";
+    }
+    if (typeof project.updated === "object") {
+      project.updated = project?.updated?.toDate().toLocaleDateString() + "";
+    }
     return project;
+  };
+
+  const displayProjects = projects
+    .slice(pagesVisited, pagesVisited + projectsPerPage)
+    .map((_, value) => {
+      const singleProject = getProject(value);
+
+      return (
+        <>
+          <Row key={value}>
+            <ProjectCard key={value} project={singleProject} />
+          </Row>
+        </>
+      );
+    });
+
+  const pageCount = Math.ceil(projects.length / projectsPerPage);
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
   };
 
   return (
@@ -59,25 +88,18 @@ export default function Projects() {
         <h1 className="global-h1" style={{ "margin-bottom": "102px" }}>
           Ongoing Projects
         </h1>
-
-        {projects && projects.length ? (
-          projects.map((_, value) => {
-            const singleProject = getProject(value);
-
-            return (
-              <>
-                <Row key={value}>
-                  <ProjectCard key={value} project={singleProject} />
-                </Row>
-              </>
-            );
-          })
-        ) : (
-          <div className={styles.noProject}>
-            {" "}
-            <h2>No Project Available </h2>
-          </div>
-        )}
+        {displayProjects}
+        <ReactPaginate
+          previousLabel={"Previous"}
+          nextLabel={"Next"}
+          pageCount={pageCount}
+          onPageChange={changePage}
+          containerClassName={"paginationBttns"}
+          previousLinkClassName={"previousBttn"}
+          nextLinkClassName={"nextBttn"}
+          disabledClassName={"paginationDisabled"}
+          activeClassName={"paginationActive"}
+        />
       </section>
 
       <AppFooter></AppFooter>
