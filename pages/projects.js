@@ -90,15 +90,13 @@ export default function Projects() {
         </h1>
         {displayProjects}
         <ReactPaginate
-          previousLabel={"Previous"}
-          nextLabel={"Next"}
+          previousLabel={<img src="./home_img/icons/chevron-left.svg" />}
+          nextLabel={<img src="./home_img/icons/chevron-right.svg" />}
           pageCount={pageCount}
           onPageChange={changePage}
-          containerClassName={"paginationBttns"}
-          previousLinkClassName={"previousBttn"}
-          nextLinkClassName={"nextBttn"}
-          disabledClassName={"paginationDisabled"}
-          activeClassName={"paginationActive"}
+          containerClassName={Cardstyles.pagination}
+          disabledClassName={Cardstyles.paginationArrows}
+          activeClassName={Cardstyles.paginationNumbers}
         />
       </section>
 

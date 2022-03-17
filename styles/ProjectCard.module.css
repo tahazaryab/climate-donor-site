@@ -77,3 +77,38 @@
 .smallFont {
   font-size: 12px;
 }
+
+.pagination{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-gap:5px;
+  height:10px;
+  list-style-type: none;
+  margin-top: 62px;
+
+}
+
+.paginationNumbers a{
+  color: black;
+  padding: 0.4em 0.65em 0.4em 0.65em;
+  border-style: solid;
+  border-width: 2.5px;
+  border-color: #D9D9D9;
+  border-radius: 5px
+
+}
+
+.paginationNumbers a:hover {
+  color: #048A81;
+  padding: 0.45em 0.65em 0.45em 0.65em;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #048A81
+}
+
+.paginationArrows{
+  margin: 0 auto;
+  display: block;
+  padding: 0;
+}
+
