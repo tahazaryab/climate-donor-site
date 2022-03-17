@@ -28,8 +28,13 @@ const ProjectsDisplay = ({ isOwner }) => {
 
     const getProject = (value) => {
         let project = { ...Projects[value] }
-        project.published = project?.published?.toDate()?.toLocaleDateString() + '' 
-        project.updated = project?.updated?.toDate()?.toLocaleDateString() + ''
+        if (typeof project.published === "object") {
+            project.published =
+              project?.published?.toDate().toLocaleDateString() + "";
+          }
+          if (typeof project.updated === "object") {
+            project.updated = project?.updated?.toDate().toLocaleDateString() + "";
+          }
         return project
     }
 
