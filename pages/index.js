@@ -4,6 +4,7 @@ import NavBar from "../components/NavBar";
 import AppFooter from "../components/Footer";
 import Link from "next/link";
 import Hero from "../components/Hero";
+import HorizonCard from "../components/HorizonCard";
 
 import { useAuthUser, withAuthUser, AuthAction } from "next-firebase-auth";
 
@@ -17,7 +18,7 @@ const Home = () => {
         h2="Join in the fight against #climatechange and #speciesextinction.
               Act and donate now."
         type="home"></Hero>
-      <section className={styles.plain + " flex-column"}>
+      <section className={styles.plain + " centerContainer"}>
         <h1 className="global-h1">Get Involved</h1>
         <h2 className="subtitle">
           Explore different ways to take action with us
@@ -48,7 +49,7 @@ const Home = () => {
           <div className="btn">Learn More</div>
         </Link>
       </section>
-      <section className={styles.about + "  flex-column"}>
+      <section className={styles.about + "  centerContainer"}>
         <h1 className="global-h1">About Climate Donor</h1>
         <p className="global-p">
           ClimateDonor.org is a 501(c)(3) nonprofit organization that is focused
@@ -59,52 +60,27 @@ const Home = () => {
           <div className="btn">About Us</div>
         </Link>
       </section>
-      <section className={styles.emphasis}>
+      <section className="container">
         <h1 className="global-h1">Our Areas of Emphasis</h1>
-        <div className={styles.emphasisCard}>
-          <img src="./img/emphasis_1.png" alt="pic1"></img>
-          <div>
-            <h2 className="global-h2">01</h2>
-            <h3 className="global-h3">Citizen engagement and empowerment.</h3>
-            <p className="global-p">
-              There are many well funded programs addressing things like public
-              policy, impact investing in large scale clean energy projects, and
-              corporate initiatives. However, there are thousands of smaller
-              "long tail" projects, that in aggregate represent major
-              contributions to climate change and species extinction mitigation.
-            </p>
-          </div>
-        </div>
-        <div className={styles.emphasisCard}>
-          <img src="./img/emphasis_2.png" alt="pic2"></img>
-          <div>
-            <h2 className="global-h2">02</h2>
-            <h3 className="global-h3">Wide range of projects.</h3>
-            <p className="global-p">
-              There are many well funded programs addressing things like public
-              policy, impact investing in large scale clean energy projects, and
-              corporate initiatives. However, there are thousands of smaller
-              "long tail" projects, that in aggregate represent major
-              contributions to climate change and species extinction mitigation.
-            </p>
-          </div>
-        </div>
-        <div className={styles.emphasisCard}>
-          <img src="./img/emphasis_3.png" alt="pic3"></img>
-          <div>
-            <h2 className="global-h2">03</h2>
-            <h3 className="global-h3">Supporting the existing network.</h3>
-            <p className="global-p">
-              Our goal is to support the many organizations and initiatives
-              already working to address climate change and species extinction.
-              The ClimateDonor.org platform provides an effective, efficient way
-              to match individuals with the organizations, programs, and
-              projects of interest to them.
-            </p>
-          </div>
-        </div>
+        <HorizonCard
+          number="01"
+          title="Citizen engagement and empowerment."
+          img="emphasis_1.png"
+          content={`There are many well funded programs addressing things like public
+              policy, impact investing in large scale clean energy projects, and corporate initiatives. However, there are thousands of smaller
+              "long tail" projects, that in aggregate represent major contributions to climate change and species extinction mitigation.`}></HorizonCard>
+        <HorizonCard
+          number="02"
+          title="Wide range of projects."
+          img="emphasis_2.png"
+          content={`There are many well funded programs addressing things like public policy, impact investing in large scale clean energy projects, and corporate initiatives. However, there are thousands of smaller "long tail" projects, that in aggregate represent major contributions to climate change and species extinction mitigation.`}></HorizonCard>
+        <HorizonCard
+          number="03"
+          title="Supporting the existing network."
+          img="emphasis_3.png"
+          content={`Our goal is to support the many organizations and initiatives already working to address climate change and species extinction. The ClimateDonor.org platform provides an effective, efficient way to match individuals with the organizations, programs, and projects of interest to them.`}></HorizonCard>
       </section>
-      <section className={styles.portal + " flex-column"}>
+      <section className={styles.portal + " centerContainer"}>
         <h1 className="global-h1">The Climate Donor Portal</h1>
         <h2 className="subtitle">
           Our new portal aims to connect organizations engaged in climate change
@@ -151,7 +127,7 @@ const Home = () => {
           </p>
         </Link>
       </section>
-      <section className={styles.plain + " flex-column"}>
+      <section className={styles.plain + " centerContainer"}>
         <h1 className="global-h1">Our Values, Your Expectations</h1>
         <h1 className="global-h1">Trust & transparency</h1>
         <div className={styles.plainIcons}>
@@ -180,7 +156,7 @@ const Home = () => {
           <div className="btn">Financials</div>
         </Link>
       </section>
-      <section className={styles.podcast + " flex-column"}>
+      <section className={styles.podcast + " centerContainer"}>
         <h1 className="global-h1">Sustainability Accelerator</h1>
         <h2 className="subtitle">A podcast presented by Climate Donor</h2>
         <div className={styles.podcastContainer}></div>
@@ -193,9 +169,9 @@ const Home = () => {
           </p>
         </Link>
       </section>
-      <section className={styles.blog + " flex-column"}>
+      <section className={styles.blog + " centerContainer grey-bg"}>
         <h1 className="global-h1">Blog Posts</h1>
-        <div className={styles.blogCardContainer}>
+        <div className={"cardContainer"}>
           <div></div>
           <div></div>
           <div></div>
