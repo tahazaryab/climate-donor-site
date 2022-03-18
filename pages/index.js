@@ -3,6 +3,7 @@ import styles from "../styles/Home.module.css";
 import NavBar from "../components/NavBar";
 import AppFooter from "../components/Footer";
 import Link from "next/link";
+import Hero from "../components/Hero";
 
 import { useAuthUser, withAuthUser, AuthAction } from "next-firebase-auth";
 
@@ -11,42 +12,11 @@ const Home = () => {
   return (
     <>
       <NavBar userId={AuthUser.id} signOut={AuthUser.signOut}></NavBar>
-
-      <section className={styles.hero}>
-        <div className={styles.heroContainer}>
-          <div className={styles.title}>
-            <h1 className="global-h1">
-              The Planet And All Living Things Need Your Help.
-            </h1>
-            <h2 className="subtitle">
-              Join in the fight against #climatechange and #speciesextinction.
-              Act and donate now.
-            </h2>
-            <div>
-              <p className="global-p">
-                Check out our current
-                <Link href="./projects">
-                  <span className={styles.heroButton + " btn"}>Projects</span>
-                </Link>
-              </p>
-            </div>
-          </div>
-          <div className={styles.media}>
-            <a href="https://twitter.com/ClimateDonor/" target="_blank">
-              <img src="./home_img/icons/twitter.svg" alt="twitter"></img>
-            </a>
-            <a href="https://www.instagram.com/climatedonor/" target="_blank">
-              <img src="./home_img/icons/instagram.svg" alt="instagram"></img>
-            </a>
-            <a
-              href="https://www.linkedin.com/company/climatedonor-org/"
-              target="_blank"
-            >
-              <img src="./home_img/icons/linkedin.svg" alt="linkedin"></img>
-            </a>
-          </div>
-        </div>
-      </section>
+      <Hero
+        h1="The Planet And All Living Things Need Your Help."
+        h2="Join in the fight against #climatechange and #speciesextinction.
+              Act and donate now."
+        type="home"></Hero>
       <section className={styles.plain + " flex-column"}>
         <h1 className="global-h1">Get Involved</h1>
         <h2 className="subtitle">

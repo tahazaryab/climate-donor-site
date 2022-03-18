@@ -1,19 +1,16 @@
 import Link from 'next/link'
 import NavBar from "../components/NavBar";
 import React from "react";
+import Hero from "../components/Hero"
 
 export default function Contact() {
   return (
-  	<>
+    <>
       <NavBar />
-      <div>
-        <h1>Contact</h1>
-        <h2>
-            <Link href="/">
-              <a>Back to home</a>
-            </Link>
-        </h2>
-      </div>
-     </>
-    )
+      <Hero
+        h1="Contact Us"
+        h2="Have questions about how to get involved? We are looking forward to hearing from you."
+        type="contact"></Hero>
+    </>
+  );
 }
