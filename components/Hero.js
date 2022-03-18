@@ -7,7 +7,7 @@ function Hero(props) {
   const type = props.type;
 
   return (
-    <section className={styles.hero}>
+    <section className={styles.hero} style={{backgroundImage: `url(/img/${type}Hero.png)`}}>
       <div className={styles.heroContainer}>
         <div className={styles.title}>
           <h1 className="global-h1">
@@ -27,15 +27,15 @@ function Hero(props) {
         </div>
         <div className={styles.media}>
           <a href="https://twitter.com/ClimateDonor/" target="_blank">
-            <img src="./home_img/icons/twitter.svg" alt="twitter"></img>
+            <img src="./img/icons/twitter.svg" alt="twitter"></img>
           </a>
           <a href="https://www.instagram.com/climatedonor/" target="_blank">
-            <img src="./home_img/icons/instagram.svg" alt="instagram"></img>
+            <img src="./img/icons/instagram.svg" alt="instagram"></img>
           </a>
           <a
             href="https://www.linkedin.com/company/climatedonor-org/"
             target="_blank">
-            <img src="./home_img/icons/linkedin.svg" alt="linkedin"></img>
+            <img src="./img/icons/linkedin.svg" alt="linkedin"></img>
           </a>
         </div>
       </div>

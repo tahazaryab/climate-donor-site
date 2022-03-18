@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: url(../public/home_img/hero.png) no-repeat center/cover;
+  background: no-repeat center/cover;
   height: 100vh;
 }
 

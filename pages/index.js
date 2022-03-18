@@ -24,23 +24,23 @@ const Home = () => {
         </h2>
         <div className={styles.plainIcons}>
           <div>
-            <img src="./home_img/icons/donate.svg" alt="donate"></img>
+            <img src="./img/icons/donate.svg" alt="donate"></img>
             <h3 className="global-h3">Donate</h3>
           </div>
           <div>
-            <img src="./home_img/icons/project.svg" alt="project"></img>
+            <img src="./img/icons/project.svg" alt="project"></img>
             <h3 className="global-h3">Post a project</h3>
           </div>
           <div>
-            <img src="./home_img/icons/volunteer.svg" alt="volunteer"></img>
+            <img src="./img/icons/volunteer.svg" alt="volunteer"></img>
             <h3 className="global-h3">Volunteer</h3>
           </div>
           <div>
-            <img src="./home_img/icons/upload.svg" alt="upload"></img>
+            <img src="./img/icons/upload.svg" alt="upload"></img>
             <h3 className="global-h3">Upload an app</h3>
           </div>
           <div>
-            <img src="./home_img/icons/advise.svg" alt="advise"></img>
+            <img src="./img/icons/advise.svg" alt="advise"></img>
             <h3 className="global-h3">Advise us</h3>
           </div>
         </div>
@@ -62,7 +62,7 @@ const Home = () => {
       <section className={styles.emphasis}>
         <h1 className="global-h1">Our Areas of Emphasis</h1>
         <div className={styles.emphasisCard}>
-          <img src="./home_img/emphasis_1.png" alt="pic1"></img>
+          <img src="./img/emphasis_1.png" alt="pic1"></img>
           <div>
             <h2 className="global-h2">01</h2>
             <h3 className="global-h3">Citizen engagement and empowerment.</h3>
@@ -76,7 +76,7 @@ const Home = () => {
           </div>
         </div>
         <div className={styles.emphasisCard}>
-          <img src="./home_img/emphasis_2.png" alt="pic2"></img>
+          <img src="./img/emphasis_2.png" alt="pic2"></img>
           <div>
             <h2 className="global-h2">02</h2>
             <h3 className="global-h3">Wide range of projects.</h3>
@@ -90,7 +90,7 @@ const Home = () => {
           </div>
         </div>
         <div className={styles.emphasisCard}>
-          <img src="./home_img/emphasis_3.png" alt="pic3"></img>
+          <img src="./img/emphasis_3.png" alt="pic3"></img>
           <div>
             <h2 className="global-h2">03</h2>
             <h3 className="global-h3">Supporting the existing network.</h3>
@@ -124,10 +124,10 @@ const Home = () => {
               their fund usage, and more.
             </p>
           </div>
-          <img src="./home_img/portal_1.png"></img>
+          <img src="./img/portal_1.png"></img>
         </div>
         <div className={styles.portalCard}>
-          <img src="./home_img/portal_2.png"></img>
+          <img src="./img/portal_2.png"></img>
           <div>
             <p className="inner">ORGANIZATIONS</p>
             <h2 className="global-h2">
@@ -146,7 +146,7 @@ const Home = () => {
           <p className={styles.arrowBtn + " btn global-p"}>
             Explore our portal
             <span>
-              <img src="./home_img/icons/arrow.svg" alt="arrow"></img>
+              <img src="./img/icons/arrow.svg" alt="arrow"></img>
             </span>
           </p>
         </Link>
@@ -156,17 +156,17 @@ const Home = () => {
         <h1 className="global-h1">Trust & transparency</h1>
         <div className={styles.plainIcons}>
           <div>
-            <img src="./home_img/icons/active.svg" alt="active"></img>
+            <img src="./img/icons/active.svg" alt="active"></img>
             <h1 className="global-h1">XX</h1>
             <h4 className="subtitle">Active Projects</h4>
           </div>
           <div>
-            <img src="./home_img/icons/fund.svg" alt="fund"></img>
+            <img src="./img/icons/fund.svg" alt="fund"></img>
             <h1 className="global-h1">$XX</h1>
             <h4 className="subtitle">Fund Raised</h4>
           </div>
           <div>
-            <img src="./home_img/icons/donors.svg" alt="donors"></img>
+            <img src="./img/icons/donors.svg" alt="donors"></img>
             <h1 className="global-h1">XX</h1>
             <h4 className="subtitle">Total Donors</h4>
           </div>
@@ -188,7 +188,7 @@ const Home = () => {
           <p className={styles.arrowBtn + " btn global-p"}>
             Listen now
             <span>
-              <img src="./home_img/icons/arrow.svg" alt="arrow"></img>
+              <img src="./img/icons/arrow.svg" alt="arrow"></img>
             </span>
           </p>
         </Link>
@@ -204,7 +204,7 @@ const Home = () => {
           <p className={styles.arrowBtn + " btn global-p"}>
             See more
             <span>
-              <img src="./home_img/icons/arrow.svg" alt="arrow"></img>
+              <img src="./img/icons/arrow.svg" alt="arrow"></img>
             </span>
           </p>
         </Link>

@@ -24,7 +24,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: url(../public/home_img/projectHero.png) no-repeat center/cover;
+  background: url(../public/img/projectHero.png) no-repeat center/cover;
   height: 100vh;
 }
 
@@ -60,7 +60,7 @@
 }
 
 .about {
-  background: url(../public/home_img/about.png) center/cover no-repeat;
+  background: url(../public/img/about.png) center/cover no-repeat;
   text-align: center;
 }
 .about h1 {
@@ -106,7 +106,7 @@
 
 .portal {
   padding: 100px 20px;
-  background: url(../public/home_img/portal.png) center/cover no-repeat;
+  background: url(../public/img/portal.png) center/cover no-repeat;
 }
 .portal h1,
 .portal h2,
@@ -141,7 +141,7 @@
 }
 
 .podcast {
-  background: url(../public/home_img/podcast.png) center/cover no-repeat;
+  background: url(../public/img/podcast.png) center/cover no-repeat;
 }
 .podcast h1,
 .podcast h2 {
