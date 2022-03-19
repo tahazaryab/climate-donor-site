@@ -7,7 +7,7 @@ function Hero(props) {
   const type = props.type;
 
   return (
-    <section className={styles.hero} style={{backgroundImage: `url(/img/${type}Hero.png)`}}>
+    <section className={`${styles.hero} ${type == 'financials' && styles.financials}`} style={{backgroundImage: `url(/img/${type}Hero.png)`}}>
       <div className={styles.heroContainer}>
         <div className={styles.title}>
           <h1 className="global-h1">

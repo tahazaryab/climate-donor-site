@@ -3,6 +3,8 @@ import styles from "../styles/Financials.module.css";
 import NavBar from "../components/NavBar";
 import AppFooter from "../components/Footer";
 import Link from "next/link";
+import Hero from "../components/Hero";
+
 
 import { useAuthUser, withAuthUser, AuthAction } from "next-firebase-auth";
 
@@ -10,13 +12,9 @@ export default function Financials() {
   return (
     <>
       <NavBar></NavBar>
-
-      <section className={styles.financialsHero}>
-        <div className={styles.heroContainer}>
-          <div className={styles.title}>
-            <h1 className="global-h1 ">Financials</h1>
-            <h2 className="subtitle">
-              Climate Donor is grateful for the support of our donors and wishes
+      <Hero
+        h1="Financials"
+        h2="  Climate Donor is grateful for the support of our donors and wishes
               to express our appreciation for their generosity and support
               during these unprecedented times. We are proud of our
               accomplishments and are confident that together with our donors'
@@ -24,26 +22,10 @@ export default function Financials() {
               need. As our donors' expect of us, we are committed to providing
               them with accurate, accessible records of where their donations
               are being used. In fulfillment of that obligation, we are pleased
-              to provide the following financial disclosures.
-            </h2>
-          </div>
-          <div className={styles.media}>
-            <a href="https://twitter.com/ClimateDonor/" target="_blank">
-              <img src="./home_img/icons/twitter.svg" alt="twitter"></img>
-            </a>
-            <a href="https://www.instagram.com/climatedonor/" target="_blank">
-              <img src="./home_img/icons/instagram.svg" alt="instagram"></img>
-            </a>
-            <a
-              href="https://www.linkedin.com/company/climatedonor-org/"
-              target="_blank"
-            >
-              <img src="./home_img/icons/linkedin.svg" alt="linkedin"></img>
-            </a>
-          </div>
-        </div>
-      </section>
-      <section className={styles.plain + " flex-column"}>
+              to provide the following financial disclosures."
+        type="financials"></Hero>
+
+      <section className={styles.plain + " centerContainer"}>
         <h1 className="global-h1">Trust & Transparency</h1>
         <h2 className="subtitle">
           Climate Donor was founded on the belief that people would donate to
@@ -56,7 +38,7 @@ export default function Financials() {
         </h2>
       </section>
       <hr className={styles.break} />
-      <section className={styles.portal + " flex-column"}>
+      <section className={styles.portal + " centerContainer"}>
         <h2 className="subtitle">
           <b className={styles.emphasis}>
             100% of funding directly supports our climate change and species
@@ -95,7 +77,7 @@ export default function Financials() {
       </section>
       <hr className={styles.break} />
 
-      <section className={styles.plain + " flex-column"}>
+      <section className={styles.plain + " centerContainer"}>
        
         <div className={styles.plainIcons}>
           <div>

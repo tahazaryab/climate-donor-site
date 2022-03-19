@@ -20,6 +20,16 @@
   color: white;
 }
 
+.financials {
+  height: auto;
+  padding-top: 100px;
+}
+
+.financials h2 {
+  max-width : none !important;
+  width: 80%;
+}
+
 .title {
   display: inline-block;
 }
@@ -49,5 +59,27 @@
 .media img {
   display: block;
   margin: 15px 0;
+}
+
+@media (max-width : 767px) {
+  .heroContainer {
+    display: block;
+  }
+
+  .title h2 {
+    width: 100% !important;
+    text-align: justify;
+  }
+
+  .media {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    margin: 50px 0;
+  }
+
+  .media a img {
+    transform: scale(2);
+  }
 }
 
