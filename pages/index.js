@@ -152,7 +152,7 @@ const Home = () => {
           about seeing where their money is going. Let's work together to make
           an effective, responsible impact.
         </p>
-        <Link href="/">
+        <Link href="/financials">
           <div className="btn">Financials</div>
         </Link>
       </section>
