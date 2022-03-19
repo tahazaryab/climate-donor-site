@@ -20,11 +20,6 @@
   color: white;
 }
 
-.financials {
-  height: auto;
-  padding-top: 100px;
-}
-
 .financials h2 {
   max-width : none !important;
   width: 80%;
@@ -65,6 +60,11 @@
   .heroContainer {
     display: block;
   }
+
+  .financials {
+  height: auto;
+  padding-top: 100px;
+}
 
   .title h2 {
     width: 100% !important;
