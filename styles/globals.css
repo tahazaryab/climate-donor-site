@@ -39,6 +39,7 @@ body {
 
 .centerContainer > p {
   width: 50%;
+  max-width: 1000px;
   text-align: center;
 }
 
