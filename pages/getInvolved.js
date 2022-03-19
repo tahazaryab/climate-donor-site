@@ -5,6 +5,7 @@ import Hero from "../components/Hero";
 import HorizonCard from "../components/HorizonCard";
 import DonateCard from "../components/getInvolvedComponents/donateCard/DonateCard";
 
+
 export default function GetInvolved() {
   return (
     <>
@@ -16,9 +17,21 @@ export default function GetInvolved() {
       <section className="donate centerContainer container">
         <h1 className="global-h1">Donate</h1>
         <div className="cardContainer">
-          <DonateCard img="individual" title="Individuals" content="For an individual who would like to donate to our operating budget."/>
-          <DonateCard img="foundation" title="Foundations" content="For a foundation, family office, or individual philanthropist looking to address climate change, clean energy access, and energy equity."/>
-          <DonateCard img="corporation" title="Corporations" content="For a corporation that wants to donate funds, in-kind products or services, and/or employee volunteers."/>
+          <DonateCard
+            img="individual"
+            title="Individuals"
+            content="For an individual who would like to donate to our operating budget."
+          />
+          <DonateCard
+            img="foundation"
+            title="Foundations"
+            content="For a foundation, family office, or individual philanthropist looking to address climate change, clean energy access, and energy equity."
+          />
+          <DonateCard
+            img="corporation"
+            title="Corporations"
+            content="For a corporation that wants to donate funds, in-kind products or services, and/or employee volunteers."
+          />
         </div>
         <Link href="/projects">
           <div className="btn">See available projects</div>
@@ -59,6 +72,7 @@ export default function GetInvolved() {
           img="volunteer.png"
           content={`For an individual volunteer who wants to contribute their time and talents to support.`}></HorizonCard>
       </section>
+      
     </>
   );
 }
