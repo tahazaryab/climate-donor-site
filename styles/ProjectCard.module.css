@@ -54,6 +54,13 @@
   /* margin-top: 10px; */
 }
 
+.labels svg {
+  display: block;
+  width: 20px;
+  margin: auto;
+  margin-bottom: 5px;
+}
+
 .progressBar {
   margin-bottom: 10px;
 }
