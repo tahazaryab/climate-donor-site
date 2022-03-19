@@ -26,7 +26,7 @@ export default function GetInvolved() {
       </section>
       <section className="centerContainer grey-bg">
         <h1 className="global-h1">Citizen Scientists</h1>
-        <p className="global-p">
+        <p className="global-p m-50">
           Grassroots citizen involvement in helping to find and implement
           solutions to climate change and species extinction will be critical to
           avoid catastrophic consequences. Help us to build a critical mass of

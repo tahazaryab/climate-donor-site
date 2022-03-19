@@ -51,7 +51,7 @@ const Home = () => {
       </section>
       <section className={styles.about + "  centerContainer"}>
         <h1 className="global-h1">About Climate Donor</h1>
-        <p className="global-p">
+        <p className="global-p m-50">
           ClimateDonor.org is a 501(c)(3) nonprofit organization that is focused
           on mitigation and reversal of global climate change and species
           extinction.
