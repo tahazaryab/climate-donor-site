@@ -1,5 +1,6 @@
 import Link from "next/link";
 import NavBar from "../components/NavBar";
+import AppFooter from "../components/Footer";
 import React from "react";
 import Hero from "../components/Hero";
 import HorizonCard from "../components/HorizonCard";
@@ -72,7 +73,7 @@ export default function GetInvolved() {
           img="volunteer.png"
           content={`For an individual volunteer who wants to contribute their time and talents to support.`}></HorizonCard>
       </section>
-      
+      <AppFooter></AppFooter>
     </>
   );
 }

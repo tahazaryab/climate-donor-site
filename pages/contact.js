@@ -2,6 +2,7 @@ import Link from 'next/link'
 import NavBar from "../components/NavBar";
 import React from "react";
 import Hero from "../components/Hero";
+import AppFooter from "../components/Footer";
 
 export default function Contact() {
   return (
@@ -25,6 +26,7 @@ export default function Contact() {
           <div>Advisers: advisers@climatedonor.org</div>
         </p>
       </section>
+      <AppFooter></AppFooter>
     </>
   );
 }

@@ -2,6 +2,7 @@ import Link from "next/link";
 import NavBar from "../components/NavBar";
 import React from "react";
 import Hero from "../components/Hero";
+import AppFooter from "../components/Footer";
 
 export default function About() {
   return (
@@ -38,10 +39,19 @@ export default function About() {
           <div className="btn">Get Involved</div>
         </Link>
       </section>
-      <section className="centerContainer container">
+      <section className="team centerContainer container">
         <h1 className="global-h1">Our Team</h1>
         <div className="cardContainer"></div>
       </section>
+      <section className="board centerContainer container grey-bg">
+        <h1 className="global-h1">Board</h1>
+        <div className="cardContainer"></div>
+      </section>
+      <section className="board centerContainer container">
+        <h1 className="global-h1">Volunteers</h1>
+        <div className="cardContainer"></div>
+      </section>
+      <AppFooter></AppFooter>
     </>
   );
 }
