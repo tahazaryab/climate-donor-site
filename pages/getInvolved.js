@@ -13,7 +13,7 @@ export default function GetInvolved() {
         h1="Get Involved"
         h2="Engage in the fight against climate change and species extinction through projects of your choosing.  Your contribution to current projects in need of funding will make a difference."
         type="getInvolved"></Hero>
-      <section className="centerContainer container">
+      <section className="donate centerContainer container">
         <h1 className="global-h1">Donate</h1>
         <div className="cardContainer">
           <DonateCard img="individual" title="Individuals" content="For an individual who would like to donate to our operating budget."/>
