@@ -2,24 +2,65 @@ import Link from "next/link"
 import { Layout, Menu, Button } from "antd";
 import NavBar from "../components/NavBar";
 import styles from "../styles/Home.module.css";
-import React from "react";
+import React, {Component} from "react";
 
-function EpisodeDescription() {
+const episodes = [
+  ["July 6, 2021", "Climate Change Innovation", "We welcome Dr. Brian Bartholomeusz, the Executive Director of Innovation Transfer at the TomKat Center for Sustainable Energy at Stanford University."],
+  ["May 2, 2021", "Test title", "Test description.Test description.Test description.Test description.Test description.TTest description."],
+  ["May 1, 2021", "Test title 2", "Test description 2."]
+]
+
+function viewAllEpisodes() {
+  let element = document.getElementById("episodeListContainer");
+  element.scrollIntoView({behavior: "smooth"});
+}
+
+function EpisodeDescription(props) {
   return (
     <>
       <div className={styles.podcastEpisodeContainer}>
-        <h5>July 6, 2021</h5>
-        <h3>Climate Change Innovation</h3>
-        <p>We welcome Dr. Brian Bartholomeusz, the Executive Director of Innovation Transfer at the TomKat Center for Sustainable Energy at Stanford University.</p>
+        <h5>{props.date}</h5>
+        <h3>{props.title}</h3>
+        <p>{props.description}</p>
         <Button type="primary">Listen now</Button>
       </div>
     </>
   )
 }
-function viewAllEpisodes() {
-  let element = document.getElementById("episodeListContainer");
-  element.scrollIntoView();
+
+function EpisodeList() {
+  let indices = [];
+  for (let i = 0; i < episodes.length; i++)
+    indices.push(i);
+  return (
+    <>
+      <div className={styles.podcastEpisodeList} id="episodeListContainer">
+        <h1>All Episodes</h1>
+        <div>
+          {indices.map(index => 
+          <EpisodeDescription 
+            date={episodes[index][0]}
+            title={episodes[index][1]}
+            description={episodes[index][2]}
+          />)}
+        </div>
+      </div>
+    </>
+  )
+  /*return (
+    <>
+      <div className={styles.podcastEpisodeList} id="episodeListContainer">
+        <h1>All Episodes</h1>
+        <EpisodeDescription
+          date="July 6, 2021"
+          title="Climate Change Innovation"
+          description="We welcome Dr. Brian Bartholomeusz, the Executive Director of Innovation Transfer at the TomKat Center for Sustainable Energy at Stanford University."
+        />
+      </div>
+    </>
+  )*/
 }
+
 export default function Podcast() {
   return (
   	<>
@@ -88,12 +129,7 @@ export default function Podcast() {
               at addressing the impacts of climate change and species extinction in the oceans as well as on land.
             </p>
           </div>
-          <div className={styles.podcastEpisodeList} id="episodeListContainer">
-            <h1>All Episodes</h1>
-            <EpisodeDescription />
-            <EpisodeDescription />
-            <EpisodeDescription />
-          </div>
+          <EpisodeList />
         </div>
       </div>
      </>
