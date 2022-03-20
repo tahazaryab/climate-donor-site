@@ -4,6 +4,22 @@ import NavBar from "../components/NavBar";
 import styles from "../styles/Home.module.css";
 import React from "react";
 
+function EpisodeDescription() {
+  return (
+    <>
+      <div className={styles.podcastEpisodeContainer}>
+        <h5>July 6, 2021</h5>
+        <h3>Climate Change Innovation</h3>
+        <p>We welcome Dr. Brian Bartholomeusz, the Executive Director of Innovation Transfer at the TomKat Center for Sustainable Energy at Stanford University.</p>
+        <Button type="primary">Listen now</Button>
+      </div>
+    </>
+  )
+}
+function viewAllEpisodes() {
+  let element = document.getElementById("episodeListContainer");
+  element.scrollIntoView();
+}
 export default function Podcast() {
   return (
   	<>
@@ -43,7 +59,11 @@ export default function Podcast() {
               We welcome Dr. Brian Bartholomeusz, the Executive Director of Innovation Transfer at the
               TomKat Center for Sustainable Energy at Stanford University.
             </p>
-            <Button type="primary">See all episodes</Button>
+            <Button 
+              type="primary" 
+              onClick={viewAllEpisodes}>
+                See all episodes
+            </Button>
           </div>
           <div className={styles.podcastHost}>
             <h1>About Your Host</h1>
@@ -68,23 +88,13 @@ export default function Podcast() {
               at addressing the impacts of climate change and species extinction in the oceans as well as on land.
             </p>
           </div>
-          <div className={styles.podcastEpisodeList}>
+          <div className={styles.podcastEpisodeList} id="episodeListContainer">
             <h1>All Episodes</h1>
-            <div className={styles.podcastEpisodeContainer}>
-              hello
-            </div>
-            <div className={styles.podcastEpisodeContainer}>
-              hello
-            </div>
+            <EpisodeDescription />
+            <EpisodeDescription />
+            <EpisodeDescription />
           </div>
         </div>
-        
-        
-        <h2>
-          <Link href="/">
-            <a>Back to home</a>
-          </Link>
-        </h2>
       </div>
      </>
     )

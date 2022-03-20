@@ -206,20 +206,44 @@
   display: flex;
   justify-content: space-between;
 }
-/*
-.podcast {
-  background: url(../public/home_img/podcast.png) center/cover no-repeat;
+
+.podcastBody button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+
+  width: 155px;
+  height: 40px;
+  margin: auto;
+  margin-top: 20px;
+
+  background: #048A81;
+  border: 1px solid #048A81;
+  box-sizing: border-box;
+
+  /* drop-shadow/button-primary */
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
+  border-radius: 2px;
 }
-.podcast h1,
-.podcast h2 {
-  text-align: center;
+.podcastBody h1 {
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 56px;
 }
-.podcast h1 {
-  color: white;
+.podcastBody h2 {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 25px;
 }
-.podcast h2 {
-  color: #f5f5f5;
-} */
+.podcastBody p {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 25px;
+  max-width: 800px;
+  margin: auto;
+}
 .podcastBlurb {
   background-color: white;
   text-align: center;
@@ -239,6 +263,39 @@
   padding-top: 100px;
   padding-bottom: 100px;
 }
+.podcastEpisodeContainer button {
+  /* Taken from Figma prototype */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+
+  position: static;
+  width: 114px;
+  height: 40px;
+  left: 0px;
+  top: 158px;
+
+  background: #048A81;
+  border: 1px solid #048A81;
+  box-sizing: border-box;
+
+  /* drop-shadow/button-primary */
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
+  border-radius: 2px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 3;
+  flex-grow: 0;
+  margin: 20px 0px;
+  font-size: 16px;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
 .podcastEpisodeList {
   background-color: #F5F5F5;
   text-align: center;
@@ -250,35 +307,38 @@
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
+  flex: none;
+  flex-grow: 0;
   align-items: flex-start;
   padding: 40px;
-  margin-top: 16px;
-  margin-bottom: 16px;
+  margin-top: 32px;
   margin-left: auto;
   margin-right: auto;
   position: static;
   width: 880px;
   height: 278px;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
 }
-.podcastBody h1 {
-  font-size: 48px;
-  font-weight: 600;
-  line-height: 56px;
+.podcastEpisodeContainer h3 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  margin-top: 12px;
 }
-.podcastBody h2 {
-  font-size: 18px;
+.podcastEpisodeContainer p {
+  font-style: normal;
   font-weight: 400;
-  line-height: 25px;
-}
-.podcastBody p {
   font-size: 18px;
-  font-weight: 400;
   line-height: 25px;
-  max-width: 800px;
-  margin: auto;
+  text-align: left;
+  margin-top: 7px;
+}
+.podcastEpisodeContainer h5 {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #888888;
 }
 
 .blog .blogCardContainer {
