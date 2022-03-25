@@ -1,8 +1,7 @@
-import Link from "next/link"
 import { Layout, Menu, Button } from "antd";
 import NavBar from "../components/NavBar";
 import styles from "../styles/Home.module.css";
-import React, {Component} from "react";
+import React from "react";
 
 const episodes = [
   ["July 6, 2021", "Climate Change Innovation", "We welcome Dr. Brian Bartholomeusz, the Executive Director of Innovation Transfer at the TomKat Center for Sustainable Energy at Stanford University."],
@@ -47,18 +46,6 @@ function EpisodeList() {
       </div>
     </>
   )
-  /*return (
-    <>
-      <div className={styles.podcastEpisodeList} id="episodeListContainer">
-        <h1>All Episodes</h1>
-        <EpisodeDescription
-          date="July 6, 2021"
-          title="Climate Change Innovation"
-          description="We welcome Dr. Brian Bartholomeusz, the Executive Director of Innovation Transfer at the TomKat Center for Sustainable Energy at Stanford University."
-        />
-      </div>
-    </>
-  )*/
 }
 
 export default function Podcast() {
@@ -100,6 +87,9 @@ export default function Podcast() {
               We welcome Dr. Brian Bartholomeusz, the Executive Director of Innovation Transfer at the
               TomKat Center for Sustainable Energy at Stanford University.
             </p>
+            <iframe width="600" height="338"
+              src="https://www.youtube.com/embed/-Pg819il8lY">
+            </iframe>
             <Button 
               type="primary" 
               onClick={viewAllEpisodes}>
