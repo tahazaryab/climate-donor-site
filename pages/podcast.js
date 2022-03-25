@@ -37,7 +37,8 @@ function EpisodeList() {
         <h1>All Episodes</h1>
         <div>
           {indices.map(index => 
-          <EpisodeDescription 
+          <EpisodeDescription
+            key={"episode" + index.toString()}
             date={episodes[index][0]}
             title={episodes[index][1]}
             description={episodes[index][2]}
