@@ -35,11 +35,11 @@
 .siteLogo {
 	width: 30%;
 	text-align: left;
+	display: flex;
 }
 .siteLogo img {
 	margin: 0 20px;
 	margin-bottom: 8px;
-	width: 40px;
 	height: 40px;
 }
 .siteLogo p {

@@ -9,11 +9,12 @@ import { useEffect, useState } from "react";
 import { getAllProjects } from "../lib/firebase";
 import ReactPaginate from "react-paginate";
 import Hero from "../components/Hero";
+import { PROJECTS_PER_PAGINATION } from "../constants";
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
-  const projectsPerPage = 3;
+  const projectsPerPage = PROJECTS_PER_PAGINATION
   const pagesVisited = pageNumber * projectsPerPage;
 
   const getProjects = async () => {
