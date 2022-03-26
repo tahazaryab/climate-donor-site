@@ -364,13 +364,26 @@
   margin-top: 100px;
 }
 
-.paginationContainer button {
+.normalPageButton {
   width: 32px;
   height: 32px;
   background: white;
   /* Neutral/5 */
 
   border: 1px solid #D9D9D9;
+  box-sizing: border-box;
+  border-radius: 2px;
+
+  margin: 0px 4px;
+}
+
+.selectedPageButton {
+  width: 32px;
+  height: 32px;
+  background: white;
+  /* Neutral/5 */
+
+  border: 1px solid #048A81;
   box-sizing: border-box;
   border-radius: 2px;
 

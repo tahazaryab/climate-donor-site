@@ -6,23 +6,35 @@ const posts = [
 	["May 18, 2021", "When words fail", "We all probably have a visceral reaction when we think about home. So, when I read this Opinion piece, entitled “When words fail”,  in the @stanforddaily, the idea of home sent chills through me when  contemplated in view of #climatechange and #speciesextinction"],
 	["April 21, 2021", "Earth Day 2021", "As we approach Earth Day 2021, we must collectively acknowledge that our climate situation is dire but not hopeless. As a native Californian, I have seen wild fires every year in the state. They have been a part of this landscape for as long as people have lived here. But"],
 	["December 13, 2020", "QuantumScape", "QuantumScape, Inc., a Stanford spin-off company this past week showcased its groundbreaking solid-state electric vehicle battery.  QuantumScape’s technology is truly game changing and will help in incalculable ways in our fight against climate change"],
-	["test date1", "test title1", "test description"],
-	["test date2", "test title2", "test description"],
-	["test date1", "test title3", "test description"],
-	["test date2", "test title4", "test description"],
-	["test date1", "test title5", "test description"],
-	["test date2", "test title6", "test description"],
-	["test date1", "test title7", "test description"],
-	["test date2", "test title8", "test description"],
+	["test date1", "blog title1", "test description"],
+	["test date2", "blog title2", "test description"],
+	["test date1", "blog title3", "test description"],
+	["test date2", "news title1", "test description"],
+	["test date1", "news title2", "test description"],
+	["test date2", "news title3", "test description"],
+	["test date1", "blog title4", "test description"],
+	["test date2", "blog title5", "test description"],
+	["test date2", "news title4", "test description"],
+	["test date1", "news title5", "test description"],
+	["test date2", "news title6", "test description"],
+	["test date1", "news title7", "test description"],
+	["test date2", "blog title6", "test description"],
+	["test date2", "blog title7", "test description"],
+	["test date1", "blog title8", "test description"],
+	["test date2", "news title8", "test description"],
+	["test date1", "news title9", "test description"],
+	["test date2", "news title10", "test description"],
 ]
 
 const postsPerPage = 8;
 
 function goToPage(setPage, pageNum) {
+	
 	let element = document.getElementById("postListContainer");
-  element.scrollIntoView({behavior: "smooth"});
+	console.log(element);
+  element.scrollIntoView({behavior: "smooth", alignToTop: true});
 
-	setPage(pageNum)
+	setPage(pageNum);
 }
 
 function PostDescription(props) {
@@ -42,7 +54,7 @@ function PostList(props) {
   return (
     <>
       <div className={styles.postInfoList} id="postListContainer">
-				<h1>{props.postIndices}</h1>
+				<h1 id="idheader">{props.postIndices}</h1>
         <div>
           {props.postIndices.map(index => 
           <PostDescription
@@ -55,6 +67,31 @@ function PostList(props) {
       </div>
     </>
   )
+}
+
+function PageButton(props) {
+	let num = props.displayNumber;
+	if (props.currentPage == num) {
+		return (
+			<button
+				key={"pageButton" + num.toString()}
+				className={styles.selectedPageButton}
+			>
+				{num.toString()}
+			</button>
+		);
+	}
+	else {
+	return (
+		<button
+			key={"pageButton" + num.toString()}
+			className={styles.normalPageButton}
+		>
+			{num.toString()}
+		</button>
+	);
+	}
+
 }
 
 function Pagination() {
@@ -70,26 +107,47 @@ function Pagination() {
 			indices.push(index);
 	}
 
+	let numPages = Math.ceil(posts.length / postsPerPage);
+	let buttonNumbers = [];
+	for (let i = 1; i <= numPages; i++)
+		buttonNumbers.push(i);
+
 	return (
 		<>
-			<PostList postIndices={indices}/>
-			<div className={styles.paginationContainer}>
+			<div className={styles.postInfoList} id="postListContainer">
+        <div>
+          {indices.map(index => 
+          <PostDescription
+            key={"post" + index.toString()}
+            date={posts[index][0]}
+            title={posts[index][1]}
+            description={posts[index][2]}
+          />)}
+        </div>
+				<div className={styles.paginationContainer}>
 				<button 
 					disabled={page <= 1}
-					onClick={() => goToPage(setPage, prevPage)}>
+					onClick={() => goToPage(setPage, prevPage)}
+					className={styles.normalPageButton}>
 						{"<"}
 				</button>
-				<button>1</button>
-				<button>2</button>
-				<button>3</button>
-				<button>4</button>
+				<div>
+          {buttonNumbers.map(num => 
+          <PageButton
+						displayNumber={num}
+						currentPage={page}
+					/>)}
+        </div>
 				<button
 					disabled={page >= posts.length / postsPerPage}
-					onClick={() => goToPage(setPage, nextPage)}>
+					onClick={() => goToPage(setPage, nextPage)}
+					className={styles.normalPageButton}>
 						{">"}
 				</button>
-				<p>page: {page}</p>
+				<p>pages: {numPages}</p>
 			</div>
+      </div>
+			
 		</>
 	)
 }
