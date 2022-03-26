@@ -71,27 +71,21 @@ function PostList(props) {
 
 function PageButton(props) {
 	let num = props.displayNumber;
+	let buttonType = styles.normalPaginationButton;
+
 	if (props.currentPage == num) {
-		return (
-			<button
-				key={"pageButton" + num.toString()}
-				className={styles.selectedPageButton}
-			>
-				{num.toString()}
-			</button>
-		);
+		buttonType = styles.selectedPaginationButton;
 	}
-	else {
+
 	return (
 		<button
 			key={"pageButton" + num.toString()}
-			className={styles.normalPageButton}
+			className={buttonType}
+			onClick={() => goToPage(props.setPageFunc, num)}
 		>
 			{num.toString()}
 		</button>
 	);
-	}
-
 }
 
 function Pagination() {
@@ -128,7 +122,7 @@ function Pagination() {
 				<button 
 					disabled={page <= 1}
 					onClick={() => goToPage(setPage, prevPage)}
-					className={styles.normalPageButton}>
+					className={styles.normalPaginationButton}>
 						{"<"}
 				</button>
 				<div>
@@ -136,12 +130,13 @@ function Pagination() {
           <PageButton
 						displayNumber={num}
 						currentPage={page}
+						setPageFunc={setPage}
 					/>)}
         </div>
 				<button
 					disabled={page >= posts.length / postsPerPage}
 					onClick={() => goToPage(setPage, nextPage)}
-					className={styles.normalPageButton}>
+					className={styles.normalPaginationButton}>
 						{">"}
 				</button>
 				<p>pages: {numPages}</p>
