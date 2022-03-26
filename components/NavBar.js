@@ -38,6 +38,9 @@ const NavBar = ({ userId, signOut }) => {
 		<Menu.Item key="/takeaction">
 			<Link href="/takeaction">Take Action</Link>
 		</Menu.Item>,
+		<Menu.Item key="/news">
+			<Link href="/news">News</Link>
+		</Menu.Item>,
 		<Menu.Item key="/podcast">
 			<Link href="/podcast">Podcast</Link>
 		</Menu.Item>,

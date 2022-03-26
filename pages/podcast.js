@@ -17,7 +17,7 @@ function viewAllEpisodes() {
 function EpisodeDescription(props) {
   return (
     <>
-      <div className={styles.podcastEpisodeContainer}>
+      <div className={styles.postInfoContainer}>
         <h5>{props.date}</h5>
         <h3>{props.title}</h3>
         <p>{props.description}</p>
@@ -33,7 +33,7 @@ function EpisodeList() {
     indices.push(i);
   return (
     <>
-      <div className={styles.podcastEpisodeList} id="episodeListContainer">
+      <div className={styles.postInfoList} id="episodeListContainer">
         <h1>All Episodes</h1>
         <div>
           {indices.map(index => 
@@ -54,8 +54,7 @@ export default function Podcast() {
   	<>
       <NavBar />
       <div>
-        <h1>Podcast</h1>
-        <div className={styles.podcastHeader}>
+        <div className={styles.newsHeader}>
           <div className={styles.podcastHeaderContainer}>
             <div className={styles.title}>
               <h1 className="global-h1">
