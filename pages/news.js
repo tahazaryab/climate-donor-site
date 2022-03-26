@@ -8,40 +8,21 @@ const posts = [
 	["December 13, 2020", "QuantumScape", "QuantumScape, Inc., a Stanford spin-off company this past week showcased its groundbreaking solid-state electric vehicle battery.  QuantumScape’s technology is truly game changing and will help in incalculable ways in our fight against climate change"],
 	["test date1", "test title1", "test description"],
 	["test date2", "test title2", "test description"],
-	["test date3", "test title3", "test description"],
-	["test date4", "test title4", "test description"],
-	["test date5", "test title5", "test description"],
-	["test date6", "test title6", "test description"],
-	["test date7", "test title7", "test description"],
+	["test date1", "test title3", "test description"],
+	["test date2", "test title4", "test description"],
+	["test date1", "test title5", "test description"],
+	["test date2", "test title6", "test description"],
+	["test date1", "test title7", "test description"],
+	["test date2", "test title8", "test description"],
 ]
 
+const postsPerPage = 8;
 
-function goToPage(pageNum) {
+function goToPage(setPage, pageNum) {
 	let element = document.getElementById("postListContainer");
   element.scrollIntoView({behavior: "smooth"});
-}
 
-function Pagination() {
-	const [page, setPage] = React.useState(1);
-
-	let nextPage = page + 1;
-	let prevPage = page <= 1 ? 1 : page - 1;
-
-	return (
-		<>
-			<div className={styles.paginationContainer}>
-				<button onClick={() => setPage(prevPage)}>{"<"}</button>
-				<button>1</button>
-				<button>2</button>
-				<button>3</button>
-				<button>4</button>
-				<button onClick={() => setPage(nextPage)}>{">"}</button>
-				<p>{prevPage}</p>
-				<p>page: {page}</p>
-				<p>{nextPage}</p>
-			</div>
-		</>
-	)
+	setPage(pageNum)
 }
 
 function PostDescription(props) {
@@ -56,15 +37,14 @@ function PostDescription(props) {
   )
 }
 
-function PostList() {
-	let indices = [];
-  for (let i = 0; i < posts.length; i++)
-    indices.push(i);
+
+function PostList(props) {
   return (
     <>
       <div className={styles.postInfoList} id="postListContainer">
+				<h1>{props.postIndices}</h1>
         <div>
-          {indices.map(index => 
+          {props.postIndices.map(index => 
           <PostDescription
             key={"post" + index.toString()}
             date={posts[index][0]}
@@ -72,10 +52,46 @@ function PostList() {
             description={posts[index][2]}
           />)}
         </div>
-				<Pagination />
       </div>
     </>
   )
+}
+
+function Pagination() {
+	const [page, setPage] = React.useState(1);
+
+	let nextPage = page + 1;
+	let prevPage = page <= 1 ? 1 : page - 1;
+
+	let indices = [];
+	for (let i = 0; i < postsPerPage; i++) {
+		let index = (page - 1) * postsPerPage + i;
+	 	if (index < posts.length)
+			indices.push(index);
+	}
+
+	return (
+		<>
+			<PostList postIndices={indices}/>
+			<div className={styles.paginationContainer}>
+				<button 
+					disabled={page <= 1}
+					onClick={() => goToPage(setPage, prevPage)}>
+						{"<"}
+				</button>
+				<button>1</button>
+				<button>2</button>
+				<button>3</button>
+				<button>4</button>
+				<button
+					disabled={page >= posts.length / postsPerPage}
+					onClick={() => goToPage(setPage, nextPage)}>
+						{">"}
+				</button>
+				<p>page: {page}</p>
+			</div>
+		</>
+	)
 }
 
 export default function News() {
@@ -94,7 +110,7 @@ export default function News() {
           </div>
         </div>
       </div>
-			<PostList />
+			<Pagination />
 		</>
   );
 }
