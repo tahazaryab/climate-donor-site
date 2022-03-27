@@ -44,7 +44,7 @@ function PostDescription(props) {
 	if (props.description.length <= previewLength) {
 		return (
 			<>
-				<div className={styles.postInfoContainer}>
+				<div className={styles.newsPostContainer}>
 					<h5>{props.date}</h5>
 					<h3>{props.title}</h3>
 					<p>{props.description}</p>
@@ -56,7 +56,7 @@ function PostDescription(props) {
 	if (!expanded) { // not expanded
 		return (
 			<>
-				<div className={styles.postInfoContainer}>
+				<div className={styles.newsPostContainer}>
 					<h5>{props.date}</h5>
 					<h3>{props.title}</h3>
 					<p>{props.description.substring(0, previewLength) + "..."}</p>
@@ -68,7 +68,7 @@ function PostDescription(props) {
 
 	return (
 		<>
-			<div className={styles.postInfoContainer}>
+			<div className={styles.newsPostContainer}>
 				<h5>{props.date}</h5>
 				<h3>{props.title}</h3>
 				<p>{props.description}</p>

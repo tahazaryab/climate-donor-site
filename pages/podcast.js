@@ -18,12 +18,13 @@ function EpisodeDescription(props) {
   return (
     <>
       <div className={styles.postInfoContainer}>
-        <h5>{props.date}</h5>
-        <h3>{props.title}</h3>
-        <p>{props.description}</p>
-        <div className={styles.episodeInfoContainer}>
-          <Button type="primary">Listen now</Button>
-        </div>
+        
+          <h5>{props.date}</h5>
+          <h3>{props.title}</h3>
+          <p>{props.description}</p>
+          <div className={styles.episodeInfoContainer}>
+          <Button type="primary">Listen now</Button></div>
+
       </div>
     </>
   )
@@ -38,7 +39,7 @@ function EpisodeList() {
       <div className={styles.grayBackground}>
         <div className={styles.postInfoList} id="episodeListContainer">
           <h1>All Episodes</h1>
-          <div>
+          <div className={styles.episodeDescriptionContainer}>
             {indices.map(index => 
             <EpisodeDescription
               key={"episode" + index.toString()}
@@ -123,6 +124,7 @@ export default function Podcast() {
               at addressing the impacts of climate change and species extinction in the oceans as well as on land.
             </p>
           </div>
+
           <EpisodeList />
         </div>
       </div>

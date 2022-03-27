@@ -266,6 +266,13 @@
   padding-top: 100px;
   padding-bottom: 100px;
 }
+.episodeDescriptionContainer {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+
+}
 .episodeInfoContainer button {
   /* Taken from Figma prototype */
   display: flex;
@@ -398,6 +405,47 @@
   margin: 0;
   padding: 0;
   background-color: #F5F5F5;;
+}
+
+.newsPostContainer {
+  background: white;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  flex: none;
+  flex-grow: 0;
+  align-items: flex-start;
+  padding: 40px;
+  margin-top: 32px;
+  margin-left: 165px;
+  position: static;
+  width: 880px;
+  height: 278px;
+}
+.newsPostContainer h3 {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  margin-top: 12px;
+}
+.newsPostContainer p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
+  text-align: left;
+  margin-top: 7px;
+  margin-left: 0;
+  display: inline;
+}
+.newsPostContainer h5 {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #888888;
 }
 
 .blog .blogCardContainer {
