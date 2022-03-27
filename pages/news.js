@@ -3,7 +3,7 @@ import React from "react";
 import styles from "../styles/Home.module.css";
 
 const posts = [
-	["May 18, 2021", "When words fail", "We all probably have a visceral reaction when we think about home. So, when I read this Opinion piece, entitled “When words fail”,  in the @stanforddaily, the idea of home sent chills through me when  contemplated in view of #climatechange and #speciesextinction"],
+	["May 18, 2021", "When words fail", "We all probably have a visceral reaction when we think about home. So, when I read this Opinion piece, entitled “When words fail”,  in the @stanforddaily, the idea of home sent chills through me when  contemplated in view of #climatechange and #speciesextinction extra filler extra filler extra filler"],
 	["April 21, 2021", "Earth Day 2021", "As we approach Earth Day 2021, we must collectively acknowledge that our climate situation is dire but not hopeless. As a native Californian, I have seen wild fires every year in the state. They have been a part of this landscape for as long as people have lived here. But"],
 	["December 13, 2020", "QuantumScape", "QuantumScape, Inc., a Stanford spin-off company this past week showcased its groundbreaking solid-state electric vehicle battery.  QuantumScape’s technology is truly game changing and will help in incalculable ways in our fight against climate change"],
 	["test date1", "blog title1", "test description"],
@@ -27,6 +27,7 @@ const posts = [
 ]
 
 const postsPerPage = 8;
+const previewLength = 260;
 
 function goToPage(setPage, pageNum) {
 	
@@ -38,17 +39,45 @@ function goToPage(setPage, pageNum) {
 }
 
 function PostDescription(props) {
-  return (
-    <>
-      <div className={styles.postInfoContainer}>
-        <h5>{props.date}</h5>
-        <h3>{props.title}</h3>
-        <p>{props.description}</p>
-      </div>
-    </>
-  )
-}
+	const [expanded, setExpanded] = React.useState(false);
+	if (props.description.length <= previewLength) {
+		return (
+			<>
+				<div className={styles.postInfoContainer}>
+					<h5>{props.date}</h5>
+					<h3>{props.title}</h3>
+					<p>{props.description}</p>
+				</div>
+			</>
+		)
+	}
 
+	if (!expanded) { // not expanded
+		return (
+			<>
+				<div className={styles.postInfoContainer}>
+					<h5>{props.date}</h5>
+					<h3>{props.title}</h3>
+					<p>{props.description.substring(0, previewLength) + "..."}</p>
+					<button onClick={() => setExpanded(true)}>More</button>
+				</div>
+			</>
+		)
+	}
+
+	return (
+		<>
+			<div className={styles.postInfoContainer}>
+				<h5>{props.date}</h5>
+				<h3>{props.title}</h3>
+				<p>{props.description}</p>
+				<button onClick={() => setExpanded(false)}>Less</button>
+			</div>
+		</>
+	)
+
+
+}
 
 function PostList(props) {
   return (
@@ -139,7 +168,6 @@ function Pagination() {
 					className={styles.normalPaginationButton}>
 						{">"}
 				</button>
-				<p>pages: {numPages}</p>
 			</div>
       </div>
 			
