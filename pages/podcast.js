@@ -1,4 +1,4 @@
-import { Layout, Menu, Button } from "antd";
+import { Button } from "antd";
 import NavBar from "../components/NavBar";
 import styles from "../styles/Home.module.css";
 import React from "react";
@@ -21,7 +21,9 @@ function EpisodeDescription(props) {
         <h5>{props.date}</h5>
         <h3>{props.title}</h3>
         <p>{props.description}</p>
-        <Button type="primary">Listen now</Button>
+        <div className={styles.episodeInfoContainer}>
+          <Button type="primary">Listen now</Button>
+        </div>
       </div>
     </>
   )
@@ -33,16 +35,18 @@ function EpisodeList() {
     indices.push(i);
   return (
     <>
-      <div className={styles.postInfoList} id="episodeListContainer">
-        <h1>All Episodes</h1>
-        <div>
-          {indices.map(index => 
-          <EpisodeDescription
-            key={"episode" + index.toString()}
-            date={episodes[index][0]}
-            title={episodes[index][1]}
-            description={episodes[index][2]}
-          />)}
+      <div className={styles.grayBackground}>
+        <div className={styles.postInfoList} id="episodeListContainer">
+          <h1>All Episodes</h1>
+          <div>
+            {indices.map(index => 
+            <EpisodeDescription
+              key={"episode" + index.toString()}
+              date={episodes[index][0]}
+              title={episodes[index][1]}
+              description={episodes[index][2]}
+            />)}
+          </div>
         </div>
       </div>
     </>

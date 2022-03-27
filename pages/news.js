@@ -1,3 +1,4 @@
+import { Button } from "antd";
 import NavBar from "../components/NavBar";
 import React from "react";
 import styles from "../styles/Home.module.css";
@@ -59,7 +60,7 @@ function PostDescription(props) {
 					<h5>{props.date}</h5>
 					<h3>{props.title}</h3>
 					<p>{props.description.substring(0, previewLength) + "..."}</p>
-					<button onClick={() => setExpanded(true)}>More</button>
+					<Button className="linkButton" type="link" onClick={() => setExpanded(true)}>More</Button>
 				</div>
 			</>
 		)
@@ -71,31 +72,10 @@ function PostDescription(props) {
 				<h5>{props.date}</h5>
 				<h3>{props.title}</h3>
 				<p>{props.description}</p>
-				<button onClick={() => setExpanded(false)}>Less</button>
+				<Button type="link" onClick={() => setExpanded(false)}>Less</Button>
 			</div>
 		</>
 	)
-
-
-}
-
-function PostList(props) {
-  return (
-    <>
-      <div className={styles.postInfoList} id="postListContainer">
-				<h1 id="idheader">{props.postIndices}</h1>
-        <div>
-          {props.postIndices.map(index => 
-          <PostDescription
-            key={"post" + index.toString()}
-            date={posts[index][0]}
-            title={posts[index][1]}
-            description={posts[index][2]}
-          />)}
-        </div>
-      </div>
-    </>
-  )
 }
 
 function PageButton(props) {

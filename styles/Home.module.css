@@ -266,7 +266,7 @@
   padding-top: 100px;
   padding-bottom: 100px;
 }
-.postInfoContainer button {
+.episodeInfoContainer button {
   /* Taken from Figma prototype */
   display: flex;
   flex-direction: column;
@@ -300,7 +300,6 @@
   line-height: 24px;
 }
 .postInfoList {
-  background-color: #F5F5F5;
   padding-top: 100px;
   padding-bottom: 100px;
 }
@@ -388,6 +387,17 @@
   border-radius: 2px;
 
   margin: 0px 4px;
+}
+
+.whiteBackground {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+.grayBackground {
+  margin: 0;
+  padding: 0;
+  background-color: #F5F5F5;;
 }
 
 .blog .blogCardContainer {
