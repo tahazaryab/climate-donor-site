@@ -431,6 +431,7 @@
   margin-top: 12px;
 }
 .newsPostContainer p {
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -441,6 +442,7 @@
   display: inline;
 }
 .newsPostContainer h5 {
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;

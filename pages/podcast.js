@@ -2,6 +2,7 @@ import { Button } from "antd";
 import NavBar from "../components/NavBar";
 import styles from "../styles/Home.module.css";
 import React from "react";
+import "@fontsource/inter";
 
 const episodes = [
   ["July 6, 2021", "Climate Change Innovation", "We welcome Dr. Brian Bartholomeusz, the Executive Director of Innovation Transfer at the TomKat Center for Sustainable Energy at Stanford University."],
