@@ -192,7 +192,6 @@ const Home = () => {
 
 const MyLoader = () => <div>Loading...</div>;
 export default withAuthUser({
-  whenAuthed: AuthAction.REDIRECT_TO_APP,
   whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
   whenUnauthedAfterInit: AuthAction.RENDER,
   LoaderComponent: MyLoader,
