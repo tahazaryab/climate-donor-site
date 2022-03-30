@@ -56,7 +56,7 @@ const NavBar = ({ userId, signOut }) => {
           <p>Climate Donor</p>
         </Link>
       </div>
-      <Menu className={styles.siteMenu} mode="horizontal">
+      <Menu className={styles.siteMenu} disabledOverflow="true" mode="horizontal">
         {menuItems}
       </Menu>
     </Header>

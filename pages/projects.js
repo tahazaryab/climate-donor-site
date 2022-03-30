@@ -1,10 +1,9 @@
 import NavBar from "../components/NavBar";
 import React from "react";
-import styles from "../styles/Home.module.css";
 import Cardstyles from "../styles/ProjectCard.module.css";
 import AppFooter from "../components/Footer";
 import ProjectCard from "../components/ProjectCard";
-import { Row } from "antd";
+import { Card, Row } from "antd";
 import { useEffect, useState } from "react";
 import { getAllProjects } from "../lib/firebase";
 import ReactPaginate from "react-paginate";
@@ -14,7 +13,7 @@ import { PROJECTS_PER_PAGINATION } from "../constants";
 export default function Projects() {
   const [projects, setProjects] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
-  const projectsPerPage = PROJECTS_PER_PAGINATION
+  const projectsPerPage = PROJECTS_PER_PAGINATION;
   const pagesVisited = pageNumber * projectsPerPage;
 
   const getProjects = async () => {
@@ -65,7 +64,8 @@ export default function Projects() {
         h2="              Become a Climate Donor now. Your tax deductible dontation will be
               targeted at climate change and species extinction projects of your
               choosing."
-        type="project"></Hero>
+        type="project"
+      ></Hero>
 
       <section className={Cardstyles.plain + " centerContainer"}>
         <h1 className="global-h1" style={{ "margin-bottom": "102px" }}>
@@ -80,10 +80,11 @@ export default function Projects() {
           containerClassName={Cardstyles.pagination}
           disabledClassName={Cardstyles.paginationArrows}
           activeClassName={Cardstyles.paginationNumbers}
+          pageClassName={Cardstyles.paginationNumbers}
         />
       </section>
 
-      <AppFooter></AppFooter>
+      <AppFooter/>
     </>
   );
 }
