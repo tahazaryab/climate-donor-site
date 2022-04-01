@@ -2,6 +2,7 @@ import { Button } from "antd";
 import NavBar from "../components/NavBar";
 import React from "react";
 import styles from "../styles/Home.module.css";
+import newsStyles from "../styles/News.module.css";
 import "@fontsource/inter";
 
 const posts = [
@@ -81,10 +82,10 @@ function PostDescription(props) {
 
 function PageButton(props) {
 	let num = props.displayNumber;
-	let buttonType = styles.normalPaginationButton;
+	let buttonType = newsStyles.normalPaginationButton;
 
 	if (props.currentPage == num) {
-		buttonType = styles.selectedPaginationButton;
+		buttonType = newsStyles.selectedPaginationButton;
 	}
 
 	return (
@@ -105,11 +106,11 @@ function Pagination() {
 	let prevPage = page <= 1 ? 1 : page - 1;
 
 	let indices = [];
-	for (let i = 0; i < postsPerPage; i++) {
-		let index = (page - 1) * postsPerPage + i;
-	 	if (index < posts.length)
-			indices.push(index);
-	}
+  for (let i = 0; i < postsPerPage; i++) {
+    let index = (page - 1) * postsPerPage + i;
+    if (index < posts.length)
+      indices.push(index);
+  }
 
 	let numPages = Math.ceil(posts.length / postsPerPage);
 	let buttonNumbers = [];
@@ -118,7 +119,7 @@ function Pagination() {
 
 	return (
 		<>
-			<div className={styles.postInfoList} id="postListContainer">
+		  <div className={styles.postInfoList} id="postListContainer">
         <div>
           {indices.map(index => 
           <PostDescription
@@ -128,28 +129,28 @@ function Pagination() {
             description={posts[index][2]}
           />)}
         </div>
-				<div className={styles.paginationContainer}>
-				<button 
-					disabled={page <= 1}
-					onClick={() => goToPage(setPage, prevPage)}
-					className={styles.normalPaginationButton}>
-						{"<"}
-				</button>
-				<div>
-          {buttonNumbers.map(num => 
-          <PageButton
-						displayNumber={num}
-						currentPage={page}
-						setPageFunc={setPage}
-					/>)}
+				<div className={newsStyles.paginationContainer}>
+          <button 
+            disabled={page <= 1}
+            onClick={() => goToPage(setPage, prevPage)}
+            className={newsStyles.normalPaginationButton}>
+              {"<"}
+          </button>
+          <div>
+            {buttonNumbers.map(num => 
+            <PageButton
+              displayNumber={num}
+              currentPage={page}
+              setPageFunc={setPage}
+            />)}
+          </div>
+          <button
+            disabled={page >= posts.length / postsPerPage}
+            onClick={() => goToPage(setPage, nextPage)}
+            className={newsStyles.normalPaginationButton}>
+              {">"}
+          </button>
         </div>
-				<button
-					disabled={page >= posts.length / postsPerPage}
-					onClick={() => goToPage(setPage, nextPage)}
-					className={styles.normalPaginationButton}>
-						{">"}
-				</button>
-			</div>
       </div>
 			
 		</>
@@ -160,8 +161,8 @@ export default function News() {
   return (
     <>
 			<NavBar />
-			<div className={styles.newsHeader}>
-        <div className={styles.podcastHeaderContainer}>
+			<div className={newsStyles.newsHeader}>
+        <div className={styles.headerContainer}>
           <div className={styles.title}>
             <h1 className="global-h1">
               News

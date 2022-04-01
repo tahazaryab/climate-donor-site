@@ -1,6 +1,7 @@
 import { Button } from "antd";
 import NavBar from "../components/NavBar";
 import styles from "../styles/Home.module.css";
+import podcastStyles from "../styles/Podcast.module.css";
 import React from "react";
 import "@fontsource/inter";
 
@@ -18,14 +19,12 @@ function viewAllEpisodes() {
 function EpisodeDescription(props) {
   return (
     <>
-      <div className={styles.postInfoContainer}>
+      <div className={podcastStyles.episodeDescription}>
         
           <h5>{props.date}</h5>
           <h3>{props.title}</h3>
           <p>{props.description}</p>
-          <div className={styles.episodeInfoContainer}>
-          <Button type="primary">Listen now</Button></div>
-
+          <Button type="primary">Listen now</Button>
       </div>
     </>
   )
@@ -37,10 +36,10 @@ function EpisodeList() {
     indices.push(i);
   return (
     <>
-      <div className={styles.grayBackground}>
+      <div className={podcastStyles.grayBackground}>
         <div className={styles.postInfoList} id="episodeListContainer">
           <h1>All Episodes</h1>
-          <div className={styles.episodeDescriptionContainer}>
+          <div className={podcastStyles.episodeDescriptionContainer}>
             {indices.map(index => 
             <EpisodeDescription
               key={"episode" + index.toString()}
@@ -60,8 +59,8 @@ export default function Podcast() {
   	<>
       <NavBar />
       <div>
-        <div className={styles.newsHeader}>
-          <div className={styles.podcastHeaderContainer}>
+        <div className={podcastStyles.podcastHeader}>
+          <div className={styles.headerContainer}>
             <div className={styles.title}>
               <h1 className="global-h1">
                 Sustainability Accelerator
@@ -73,8 +72,8 @@ export default function Podcast() {
             </div>
           </div>
         </div>
-        <div className={styles.podcastBody}>
-          <div className={styles.podcastBlurb}>
+        <div className={podcastStyles.podcastBody}>
+          <div className={podcastStyles.podcastBlurb}>
             <h1>A Podcast for Climate</h1>
             <p>
               This podcast will host thought leaders, scholars, and entrepreneurs in efforts to address
@@ -87,7 +86,7 @@ export default function Podcast() {
             <p>Produced by Grecia Ro, Director of Engineering</p>
             <p>Hosted by Luis Mejia, Executive Director</p>
           </div>
-          <div className={styles.podcastLatestEpisode}>
+          <div className={podcastStyles.podcastLatestEpisode}>
             <h1>Latest Episode</h1>
             <p>
               We welcome Dr. Brian Bartholomeusz, the Executive Director of Innovation Transfer at the
@@ -102,7 +101,7 @@ export default function Podcast() {
                 See all episodes
             </Button>
           </div>
-          <div className={styles.podcastHost}>
+          <div className={podcastStyles.podcastHost}>
             <h1>About Your Host</h1>
             <p>
               Host Luis Mejia is a Senior Associate at Stanford University; his professional career at
@@ -125,7 +124,6 @@ export default function Podcast() {
               at addressing the impacts of climate change and species extinction in the oceans as well as on land.
             </p>
           </div>
-
           <EpisodeList />
         </div>
       </div>
