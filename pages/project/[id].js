@@ -44,16 +44,16 @@ const ProjectPage = () => {
     const { id } = router.query;
     const { Content } = Layout;
 
+    const getProject = async () => {
+        var proj = (await getDoc("projects", id))
+        proj = await Promise.resolve(proj)
+        proj.published = proj?.published.toDate().toLocaleDateString() + ''
+        proj.updated = proj?.updated.toDate().toLocaleDateString() + ''
+        setProject(proj)
+        setIsLoading(false)
+    }
+
     useEffect(()=>{
-        const getProject = async () => {
-            var proj = (await getDoc("projects", id))
-            proj = await Promise.resolve(proj)
-            proj.published = proj?.published.toDate().toLocaleDateString() + ''
-            proj.updated = proj?.updated.toDate().toLocaleDateString() + ''
-            setProject(proj)
-            setIsLoading(false)
-        }
-    
         getProject()
 
         // Check to see if this is a redirect back from Checkout
@@ -77,7 +77,10 @@ const ProjectPage = () => {
         }
 
         const stripe = await stripePromise;
-        const response = await axios.post('/api/payment/checkout', projectDetails)
+        console.log(stripe)
+
+        console.log("test" )
+        const response = await axios.post('/api/payment/checkout', projectDetails )
     
         // When the customer clicks on the button, redirect them to Checkout.
         console.log(response)

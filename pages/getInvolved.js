@@ -15,7 +15,7 @@ export default function GetInvolved() {
         h1="Get Involved"
         h2="Engage in the fight against climate change and species extinction through projects of your choosing.  Your contribution to current projects in need of funding will make a difference."
         type="getInvolved"></Hero>
-      <section className="donate centerContainer container">
+      <section className="donate centerContainer container" >
         <h1 className="global-h1">Donate</h1>
         <div className="cardContainer">
           <DonateCard
@@ -36,18 +36,6 @@ export default function GetInvolved() {
         </div>
         <Link href="/projects">
           <div className="btn">See available projects</div>
-        </Link>
-      </section>
-      <section className="centerContainer grey-bg">
-        <h1 className="global-h1">Citizen Scientists</h1>
-        <p className="global-p m-50">
-          Grassroots citizen involvement in helping to find and implement
-          solutions to climate change and species extinction will be critical to
-          avoid catastrophic consequences. Help us to build a critical mass of
-          Citizen Scientists by signing up now for a future study or experiment.
-        </p>
-        <Link href="/about">
-          <div className="btn">Learn more</div>
         </Link>
       </section>
       <section className="container">
