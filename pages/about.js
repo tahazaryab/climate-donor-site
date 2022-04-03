@@ -43,18 +43,6 @@ export default function About() {
           <div className="btn">Get Involved</div>
         </Link>
       </section>
-      <section className="team centerContainer container">
-        <h1 className="global-h1">Our Team</h1>
-        <div className="cardContainer"></div>
-      </section>
-      <section className="board centerContainer container grey-bg">
-        <h1 className="global-h1">Board</h1>
-        <div className="cardContainer"></div>
-      </section>
-      <section className="board centerContainer container">
-        <h1 className="global-h1">Volunteers</h1>
-        <div className="cardContainer"></div>
-      </section>
       <section className={styles.plain + " " + styles.peopleSpacing}>
         <h1 className="global-h1">Our Team</h1>
         <div className={styles.plainIcons}>
@@ -78,7 +66,7 @@ export default function About() {
         </p>
       </section>
 
-      <section style={{background: "#F5F5F5"}}className={styles.plain + " " + styles.peopleSpacing}>
+      <section className={styles.plain + " " + styles.peopleSpacing + " " + styles.grey}>
         <h1 className="global-h1">Board</h1>
         <div className={styles.plainIcons}>
           <div className={styles.people}>

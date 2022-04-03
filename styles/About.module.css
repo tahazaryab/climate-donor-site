@@ -1,44 +1,7 @@
-.logo {
-    max-width: 20px;
-  }
-  
-  .arrowBtn {
-    font-size: 24px;
-    transition: 0.2s;
-    margin-top: 50px;
-  }
-  .arrowBtn span {
-    margin-left: 1rem;
-  }
-  
-  .arrowBtn:hover {
-    transform: scale(1.05);
-  }
-  
-  .media img {
-    width: 16px;
-  }
-  
-  .hero {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: url(../public/about_img/about-us.png) no-repeat center/cover;
-    height: 100vh;
-  }
-
   .grey {
     background: #F5F5F5;
+  }
 
-  }
-  
-  .heroContainer {
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-  }
-  
   .title {
     display: inline-block;
   }
@@ -63,24 +26,6 @@
     font-size: 18px;
     line-height: 25px;
     max-width: 800px;
-  }
-  
-  .media {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  .media img {
-    display: block;
-    margin: 15px 0;
-  }
-  
-  .heroButton {
-    background: rgba(212, 239, 222, 0.3);
-    border: 1px solid #d4efde;
-    margin-left: 10px;
-    color: white;
   }
   
   .plain {
@@ -134,111 +79,6 @@
       margin-left: 32px;
       margin-right: 32px;
   }
-  
-  .about {
-    background: url(../public/home_img/about.png) center/cover no-repeat;
-    text-align: center;
-  }
-  .about h1 {
-    color: white;
-  }
-  .about p {
-    width: 45%;
-    font-size: 24px;
-    margin: 80px 0;
-    color: white;
-  }
-  .about > divc:last-child {
-    background-color: #048a81;
-    width: 118px;
-    color: white;
-  }
-  
-  .emphasis {
-    padding: 100px 20px;
-  }
-  .emphasis h1 {
-    text-align: center;
-    margin-bottom: 100px;
-  }
-  .emphasis h2 {
-    color: #c8c8c8;
-  }
-  .emphasis .emphasisCard {
-    display: flex;
-    margin: 20px auto;
-    border-radius: 8px;
-    width: 75%;
-    background-color: #f5f5f5;
-  }
-  .emphasis .emphasisCard img {
-    width: 33.3%;
-    object-fit: cover;
-    border-radius: 8px 0 0 8px;
-  }
-  .emphasis .emphasisCard div {
-    padding: 20px;
-  }
-  
-  .portal {
-    padding: 100px 20px;
-    background: url(../public/home_img/portal.png) center/cover no-repeat;
-  }
-  .portal h1,
-  .portal h2,
-  .portal h3,
-  .portal p {
-    color: white;
-  }
-  .portal > h1,
-  .portal > h2 {
-    text-align: center;
-  }
-  .portal > h2 {
-    margin: 20px 0 70px 0;
-    width: 70%;
-    color: #f5f5f5;
-  }
-  .portal .portalCard {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 50px;
-    width: 80%;
-  }
-  .portal .portalCard img {
-    width: 40%;
-  }
-  .portal .portalCard div {
-    width: 50%;
-  }
-  .portal .portalCard div > p:first-child {
-    color: #9fbef2;
-  }
-  
-  .podcast {
-    background: url(../public/home_img/podcast.png) center/cover no-repeat;
-  }
-  .podcast h1,
-  .podcast h2 {
-    text-align: center;
-  }
-  .podcast h1 {
-    color: white;
-  }
-  .podcast h2 {
-    color: #f5f5f5;
-  }
-  .podcast .podcastContainer {
-    margin: 50px 0;
-    padding-top: 33.75%;
-    width: 60%;
-    background-color: white;
-    border-radius: 10px;
-  }
-  .podcast > p:last-child {
-    color: white;
-  }
 
   .name {
     font-family: 'Work Sans';
@@ -267,80 +107,17 @@
       margin-right: 55px;
   }
    */
-  .blog .blogCardContainer {
-    width: 80%;
-    align-items: center;
-    justify-content: space-evenly;
-    display: flex;
-    flex-wrap: wrap;
-    border-radius: 8px;
-  }
-  .blog .blogCardContainer div {
-    margin: 30px 0;
-    width: 326px;
-    height: 442px;
-    background: #ffffff;
-    box-shadow: 0px 0px 25px rgba(200, 200, 200, 0.25);
-    border-radius: 8px;
-  }
-  .blog :global(.btn) img {
-    filter: invert(1);
-  }
 
   .space {
       margin-bottom: 60px;
   }
   
-  .grid {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    max-width: 800px;
-    margin-top: 3rem;
-  }
-  
-  .card {
-    margin: 1rem;
-    flex-basis: 45%;
-    padding: 1.5rem;
-    text-align: left;
-    color: inherit;
-    text-decoration: none;
-    border: 1px solid #eaeaea;
-    border-radius: 10px;
-    transition: color 0.15s ease, border-color 0.15s ease;
-  }
-  
-  .card:hover,
-  .card:focus,
-  .card:active {
-    color: #048a81;
-    border-color: #048a81;
-  }
-  
-  .card h3 {
-    margin: 0 0 1rem 0;
-    font-size: 1.5rem;
-  }
-  
-  .card p {
-    margin: 0;
-    font-size: 1.25rem;
-    line-height: 1.5;
-  }
-  
+
   @media (max-width: 767px) {
-    .grid {
-      width: 100%;
-      flex-direction: column;
-    }
   
     .plain > p {
       width: 100%;
-    }
-
-    
+    }  
   
     .plainIcons {
       flex-wrap: wrap;
@@ -395,48 +172,6 @@
         content: "";
         display: table;
         clear: both;
-    }
-
-    .about p {
-      width: 90%;
-      font-size: 18px;
-    }
-  
-    .emphasis .emphasisCard {
-      width: 100%;
-      display: block;
-      padding: 1.5rem 0;
-    }
-    .emphasis .emphasisCard img {
-      width: 60%;
-      display: block;
-      border-radius: 50%;
-      margin: auto;
-    }
-  
-    .portal {
-      width: 100%;
-    }
-    .portal > h2 {
-      width: 100%;
-    }
-    .portal .portalCard {
-      margin-bottom: 0;
-      display: block;
-      width: 100%;
-    }
-    .portal .portalCard div {
-      width: 100%;
-    }
-    .portal .portalCard img {
-      width: 100%;
-      margin: 50px 0;
-      border-radius: 8px;
-    }
-  
-    .podcast .podcastContainer {
-      width: 100%;
-      padding-top: 56.25%;
     }
   }
   
