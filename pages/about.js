@@ -75,7 +75,7 @@ export default function About() {
             <p className={styles.nameTitle}>Co-Founder</p>
           </div>
           <div className={styles.people}>
-            <img src="./about_img/BK Photo 1.png" alt="fund"></img>
+            <img src="./about_img/BK.png" alt="fund"></img>
             <p style={{fontSize: "24px"}} className={styles.name}>Brian Kissel</p>
             <p className={styles.nameTitle}>Secretary</p>
           </div>
