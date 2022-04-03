@@ -1,0 +1,179 @@
+  .grey {
+    background: #F5F5F5;
+  }
+
+  .title {
+    display: inline-block;
+  }
+  .title h1 {
+    color: white;
+    max-width: 400px;
+  }
+  .title h2 {
+    margin: 0;
+    color: white;
+    max-width: 504px;
+  }
+  .title div {
+    margin-top: 16px;
+  }
+  .title div p {
+    display: inline;
+    color: #c8c8c8;
+  }
+
+  .plain p {
+    font-size: 18px;
+    line-height: 25px;
+    max-width: 800px;
+  }
+  
+  .plain {
+    text-align: center;
+  }
+  /* .plain > div:last-child {
+    background-color: #124095;
+    width: 118px;
+    text-align: center;
+    color: white;
+  } */
+  /* .plain > p {
+    width: 60%;
+    margin-bottom: 50px;
+  } */
+  
+  .plainIcons {
+    margin-bottom: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .plainIcons div {
+    /* flex: 1;
+    text-align: center; */
+  }
+  .plainIcons div img {
+    /* display: block; */
+    /* margin-left: 55px;
+    margin-right: 55px; */
+    /* margin: auto; */
+  }
+
+  .peopleSpacing {
+    padding: 0px 20px;
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .people img {
+    margin-left: 55px;
+    margin-right: 55px;
+  }
+
+  .volunteer p {
+      margin-left: 32px;
+      margin-right: 32px;
+  }
+
+  .name {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    margin-bottom: 8px;
+    margin-top: 11px;
+  }
+
+  .nameTitle {
+    /* font-family: 'Inter'; */
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    /* or 139% */
+    
+    text-align: center;
+  }
+
+  /* .imgSpacing {
+      margin-left:  55px;
+      margin-right: 55px;
+  }
+   */
+
+  .space {
+      margin-bottom: 60px;
+  }
+  
+
+  @media (max-width: 767px) {
+  
+    .plain > p {
+      width: 100%;
+    }  
+  
+    .plainIcons {
+      flex-wrap: wrap;
+    }
+    .plainIcons h3 {
+      font-size: 16px;
+    }
+    .plainIcons div {
+      flex: 0 0 33%;
+    }
+
+    /* .volunteer {
+        flex-wrap: wrap;
+
+    }
+
+    .volunteer div {
+        flex: 0 0 33%;
+        display: inline-block;
+        text-align: justify;
+    }
+
+    .volunteer::after{
+        content: '';
+        width: 100%;
+        display: inline-block;
+    } */
+
+    
+    .parent {
+        text-align: justify;
+        font-size: 0.1px; /* IE 9/10 fix */
+    }
+    .parent li {
+        display: inline-block;
+    }
+    .parent:after {
+        content: '';
+        width: 100%; /* Ensures justification for single lines */
+        display: inline-block;
+    }
+
+    .column {
+        float: left;
+        width: 25%;
+        color: coral
+      }
+      
+      /* Clear floats after the columns */
+    .row::after {
+        background-color: coral;
+        content: "";
+        display: table;
+        clear: both;
+    }
+  }
+  
+  /*# sourceMappingURL=Home.module.css.map */
+  
