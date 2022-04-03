@@ -45,9 +45,9 @@ export default function Categories() {
 			</Row>
 
 			<div className="container">
-				<Row gutter={16}>
+				<Row gutter={16} >
 					{categories.map((category) => (
-						<Col span={8} key={category.userType}>
+						<Col span={8} key={category.userType} className={styles.centerCol}>
 							<Card
 								hoverable
 								style={{

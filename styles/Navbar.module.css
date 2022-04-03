@@ -35,18 +35,24 @@
 .siteLogo {
 	width: 30%;
 	text-align: left;
+	display: flex;
+	align-items: center;
 }
 .siteLogo img {
-	margin: 0 20px;
-	margin-bottom: 8px;
-	width: 40px;
+	margin-left: 2em;
 	height: 40px;
 }
+.siteLogo:hover img {
+	cursor: pointer;
+}
+.siteLogo:hover p {
+	cursor: pointer;
+}
 .siteLogo p {
-	display: inline-block;
+	margin-bottom: 0;
+	margin-left: 1rem;
 	font-weight: 700;
 	font-size: 20px;
-	line-height: 28px;
 }
 .signinButton {
 	color: #048a81;

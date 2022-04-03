@@ -3,6 +3,8 @@ import styles from "../styles/Home.module.css";
 import NavBar from "../components/NavBar";
 import AppFooter from "../components/Footer";
 import Link from "next/link";
+import Hero from "../components/Hero";
+import HorizonCard from "../components/HorizonCard";
 
 import { useAuthUser, withAuthUser, AuthAction } from "next-firebase-auth";
 
@@ -11,61 +13,35 @@ const Home = () => {
   return (
     <>
       <NavBar userId={AuthUser.id} signOut={AuthUser.signOut}></NavBar>
-
-      <section className={styles.hero}>
-        <div className={styles.heroContainer}>
-          <div className={styles.title}>
-            <h1 className="global-h1">
-              The Planet And All Living Things Need Your Help.
-            </h1>
-            <h2 className="subtitle">
-              Join in the fight against #climatechange and #speciesextinction.
-              Act and donate now.
-            </h2>
-            <div>
-              <p className="global-p">
-                Check out our current
-                <span className={styles.heroButton + " btn"}>Projects</span>
-              </p>
-            </div>
-          </div>
-          <div className={styles.media}>
-            <a href="" target="_blank">
-              <img src="./home_img/icons/twitter.svg" alt="twitter"></img>
-            </a>
-            <a href="" target="_blank">
-              <img src="./home_img/icons/instagram.svg" alt="instagram"></img>
-            </a>
-            <a href="" target="_blank">
-              <img src="./home_img/icons/linkedin.svg" alt="linkedin"></img>
-            </a>
-          </div>
-        </div>
-      </section>
-      <section className={styles.plain + " flex-column"}>
+      <Hero
+        h1="The Planet And All Living Things Need Your Help."
+        h2="Join in the fight against #climatechange and #speciesextinction.
+              Act and donate now."
+        type="home"></Hero>
+      <section className={styles.plain + " centerContainer"}>
         <h1 className="global-h1">Get Involved</h1>
         <h2 className="subtitle">
           Explore different ways to take action with us
         </h2>
         <div className={styles.plainIcons}>
           <div>
-            <img src="./home_img/icons/donate.svg" alt="donate"></img>
+            <img src="./img/icons/donate.svg" alt="donate"></img>
             <h3 className="global-h3">Donate</h3>
           </div>
           <div>
-            <img src="./home_img/icons/project.svg" alt="project"></img>
+            <img src="./img/icons/project.svg" alt="project"></img>
             <h3 className="global-h3">Post a project</h3>
           </div>
           <div>
-            <img src="./home_img/icons/volunteer.svg" alt="volunteer"></img>
+            <img src="./img/icons/volunteer.svg" alt="volunteer"></img>
             <h3 className="global-h3">Volunteer</h3>
           </div>
           <div>
-            <img src="./home_img/icons/upload.svg" alt="upload"></img>
+            <img src="./img/icons/upload.svg" alt="upload"></img>
             <h3 className="global-h3">Upload an app</h3>
           </div>
           <div>
-            <img src="./home_img/icons/advise.svg" alt="advise"></img>
+            <img src="./img/icons/advise.svg" alt="advise"></img>
             <h3 className="global-h3">Advise us</h3>
           </div>
         </div>
@@ -73,61 +49,38 @@ const Home = () => {
           <div className="btn">Learn More</div>
         </Link>
       </section>
-      <section className={styles.about + "  flex-column"}>
+      <section className={styles.about + "  centerContainer"}>
         <h1 className="global-h1">About Climate Donor</h1>
-        <p className="global-p">
+        <p className="global-p m-50">
           ClimateDonor.org is a 501(c)(3) nonprofit organization that is focused
           on mitigation and reversal of global climate change and species
           extinction.
         </p>
-        <div className="btn">About Us</div>
+        <Link href="/about">
+          <div className="btn">About Us</div>
+        </Link>
       </section>
-      <section className={styles.emphasis}>
+      <section className="container">
         <h1 className="global-h1">Our Areas of Emphasis</h1>
-        <div className={styles.emphasisCard}>
-          <img src="./home_img/emphasis_1.png" alt="pic1"></img>
-          <div>
-            <h2 className="global-h2">01</h2>
-            <h3 className="global-h3">Citizen engagement and empowerment.</h3>
-            <p className="global-p">
-              There are many well funded programs addressing things like public
-              policy, impact investing in large scale clean energy projects, and
-              corporate initiatives. However, there are thousands of smaller
-              "long tail" projects, that in aggregate represent major
-              contributions to climate change and species extinction mitigation.
-            </p>
-          </div>
-        </div>
-        <div className={styles.emphasisCard}>
-          <img src="./home_img/emphasis_2.png" alt="pic2"></img>
-          <div>
-            <h2 className="global-h2">02</h2>
-            <h3 className="global-h3">Wide range of projects.</h3>
-            <p className="global-p">
-              There are many well funded programs addressing things like public
-              policy, impact investing in large scale clean energy projects, and
-              corporate initiatives. However, there are thousands of smaller
-              "long tail" projects, that in aggregate represent major
-              contributions to climate change and species extinction mitigation.
-            </p>
-          </div>
-        </div>
-        <div className={styles.emphasisCard}>
-          <img src="./home_img/emphasis_3.png" alt="pic3"></img>
-          <div>
-            <h2 className="global-h2">03</h2>
-            <h3 className="global-h3">Supporting the existing network.</h3>
-            <p className="global-p">
-              Our goal is to support the many organizations and initiatives
-              already working to address climate change and species extinction.
-              The ClimateDonor.org platform provides an effective, efficient way
-              to match individuals with the organizations, programs, and
-              projects of interest to them.
-            </p>
-          </div>
-        </div>
+        <HorizonCard
+          number="01"
+          title="Citizen engagement and empowerment."
+          img="emphasis_1.png"
+          content={`There are many well funded programs addressing things like public
+              policy, impact investing in large scale clean energy projects, and corporate initiatives. However, there are thousands of smaller
+              "long tail" projects, that in aggregate represent major contributions to climate change and species extinction mitigation.`}></HorizonCard>
+        <HorizonCard
+          number="02"
+          title="Wide range of projects."
+          img="emphasis_2.png"
+          content={`There are many well funded programs addressing things like public policy, impact investing in large scale clean energy projects, and corporate initiatives. However, there are thousands of smaller "long tail" projects, that in aggregate represent major contributions to climate change and species extinction mitigation.`}></HorizonCard>
+        <HorizonCard
+          number="03"
+          title="Supporting the existing network."
+          img="emphasis_3.png"
+          content={`Our goal is to support the many organizations and initiatives already working to address climate change and species extinction. The ClimateDonor.org platform provides an effective, efficient way to match individuals with the organizations, programs, and projects of interest to them.`}></HorizonCard>
       </section>
-      <section className={styles.portal + " flex-column"}>
+      <section className={styles.portal + " centerContainer"}>
         <h1 className="global-h1">The Climate Donor Portal</h1>
         <h2 className="subtitle">
           Our new portal aims to connect organizations engaged in climate change
@@ -147,10 +100,10 @@ const Home = () => {
               their fund usage, and more.
             </p>
           </div>
-          <img src="./home_img/portal_1.png"></img>
+          <img src="./img/portal_1.png"></img>
         </div>
         <div className={styles.portalCard}>
-          <img src="./home_img/portal_2.png"></img>
+          <img src="./img/portal_2.png"></img>
           <div>
             <p className="inner">ORGANIZATIONS</p>
             <h2 className="global-h2">
@@ -165,31 +118,31 @@ const Home = () => {
           </div>
         </div>
         <></>
-        <Link href="">
+        <Link href="/signin">
           <p className={styles.arrowBtn + " btn global-p"}>
             Explore our portal
             <span>
-              <img src="./home_img/icons/arrow.svg" alt="arrow"></img>
+              <img src="./img/icons/arrow.svg" alt="arrow"></img>
             </span>
           </p>
         </Link>
       </section>
-      <section className={styles.plain + " flex-column"}>
+      <section className={styles.plain + " centerContainer"}>
         <h1 className="global-h1">Our Values, Your Expectations</h1>
         <h1 className="global-h1">Trust & transparency</h1>
         <div className={styles.plainIcons}>
           <div>
-            <img src="./home_img/icons/active.svg" alt="active"></img>
+            <img src="./img/icons/active.svg" alt="active"></img>
             <h1 className="global-h1">XX</h1>
             <h4 className="subtitle">Active Projects</h4>
           </div>
           <div>
-            <img src="./home_img/icons/fund.svg" alt="fund"></img>
+            <img src="./img/icons/fund.svg" alt="fund"></img>
             <h1 className="global-h1">$XX</h1>
             <h4 className="subtitle">Fund Raised</h4>
           </div>
           <div>
-            <img src="./home_img/icons/donors.svg" alt="donors"></img>
+            <img src="./img/icons/donors.svg" alt="donors"></img>
             <h1 className="global-h1">XX</h1>
             <h4 className="subtitle">Total Donors</h4>
           </div>
@@ -199,11 +152,11 @@ const Home = () => {
           about seeing where their money is going. Let's work together to make
           an effective, responsible impact.
         </p>
-        <Link href="/">
+        <Link href="/financials">
           <div className="btn">Financials</div>
         </Link>
       </section>
-      <section className={styles.podcast + " flex-column"}>
+      <section className={styles.podcast + " centerContainer"}>
         <h1 className="global-h1">Sustainability Accelerator</h1>
         <h2 className="subtitle">A podcast presented by Climate Donor</h2>
         <div className={styles.podcastContainer}></div>
@@ -211,14 +164,14 @@ const Home = () => {
           <p className={styles.arrowBtn + " btn global-p"}>
             Listen now
             <span>
-              <img src="./home_img/icons/arrow.svg" alt="arrow"></img>
+              <img src="./img/icons/arrow.svg" alt="arrow"></img>
             </span>
           </p>
         </Link>
       </section>
-      <section className={styles.blog + " flex-column"}>
+      <section className={styles.blog + " centerContainer grey-bg"}>
         <h1 className="global-h1">Blog Posts</h1>
-        <div className={styles.blogCardContainer}>
+        <div className={"cardContainer"}>
           <div></div>
           <div></div>
           <div></div>
@@ -227,7 +180,7 @@ const Home = () => {
           <p className={styles.arrowBtn + " btn global-p"}>
             See more
             <span>
-              <img src="./home_img/icons/arrow.svg" alt="arrow"></img>
+              <img src="./img/icons/arrow.svg" alt="arrow"></img>
             </span>
           </p>
         </Link>
@@ -239,7 +192,6 @@ const Home = () => {
 
 const MyLoader = () => <div>Loading...</div>;
 export default withAuthUser({
-  whenAuthed: AuthAction.REDIRECT_TO_APP,
   whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
   whenUnauthedAfterInit: AuthAction.RENDER,
   LoaderComponent: MyLoader,
