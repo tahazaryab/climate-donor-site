@@ -1,66 +1,118 @@
 import React from "react";
 import { Layout, Menu, Button } from "antd";
 import styles from "../styles/Navbar.module.css";
-import Link from "next/link";
-
-const Header = Layout.Header;
+import { useEffect, useState } from "react";
 
 const NavBar = ({ userId, signOut }) => {
+  let listener = null;
+  const [scrollState, setScrollState] = useState("top");
+
+  useEffect(() => {
+    listener = document.addEventListener("scroll", (e) => {
+      var scrolled = document.scrollingElement.scrollTop;
+      if (scrolled > 0) {
+        if (scrollState !== "scrolling") {
+          setScrollState("scrolling");
+        }
+      } else {
+        if (scrollState !== "top") {
+          setScrollState("top");
+        }
+      }
+    });
+    return () => {
+      document.removeEventListener("scroll", listener);
+    };
+  }, [scrollState]);
+
   let authenticationItem = userId ? (
-    <Menu.Item key="/logout">
-      <Button
-        onClick={() => {
-          signOut();
-        }}
-      >
-        Logout
-      </Button>
-    </Menu.Item>
+    <Button
+      onClick={() => {
+        signOut();
+      }}>
+      Logout
+    </Button>
   ) : (
-    <Menu.Item key="/signin">
-      <Button type="primary" href="/signin">
-        Sign In
-      </Button>
-    </Menu.Item>
+    <Button type="primary" href="/signin">
+      Sign In
+    </Button>
   );
 
-  let menuItems;
-  menuItems = [
-    <Menu.Item key="/">
-      <Link href="/">Home</Link>
-    </Menu.Item>,
-    <Menu.Item key="/about">
-      <Link href="/about">About</Link>
-    </Menu.Item>,
-    <Menu.Item key="/contact">
-      <Link href="/contact">Contact</Link>
-    </Menu.Item>,
-    <Menu.Item key="/getInvolved">
-      <Link href="/getInvolved">Get Involved</Link>
-    </Menu.Item>,
-    authenticationItem,
-    <Menu.Item key="/donate">
-      <Button href="/signin" type="primary">
-        Donate
-      </Button>
-    </Menu.Item>,
-  ];
-
   return (
-    <Header className={styles.appHeader}>
-      <div className={styles.siteLogo}>
-        <Link href="/">
-          <img src="/logo2.png" alt="logo of Climate Donor" />
-        </Link>
-        <Link href="/">
-          <p>Climate Donor</p>
-        </Link>
+    <nav
+      className={`w-100 navbar navbar-expand-lg top-0 start-0 p-3 ${
+        scrollState !== "scrolling"
+          ? styles.topnav + " position-absolute navbar-dark bg-transparent"
+          : styles.scrollnav + " position-sticky navbar-light bg-light"
+      }`}>
+      <div className={"container-fluid"}>
+        <a className="navbar-brand" href="/">
+          <img
+            className="inline"
+            src="/logo2.png"
+            alt="logo of Climate Donor"
+            width="40"
+            height="40"
+          />
+          <h6 className="float-end">Climate Donor</h6>
+        </a>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto me-auto mb-2 mb-lg-0">
+            <li className="nav-item">
+              <a className="nav-link" aria-current="page" href="/">
+                Home
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/about">
+                About
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/contact">
+                Contact
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/getInvolved">
+                Get Involved
+              </a>
+            </li>
+          </ul>
+          {authenticationItem}
+          <Button href="/signin" type="primary">
+            Donate
+          </Button>
+        </div>
       </div>
-      <Menu className={styles.siteMenu} disabledOverflow="true" mode="horizontal">
-        {menuItems}
-      </Menu>
-    </Header>
+    </nav>
   );
 };
 
 export default NavBar;
+
+{
+  /* <Header classNameName={styles.appHeader}>
+      <div classNameName={styles.siteLogo}>
+        <a href="/">
+          <img src="/logo2.png" alt="logo of Climate Donor" />
+        </a>
+        <a href="/">
+          <p>Climate Donor</p>
+        </a>
+      </div>
+      <Menu classNameName={styles.siteMenu} disabledOverflow="true" mode="horizontal">
+        {menuItems}
+      </Menu>
+    </Header> */
+}
