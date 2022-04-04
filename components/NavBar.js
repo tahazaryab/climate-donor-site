@@ -1,11 +1,13 @@
 import React from "react";
 import { Layout, Menu, Button } from "antd";
 import styles from "../styles/Navbar.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const NavBar = ({ userId, signOut }) => {
   let listener = null;
   const [scrollState, setScrollState] = useState("top");
+  const [expanded, setExpanded] = useState(false);
+  console.log(expanded)
 
   useEffect(() => {
     listener = document.addEventListener("scroll", (e) => {
@@ -42,8 +44,10 @@ const NavBar = ({ userId, signOut }) => {
     <nav
       className={`w-100 navbar navbar-expand-lg top-0 start-0 p-3 ${
         scrollState !== "scrolling"
-          ? styles.topnav + " position-absolute navbar-dark bg-transparent"
-          : styles.scrollnav + " position-sticky navbar-light bg-light"
+          ? !expanded
+            ? styles.transpnav + ` position-absolute navbar-dark bg-transparent`
+            : styles.lightnav + " position-absolute navbar-light bg-light"
+          : styles.lightnav + " position-sticky navbar-light bg-light"
       }`}>
       <div className={"container-fluid"}>
         <a className="navbar-brand" href="/">
@@ -63,7 +67,9 @@ const NavBar = ({ userId, signOut }) => {
           data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent"
           aria-expanded="false"
-          aria-label="Toggle navigation">
+          aria-label="Toggle navigation"
+          onClick={(e) => {
+            setExpanded(e.currentTarget.getAttribute('aria-expanded'))}}>
           <span className="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">

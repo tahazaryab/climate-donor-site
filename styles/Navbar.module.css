@@ -1,18 +1,26 @@
-.scrollnav h6, .topnav h6 {
+.lightnav h6, .transpnav h6 {
 	display: block;
 	margin: 5px 0 auto 10px;
 	font-size: 24px;
 }
 
-.scrollnav ul li, .topnav ul li{
+.lightnav ul li, .transpnav ul li{
 	font-size: 18px;
 	margin: 0 20px;
 }
 
-.scrollnav h6,.scrollnav ul * {
+.lightnav h6,.lightnav ul * {
 	color: black;
 }
 
-.topnav h6,.topnav ul *{
+.transpnav h6,.transpnav ul *{
 	color: white !important;
+}
+
+.transpnav, .lightnav {
+	z-index: 100;
+}
+
+.transpnav :global .ant-btn, .lightnav :global .ant-btn {
+	margin: 0 10px;
 }
