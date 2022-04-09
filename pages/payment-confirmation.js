@@ -10,6 +10,7 @@ export default function PaymentConfirmation() {
     return (
         <>
             <NavBar />
+            <br />
             <div className={confirmStyles.thanks}>
                 <h1 className>Thank you for donating!</h1>
                 <h3>What's next?</h3>
