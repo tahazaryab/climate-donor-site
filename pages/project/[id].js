@@ -70,7 +70,8 @@ const ProjectPage = () => {
     
 
     const handleDonate = async() => {
-        const projectDetails = {
+		router.push("/payment-confirmation/");
+       /* const projectDetails = {
             name: project.title,
             id: project.id,
             amount: amount
@@ -94,7 +95,7 @@ const ProjectPage = () => {
           // If `redirectToCheckout` fails due to a browser or network
           // error, display the localized error message to your customer
           // using `result.error.message`.
-        }
+        } */
     }
 
     const showModal = () => {
