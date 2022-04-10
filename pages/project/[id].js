@@ -70,7 +70,7 @@ const ProjectPage = () => {
     
 
     const handleDonate = async() => {
-		router.push("/payment-confirmation/");
+		router.push("/donation-form/");
        /* const projectDetails = {
             name: project.title,
             id: project.id,
