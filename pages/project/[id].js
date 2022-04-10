@@ -43,10 +43,12 @@ const ProjectPage = () => {
 
     const { id } = router.query;
     const { Content } = Layout;
+    console.log(id);
 
     const getProject = async () => {
         var proj = (await getDoc("projects", id))
         proj = await Promise.resolve(proj)
+        console.log(proj.title)
         proj.published = proj?.published.toDate().toLocaleDateString() + ''
         proj.updated = proj?.updated.toDate().toLocaleDateString() + ''
         setProject(proj)
@@ -67,35 +69,6 @@ const ProjectPage = () => {
         }
           
     }, [])
-    
-
-    const handleDonate = async() => {
-        const projectDetails = {
-            name: project.title,
-            id: project.id,
-            amount: amount
-        }
-
-        const stripe = await stripePromise;
-        console.log(stripe)
-
-        console.log("test" )
-        const response = await axios.post('/api/payment/checkout', projectDetails )
-    
-        // When the customer clicks on the button, redirect them to Checkout.
-        console.log(response)
-        const result = await stripe.redirectToCheckout({
-          sessionId: response.data.id,
-        });
-
-        console.log(result)
-    
-        if (result.error) {
-          // If `redirectToCheckout` fails due to a browser or network
-          // error, display the localized error message to your customer
-          // using `result.error.message`.
-        }
-    }
 
     const showModal = () => {
         setIsModalVisible(true);
@@ -170,7 +143,7 @@ const ProjectPage = () => {
                                         <p>Climate Donor ${project?.totalAmt} </p>
                                         <p>Other Sources ${project?.totalAmt}</p>
                                     </div>
-                                    <Button type="primary" className={styles.Button} onClick={handleDonate}>Donate</Button>
+                                    <Button type="primary" className={styles.Button} href={"./donate?project_id="+id}>Donate</Button>
                                     <Button type='danger' onClick={showModal}>Delete</Button>
 
                                     <Modal 
