@@ -14,12 +14,14 @@
   float: left;
   width: 174px;
   height: 130px;
+  margin-right: 36px;
 }
 
 .projectInfo {
   display: block;
   width: 50%;
   margin: auto;
+  margin-top: 95px;
 }
 .small {
   font-family: 'Work Sans';
