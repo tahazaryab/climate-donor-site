@@ -3,7 +3,6 @@ import NavBar from "../components/NavBar";
 import React from "react";
 import styles from "../styles/Home.module.css";
 import newsStyles from "../styles/News.module.css";
-import "@fontsource/inter";
 
 const posts = [
   ["May 18, 2021", "When words fail", "We all probably have a visceral reaction when we think about home. So, when I read this Opinion piece, entitled “When words fail”,  in the @stanforddaily, the idea of home sent chills through me when  contemplated in view of #climatechange and #speciesextinction extra filler extra filler extra filler"],

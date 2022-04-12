@@ -77,9 +77,6 @@ const ProjectPage = () => {
         }
 
         const stripe = await stripePromise;
-        console.log(stripe)
-
-        console.log("test" )
         const response = await axios.post('/api/payment/checkout', projectDetails )
     
         // When the customer clicks on the button, redirect them to Checkout.
