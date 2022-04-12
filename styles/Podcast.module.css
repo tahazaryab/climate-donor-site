@@ -1,6 +1,6 @@
 .podcastHeader {
   display: flex;
-  background: url(../public/home_img/podcast.png) center/cover no-repeat;
+  background: url(../public/img/podcast.png) center/cover no-repeat;
   flex-direction: column;
   justify-content: center;
   align-items: center;
