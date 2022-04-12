@@ -66,8 +66,16 @@ const SignInPage = () => {
         <Row type="flex" align="middle">
           <Col span={8}></Col>
           <Col span={8}>
-            <div className="container">
-              <h1>Sign In</h1>
+            <div style={{ marginBottom: "3em" }}>
+              <h1
+                style={{
+                  textAlign: "center",
+                  fontSize: "3em",
+                  fontWeight: "bolder",
+                }}
+              >
+                Sign In
+              </h1>
             </div>
 
             <p style={{ color: "red" }}>{errorMessage}</p>
@@ -118,15 +126,25 @@ const SignInPage = () => {
               >
                 <Checkbox>Remember me</Checkbox>
               </Form.Item>
-
-              <Form.Item {...tailLayout}>
-                <Button type="primary" htmlType="submit">
-                  Submit
-                </Button>
-              </Form.Item>
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <Form.Item>
+                  <Button
+                    type="primary"
+                    htmlType="submit"
+                    style={{
+                      width: "216px",
+                      heigh: "40px",
+                    }}
+                  >
+                    Sign In
+                  </Button>
+                </Form.Item>
+              </div>
             </Form>
-            <div>
+            <div style={{ display: "flex", justifyContent: "center" }}>
               <Link href="/forgot-password">Forgot password?</Link>{" "}
+            </div>
+            <div style={{ display: "flex", justifyContent: "center" }}>
               <h4>
                 Don't have an account?{" "}
                 <span>

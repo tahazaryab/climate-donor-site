@@ -1,0 +1,7 @@
+.donateCard img {
+  border-radius: 8px 8px 0px 0px;
+}
+
+.donateCard > div {
+  padding: 1rem;
+}

@@ -1,0 +1,189 @@
+b.emphasis {
+  font-weight: 900;
+}
+
+hr.break {
+  margin-left: 4vw;
+  margin-right: 4vw;
+  border: solid #c8c8c8;
+}
+
+.img {
+  margin-bottom: 100px;
+}
+
+.subtitle {
+  margin-top: 100px;
+  max-width: 100px;
+  font-family: "Work Sans", sans-serif;
+}
+
+.plain h1 {
+  margin-top: 25px;
+}
+
+.plain h2 {
+  margin-top: 80px;
+  margin-bottom: 150px;
+  max-width: 1080px;
+}
+
+.media {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.media img {
+  display: block;
+  margin: 15px 0;
+}
+
+.heroButton {
+  background: rgba(212, 239, 222, 0.3);
+  border: 1px solid #d4efde;
+  margin-left: 10px;
+  color: white;
+}
+
+.plain {
+  text-align: center;
+}
+.plain > div:last-child {
+  background-color: #124095;
+  width: 118px;
+  text-align: center;
+  color: white;
+}
+.plain > p {
+  width: 60%;
+  margin-bottom: 50px;
+}
+
+.plainIcons {
+  margin: 30px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.plainIcons div {
+  flex: 1;
+  text-align: center;
+}
+.plainIcons div img {
+  display: block;
+  margin: auto;
+}
+
+.emphasis {
+  padding: 100px 20px;
+}
+
+.portal {
+  padding: 80px 20px;
+}
+.portal h1,
+.portal h2,
+.portal h3,
+.portal p {
+  color: black;
+}
+.portal > h1,
+.portal > h2 {
+  text-align: center;
+}
+.portal > h2 {
+  margin: 20px 0 70px 0;
+  width: 60%;
+  color: black;
+}
+.portal .portalCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  width: 80%;
+}
+.portal .portalCard img {
+  width: 40%;
+}
+
+.portal .portalCard div > p:first-child {
+  color: #9fbef2;
+}
+
+.portal .portalCard h2 {
+  width: 15em;
+  text-align: right;
+}
+
+.portal .portalCard .right {
+  text-align: left;
+}
+
+@media (max-width: 1300px) {
+  .emphasis {
+    padding: 0 20px 20px 20px;
+  }
+
+  .portal .portalCard img {
+    max-width: 200px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .portal h2 {
+    text-align: justify !important;
+    width: auto !important;
+    margin: 20px 0 20px 0;
+  }
+
+  b.emphasis {
+    font-weight: 900;
+    display: block;
+    text-align: center !important;
+  }
+
+  .plain > p {
+    width: 100%;
+  }
+
+  .plainIcons {
+    flex-wrap: wrap;
+  }
+  .plainIcons h3 {
+    font-size: 16px;
+  }
+  .plainIcons div {
+    flex: 0 0 33%;
+  }
+
+  .emphasis .emphasisCard {
+    width: 100%;
+    display: block;
+    padding: 1.5rem 0;
+  }
+  .emphasis .emphasisCard img {
+    width: 60%;
+    display: block;
+    border-radius: 50%;
+    margin: auto;
+  }
+
+  .portal {
+    width: 100%;
+  }
+  .portal > h2 {
+    width: 100%;
+  }
+  .portal .portalCard {
+    margin-bottom: 0;
+    display: block;
+    width: 100%;
+  }
+  .portal .portalCard div {
+    width: 100%;
+  }
+}
