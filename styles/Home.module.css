@@ -102,12 +102,22 @@
   color: #9fbef2;
 }
 
-/* each page has another class in its own css for the header (e.g. podcastHeader) */
+/* Each page has another class in its own css for the header (e.g. podcastHeader) 
+*  Could clean the code by using the hero component instead */
 .headerContainer {
   width: 80%;
   display: flex;
   justify-content: space-between;
 }
+.headerContainer h1 {
+  color: white;
+}
+
+.headerContainer h2 {
+  color: white;
+  max-width: 552px;
+}
+
 .postInfoList {
   padding-top: 100px;
   padding-bottom: 100px;

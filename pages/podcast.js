@@ -61,7 +61,7 @@ export default function Podcast() {
       <div>
         <div className={podcastStyles.podcastHeader}>
           <div className={styles.headerContainer}>
-            <div className={styles.title}>
+            <div>
               <h1 className="global-h1">
                 Sustainability Accelerator
               </h1>
