@@ -24,27 +24,28 @@ const NavBar = ({ userId, signOut }) => {
     </Menu.Item>
   );
 
-  let menuItems;
-  menuItems = [
-    <Menu.Item key="/">
-      <Link href="/">Home</Link>
-    </Menu.Item>,
-    <Menu.Item key="/about">
-      <Link href="/about">About</Link>
-    </Menu.Item>,
-    <Menu.Item key="/contact">
-      <Link href="/contact">Contact</Link>
-    </Menu.Item>,
-    <Menu.Item key="/getInvolved">
-      <Link href="/getInvolved">Get Involved</Link>
-    </Menu.Item>,
-    authenticationItem,
-    <Menu.Item key="/donate">
-      <Button href="/signin" type="primary">
-        Donate
-      </Button>
-    </Menu.Item>,
-  ];
+	let menuItems;
+	menuItems = [
+		<Menu.Item key="/">
+			<Link href="/">Home</Link>
+		</Menu.Item>,
+		<Menu.Item key="/about">
+			<Link href="/about">About</Link>
+		</Menu.Item>,
+		<Menu.Item key="/contact">
+			<Link href="/contact">Contact</Link>
+		</Menu.Item>,
+		<Menu.Item key="/news">
+			<Link href="/news">News</Link>
+		</Menu.Item>,
+		<Menu.Item key="/podcast">
+			<Link href="/podcast">Podcast</Link>
+		</Menu.Item>,
+		authenticationItem,
+		<Menu.Item key="/donate">
+			<Button type="primary">Donate</Button>
+		</Menu.Item>,
+	];
 
   return (
     <Header className={styles.appHeader}>

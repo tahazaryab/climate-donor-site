@@ -1,0 +1,156 @@
+.podcastHeader {
+  display: flex;
+  background: url(../public/img/podcast.png) center/cover no-repeat;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.podcastHost {
+  background-color: white;
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+.podcastLatestEpisode {
+  background-color: #F5F5F5;
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+.podcastLatestEpisode iframe {
+  margin: 40px auto;
+}
+.podcastBlurb {
+  background-color: white;
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  align-items: center;
+}
+.podcastBody button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+
+  width: 155px;
+  height: 40px;
+  margin: auto;
+  margin-top: 20px;
+
+  background: #048A81;
+  border: 1px solid #048A81;
+  box-sizing: border-box;
+
+  /* drop-shadow/button-primary */
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
+  border-radius: 2px;
+}
+.podcastBody h1 {
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 56px;
+}
+.podcastBody h2 {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 25px;
+}
+.podcastBody p {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 25px;
+  max-width: 800px;
+  margin: auto;
+}
+.episodeDescriptionContainer {
+  display: block;
+  justify-content: center;
+  align-items: left;
+  margin-left: auto;
+}
+.episodeDescriptionContainer button {
+  /* Taken from Figma prototype */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+
+  position: static;
+  width: 114px;
+  height: 40px;
+  left: 0px;
+  top: 158px;
+
+  background: #048A81;
+  border: 1px solid #048A81;
+  box-sizing: border-box;
+
+  /* drop-shadow/button-primary */
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
+  border-radius: 2px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 3;
+  flex-grow: 0;
+  margin: 20px 0px;
+  font-size: 16px;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+.whiteBackground {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+.grayBackground {
+  margin: 0;
+  padding: 0;
+  background-color: #F5F5F5;;
+}
+.episodeDescription {
+  background: white;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  flex: none;
+  flex-grow: 0;
+  align-items: flex-start;
+  padding: 40px;
+  margin-top: 32px;
+  margin-left: auto;
+  margin-right: auto;
+  position: static;
+  width: 880px;
+  height: 278px;
+}
+.episodeDescription h3 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  margin-top: 12px;
+}
+.episodeDescription p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
+  text-align: left;
+  margin-top: 7px;
+  margin-left: 0;
+  display: inline-block;
+}
+.episodeDescription h5 {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #888888;
+}

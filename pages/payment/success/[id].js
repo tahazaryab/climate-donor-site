@@ -64,7 +64,6 @@ const PaymentSuccess = () => {
 
 const MyLoader = () => <div>Loading...</div>
 export default withAuthUser({
-    whenAuthed: AuthAction.RENDER,
     whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
     whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
     LoaderComponent: MyLoader,

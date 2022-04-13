@@ -19,6 +19,12 @@ const Projects = () => {
     let donation = await getUserProjects(AuthUser.id);
     let donationResult = await Promise.all(donation);
     setDonorProjects(donationResult);
+    donationResult = donationResult.filter(
+      (thing, index, self) =>
+        index ===
+        self.findIndex((t) => JSON.stringify(t) === JSON.stringify(thing))
+    );
+
     if (selectedMenu == "1") {
       setProjects(donationResult);
     }
