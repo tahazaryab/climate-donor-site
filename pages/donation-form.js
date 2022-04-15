@@ -70,48 +70,53 @@ function ProjectInfo(props) {
 function GuestForm() {
   return (
     <>
-    <Form>
+    <Form layout="vertical">
       <h3>Enter your donation</h3>
-      <Form.Item
-      >
-        <Input></Input>
+      <Form.Item>
+        <Input />
       </Form.Item>
       <hr />
-      <h3>Personal Information</h3>
-      <Form.Item
-        label="Email"
-        name="email"
-        colon={false}
-        rules={[
-          {
-            required: true,
-            type: "email",
-            message: "Please input your email!",
-          },
-        ]}
-      >
-        <Input placeholder="Your Email" />
-      </Form.Item>
-      <Form.Item
-        label="Name"
-        name="name"
-        colon={false}
-        rules={[
-          {
-            required: true,
-            type: "name",
-            message: "Please input your name!",
-          },
-        ]}
-      >
-        <Input placeholder="Your First and Last Name" />
-      </Form.Item>
-      <Form.Item
-        name="anonymous"
-        valuePropName="checked"
-      >
-        <Checkbox>Make my donation anonymous</Checkbox>
-      </Form.Item>
+      <h3 className={donationStyles.personalInfoHeader}>Personal Information</h3>
+      <div className={donationStyles.personalInfoContainer}>
+        <div>
+          <Form.Item
+            label="Email"
+            name="email"
+            colon={false}
+            rules={[
+              {
+                required: true,
+                type: "email",
+                message: "Please input your email!",
+              },
+            ]}
+          >
+            <Input placeholder="Your Email" />
+          </Form.Item>
+          <Form.Item
+            name="anonymous"
+            valuePropName="checked"
+          >
+            <Checkbox>Make my donation anonymous</Checkbox>
+          </Form.Item>
+        </div>
+        <div>
+          <Form.Item
+            label="Name"
+            name="name"
+            colon={false}
+            rules={[
+              {
+                required: true,
+                type: "name",
+                message: "Please input your name!",
+              },
+            ]}
+          >
+            <Input placeholder="Your First and Last Name" />
+          </Form.Item>
+        </div>
+      </div>
       
       <hr />
 

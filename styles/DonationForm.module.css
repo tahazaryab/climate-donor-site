@@ -58,3 +58,20 @@
   line-height: 28px;
   color: #333333;
 }
+
+h3.personalInfoHeader {
+  margin-bottom: 59px;
+}
+.personalInfoContainer {
+	display: grid;
+	grid-template-columns: auto auto;
+  margin-bottom: 64px;
+}
+
+.personalInfoContainer h3 {
+  margin-bottom: 59px;
+}
+
+.personalInfoContainer input {
+  max-width: 400px;
+}
