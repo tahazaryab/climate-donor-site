@@ -1,11 +1,15 @@
 import { Button, Form, Input, Select } from "antd";
 import styles from "../styles/DonationSignIn.module.css";
-import React from "react";
+import React, { useState } from "react";
 import DBNavBar from "../components/DBNavBar";
 import NavBar from "../components/NavBar";
 import "@fontsource/inter";
 
 export default function donateSignIn() {
+	const formItemLayout = {
+		labelCol: {span: 6},
+		wrapperCol: {span: 14},
+	};
   return (
 		<>
     	<NavBar />
@@ -13,14 +17,14 @@ export default function donateSignIn() {
 			<div className={styles.mainContainer}>
       	<h1>How would you like to donate today?</h1>
 				<div className={styles.gridContainer}>
-					<div>
+					<div className={styles.leftCol}>
 						<h3>Returning User</h3>
 						<p>Signing in with Climate Donor allows you to keep a record of your contributions!</p>
-						<Form>
+						<Form layout="vertical">
 							<Form.Item
                 label="Email"
                 name="email"
-                colon="true"
+                colon={false}
                 rules={[
                   {
                     required: true,
@@ -34,7 +38,7 @@ export default function donateSignIn() {
 							<Form.Item
                 label="Password"
                 name="password"
-                colon="true"
+                colon={false}
                 rules={[
                   {
                     required: true,
@@ -55,7 +59,7 @@ export default function donateSignIn() {
 							<a> Sign Up</a>
 						</p>
 					</div>
-					<div>
+					<div className={styles.rightCol}>
 						<h3>Guest</h3>
 						<p>No account? Continue as a guest and you will have an opportunity at the end if you would like to create an account to track your contributions!</p>
 						<Button type="primary">
