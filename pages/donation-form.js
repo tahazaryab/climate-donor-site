@@ -72,9 +72,20 @@ function GuestForm() {
     <>
     <Form layout="vertical">
       <h3>Enter your donation</h3>
-      <Form.Item>
-        <Input />
-      </Form.Item>
+      <div className={donationStyles.amountFormContainer}>
+        <Form.Item
+          name="amount"
+          rules={[
+            {
+              required: true,
+              hidden: true,
+              message: "Please input an amount to donate!",
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+      </div>
       <hr />
       <h3 className={donationStyles.personalInfoHeader}>Personal Information</h3>
       <div className={donationStyles.personalInfoContainer}>
@@ -121,119 +132,137 @@ function GuestForm() {
       <hr />
 
       <h3>Payment Method</h3>
-      <Form.Item
-        label="Card Number"
-        name="card-number"
-        colon={false}
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        <Input placeholder="Card Number" />
-      </Form.Item>
-      <Form.Item
-        label="Expiration"
-        name="expiration"
-        colon={false}
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        <Input placeholder="MM/YY" />
-      </Form.Item>
-      <Form.Item
-        label="CVV"
-        name="cvv"
-        colon={false}
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        <Input placeholder="CVV" />
-      </Form.Item>
-      <Form.Item
-        label="Name on Card"
-        name="name-on-card"
-        colon={false}
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        <Input placeholder="Name on Card" />
-      </Form.Item>
+      <div className={donationStyles.menuContainer}>
+      <div className={donationStyles.creditCardContainer}>
+        <Form.Item
+          label="Card Number"
+          name="card-number"
+          colon={false}
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Input placeholder="Card Number" />
+        </Form.Item>
+        <div className={donationStyles.middleTriplet}>
+          <Form.Item
+            label="Expiration"
+            name="expiration"
+            colon={false}
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input placeholder="MM/YY" />
+          </Form.Item>
+        </div>
+        <Form.Item
+          label="CVV"
+          name="cvv"
+          colon={false}
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Input placeholder="CVV" />
+        </Form.Item>
+        <Form.Item
+          label="Name on Card"
+          name="name-on-card"
+          colon={false}
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Input placeholder="Name on Card" />
+        </Form.Item>
+      </div>
       <h3>Billing Information</h3>
-      <Form.Item
-        label="First Name"
-        name="billing-first-name"
-        colon={false}
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        <Input placeholder="First Name" />
-      </Form.Item>
-      <Form.Item
-        label="Last Name"
-        name="billing-last-name"
-        colon={false}
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        <Input placeholder="Last Name" />
-      </Form.Item>
-      <Form.Item
-        label="Street Address"
-        name="street-address"
-        colon={false}
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        <Input placeholder="Street Address" />
-      </Form.Item>
-      <Form.Item
-        label="Street Address Line 2"
-        name="street-address-2"
-        colon={false}
-      >
-        <Input placeholder="Street Address Line 2" />
-      </Form.Item>
-      <DropdownForm type="state"/>
-      <Form.Item
-        label="Postal Code"
-        name="postal-code"
-        colon={false}
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        <Input placeholder="Postal Code" />
-      </Form.Item>
-      <DropdownForm type="country"/>
+      <div className={donationStyles.billingNameContainer}>
+        <Form.Item
+          label="First Name"
+          name="billing-first-name"
+          colon={false}
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Input placeholder="First Name" />
+        </Form.Item>
+        <Form.Item
+          label="Last Name"
+          name="billing-last-name"
+          colon={false}
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Input placeholder="Last Name" />
+        </Form.Item>
+      </div>
+      <div className={donationStyles.billingAddressContainer}>
+        <div className={donationStyles.leftTriplet}>
+        <Form.Item
+          label="Street Address"
+          name="street-address"
+          colon={false}
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Input placeholder="Street Address" />
+        </Form.Item>
+        </div>
+        <div className={donationStyles.middleTriplet}>
+          <DropdownForm type="state"/>
+        </div>
+        
+        <Form.Item
+          label="Postal Code"
+          name="postal-code"
+          colon={false}
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Input placeholder="Postal Code" />
+        </Form.Item>
+        <Form.Item
+          label="Street Address Line 2"
+          name="street-address-2"
+          colon={false}
+        >
+          <Input placeholder="Street Address Line 2" />
+        </Form.Item>
+        <div className={donationStyles.middleTriplet}>
+          <DropdownForm type="country"/>
+        </div>
+      </div>
+        <Form.Item
+          name="remember-card"
+          valuePropName="checked"
+        >
+          <Checkbox>Remember my card for future donations</Checkbox>
+        </Form.Item>
+      </div>
 
-      <Form.Item
-        name="remember-card"
-        valuePropName="checked"
-      >
-        <Checkbox>Remember my card for future donations</Checkbox>
-      </Form.Item>
+      
 
       <Form.Item>
         <Button type="primary" htmlType="submit">

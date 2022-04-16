@@ -59,6 +59,11 @@
   color: #333333;
 }
 
+.amountFormContainer input {
+  height: 102px;
+  margin-top: 24px;
+}
+
 h3.personalInfoHeader {
   margin-bottom: 59px;
 }
@@ -74,4 +79,37 @@ h3.personalInfoHeader {
 
 .personalInfoContainer input {
   max-width: 400px;
+}
+
+.menuContainer {
+  width: 874px;
+  border: 1px solid gray;
+  padding-left: 31px;
+  padding-right: 73px;
+}
+
+.creditCardContainer {
+  display: grid;
+  grid-template-columns: 369px auto auto;
+  gap: 11px;
+  margin-bottom: 64px;
+}
+
+.billingNameContainer {
+  display: grid;
+  grid-template-columns: 369px auto;
+  gap: 32px;
+}
+.billingAddressContainer {
+  display: grid;
+  grid-template-columns: 369px auto 179px;
+  gap: 11px;
+}
+
+.leftTriplet {
+  padding-right: 0px;
+}
+
+.middleTriplet {
+  padding-left: 21px;
 }
