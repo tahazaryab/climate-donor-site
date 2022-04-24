@@ -24,43 +24,6 @@ import { loadStripe } from '@stripe/stripe-js'
 
 const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
 
-// TODO: Add all possible states/country options
-// TODO: Get list of states/countries from data instead of hardcoded
-function DropdownForm(props) {
-  if (props.type == "country")
-    return (
-      <>
-        <Form.Item
-          name="country-select"
-          label="Country"
-          hasFeedback
-          rules={[{ required: true, message: 'Please select your country!' }]}
-        >
-          <Select>
-            <Select value="china">China</Select>
-            <Select value="usa">United States of America</Select>
-          </Select>
-        </Form.Item>
-      </>
-    );
-  
-  return (
-    <>
-      <Form.Item
-        name="state-select"
-        label="State"
-        hasFeedback
-        rules={[{ required: true, message: 'Please select your state!' }]}
-      >
-        <Select>
-          <Select value="az">AZ</Select>
-          <Select value="ca">CA</Select>
-          <Select value="ny">NY</Select>
-        </Select>
-      </Form.Item>
-    </>
-  );
-}
 
 function ProjectInfo(props) {
   return (
@@ -138,7 +101,6 @@ const DonorDonate = () => {
 
 
 	return (
-		
 		<>
 			<DBNavBar userId={AuthUser.id}
 				userName={displayName != null ? displayName : 'Name'}

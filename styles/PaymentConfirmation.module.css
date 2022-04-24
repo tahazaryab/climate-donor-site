@@ -1,0 +1,58 @@
+.thanks {
+    display: block;
+}
+.thanks h1 {
+    margin-top: 177px;
+
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 56px;
+    text-align: center;
+    color: #333333;
+}
+
+.thanks h3 {
+    margin-top: 56px;
+    
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    color: #333333;
+}
+
+.thanks p {
+    width: 623px;
+    margin: auto;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    /* or 139% */
+
+    text-align: center;
+
+    color: #333333;
+}
+.thanks button {
+    display: block;
+    margin: auto;
+    margin-top: 56px;
+
+    height: 40px;
+    width: 203px;
+    background: #048A81;
+    border: 1px solid #048A81;
+    box-sizing: border-box;
+    /* drop-shadow/button-primary */
+
+    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
+    border-radius: 2px;
+    padding: 8px 16px;
+
+}
