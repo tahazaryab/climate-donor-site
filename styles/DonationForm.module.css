@@ -169,3 +169,13 @@ h3.personalInfoHeader {
 .checkoutButton {
   width: 238px;
 }
+
+.checkoutCaption {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+
+  color: #888888;
+}

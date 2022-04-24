@@ -274,6 +274,7 @@ function GuestForm() {
           Checkout
         </Button>
       </Form.Item>
+      <p className={donationStyles.checkoutCaption}>(You will be able to review your information before we place your donation)</p>
     </Form>
     </>
   );
