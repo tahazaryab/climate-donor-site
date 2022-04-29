@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import styles from "../../styles/Dashboard.module.css";
 import SearchBar from "../SearchBar";
 import ProjectTabs from "../ProjectTabs";
-import { Dropdown, Layout, Row } from "antd";
+import { Dropdown, Layout, Row, Table } from "antd";
 import { getAllProjects } from "../../lib/firebase";
 import ProjectCard from "../ProjectCard";
+import SimpleProjectCard from "../SimpleProjectCard";
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
@@ -56,7 +57,7 @@ export default function Projects() {
 
               return (
                 <Row key={value}>
-                  <ProjectCard key={value} project={singleProject} />
+                  <SimpleProjectCard key={value} project={singleProject} />
                 </Row>
               );
             })
