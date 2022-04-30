@@ -17,7 +17,7 @@ const AdminDashboard = () => {
 			case "1":
 				return <Donors />;
 			case "2":
-				return <Projects />;
+				return <Projects userType="admin"/>;
 			default:
 				return;
 		}
