@@ -68,23 +68,36 @@ function AdminProjectList(props) {
       },
     },
   ];
+
+  let data = [];
+
+  for (let i = 0; i < projects.length; i++) {
+    let proj = getProject(i);
+    data.push({
+      key: i,
+      name: proj.title,
+      owner: proj.author,
+      status: proj.status,
+      last_action: proj.updated,
+    });
+  }
   
-  const data = [
-    {
-      key: '1',
-      name: 'John Brown',
-      owner: 98,
-      status: 60,
-      last_action: 70,
-    },
-    {
-      key: '2',
-      name: 'Jim Green',
-      owner: 98,
-      status: 66,
-      last_action: 89,
-    },
-  ];
+  // const data = [
+  //   {
+  //     key: '1',
+  //     name: 'John Brown',
+  //     owner: 98,
+  //     status: 60,
+  //     last_action: 70,
+  //   },
+  //   {
+  //     key: '2',
+  //     name: 'Jim Green',
+  //     owner: 98,
+  //     status: 66,
+  //     last_action: 89,
+  //   },
+  // ];
 
   return (
     <Table 
