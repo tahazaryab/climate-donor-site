@@ -6,6 +6,7 @@ import { Dropdown, Layout, Row, Table } from "antd";
 import { getAllProjects } from "../../lib/firebase";
 import ProjectCard from "../ProjectCard";
 import SimpleProjectCard from "../SimpleProjectCard";
+import Link from "next/link";
 
 function ProjectList(props) {
   let projects = props.projects;
@@ -38,37 +39,6 @@ function AdminProjectList(props) {
   let projects = props.projects;
   let getProject = props.getProject;
 
-  const columns = [
-    {
-      title: 'Project Name',
-      dataIndex: 'name',
-    },
-    {
-      title: 'Project Owner',
-      dataIndex: 'owner',
-      sorter: {
-        compare: (a, b) => a.chinese - b.chinese,
-        multiple: 3,
-      },
-    },
-    {
-      title: 'Status',
-      dataIndex: 'status',
-      sorter: {
-        compare: (a, b) => a.math - b.math,
-        multiple: 2,
-      },
-    },
-    {
-      title: 'Last Action',
-      dataIndex: 'last_action',
-      sorter: {
-        compare: (a, b) => a.english - b.english,
-        multiple: 1,
-      },
-    },
-  ];
-
   let data = [];
 
   for (let i = 0; i < projects.length; i++) {
@@ -81,28 +51,52 @@ function AdminProjectList(props) {
       last_action: proj.updated,
     });
   }
-  
-  // const data = [
-  //   {
-  //     key: '1',
-  //     name: 'John Brown',
-  //     owner: 98,
-  //     status: 60,
-  //     last_action: 70,
-  //   },
-  //   {
-  //     key: '2',
-  //     name: 'Jim Green',
-  //     owner: 98,
-  //     status: 66,
-  //     last_action: 89,
-  //   },
-  // ];
+
+  const columns = [
+    {
+      title: 'Project Name',
+      dataIndex: 'name',
+      sorter: {
+        compare: (a, b) => a.name - b.name,
+        multiple: 4,
+      },
+      render: (text, row, index) => <Link href={`/project/${getProject(parseInt(index)).id}`}>{text}</Link>
+    },
+    {
+      title: 'Project Owner',
+      dataIndex: 'owner',
+      sorter: {
+        compare: (a, b) => a.owner - b.owner,
+        multiple: 3,
+      },
+    },
+    {
+      title: 'Status',
+      dataIndex: 'status',
+      sorter: {
+        compare: (a, b) => a.status - b.status,
+        multiple: 2,
+      },
+    },
+    {
+      title: 'Last Action',
+      dataIndex: 'last_action',
+      sorter: {
+        compare: (a, b) => a.last_action - b.last_action,
+        multiple: 1,
+      },
+    },
+  ];
 
   return (
     <Table 
       columns={columns}
       dataSource={data}
+      onRow={(record, rowIndex) => {
+        return {
+          onClick: event => console.log(data[rowIndex])
+        };
+      }}
     />
   );
 }
