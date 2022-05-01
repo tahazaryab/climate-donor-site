@@ -76,9 +76,10 @@
 }
 .amountFormContainer p {
   position: relative;
-  top: -96px;
-  left: 35px;
+  top: -70px;
+  left: -35px;
   z-index: 1;
+  margin-bottom: 0px;
 
   font-family: 'Work Sans';
   font-style: normal;
