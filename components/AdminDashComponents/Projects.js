@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 import styles from "../../styles/Dashboard.module.css";
 import SearchBar from "../SearchBar";
 import ProjectTabs from "../ProjectTabs";
-import { Dropdown, Layout, Row, Table } from "antd";
+import { Button, Row, Table } from "antd";
 import { getAllProjects } from "../../lib/firebase";
 import ProjectCard from "../ProjectCard";
-import SimpleProjectCard from "../SimpleProjectCard";
 import Link from "next/link";
 
 function ProjectList(props) {
@@ -60,7 +59,18 @@ function AdminProjectList(props) {
         compare: (a, b) => a.name - b.name,
         multiple: 4,
       },
-      render: (text, row, index) => <Link href={`/project/${getProject(parseInt(index)).id}`}>{text}</Link>
+      render: (text, row, index) =>
+        <div>
+          <span className={styles.projectRowButton} onClick={() => console.log('accept')}>✅</span>
+          <span className={styles.projectRowButton} onClick={() => console.log('reject')}>❌</span>
+          <a 
+            target="_blank"
+            href={`/project/${getProject(parseInt(index)).id}`}
+            className={styles.projectLink}
+          >
+            {text}
+          </a>
+        </div>
     },
     {
       title: 'Project Owner',
@@ -92,11 +102,6 @@ function AdminProjectList(props) {
     <Table 
       columns={columns}
       dataSource={data}
-      onRow={(record, rowIndex) => {
-        return {
-          onClick: event => console.log(data[rowIndex])
-        };
-      }}
     />
   );
 }
