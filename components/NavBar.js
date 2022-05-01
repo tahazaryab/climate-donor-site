@@ -2,12 +2,16 @@ import React from "react";
 import { Layout, Menu, Button } from "antd";
 import styles from "../styles/Navbar.module.css";
 import { useEffect, useState, useRef } from "react";
+import { useRouter } from "next/router";
+
 
 const NavBar = ({ userId, signOut }) => {
   let listener = null;
   const [scrollState, setScrollState] = useState("top");
   const [expanded, setExpanded] = useState(false);
-  console.log(expanded)
+  const router = useRouter();
+  const pathName = router.pathname;
+  console.log(pathName);
 
   useEffect(() => {
     listener = document.addEventListener("scroll", (e) => {
@@ -43,7 +47,7 @@ const NavBar = ({ userId, signOut }) => {
   return (
     <nav
       className={`w-100 navbar navbar-expand-lg top-0 start-0 p-3 ${
-        scrollState !== "scrolling"
+        scrollState !== "scrolling" && pathName != "/signin" && pathName != "/signup"
           ? !expanded
             ? styles.transpnav + ` position-absolute navbar-dark bg-transparent`
             : styles.lightnav + " position-absolute navbar-light bg-light"
@@ -69,7 +73,8 @@ const NavBar = ({ userId, signOut }) => {
           aria-expanded="false"
           aria-label="Toggle navigation"
           onClick={(e) => {
-            setExpanded(e.currentTarget.getAttribute('aria-expanded'))}}>
+            setExpanded(e.currentTarget.getAttribute("aria-expanded"));
+          }}>
           <span className="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">

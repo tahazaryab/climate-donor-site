@@ -15,7 +15,7 @@ class AppFooter extends Component {
               <img src="/logo2.png" alt="logo of Climate Donor" />
               <p>Climate Donor</p>
             </div>
-            <h2 className="subtitle" style={{fontSize: "1.5em", marginBottom: "5em", marginTop: "1em"}}>
+            <h2 className="subtitle" style={{fontSize: "1.5em"}}>
                 ClimateDonor.org is a 501(c)(3) nonprofit organization that is
                 focused on mitigation and reversal of global climate change and
                 species extinction.

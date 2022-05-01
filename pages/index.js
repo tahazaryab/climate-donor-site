@@ -5,11 +5,13 @@ import AppFooter from "../components/Footer";
 import Link from "next/link";
 import Hero from "../components/Hero";
 import HorizonCard from "../components/HorizonCard";
+import { useRouter } from "next/router";
 
 import { useAuthUser, withAuthUser, AuthAction } from "next-firebase-auth";
 
 const Home = () => {
   const AuthUser = useAuthUser();
+
   return (
     <>
       <NavBar userId={AuthUser.id} signOut={AuthUser.signOut}></NavBar>
