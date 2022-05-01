@@ -1,0 +1,104 @@
+.appHeader {
+	display: flex;
+	justify-content: space-between;
+	position: fixed;
+	width: 100%;
+	box-shadow: 0 2px 8px #bdbdbd;
+	z-index: 10;
+	padding: 0;
+	background-color: white;
+}
+
+.app-menu {
+	float: right;
+}
+
+.app-menu > li {
+	padding: 0 20px;
+}
+
+.app-menu > li > a {
+	padding: 0 20px;
+	margin: 0 -20px;
+}
+
+.app-menu > li > a > i {
+	margin-right: 0 !important;
+}
+
+.siteMenu {
+	float: right;
+	border-bottom: none;
+	background: none;
+}
+
+.siteLogo {
+	width: 30%;
+	text-align: left;
+	display: flex;
+	align-items: center;
+}
+.siteLogo img {
+	margin-left: 2em;
+	height: 40px;
+}
+.siteLogo:hover img {
+	cursor: pointer;
+}
+.siteLogo:hover p {
+	cursor: pointer;
+}
+.siteLogo p {
+	margin-bottom: 0;
+	margin-left: 1rem;
+	font-weight: 700;
+	font-size: 20px;
+}
+.signinButton {
+	color: #048a81;
+}
+.iconsList {
+	margin-right: 5%;
+	min-width: 18%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.iconsList div {
+	cursor: pointer;
+	height: 36px;
+	width: 36px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	background: #f5f5f5;
+	border-radius: 4px;
+	font-size: 20px;
+}
+.iconsList p {
+	margin: 0;
+}
+.iconsList a {
+	width: 150px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	color: #000;
+}
+.nameIcon {
+	color: #ddd;
+	background: #e5e5e5;
+}
+
+
+@media (max-width: 768px) {
+	.app-menu > li {
+		padding: 0 15px;
+	}
+
+	.app-menu > li > a {
+		padding: 0 15px;
+		margin: 0 -15px;
+	}
+}

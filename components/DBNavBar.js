@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Layout, Menu, Dropdown } from "antd";
-import styles from "../styles/Navbar.module.css";
+import styles from "../styles/DBNavbar.module.css";
 import {
   faBell,
   faPlus,
