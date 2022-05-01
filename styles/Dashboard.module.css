@@ -76,3 +76,15 @@
   background: #048a81;
   transform: matrix(1, 0, 0, -1, 0, 0);
 }
+
+.projectLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.projectRowButton {
+  margin-right: 5px;
+}
+.projectRowButton:hover {
+  cursor: pointer;
+}

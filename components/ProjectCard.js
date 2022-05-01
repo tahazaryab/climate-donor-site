@@ -2,6 +2,7 @@ import styles from "../styles/ProjectCard.module.css";
 import { Image, Progress } from "antd";
 import { faUser, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import '@fortawesome/fontawesome-svg-core/styles.css'
 import Link from "next/link";
 
 const tag_text1 = "Clean Energy";
@@ -17,9 +18,11 @@ const calPercentage = (currentAmt, total) => {
 const ProjectCard = ({ project, isOwner }) => {
   return (
     <Link
+      className={styles.projectLink}
       href={
         isOwner ? `/owner/project/${project.id}` : `/project/${project.id}`
-      }>
+      }
+      >
       <div className={styles.projectCard}>
         <Image
           width={200}
