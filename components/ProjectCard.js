@@ -16,10 +16,12 @@ const calPercentage = (currentAmt, total) => {
 
 const ProjectCard = ({ project, isOwner }) => {
   return (
-    <Link
+    <a
+      className={styles.projectLink}
       href={
         isOwner ? `/owner/project/${project.id}` : `/project/${project.id}`
-      }>
+      }
+      >
       <div className={styles.projectCard}>
         <Image
           width={200}
@@ -75,7 +77,7 @@ const ProjectCard = ({ project, isOwner }) => {
           </div>
         </div>
       </div>
-    </Link>
+    </a>
   );
 };
 

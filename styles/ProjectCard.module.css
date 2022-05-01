@@ -119,3 +119,7 @@
   padding: 0;
 }
 
+.projectLink, .projectLink:hover, .projectLink:focus, .projectLink:active {
+  text-decoration: none;
+  color: inherit;
+}
