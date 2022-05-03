@@ -2,13 +2,9 @@ import styles from "../../styles/ProjectPage.module.css";
 import donationStyles from "../../styles/DonationForm.module.css";
 import {
   Button,
-  Image,
-  Progress,
-  Row,
   Layout,
   Form,
   Input,
-  Select,
   Checkbox,
   InputNumber,
 } from "antd";
@@ -139,7 +135,6 @@ const DonorDonate = () => {
           <h3>Enter your donation</h3>
           <div className={donationStyles.amountFormContainer}>
             <Form.Item
-				label="Donation"
               name="donation"
               rules={[
                 {
@@ -149,13 +144,14 @@ const DonorDonate = () => {
                 },
               ]}
             >
-              <InputNumber
+              <InputNumber className={donationStyles.amountForm}
                 formatter={(value) =>
                   `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
                 }
                 parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
+                min={0}
+                size="large"
               />
-              {/* <p>$</p> */}
             </Form.Item>
           </div>
           <hr />
