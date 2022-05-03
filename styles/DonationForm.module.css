@@ -71,6 +71,9 @@
   color: #333333;
 }
 
+.amountFormContainer {
+  margin-bottom: 30px;
+}
 .amountFormContainer input {
   height: 102px;
   margin-top: 0px;
@@ -81,22 +84,6 @@
   width: 100%;
   min-width: 200px;
 }
-/*
-.amountFormContainer p {
-  position: relative;
-  top: -70px;
-  left: -35px;
-  z-index: 1;
-  margin-bottom: 0px;
-
-  font-family: 'Work Sans';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 36px;
-  line-height: 42px;
-
-  color: #333333;
-}*/
 
 .usdLabel {
   font-family: 'Work Sans';
