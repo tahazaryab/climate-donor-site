@@ -5,7 +5,11 @@ import ProjectTabs from "../ProjectTabs";
 import { Button, Row, Table } from "antd";
 import { getAllProjects } from "../../lib/firebase";
 import ProjectCard from "../ProjectCard";
-import Link from "next/link";
+import { withThemeCreator } from "@material-ui/styles";
+
+const red = "#ff6262";
+const yellow = "#ffff62";
+const green = "#62ff62";
 
 function ProjectList(props) {
   let projects = props.projects;
@@ -39,7 +43,6 @@ function AdminProjectList(props) {
   let getProject = props.getProject;
 
   let data = [];
-
   for (let i = 0; i < projects.length; i++) {
     let proj = getProject(i);
     data.push({
@@ -59,18 +62,31 @@ function AdminProjectList(props) {
         compare: (a, b) => a.name - b.name,
         multiple: 4,
       },
-      render: (text, row, index) =>
-        <div>
-          <span className={styles.projectRowButton} onClick={() => console.log('accept')}>✅</span>
-          <span className={styles.projectRowButton} onClick={() => console.log('reject')}>❌</span>
-          <a 
-            target="_blank"
-            href={`/project/${getProject(parseInt(index)).id}`}
-            className={styles.projectLink}
-          >
-            {text}
-          </a>
-        </div>
+      render(text, row, index) {
+        let color = red;
+        if (data[index].status === "pending")
+          color = yellow;
+        else if (data[index].status === "approved")
+          color = green;
+        
+        return {
+          props: {
+            style: { background: color },
+          },
+          children:
+            <div>
+              <span className={styles.projectRowButton} onClick={() => console.log(row.color)}>✅</span>
+              <span className={styles.projectRowButton} onClick={() => console.log('reject')}>❌</span>
+              <a 
+                target="_blank"
+                href={`/project/${getProject(parseInt(index)).id}`}
+                className={styles.projectLink}
+              >
+                {text}
+              </a>
+            </div>
+        };
+      }
     },
     {
       title: 'Project Owner',
@@ -99,7 +115,12 @@ function AdminProjectList(props) {
   ];
 
   return (
-    <Table 
+    // <Table
+    //   rowClassName={(record, index) => index % 2 == 0 ? styles.rejected : styles.pending}
+    //   columns={columns}
+    //   dataSource={data}
+    // />
+    <Table
       columns={columns}
       dataSource={data}
     />

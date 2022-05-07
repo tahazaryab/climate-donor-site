@@ -88,3 +88,13 @@
 .projectRowButton:hover {
   cursor: pointer;
 }
+
+.rejected {
+  background-color: #ff6262;
+}
+.pending {
+  background-color: #ffff62;
+}
+.live {
+  background-color: #62ff62;
+}
