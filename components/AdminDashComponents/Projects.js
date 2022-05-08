@@ -42,17 +42,7 @@ function AdminProjectList(props) {
   let projects = props.projects;
   let getProject = props.getProject;
 
-  let data = [];
-  for (let i = 0; i < projects.length; i++) {
-    let proj = getProject(i);
-    data.push({
-      key: i,
-      name: proj.title,
-      owner: proj.author,
-      status: proj.status,
-      last_action: proj.updated,
-    });
-  }
+  let data = props.data;
 
   const columns = [
     {
@@ -75,7 +65,7 @@ function AdminProjectList(props) {
           },
           children:
             <div>
-              <span className={styles.projectRowButton} onClick={() => console.log(row.color)}>✅</span>
+              <span className={styles.projectRowButton} onClick={() => console.log('accept')}>✅</span>
               <span className={styles.projectRowButton} onClick={() => console.log('reject')}>❌</span>
               <a 
                 target="_blank"
@@ -115,11 +105,6 @@ function AdminProjectList(props) {
   ];
 
   return (
-    // <Table
-    //   rowClassName={(record, index) => index % 2 == 0 ? styles.rejected : styles.pending}
-    //   columns={columns}
-    //   dataSource={data}
-    // />
     <Table
       columns={columns}
       dataSource={data}
@@ -154,6 +139,18 @@ export default function Projects(props) {
     return project;
   };
 
+  let tableData = [];
+  for (let i = 0; i < projects.length; i++) {
+    let proj = getProject(i);
+    tableData.push({
+      key: i,
+      name: proj.title,
+      owner: proj.author,
+      status: proj.status,
+      last_action: proj.updated,
+    });
+  }
+
   return (
     <div className={styles.contentDisplay}>
       <div className={styles.titleBar}>
@@ -173,6 +170,7 @@ export default function Projects(props) {
         <AdminProjectList 
           projects={projects}
           getProject={getProject}
+          data={tableData}
         /> :
         <ProjectList
           projects={projects}
