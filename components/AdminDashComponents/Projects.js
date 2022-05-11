@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "../../styles/Dashboard.module.css";
 import SearchBar from "../SearchBar";
 import ProjectTabs from "../ProjectTabs";
-import { Button, Row, Table } from "antd";
+import { Row, Table } from "antd";
 import { getAllProjects } from "../../lib/firebase";
 import ProjectCard from "../ProjectCard";
 import { withThemeCreator } from "@material-ui/styles";
@@ -41,8 +41,17 @@ function ProjectList(props) {
 function AdminProjectList(props) {
   let projects = props.projects;
   let getProject = props.getProject;
-
   let data = props.data;
+
+  const [tempData, setTempData] = useState(data);
+
+  const changeProjectStatus = (project, index, status) => {
+    // set the status of this project to the value in the "status" variable in firebase
+    let temp = data;
+    temp[index].status = status;
+    setTempData(temp);
+    console.log(index);
+  }
 
   const columns = [
     {
@@ -54,9 +63,9 @@ function AdminProjectList(props) {
       },
       render(text, row, index) {
         let color = red;
-        if (data[index].status === "pending")
+        if (data[index]?.status === "pending") 
           color = yellow;
-        else if (data[index].status === "approved")
+        else if (data[index]?.status === "approved")
           color = green;
         
         return {
@@ -65,8 +74,23 @@ function AdminProjectList(props) {
           },
           children:
             <div>
-              <span className={styles.projectRowButton} onClick={() => console.log('accept')}>✅</span>
-              <span className={styles.projectRowButton} onClick={() => console.log('reject')}>❌</span>
+              {data[index].status === "pending" ? 
+                <span>
+                  <span
+                    className={styles.projectRowButton}
+                    onClick={() => changeProjectStatus(getProject(parseInt(index)), index, "approved")}
+                  >
+                    ✅
+                  </span>
+                  <span
+                    className={styles.projectRowButton}
+                    onClick={() => changeProjectStatus(getProject(parseInt(index)), index, "rejected")}
+                  >
+                    ❌
+                  </span>
+                </span> : 
+                <span />
+              }
               <a 
                 target="_blank"
                 href={`/project/${getProject(parseInt(index)).id}`}
@@ -85,6 +109,19 @@ function AdminProjectList(props) {
         compare: (a, b) => a.owner - b.owner,
         multiple: 3,
       },
+      render(text, row, index) {
+        let color = red;
+        if (data[index]?.status === "pending") 
+          color = yellow;
+        else if (data[index]?.status === "approved")
+          color = green;
+        return {
+          props: {
+            style: { background: color },
+          },
+          children: <span>{text}</span>
+        }
+      }
     },
     {
       title: 'Status',
@@ -93,6 +130,19 @@ function AdminProjectList(props) {
         compare: (a, b) => a.status - b.status,
         multiple: 2,
       },
+      render(text, row, index) {
+        let color = red;
+        if (data[index]?.status === "pending") 
+          color = yellow;
+        else if (data[index]?.status === "approved")
+          color = green;
+        return {
+          props: {
+            style: { background: color },
+          },
+          children: <span>{text}</span>
+        }
+      }
     },
     {
       title: 'Last Action',
@@ -101,6 +151,19 @@ function AdminProjectList(props) {
         compare: (a, b) => a.last_action - b.last_action,
         multiple: 1,
       },
+      render(text, row, index) {
+        let color = red;
+        if (data[index]?.status === "pending") 
+          color = yellow;
+        else if (data[index]?.status === "approved")
+          color = green;
+        return {
+          props: {
+            style: { background: color },
+          },
+          children: <span>{text}</span>
+        }
+      }
     },
   ];
 
