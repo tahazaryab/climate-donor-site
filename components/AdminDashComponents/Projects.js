@@ -46,7 +46,10 @@ function AdminProjectList(props) {
   const [tempData, setTempData] = useState(data);
 
   const changeProjectStatus = (project, index, status) => {
-    // set the status of this project to the value in the "status" variable in firebase
+    // TODO: set the status of this project to the value in the "status" variable in firebase
+
+    // update the front end value
+    // TODO: fix bug that only allows one row to be changed before the whole component is rerendered
     let temp = data;
     temp[index].status = status;
     setTempData(temp);
