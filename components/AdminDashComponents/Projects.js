@@ -2,10 +2,14 @@ import { useEffect, useState } from "react";
 import styles from "../../styles/Dashboard.module.css";
 import SearchBar from "../SearchBar";
 import ProjectTabs from "../ProjectTabs";
-import { Button, Row, Table } from "antd";
+import { Row, Table } from "antd";
 import { getAllProjects } from "../../lib/firebase";
 import ProjectCard from "../ProjectCard";
-import Link from "next/link";
+import { withThemeCreator } from "@material-ui/styles";
+
+const red = "#ff6262";
+const yellow = "#ffff62";
+const green = "#62ff62";
 
 function ProjectList(props) {
   let projects = props.projects;
@@ -37,18 +41,19 @@ function ProjectList(props) {
 function AdminProjectList(props) {
   let projects = props.projects;
   let getProject = props.getProject;
+  let data = props.data;
 
-  let data = [];
+  const [tempData, setTempData] = useState(data);
 
-  for (let i = 0; i < projects.length; i++) {
-    let proj = getProject(i);
-    data.push({
-      key: i,
-      name: proj.title,
-      owner: proj.author,
-      status: proj.status,
-      last_action: proj.updated,
-    });
+  const changeProjectStatus = (project, index, status) => {
+    // TODO: set the status of this project to the value in the "status" variable in firebase
+
+    // update the front end value
+    // TODO: fix bug that only allows one row to be changed before the whole component is rerendered
+    let temp = data;
+    temp[index].status = status;
+    setTempData(temp);
+    console.log(index);
   }
 
   const columns = [
@@ -59,18 +64,46 @@ function AdminProjectList(props) {
         compare: (a, b) => a.name - b.name,
         multiple: 4,
       },
-      render: (text, row, index) =>
-        <div>
-          <span className={styles.projectRowButton} onClick={() => console.log('accept')}>✅</span>
-          <span className={styles.projectRowButton} onClick={() => console.log('reject')}>❌</span>
-          <a 
-            target="_blank"
-            href={`/project/${getProject(parseInt(index)).id}`}
-            className={styles.projectLink}
-          >
-            {text}
-          </a>
-        </div>
+      render(text, row, index) {
+        let color = red;
+        if (data[index]?.status === "pending") 
+          color = yellow;
+        else if (data[index]?.status === "approved")
+          color = green;
+        
+        return {
+          props: {
+            style: { background: color },
+          },
+          children:
+            <div>
+              {data[index].status === "pending" ? 
+                <span>
+                  <span
+                    className={styles.projectRowButton}
+                    onClick={() => changeProjectStatus(getProject(parseInt(index)), index, "approved")}
+                  >
+                    ✅
+                  </span>
+                  <span
+                    className={styles.projectRowButton}
+                    onClick={() => changeProjectStatus(getProject(parseInt(index)), index, "rejected")}
+                  >
+                    ❌
+                  </span>
+                </span> : 
+                <span />
+              }
+              <a 
+                target="_blank"
+                href={`/project/${getProject(parseInt(index)).id}`}
+                className={styles.projectLink}
+              >
+                {text}
+              </a>
+            </div>
+        };
+      }
     },
     {
       title: 'Project Owner',
@@ -79,6 +112,19 @@ function AdminProjectList(props) {
         compare: (a, b) => a.owner - b.owner,
         multiple: 3,
       },
+      render(text, row, index) {
+        let color = red;
+        if (data[index]?.status === "pending") 
+          color = yellow;
+        else if (data[index]?.status === "approved")
+          color = green;
+        return {
+          props: {
+            style: { background: color },
+          },
+          children: <span>{text}</span>
+        }
+      }
     },
     {
       title: 'Status',
@@ -87,6 +133,19 @@ function AdminProjectList(props) {
         compare: (a, b) => a.status - b.status,
         multiple: 2,
       },
+      render(text, row, index) {
+        let color = red;
+        if (data[index]?.status === "pending") 
+          color = yellow;
+        else if (data[index]?.status === "approved")
+          color = green;
+        return {
+          props: {
+            style: { background: color },
+          },
+          children: <span>{text}</span>
+        }
+      }
     },
     {
       title: 'Last Action',
@@ -95,11 +154,24 @@ function AdminProjectList(props) {
         compare: (a, b) => a.last_action - b.last_action,
         multiple: 1,
       },
+      render(text, row, index) {
+        let color = red;
+        if (data[index]?.status === "pending") 
+          color = yellow;
+        else if (data[index]?.status === "approved")
+          color = green;
+        return {
+          props: {
+            style: { background: color },
+          },
+          children: <span>{text}</span>
+        }
+      }
     },
   ];
 
   return (
-    <Table 
+    <Table
       columns={columns}
       dataSource={data}
     />
@@ -133,6 +205,18 @@ export default function Projects(props) {
     return project;
   };
 
+  let tableData = [];
+  for (let i = 0; i < projects.length; i++) {
+    let proj = getProject(i);
+    tableData.push({
+      key: i,
+      name: proj.title,
+      owner: proj.author,
+      status: proj.status,
+      last_action: proj.updated,
+    });
+  }
+
   return (
     <div className={styles.contentDisplay}>
       <div className={styles.titleBar}>
@@ -152,6 +236,7 @@ export default function Projects(props) {
         <AdminProjectList 
           projects={projects}
           getProject={getProject}
+          data={tableData}
         /> :
         <ProjectList
           projects={projects}
