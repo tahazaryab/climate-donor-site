@@ -4,9 +4,12 @@ export default async function handler(req, res) {
   if (req.method === 'POST') {
     try {
       const value = JSON.parse(req.body);
-
-      console.log(value)
-
+      let name = "";
+      if("donator" in value){
+        name = value.donator;
+      } else{
+        name = "Anonymous";
+      }
       const session = await stripe.checkout.sessions.create({
         line_items: [
           {
@@ -18,6 +21,22 @@ export default async function handler(req, res) {
           },
         ],
         mode: 'payment',
+        metadata: {
+          'name' : name,
+          'project_id' : value.project_id,
+          'project_title' : value.project_title,
+          'email' : value.email
+        },
+        payment_intent_data:
+          {
+            receipt_email: value.email,
+            metadata: {
+              'name' : name,
+              'project_id' : value.project_id,
+              'project_title' : value.project_title,
+              'email' : value.email
+            },
+          },
         success_url: `${req.headers.origin}/project/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${req.headers.origin}/project/${value.project_id}`, // canceled should go back to project page
       });
