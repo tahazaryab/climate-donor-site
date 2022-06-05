@@ -38,32 +38,35 @@ function ProjectList(props) {
   );
 }
 
+// from https://stackoverflow.com/questions/46240647/react-how-to-force-a-function-component-to-render
+function useForceUpdate(){
+  const [value, setValue] = useState(0); // integer state
+  return () => setValue(value => value + 1); // update the state to force render
+}
+
 function AdminProjectList(props) {
   let projects = props.projects;
   let getProject = props.getProject;
   let data = props.data;
 
   const [tempData, setTempData] = useState(data);
+  const forceUpdate = useForceUpdate();
 
   const changeProjectStatus = (project, index, status) => {
     // TODO: set the status of this project to the value in the "status" variable in firebase
 
     // update the front end value
-    // TODO: fix bug that only allows one row to be changed before the whole component is rerendered
+    // TODO: maybe a better way to rerender than forcing update
     let temp = data;
     temp[index].status = status;
     setTempData(temp);
-    console.log(index);
+    forceUpdate();
   }
 
   const columns = [
     {
       title: 'Project Name',
       dataIndex: 'name',
-      sorter: {
-        compare: (a, b) => a.name - b.name,
-        multiple: 4,
-      },
       render(text, row, index) {
         let color = red;
         if (data[index]?.status === "pending") 
@@ -108,10 +111,6 @@ function AdminProjectList(props) {
     {
       title: 'Project Owner',
       dataIndex: 'owner',
-      sorter: {
-        compare: (a, b) => a.owner - b.owner,
-        multiple: 3,
-      },
       render(text, row, index) {
         let color = red;
         if (data[index]?.status === "pending") 
@@ -129,10 +128,6 @@ function AdminProjectList(props) {
     {
       title: 'Status',
       dataIndex: 'status',
-      sorter: {
-        compare: (a, b) => a.status - b.status,
-        multiple: 2,
-      },
       render(text, row, index) {
         let color = red;
         if (data[index]?.status === "pending") 
@@ -150,10 +145,6 @@ function AdminProjectList(props) {
     {
       title: 'Last Action',
       dataIndex: 'last_action',
-      sorter: {
-        compare: (a, b) => a.last_action - b.last_action,
-        multiple: 1,
-      },
       render(text, row, index) {
         let color = red;
         if (data[index]?.status === "pending") 
