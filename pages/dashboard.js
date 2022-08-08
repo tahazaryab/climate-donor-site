@@ -16,7 +16,7 @@ const MyLoader = () => {
         justifyContent: "center",
         alignItems: "center",
       }}>
-      <CircularProgress color="primary" />
+      {/* <CircularProgress color="primary" /> */}
     </div>
   );
 };

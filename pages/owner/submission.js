@@ -1,31 +1,45 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import DBNavBar from "../../components/DBNavBar";
 import OwnerSidebar from "../../components/OwnerSidebar";
 import styles from "../../styles/OwnerSub.module.css";
 import { Layout, Button, Form, Input, DatePicker, Select } from "antd";
-import { addProject } from "../../lib/firebase";
+import { addProject, addImages } from "../../lib/firebase";
 import { faTags } from "@fortawesome/free-solid-svg-icons";
+import { styled } from '@material-ui/core/styles';
 import { useRouter } from "next/router";
+import { UploadOutlined } from '@ant-design/icons';
+import { Upload } from 'antd';
 import { useAuthUser, withAuthUser, AuthAction } from "next-firebase-auth";
 import Tags from "../../data/interests.json";
+import { Card } from 'antd';
 
 const { Content } = Layout;
 const { TextArea } = Input;
 const { RangePicker } = DatePicker;
 const { Option } = Select;
 
+
+
 const ProjectSubmission = () => {
+
+	// Handles image file uploads
+	const [selectedFiles, setSelectedFiles] = useState([]);
+	
+	console.log(selectedFiles);
+
+
 	const [form] = Form.useForm();
 	const router = useRouter();
 	const AuthUser = useAuthUser();
 
 	const onFinish = (fieldsValue) => {
 		//handle form submit
+
 		const project = {
 			title: fieldsValue.projectName,
 			description: fieldsValue.description,
 			totalAmt: fieldsValue.funding,
-			src: "https://via.placeholder.com/150",
+			src: selectedFiles,
 			website: fieldsValue.website,
 			curAmt: 1000,
 			tagName: fieldsValue.tag,
@@ -33,12 +47,31 @@ const ProjectSubmission = () => {
 			ownerId: AuthUser.id,
 		};
 
-		addProject(project);
+		addImages(selectedFiles, project.title).then(() => {
+			// addProject(project);
+		});
+
 		router.push("/dashboard");
+
 	};
 	useEffect(() => {
 		console.log(AuthUser.id);
 	});
+
+	const handleFileUpload = (e) => {
+		/* List of files is "array-like" not an actual array
+		* So we have to convert to file to an array an add it the array 
+		* by destructuring it
+		*/
+		setSelectedFiles(selectedFiles => [...selectedFiles, ...e.target.files]);
+
+	};
+
+	const removeImage = (index) => {
+		const newFileList = [...selectedFiles];
+		newFileList.splice(index, 1);
+		setSelectedFiles(newFileList);
+	}
 
 	return (
 		<>
@@ -103,6 +136,7 @@ const ProjectSubmission = () => {
 							>
 								<Input placeholder="Your Response" />
 							</Form.Item>
+
 							<Form.Item
 								name="website"
 								label="website"
@@ -198,6 +232,22 @@ const ProjectSubmission = () => {
 								extra="Beyond crowd-funding for your projects, what other services could ClimateDonor.org provide your organization that aren't already being addressed by others?"
 							>
 								<TextArea placeholder="Your Response" rows={3} />
+							</Form.Item>
+
+							<Form.Item
+								label="Do you have any images to add?"
+								extra="Do you have any mock-ups or design plans you'd like to include?"
+							>
+								<label htmlFor="icon-button-file">
+
+									<input style={{ display: 'none' }} accept="image/*" id="icon-button-file" type="file" multiple onChange={handleFileUpload} />
+									<div className={styles.imageUpload}>
+										<UploadOutlined />
+										<span>Upload</span>
+									</div>
+
+								</label>
+
 							</Form.Item>
 
 							<Form.Item
