@@ -3,7 +3,7 @@ import DBNavBar from "../../components/DBNavBar";
 import OwnerSidebar from "../../components/OwnerSidebar";
 import styles from "../../styles/OwnerSub.module.css";
 import { Layout, Button, Form, Input, DatePicker, Select } from "antd";
-import { addProject, addImages } from "../../lib/firebase";
+import { addProject, addImages, getImageURLs } from "../../lib/firebase";
 import { faTags } from "@fortawesome/free-solid-svg-icons";
 import { styled } from '@material-ui/core/styles';
 import { useRouter } from "next/router";
@@ -24,7 +24,8 @@ const ProjectSubmission = () => {
 
 	// Handles image file uploads
 	const [selectedFiles, setSelectedFiles] = useState([]);
-	
+	const [imageURLS, setImageURLS] = useState([]);
+
 	console.log(selectedFiles);
 
 
@@ -35,11 +36,13 @@ const ProjectSubmission = () => {
 	const onFinish = (fieldsValue) => {
 		//handle form submit
 
+
+
 		const project = {
 			title: fieldsValue.projectName,
 			description: fieldsValue.description,
 			totalAmt: fieldsValue.funding,
-			src: selectedFiles,
+			src: imageURLS,
 			website: fieldsValue.website,
 			curAmt: 1000,
 			tagName: fieldsValue.tag,
@@ -47,13 +50,14 @@ const ProjectSubmission = () => {
 			ownerId: AuthUser.id,
 		};
 
-		addImages(selectedFiles, project.title).then(() => {
-			// addProject(project);
-		});
+		addImages(selectedFiles, fieldsValue.projectName);
+
+		console.log(getImageURLs(fieldsValue.projectName));
 
 		router.push("/dashboard");
 
 	};
+
 	useEffect(() => {
 		console.log(AuthUser.id);
 	});
