@@ -49,11 +49,11 @@ const ProjectSubmission = () => {
 			ownerId: AuthUser.id,
 		};
 
-		addImages(project, selectedFiles, fieldsValue.projectName);
+		addImages(selectedFiles, fieldsValue.projectName);
 
 		// getImageURLs(fieldsValue.projectName);
 
-		router.push("/dashboard");
+		// router.push("/dashboard");
 
 	};
 
