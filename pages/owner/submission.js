@@ -37,7 +37,6 @@ const ProjectSubmission = () => {
 		//handle form submit
 
 
-
 		const project = {
 			title: fieldsValue.projectName,
 			description: fieldsValue.description,
@@ -50,7 +49,7 @@ const ProjectSubmission = () => {
 			ownerId: AuthUser.id,
 		};
 
-		addImages(selectedFiles, fieldsValue.projectName);
+		addImages(project, selectedFiles, fieldsValue.projectName);
 
 		// getImageURLs(fieldsValue.projectName);
 
@@ -58,17 +57,6 @@ const ProjectSubmission = () => {
 
 	};
 
-	useEffect(() => {
-
-		const loadImages = async () => {
-			const urls = await getImageURLs(fieldsValue.projectName);
-			setImageURLS(urls);
-		}
-
-		loadImages();
-
-		console.log('Image URLS are ' + imageURLS);
-	}, []);
 
 	useEffect(() => {
 		console.log(AuthUser.id);
