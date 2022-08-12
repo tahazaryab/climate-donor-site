@@ -49,9 +49,9 @@ const ProjectSubmission = () => {
 			ownerId: AuthUser.id,
 		};
 
-		addProject(project);
+		addProject(project, selectedFiles, fieldsValue.projectName);
 
-		addImages(selectedFiles, fieldsValue.projectName);
+		// addImages(selectedFiles, fieldsValue.projectName);
 
 		// getImageURLs(fieldsValue.projectName);
 
