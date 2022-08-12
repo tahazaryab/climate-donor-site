@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import  Link  from 'next/link'
+import Link from 'next/link'
 import DBNavBar from '../../../components/DBNavBar'
 import OwnerSidebar from '../../../components/OwnerSidebar'
 import styles from '../../../styles/OwnerDB.module.css'
 import { Layout, Row, Col } from 'antd'
 import { Button } from 'antd'
 import { Typography } from 'antd'
+import { Image } from 'antd';
 import PictureUploader from '../../../components/PictureUploader'
-import {getDoc} from '../../../lib/firebase'
+import { getDoc } from '../../../lib/firebase'
 
 
 const { Content } = Layout;
@@ -36,7 +37,7 @@ const ProjectInfoCard = () => {
     const [project, setProject] = useState()
     const { id } = router.query
 
-    useEffect(()=>{
+    useEffect(() => {
         const getProject = async () => {
             var proj = (await getDoc("projects", id))
             proj = await Promise.resolve(proj)
@@ -46,7 +47,7 @@ const ProjectInfoCard = () => {
             setEditableTitle(proj.title)
             setProject(proj)
         }
-    
+
         getProject()
     })
 
@@ -82,7 +83,10 @@ const ProjectInfoCard = () => {
             </Row>
             <Row>
                 <Col span={3} className={styles.infoTag}>Images</Col>
-                <Col span={21}><PictureUploader /></Col>
+                {project?.imageURLS.map((image, key) => (
+                    <Col span={3}><img key={key} width="100px" src={image} alt={image} /></Col>
+                ))}
+                {/* <Col span={21}><PictureUploader /></Col> */}
             </Row>
             <Row>
                 <Col span={3} className={styles.infoTag}>Details</Col>

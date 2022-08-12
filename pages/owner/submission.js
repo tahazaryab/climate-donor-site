@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import DBNavBar from "../../components/DBNavBar";
 import OwnerSidebar from "../../components/OwnerSidebar";
 import styles from "../../styles/OwnerSub.module.css";
-import { Layout, Button, Form, Input, DatePicker, Select, Image } from "antd";
+import { Layout, Button, Form, Input, DatePicker, Select, Image, Col, Row, Space } from "antd";
 import { addProject, addImages, getImageURLs } from "../../lib/firebase";
 import { faTags } from "@fortawesome/free-solid-svg-icons";
 import { styled } from '@material-ui/core/styles';
 import { useRouter } from "next/router";
-import { UploadOutlined } from '@ant-design/icons';
+import { UploadOutlined, DeleteFilled } from '@ant-design/icons';
 import { Upload } from 'antd';
 import { useAuthUser, withAuthUser, AuthAction } from "next-firebase-auth";
 import Tags from "../../data/interests.json";
@@ -26,7 +26,6 @@ const ProjectSubmission = () => {
 	const [selectedFiles, setSelectedFiles] = useState([]);
 	const [imageURLS, setImageURLS] = useState([]);
 
-	console.log(selectedFiles);
 
 
 	const [form] = Form.useForm();
@@ -50,9 +49,6 @@ const ProjectSubmission = () => {
 		};
 
 		addProject(project, selectedFiles, fieldsValue.projectName);
-
-
-
 		router.push("/dashboard");
 
 	};
@@ -80,8 +76,10 @@ const ProjectSubmission = () => {
 	return (
 		<>
 			<Layout>
+
 				<DBNavBar />
 				<Content className={styles.content}>
+
 					<OwnerSidebar />
 					<div>
 						<p className={styles.breadcrumb}>
@@ -242,6 +240,7 @@ const ProjectSubmission = () => {
 								label="Do you have any images to add?"
 								extra="Do you have any mock-ups or design plans you'd like to include?"
 							>
+
 								<label htmlFor="icon-button-file">
 
 									<input style={{ display: 'none' }} accept="image/*" id="icon-button-file" type="file" multiple onChange={handleFileUpload} />
@@ -250,9 +249,53 @@ const ProjectSubmission = () => {
 										<span>Upload</span>
 									</div>
 
+
+
 								</label>
+								<div style={{ height: '16px' }}>
+								</div>
+								{selectedFiles.length <= 0 ? <></> : selectedFiles.map((image, key) => (
+									<Row>
+										<Col span={24}>
+											<Col span={12}>
+												<Space
+													direction="vertical"
+													size="large"
+													style={{
+														display: 'flex',
+													}}
+												>
+													<Image
+														key={key}
+														preview={false}
+														width={100}
+														src={URL.createObjectURL(image)}
+													/>
+
+												</Space>
+											</Col>
+											<Col span={12}>
+												<Space
+													direction="vertical"
+													size="large"
+													style={{
+														display: 'flex',
+													}}
+												>
+
+													<DeleteFilled style={{ fontSize: '24px' }} onClick={() => removeImage(key)} />
+												</Space>
+											</Col>
+										</Col>
+
+
+									</Row>
+
+								))}
 
 							</Form.Item>
+
+
 
 							<Form.Item
 								label="Any additional feedback?"
