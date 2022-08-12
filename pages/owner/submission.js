@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import DBNavBar from "../../components/DBNavBar";
 import OwnerSidebar from "../../components/OwnerSidebar";
 import styles from "../../styles/OwnerSub.module.css";
-import { Layout, Button, Form, Input, DatePicker, Select } from "antd";
+import { Layout, Button, Form, Input, DatePicker, Select, Image } from "antd";
 import { addProject, addImages, getImageURLs } from "../../lib/firebase";
 import { faTags } from "@fortawesome/free-solid-svg-icons";
 import { styled } from '@material-ui/core/styles';
@@ -51,11 +51,9 @@ const ProjectSubmission = () => {
 
 		addProject(project, selectedFiles, fieldsValue.projectName);
 
-		// addImages(selectedFiles, fieldsValue.projectName);
 
-		// getImageURLs(fieldsValue.projectName);
 
-		// router.push("/dashboard");
+		router.push("/dashboard");
 
 	};
 
