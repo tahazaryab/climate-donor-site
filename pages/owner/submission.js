@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import DBNavBar from "../../components/DBNavBar";
 import OwnerSidebar from "../../components/OwnerSidebar";
 import styles from "../../styles/OwnerSub.module.css";
-import { Layout, Button, Form, Input, DatePicker, Select, Image, Col, Row, Space } from "antd";
+import { Layout, Button, Form, Input, DatePicker, Select, Image, Col, Row, Space, message } from "antd";
 import { addProject, addImages, getImageURLs } from "../../lib/firebase";
 import { faTags } from "@fortawesome/free-solid-svg-icons";
 import { styled } from '@material-ui/core/styles';
@@ -21,6 +21,11 @@ const { Option } = Select;
 
 
 const ProjectSubmission = () => {
+
+	const success = () => {
+		message.success('Project Added Successfully');
+	  };
+
 
 	// Handles image file uploads
 	const [selectedFiles, setSelectedFiles] = useState([]);
@@ -49,6 +54,7 @@ const ProjectSubmission = () => {
 		};
 
 		addProject(project, selectedFiles, fieldsValue.projectName);
+		success();
 		router.push("/dashboard");
 
 	};
@@ -256,46 +262,37 @@ const ProjectSubmission = () => {
 								</div>
 								{selectedFiles.length <= 0 ? <></> : selectedFiles.map((image, key) => (
 									<Row>
-										<Col span={24}>
-											<Col span={12}>
-												<Space
-													direction="vertical"
-													size="large"
-													style={{
-														display: 'flex',
-													}}
-												>
-													<Image
-														key={key}
-														preview={false}
-														width={100}
-														src={URL.createObjectURL(image)}
-													/>
-
-												</Space>
-											</Col>
-											<Col span={12}>
-												<Space
-													direction="vertical"
-													size="large"
-													style={{
-														display: 'flex',
-													}}
-												>
-
-													<DeleteFilled style={{ fontSize: '24px' }} onClick={() => removeImage(key)} />
-												</Space>
-											</Col>
+										<Col span={6}>
+											<Space
+												direction="vertical"
+												size="large"
+												style={{
+													display: 'flex',
+												}}
+											>
+												<Image
+													key={key}
+													preview={false}
+													width={100}
+													src={URL.createObjectURL(image)}
+												/>
+											</Space>
 										</Col>
-
-
+										<Col span={6}>
+											<Space
+												direction="vertical"
+												size="large"
+												style={{
+													display: 'flex',
+												}}
+											>
+												<DeleteFilled style={{ fontSize: '24px' }} onClick={() => removeImage(key)} />
+											</Space>
+										</Col>
 									</Row>
-
 								))}
 
 							</Form.Item>
-
-
 
 							<Form.Item
 								label="Any additional feedback?"

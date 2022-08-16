@@ -96,13 +96,15 @@
 
 .imageUpload {
 	width: 100px !important;
-	height: 30px;
+	height: 100px;
 	padding: 8px;
 	display: flex;
-	justify-content: space-around;
+	flex-direction: column;
+	justify-content: center;
 	cursor: pointer;
+	border: 1px dashed #048a81;
 	align-items: center;
-	color: #fff;
+	color: rgb(26, 26, 26);
 	border-radius: 2px;
-	background-color: #048a81;
+	background-color: #eeeeee;
 }
