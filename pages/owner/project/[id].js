@@ -54,7 +54,7 @@ const ProjectInfoCard = () => {
     return (
         <div className={styles.infoContainer}>
             <Paragraph className={styles.infoTitle} editable={{ onChange: setEditableTitle }}>{editableTitle}</Paragraph>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dui, imperdiet augue risus suscipit sollicitudin.</p>
+            {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dui, imperdiet augue risus suscipit sollicitudin.</p> */}
             <Row>
                 <Col span={3} className={styles.infoTag}>Time Frame</Col>
                 <Col span={21}>{project?.published} — {project?.updated}</Col>

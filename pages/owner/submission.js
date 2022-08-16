@@ -24,7 +24,7 @@ const ProjectSubmission = () => {
 
 	const success = () => {
 		message.success('Project Added Successfully');
-	  };
+	};
 
 
 	// Handles image file uploads
@@ -47,14 +47,17 @@ const ProjectSubmission = () => {
 			totalAmt: fieldsValue.funding,
 			src: imageURLS,
 			website: fieldsValue.website,
-			curAmt: 1000,
+			curAmt: fieldsValue.funding,
 			tagName: fieldsValue.tag,
 			location: fieldsValue.location,
+			endDate: fieldsValue.endDate,
 			ownerId: AuthUser.id,
 		};
 
-		addProject(project, selectedFiles, fieldsValue.projectName);
-		success();
+		addProject(project, selectedFiles, fieldsValue.projectName)
+			.then(() => {
+				success();
+			});
 		router.push("/dashboard");
 
 	};
@@ -261,35 +264,37 @@ const ProjectSubmission = () => {
 								<div style={{ height: '16px' }}>
 								</div>
 								{selectedFiles.length <= 0 ? <></> : selectedFiles.map((image, key) => (
-									<Row>
-										<Col span={6}>
-											<Space
-												direction="vertical"
-												size="large"
-												style={{
-													display: 'flex',
-												}}
-											>
-												<Image
-													key={key}
-													preview={false}
-													width={100}
-													src={URL.createObjectURL(image)}
-												/>
-											</Space>
-										</Col>
-										<Col span={6}>
-											<Space
-												direction="vertical"
-												size="large"
-												style={{
-													display: 'flex',
-												}}
-											>
-												<DeleteFilled style={{ fontSize: '24px' }} onClick={() => removeImage(key)} />
-											</Space>
-										</Col>
-									</Row>
+									<div className={styles.imageTile}>
+										<Row>
+											<Col span={6}>
+												<Space
+													direction="vertical"
+													size="large"
+													style={{
+														display: 'flex',
+													}}
+												>
+													<Image
+														key={key}
+														preview={false}
+														width={100}
+														src={URL.createObjectURL(image)}
+													/>
+												</Space>
+											</Col>
+											<Col span={6}>
+												<Space
+													direction="vertical"
+													size="large"
+													style={{
+														display: 'flex',
+													}}
+												>
+													<DeleteFilled style={{ fontSize: '24px' }} onClick={() => removeImage(key)} />
+												</Space>
+											</Col>
+										</Row>
+									</div>
 								))}
 
 							</Form.Item>
