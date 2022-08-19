@@ -3,7 +3,7 @@ import styles from "../../styles/Dashboard.module.css";
 import SearchBar from "../SearchBar";
 import ProjectTabs from "../ProjectTabs";
 import { Row, Table, Col, Select } from "antd";
-import { getAllProjects } from "../../lib/firebase";
+import { getAllProjects, updateStatus } from "../../lib/firebase";
 import ProjectCard from "../ProjectCard";
 import { withThemeCreator } from "@material-ui/styles";
 import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
@@ -14,8 +14,8 @@ const { Option } = Select;
 
 
 
-const red = "#ff6262";
-const orange = "#F07013";
+const red = "#fa1414";
+const orange = "#f08b2e";
 const green = "#62ff62";
 
 function ProjectList(props) {
@@ -67,6 +67,7 @@ function AdminProjectList(props) {
     let temp = data;
     temp[index].status = status;
     console.log(status);
+    updateStatus(project.id, status);
     setTempData(temp);
     forceUpdate();
   }
@@ -144,7 +145,10 @@ function AdminProjectList(props) {
           children:
             <>
               <Row>
-                <Col span={12}>
+                <Col span={3}>
+                  <div style={{ backgroundColor: color, height: '8px', width: '8px', borderRadius: '20px' }}></div>
+                </Col>
+                <Col span={3}>
                   {
                     data[index].status === "pending" ?
                       <Select
@@ -152,7 +156,7 @@ function AdminProjectList(props) {
                         style={{
                           width: 120,
                         }}
-                        onChange={() => changeProjectStatus(getProject(parseInt(index)), index, fieldNames.value)}
+                        onChange={(value) => changeProjectStatus(getProject(parseInt(index)), index, value)}
                       >
                         <Option value="approved">Approved</Option>
                         <Option value="rejected">Rejected</Option>
@@ -160,7 +164,37 @@ function AdminProjectList(props) {
 
                       </Select>
                       :
-                      <span />
+                      data[index].status === "approved" ?
+
+                        <Select
+                          defaultValue="approved"
+                          style={{
+                            width: 120,
+                          }}
+                          onChange={(value) => changeProjectStatus(getProject(parseInt(index)), index, value)}
+                        >
+                          <Option value="approved">Approved</Option>
+                          <Option value="rejected">Rejected</Option>
+                          <Option value="pending">Pending</Option>
+
+                        </Select>
+                        :
+                        data[index].status === "rejected" ?
+
+                          <Select
+                            defaultValue="rejected"
+                            style={{
+                              width: 120,
+                            }}
+                            onChange={(value) => changeProjectStatus(getProject(parseInt(index)), index, value)}
+                          >
+                            <Option value="approved">Approved</Option>
+                            <Option value="rejected">Rejected</Option>
+                            <Option value="pending">Pending</Option>
+
+                          </Select>
+                          :
+                          <span />
                   }
                   {/* {data[index].status === "pending" ?
                     <span>
@@ -185,9 +219,7 @@ function AdminProjectList(props) {
                 {/* <Col span={6}>
                   <span>{text}</span>
                 </Col> */}
-                <Col span={12}>
-                  <div style={{ backgroundColor: color, height: '8px', width: '8px', borderRadius: '20px' }}></div>
-                </Col>
+
               </Row>
 
             </>
