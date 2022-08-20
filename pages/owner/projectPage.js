@@ -79,7 +79,7 @@ const ProjectPage = () => {
                     <div className={styles.contentDisplay}>
                         <div className={styles.titleBar}>
                             <div className={styles.titleContainer}>
-                                Dashboard / {dummyProjectInfo.title}
+                                Dashboard / {dummyProjectInfo.title} 
                             </div>
                             <div>
                                 <Button type="primary">Publish Changes</Button>
