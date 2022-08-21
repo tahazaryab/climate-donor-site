@@ -2,13 +2,20 @@ import { useEffect, useState } from "react";
 import styles from "../../styles/Dashboard.module.css";
 import SearchBar from "../SearchBar";
 import ProjectTabs from "../ProjectTabs";
-import { Row, Table } from "antd";
-import { getAllProjects } from "../../lib/firebase";
+import { Row, Table, Col, Select } from "antd";
+import { getAllProjects, updateStatus } from "../../lib/firebase";
 import ProjectCard from "../ProjectCard";
 import { withThemeCreator } from "@material-ui/styles";
+import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
 
-const red = "#ff6262";
-const yellow = "#ffff62";
+
+
+const { Option } = Select;
+
+
+
+const red = "#fa1414";
+const orange = "#f08b2e";
 const green = "#62ff62";
 
 function ProjectList(props) {
@@ -38,63 +45,58 @@ function ProjectList(props) {
   );
 }
 
+// from https://stackoverflow.com/questions/46240647/react-how-to-force-a-function-component-to-render
+function useForceUpdate() {
+  const [value, setValue] = useState(0); // integer state
+  return () => setValue(value => value + 1); // update the state to force render
+}
+
 function AdminProjectList(props) {
   let projects = props.projects;
   let getProject = props.getProject;
   let data = props.data;
 
   const [tempData, setTempData] = useState(data);
+  const forceUpdate = useForceUpdate();
 
   const changeProjectStatus = (project, index, status) => {
     // TODO: set the status of this project to the value in the "status" variable in firebase
 
     // update the front end value
-    // TODO: fix bug that only allows one row to be changed before the whole component is rerendered
+    // TODO: maybe a better way to rerender than forcing update
     let temp = data;
     temp[index].status = status;
+    console.log(status);
+    updateStatus(project.id, status);
     setTempData(temp);
-    console.log(index);
+    forceUpdate();
   }
+
+  const handleChange = (value) => {
+    console.log(`selected ${value}`);
+
+  };
+
 
   const columns = [
     {
       title: 'Project Name',
       dataIndex: 'name',
-      sorter: {
-        compare: (a, b) => a.name - b.name,
-        multiple: 4,
-      },
       render(text, row, index) {
-        let color = red;
-        if (data[index]?.status === "pending") 
-          color = yellow;
-        else if (data[index]?.status === "approved")
-          color = green;
-        
+        // let color = red;
+        // if (data[index]?.status === "pending")
+        //   color = yellow;
+        // else if (data[index]?.status === "approved")
+        //   color = green;
+
         return {
           props: {
-            style: { background: color },
+            style: { background: 'white' },
           },
           children:
             <div>
-              {data[index].status === "pending" ? 
-                <span>
-                  <span
-                    className={styles.projectRowButton}
-                    onClick={() => changeProjectStatus(getProject(parseInt(index)), index, "approved")}
-                  >
-                    ✅
-                  </span>
-                  <span
-                    className={styles.projectRowButton}
-                    onClick={() => changeProjectStatus(getProject(parseInt(index)), index, "rejected")}
-                  >
-                    ❌
-                  </span>
-                </span> : 
-                <span />
-              }
-              <a 
+
+              <a
                 target="_blank"
                 href={`/project/${getProject(parseInt(index)).id}`}
                 className={styles.projectLink}
@@ -108,61 +110,134 @@ function AdminProjectList(props) {
     {
       title: 'Project Owner',
       dataIndex: 'owner',
-      sorter: {
-        compare: (a, b) => a.owner - b.owner,
-        multiple: 3,
-      },
       render(text, row, index) {
-        let color = red;
-        if (data[index]?.status === "pending") 
-          color = yellow;
-        else if (data[index]?.status === "approved")
-          color = green;
+        // let color = red;
+        // if (data[index]?.status === "pending")
+        //   color = yellow;
+        // else if (data[index]?.status === "approved")
+        //   color = green;
         return {
           props: {
-            style: { background: color },
+            style: { background: 'white' },
           },
-          children: <span>{text}</span>
+          children:
+            <>
+              <span>{text}</span>
+            </>
         }
       }
     },
     {
       title: 'Status',
       dataIndex: 'status',
-      sorter: {
-        compare: (a, b) => a.status - b.status,
-        multiple: 2,
-      },
       render(text, row, index) {
         let color = red;
-        if (data[index]?.status === "pending") 
-          color = yellow;
+        if (data[index]?.status === "pending")
+          color = orange;
         else if (data[index]?.status === "approved")
           color = green;
         return {
           props: {
-            style: { background: color },
+            style: { background: 'white' },
+            statusDot: { background: 'red', height: '10px', width: '10px' },
+            check: { color: 'green' }
           },
-          children: <span>{text}</span>
+          children:
+            <>
+              <Row>
+                <Col span={3}>
+                  <div style={{ backgroundColor: color, height: '8px', width: '8px', borderRadius: '20px' }}></div>
+                </Col>
+                <Col span={3}>
+                  {
+                    data[index].status === "pending" ?
+                      <Select
+                        defaultValue="pending"
+                        style={{
+                          width: 120,
+                        }}
+                        onChange={(value) => changeProjectStatus(getProject(parseInt(index)), index, value)}
+                      >
+                        <Option value="approved">Approved</Option>
+                        <Option value="rejected">Rejected</Option>
+                        <Option value="pending">Pending</Option>
+
+                      </Select>
+                      :
+                      data[index].status === "approved" ?
+
+                        <Select
+                          defaultValue="approved"
+                          style={{
+                            width: 120,
+                          }}
+                          onChange={(value) => changeProjectStatus(getProject(parseInt(index)), index, value)}
+                        >
+                          <Option value="approved">Approved</Option>
+                          <Option value="rejected">Rejected</Option>
+                          <Option value="pending">Pending</Option>
+
+                        </Select>
+                        :
+                        data[index].status === "rejected" ?
+
+                          <Select
+                            defaultValue="rejected"
+                            style={{
+                              width: 120,
+                            }}
+                            onChange={(value) => changeProjectStatus(getProject(parseInt(index)), index, value)}
+                          >
+                            <Option value="approved">Approved</Option>
+                            <Option value="rejected">Rejected</Option>
+                            <Option value="pending">Pending</Option>
+
+                          </Select>
+                          :
+                          <span />
+                  }
+                  {/* {data[index].status === "pending" ?
+                    <span>
+                      <span
+                        className={styles.projectRowButton}
+                        onClick={() => changeProjectStatus(getProject(parseInt(index)), index, "approved")}
+                      >
+                        <CheckOutlined style={{ color: 'green' }} />
+                      </span>
+                      <span
+                        className={styles.projectRowButton}
+                        onClick={() => changeProjectStatus(getProject(parseInt(index)), index, "rejected")}
+                      >
+                        <CloseOutlined style={{ color: 'red' }} />
+                      </span>
+                    </span>
+                    :
+                    <span />
+                  } */}
+                </Col>
+
+                {/* <Col span={6}>
+                  <span>{text}</span>
+                </Col> */}
+
+              </Row>
+
+            </>
         }
       }
     },
     {
       title: 'Last Action',
       dataIndex: 'last_action',
-      sorter: {
-        compare: (a, b) => a.last_action - b.last_action,
-        multiple: 1,
-      },
       render(text, row, index) {
-        let color = red;
-        if (data[index]?.status === "pending") 
-          color = yellow;
-        else if (data[index]?.status === "approved")
-          color = green;
+        // let color = red;
+        // if (data[index]?.status === "pending")
+        //   color = yellow;
+        // else if (data[index]?.status === "approved")
+        //   color = green;
         return {
           props: {
-            style: { background: color },
+            style: { background: 'white' },
           },
           children: <span>{text}</span>
         }
@@ -232,8 +307,8 @@ export default function Projects(props) {
           }}
         />
       </Row>
-      {props.userType === "admin" ? 
-        <AdminProjectList 
+      {props.userType === "admin" ?
+        <AdminProjectList
           projects={projects}
           getProject={getProject}
           data={tableData}
