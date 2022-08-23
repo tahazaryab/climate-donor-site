@@ -1,4 +1,5 @@
 import firebase from "firebase/app";
+import { addStripeId } from "../../../lib/firebase";
 import "firebase/firestore";
 import "firebase/auth";
 
@@ -29,6 +30,8 @@ export default async function handler(req, res) {
             name: val.title,
           },
         });
+
+        addStripeId(val.projectId, price["id"]);
 
         res.redirect("/");
       } catch (err) {

@@ -56,7 +56,7 @@ const ProjectSubmission = () => {
 				success();
 			});
 		
-		
+		/*
 		fetch("/api/product", {
 			method: "POST",
 			body: JSON.stringify({
@@ -64,7 +64,7 @@ const ProjectSubmission = () => {
 			}),
 		}).then(res => {
 			console.log("request complete");
-		});
+		});*/
 
 		router.push("/dashboard");
 
