@@ -26,12 +26,9 @@ const ProjectSubmission = () => {
 		message.success('Project Added Successfully');
 	};
 
-
 	// Handles image file uploads
 	const [selectedFiles, setSelectedFiles] = useState([]);
 	const [imageURLS, setImageURLS] = useState([]);
-
-
 
 	const [form] = Form.useForm();
 	const router = useRouter();
@@ -39,7 +36,7 @@ const ProjectSubmission = () => {
 
 	const onFinish = (fieldsValue) => {
 		//handle form submit
-
+		console.log("on finish");
 
 		const project = {
 			title: fieldsValue.projectName,
@@ -50,7 +47,7 @@ const ProjectSubmission = () => {
 			curAmt: fieldsValue.funding,
 			tagName: fieldsValue.tag,
 			location: fieldsValue.location,
-			endDate: fieldsValue.endDate,
+			//endDate: fieldsValue.endDate,
 			ownerId: AuthUser.id,
 		};
 
@@ -58,6 +55,17 @@ const ProjectSubmission = () => {
 			.then(() => {
 				success();
 			});
+		
+		/*
+		fetch("/api/product", {
+			method: "POST",
+			body: JSON.stringify({
+				title: fieldsValue.projectName,
+			}),
+		}).then(res => {
+			console.log("request complete");
+		});*/
+
 		router.push("/dashboard");
 
 	};
