@@ -12,7 +12,6 @@ import { Upload } from 'antd';
 import { useAuthUser, withAuthUser, AuthAction } from "next-firebase-auth";
 import Tags from "../../data/interests.json";
 import { Card } from 'antd';
-import { sendData } from "next/dist/next-server/server/api-utils";
 
 const { Content } = Layout;
 const { TextArea } = Input;
@@ -35,11 +34,6 @@ const ProjectSubmission = () => {
 	const router = useRouter();
 	const AuthUser = useAuthUser();
 
-	const handleSubmit = (event) => {
-		console.log("submitted form");
-
-	};
-
 	const onFinish = (fieldsValue) => {
 		//handle form submit
 		console.log("on finish");
@@ -53,7 +47,7 @@ const ProjectSubmission = () => {
 			curAmt: fieldsValue.funding,
 			tagName: fieldsValue.tag,
 			location: fieldsValue.location,
-			//ndDate: fieldsValue.endDate,
+			//endDate: fieldsValue.endDate,
 			ownerId: AuthUser.id,
 		};
 
@@ -321,7 +315,7 @@ const ProjectSubmission = () => {
 							</Form.Item>
 
 							<Form.Item className={styles.btnWrapper}>
-								<Button type="submit" htmlType="submit" className={styles.submitBtn}>
+								<Button htmlType="submit" className={styles.submitBtn}>
 									Submit
 								</Button>
 							</Form.Item>
