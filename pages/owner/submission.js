@@ -12,6 +12,7 @@ import { Upload } from 'antd';
 import { useAuthUser, withAuthUser, AuthAction } from "next-firebase-auth";
 import Tags from "../../data/interests.json";
 import { Card } from 'antd';
+import { sendData } from "next/dist/next-server/server/api-utils";
 
 const { Content } = Layout;
 const { TextArea } = Input;
@@ -26,20 +27,22 @@ const ProjectSubmission = () => {
 		message.success('Project Added Successfully');
 	};
 
-
 	// Handles image file uploads
 	const [selectedFiles, setSelectedFiles] = useState([]);
 	const [imageURLS, setImageURLS] = useState([]);
-
-
 
 	const [form] = Form.useForm();
 	const router = useRouter();
 	const AuthUser = useAuthUser();
 
+	const handleSubmit = (event) => {
+		console.log("submitted form");
+
+	};
+
 	const onFinish = (fieldsValue) => {
 		//handle form submit
-
+		console.log("on finish");
 
 		const project = {
 			title: fieldsValue.projectName,
@@ -50,7 +53,7 @@ const ProjectSubmission = () => {
 			curAmt: fieldsValue.funding,
 			tagName: fieldsValue.tag,
 			location: fieldsValue.location,
-			endDate: fieldsValue.endDate,
+			//ndDate: fieldsValue.endDate,
 			ownerId: AuthUser.id,
 		};
 
@@ -58,6 +61,17 @@ const ProjectSubmission = () => {
 			.then(() => {
 				success();
 			});
+		
+		
+		fetch("/api/product", {
+			method: "POST",
+			body: JSON.stringify({
+				title: fieldsValue.projectName,
+			}),
+		}).then(res => {
+			console.log("request complete");
+		});
+
 		router.push("/dashboard");
 
 	};
@@ -307,7 +321,7 @@ const ProjectSubmission = () => {
 							</Form.Item>
 
 							<Form.Item className={styles.btnWrapper}>
-								<Button htmlType="submit" className={styles.submitBtn}>
+								<Button type="submit" htmlType="submit" className={styles.submitBtn}>
 									Submit
 								</Button>
 							</Form.Item>
