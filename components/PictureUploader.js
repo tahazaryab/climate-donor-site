@@ -19,6 +19,7 @@ class PictureUploader extends Component {
         previewTitle: '',
         fileList: [],
     };
+    
 
     handleCancel = () => this.setState({ previewVisible: false });
 
@@ -37,6 +38,7 @@ class PictureUploader extends Component {
 
     render() {
         const { previewVisible, previewImage, fileList, previewTitle } = this.state;
+        // console.log(previewTitle);
         const uploadButton = (
             <div>
                 <PlusOutlined />

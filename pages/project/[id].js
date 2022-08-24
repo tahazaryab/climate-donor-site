@@ -44,10 +44,12 @@ const ProjectPage = () => {
 
     const { id } = router.query;
     const { Content } = Layout;
+    console.log(id);
 
     const getProject = async () => {
         var proj = (await getDoc("projects", id))
         proj = await Promise.resolve(proj)
+        console.log(proj.title)
         proj.published = proj?.published.toDate().toLocaleDateString() + ''
         proj.updated = proj?.updated.toDate().toLocaleDateString() + ''
         setProject(proj)
@@ -68,6 +70,7 @@ const ProjectPage = () => {
         }
           
     }, [])
+
     
 
     const handleDonate = async() => {
@@ -168,7 +171,7 @@ const ProjectPage = () => {
                                         <p>Climate Donor ${project?.totalAmt} </p>
                                         <p>Other Sources ${project?.totalAmt}</p>
                                     </div>
-                                    <Button type="primary" className={styles.Button} onClick={handleDonate}>Donate</Button>
+                                    <Button type="primary" className={styles.Button} href={"./donate?project_id="+id}>Donate</Button>
                                     <Button type='danger' onClick={showModal}>Delete</Button>
 
                                     <Modal 

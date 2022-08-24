@@ -24,6 +24,7 @@ const initAuth = () => {
       apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY, // required
       authDomain: process.env.NEXT_FIREBASE_AUTH_DOMAIN,
       databaseURL: "https://climate-donor.firebaseio.com",
+      storageBucket: "climate-donor.appspot.com",
       projectId: "climate-donor",
     },
     cookies: {
@@ -40,7 +41,7 @@ const initAuth = () => {
       path: "/",
       sameSite: "strict",
       secure: process.env.NODE_ENV === "production", // set this to false in local (non-HTTPS) development
-      signed: true,
+      signed: false,
     },
   });
 };

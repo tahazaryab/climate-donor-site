@@ -20,7 +20,6 @@ export default function PaymentConfirmation() {
                 </p>
                 <Button type="primary">Discover New Projects</Button>
             </div>
-            
         </>
     );
 }
