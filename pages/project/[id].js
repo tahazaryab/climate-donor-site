@@ -172,7 +172,7 @@ const ProjectPage = () => {
                                         <p>Other Sources ${project?.totalAmt}</p>
                                     </div>
                                     <form action="/api/payment_sessions" method="POST">
-                                        <button type="primary" className={styles.Button} >Donate</button>
+                                        <button type="submit" class={styles.donateButton} >Donate</button>
                                         <input type="hidden" id="projectId" name="projectId" value={project.id}/>
                                     </form>
                                     <Button type='danger' onClick={showModal}>Delete</Button>
