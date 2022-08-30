@@ -3,7 +3,7 @@ import styles from "../../styles/Dashboard.module.css";
 import SearchBar from "../SearchBar";
 import ProjectTabs from "../ProjectTabs";
 import { Row, Table, Col, Select } from "antd";
-import { getAllProjects, updateStatus } from "../../lib/firebase";
+import { getAllProjects, updateStatus, getAllUsers, getDoc, getUserEmail } from "../../lib/firebase";
 import ProjectCard from "../ProjectCard";
 import { withThemeCreator } from "@material-ui/styles";
 import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
@@ -108,7 +108,7 @@ function AdminProjectList(props) {
       }
     },
     {
-      title: 'Project Owner',
+      title: 'Project Owner Email',
       dataIndex: 'owner',
       render(text, row, index) {
         // let color = red;
@@ -255,21 +255,39 @@ function AdminProjectList(props) {
 
 export default function Projects(props) {
   const [projects, setProjects] = useState([]);
-  const [selectedMenu, setSelectedMenu] = useState("1");
+  const [selectedMenu, setSelectedMenu] = useState(1);
+  console.log(selectedMenu);
 
   const getProjects = async () => {
-    if (selectedMenu === "1") {
+    if (selectedMenu === 1) {
       let allProjects = await getAllProjects();
       setProjects(allProjects);
+    }
+    else if (selectedMenu === 2) {
+      let allProjects = await getAllProjects();
+      setProjects(allProjects.filter(project => project.status === 'approved'));
+    }
+    else if (selectedMenu === 3) {
+      let allProjects = await getAllProjects();
+      setProjects(allProjects.filter(project => project.status === 'pending'));
+    }
+    else if (selectedMenu === 4) {
+      let allProjects = await getAllProjects();
+      setProjects(allProjects.filter(project => project.status === 'archived'));
+    }
+    else if (selectedMenu === 5) {
+      let allProjects = await getAllProjects();
+      setProjects(allProjects.filter(project => project.status === 'rejected'));
     }
   };
 
   useEffect(() => {
     getProjects();
-  }, []);
+  }, [projects]);
 
   const getProject = (value) => {
     let project = { ...projects[value] };
+
     if (typeof project.published === "object") {
       project.published =
         project?.published?.toDate().toLocaleDateString() + "";
@@ -282,11 +300,15 @@ export default function Projects(props) {
 
   let tableData = [];
   for (let i = 0; i < projects.length; i++) {
+
     let proj = getProject(i);
+    let user = getUserEmail(proj.ownerId);
+    // console.log(getUserEmail(proj.ownerId));
+
     tableData.push({
       key: i,
       name: proj.title,
-      owner: proj.author,
+      owner: proj.ownerId,
       status: proj.status,
       last_action: proj.updated,
     });
@@ -301,9 +323,9 @@ export default function Projects(props) {
       </div>
       <Row>
         <ProjectTabs
-          links={["ALL", "LIVE", "PENDING", "ARCHIVED"]}
+          links={["ALL", "APPROVED", "PENDING", "ARCHIVED", "REJECTED"]}
           onClick={(index) => {
-            setSelectedMenu(index + "");
+            setSelectedMenu(index);
           }}
         />
       </Row>
