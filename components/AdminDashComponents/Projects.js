@@ -3,16 +3,11 @@ import styles from "../../styles/Dashboard.module.css";
 import SearchBar from "../SearchBar";
 import ProjectTabs from "../ProjectTabs";
 import { Row, Table, Col, Select } from "antd";
-import { getAllProjects, updateStatus, getAllUsers, getDoc, getUserEmail } from "../../lib/firebase";
+import { getAllProjects, updateStatus, getAllUsers } from "../../lib/firebase";
 import ProjectCard from "../ProjectCard";
-import { withThemeCreator } from "@material-ui/styles";
-import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
-
 
 
 const { Option } = Select;
-
-
 
 const red = "#fa1414";
 const orange = "#f08b2e";
@@ -196,29 +191,8 @@ function AdminProjectList(props) {
                           :
                           <span />
                   }
-                  {/* {data[index].status === "pending" ?
-                    <span>
-                      <span
-                        className={styles.projectRowButton}
-                        onClick={() => changeProjectStatus(getProject(parseInt(index)), index, "approved")}
-                      >
-                        <CheckOutlined style={{ color: 'green' }} />
-                      </span>
-                      <span
-                        className={styles.projectRowButton}
-                        onClick={() => changeProjectStatus(getProject(parseInt(index)), index, "rejected")}
-                      >
-                        <CloseOutlined style={{ color: 'red' }} />
-                      </span>
-                    </span>
-                    :
-                    <span />
-                  } */}
+                  
                 </Col>
-
-                {/* <Col span={6}>
-                  <span>{text}</span>
-                </Col> */}
 
               </Row>
 
@@ -255,10 +229,16 @@ function AdminProjectList(props) {
 
 export default function Projects(props) {
   const [projects, setProjects] = useState([]);
+  const [users, setUsers] = useState([]);
   const [selectedMenu, setSelectedMenu] = useState(1);
-  console.log(selectedMenu);
+
+
 
   const getProjects = async () => {
+
+    let allUsers = await getAllUsers();
+    setUsers(allUsers);
+
     if (selectedMenu === 1) {
       let allProjects = await getAllProjects();
       setProjects(allProjects);
@@ -279,6 +259,7 @@ export default function Projects(props) {
       let allProjects = await getAllProjects();
       setProjects(allProjects.filter(project => project.status === 'rejected'));
     }
+
   };
 
   useEffect(() => {
@@ -302,16 +283,15 @@ export default function Projects(props) {
   for (let i = 0; i < projects.length; i++) {
 
     let proj = getProject(i);
-    let user = getUserEmail(proj.ownerId);
-    // console.log(getUserEmail(proj.ownerId));
 
     tableData.push({
       key: i,
       name: proj.title,
-      owner: proj.ownerId,
+      owner: proj.ownerId === users[i].id ? users[i].email : '',
       status: proj.status,
       last_action: proj.updated,
     });
+
   }
 
   return (
