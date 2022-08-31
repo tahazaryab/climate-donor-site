@@ -27,7 +27,7 @@ const ProjectCard = ({ project, isOwner }) => {
         <Image
           width={200}
           height={180}
-          src={project.src}
+          //src={project.imageURLS[0]}
           fallback="error_project.png"
         />
         <div className={styles.cardContent}>

@@ -5,6 +5,7 @@ import AppFooter from "../components/Footer";
 import Link from "next/link";
 import Hero from "../components/Hero";
 import HorizonCard from "../components/HorizonCard";
+import { CircularProgress } from "@material-ui/core";
 import { useRouter } from "next/router";
 
 import { useAuthUser, withAuthUser, AuthAction } from "next-firebase-auth";
@@ -192,7 +193,21 @@ const Home = () => {
   );
 };
 
-const MyLoader = () => <div>Loading...</div>;
+const MyLoader = () => {
+  return (
+    <div
+      style={{
+        width: "100vw",
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}>
+      <CircularProgress color="primary" />
+    </div>
+  );
+};
+
 export default withAuthUser({
   whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
   whenUnauthedAfterInit: AuthAction.RENDER,

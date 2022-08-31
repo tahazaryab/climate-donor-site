@@ -36,7 +36,16 @@ export default function Projects() {
     return project;
   };
 
-  const displayProjects = projects
+  const filterApproved = (projects) => {
+    let approvedProjects = [];
+    for (let i = 0; i < projects.length; i++) {
+      if (getProject(i).status === "approved")
+        approvedProjects.push(projects[i]);
+    }
+    return approvedProjects;
+  }
+
+  const displayProjects = filterApproved(projects)
     .slice(pagesVisited, pagesVisited + projectsPerPage)
     .map((_, value) => {
       const singleProject = getProject(value);

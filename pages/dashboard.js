@@ -6,7 +6,20 @@ import DBNavBar from "../components/DBNavBar";
 import AdminDashboard from "../components/AdminDashboard";
 
 import { useAuthUser, withAuthUser, AuthAction } from "next-firebase-auth";
-const MyLoader = () => <div>Loading...</div>;
+const MyLoader = () => {
+  return (
+    <div
+      style={{
+        width: "100vw",
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}>
+      {/* <CircularProgress color="primary" /> */}
+    </div>
+  );
+};
 
 const Dashboard = () => {
 	const AuthUser = useAuthUser();
