@@ -44,7 +44,7 @@ const ProjectSubmission = () => {
 			totalAmt: fieldsValue.funding,
 			src: imageURLS,
 			website: fieldsValue.website,
-			curAmt: fieldsValue.funding,
+			curAmt: 0,
 			tagName: fieldsValue.tag,
 			location: fieldsValue.location,
 			//endDate: fieldsValue.endDate,
@@ -158,7 +158,7 @@ const ProjectSubmission = () => {
 
 							<Form.Item
 								name="website"
-								label="website"
+								label="Website"
 								required
 								rules={[
 									{
