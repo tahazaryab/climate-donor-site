@@ -191,7 +191,7 @@ function AdminProjectList(props) {
                           :
                           <span />
                   }
-                  
+
                 </Col>
 
               </Row>
@@ -284,13 +284,17 @@ export default function Projects(props) {
 
     let proj = getProject(i);
 
-    tableData.push({
-      key: i,
-      name: proj.title,
-      owner: proj.ownerId === users[i].id ? users[i].email : '',
-      status: proj.status,
-      last_action: proj.updated,
-    });
+   
+
+      tableData.push({
+        key: i,
+        name: proj.title,
+        owner: users.find(user => user.id === proj.ownerId).email,
+        status: proj.status,
+        last_action: proj.updated,
+      });
+
+    
 
   }
 
