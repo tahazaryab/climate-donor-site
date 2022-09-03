@@ -170,8 +170,15 @@ const ProjectPage = () => {
                                         <p>Other Sources ${project?.totalAmt}</p>
                                     </div>
 
-                                    <Button type="primary" className={styles.Button} onClick={handleDonate}>Donate</Button>
 
+                                    {/* <Button type="primary" className={styles.Button} onClick={handleDonate}>Donate</Button> */}
+
+
+                                    <form action="/api/payment_sessions" method="POST">
+                                        <button type="submit" class={styles.donateButton} >Donate</button>
+                                        <input type="hidden" id="projectId" name="projectId" value={project.id}/>
+                                    </form>
+                                    
                                 </div>
                             </div>
                             <div className={styles.col}>

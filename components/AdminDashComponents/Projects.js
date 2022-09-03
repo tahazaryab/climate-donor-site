@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import styles from "../../styles/Dashboard.module.css";
-import SearchBar from "../SearchBar";
 import ProjectTabs from "../ProjectTabs";
 import { Row, Table, Col, Select } from "antd";
 import { getAllProjects, updateStatus, getAllUsers } from "../../lib/firebase";
