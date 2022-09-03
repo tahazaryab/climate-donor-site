@@ -33,7 +33,12 @@ export default async function handler(req, res) {
             quantity: 1,
           },
         ],
-        mode: 'payment',
+        mode: "payment",
+        payment_intent_data: {
+          metadata: {
+            projectId: val.projectId,
+          },
+        },
 
         success_url: `${req.headers.origin}/?success=true&session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${req.headers.origin}/?cancelled=true`,

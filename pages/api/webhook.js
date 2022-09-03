@@ -1,4 +1,5 @@
 import { buffer } from 'micro';
+import { updateProjAmt } from '../../lib/firebase';
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
@@ -26,7 +27,23 @@ const handler = async (req, res) => {
         return;
       }
 
-      console.log('✅ Successful Event', event.id);
+      switch (event.type) {
+        case "payment_intent.succeeded": {
+          console.log("✅ Successful Payment");
+          const intent = event.data.object;
+
+          const amount = intent.amount_received;
+          const projectId = intent.metadata.projectId;
+
+          // Add donation to firebase
+          updateProjAmt(projectId, amount);
+        }
+
+        default: {
+          console.warn(`Unhandled event type: ${event.type}`);
+          break;
+        }
+      }
   
       res.json({ received: true });
     } else {
