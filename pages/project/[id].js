@@ -1,5 +1,5 @@
 import styles from '../../styles/ProjectPage.module.css'
-import { Button, Image, Progress, Row, Layout, Modal} from 'antd'
+import { Button, Image, Progress, Row, Layout, Modal } from 'antd'
 import { faUser, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '@fortawesome/fontawesome-svg-core/styles.css'
@@ -56,7 +56,7 @@ const ProjectPage = () => {
         setIsLoading(false)
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         getProject()
 
         // Check to see if this is a redirect back from Checkout
@@ -68,12 +68,10 @@ const ProjectPage = () => {
         if (query.get('canceled')) {
             console.log('Order canceled -- continue to shop around and checkout when you’re ready.');
         }
-          
+
     }, [])
 
-    
-
-    const handleDonate = async() => {
+    const handleDonate = async () => {
         const projectDetails = {
             name: project.title,
             id: project.id,
@@ -81,27 +79,27 @@ const ProjectPage = () => {
         }
 
         const stripe = await stripePromise;
-        const response = await axios.post('/api/payment/checkout', projectDetails )
-    
+        const response = await axios.post('/api/payment/checkout', projectDetails)
+
         // When the customer clicks on the button, redirect them to Checkout.
         console.log(response)
         const result = await stripe.redirectToCheckout({
-          sessionId: response.data.id,
+            sessionId: response.data.id,
         });
 
         console.log(result)
-    
+
         if (result.error) {
-          // If `redirectToCheckout` fails due to a browser or network
-          // error, display the localized error message to your customer
-          // using `result.error.message`.
+            // If `redirectToCheckout` fails due to a browser or network
+            // error, display the localized error message to your customer
+            // using `result.error.message`.
         }
     }
 
     const showModal = () => {
         setIsModalVisible(true);
-      };
-    
+    };
+
     const handleDelete = async () => {
         setModalText("Deleting your project...");
         setDeleteLoading(true);
@@ -151,7 +149,7 @@ const ProjectPage = () => {
                                 </div>
                             </div>
                             <div className={styles.row}>
-                                <Image width={630} height={420} src={project?.src} fallback="error_project?.png" />
+                                <Image width={630} height={420} src={project?.imageURLS[0]} fallback="error_project?.png" />
                                 <div className={styles.cardContent}>
                                     <div className={styles.cardContent__info}>
                                         <p>Funds Raised (USD)</p>
@@ -171,23 +169,16 @@ const ProjectPage = () => {
                                         <p>Climate Donor ${project?.totalAmt} </p>
                                         <p>Other Sources ${project?.totalAmt}</p>
                                     </div>
+
+
+                                    {/* <Button type="primary" className={styles.Button} onClick={handleDonate}>Donate</Button> */}
+
+
                                     <form action="/api/payment_sessions" method="POST">
                                         <button type="submit" class={styles.donateButton} >Donate</button>
-                                        <input type="hidden" id="projectId" name="projectId" value={project.id}/>
+                                        <input type="hidden" id="projectId" name="projectId" value={project.id} />
                                     </form>
-                                    <Button type='danger' onClick={showModal}>Delete</Button>
 
-                                    <Modal 
-                                        title="Do you want to delete this project?"
-                                        closable={false}
-                                        centered={true} 
-                                        confirmLoading={deleteLoading}
-                                        visible={isModalVisible} 
-                                        onOk={handleDelete} 
-                                        onCancel={handleCancel}
-                                        okText={"Delete"}>
-                                        <p>{modalText}</p>
-                                    </Modal>
                                 </div>
                             </div>
                             <div className={styles.col}>
