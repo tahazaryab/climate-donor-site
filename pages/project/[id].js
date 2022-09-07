@@ -176,9 +176,9 @@ const ProjectPage = () => {
 
                                     <form action="/api/payment_sessions" method="POST">
                                         <button type="submit" class={styles.donateButton} >Donate</button>
-                                        <input type="hidden" id="projectId" name="projectId" value={project.id}/>
+                                        <input type="hidden" id="projectId" name="projectId" value={project.id} />
                                     </form>
-                                    
+
                                 </div>
                             </div>
                             <div className={styles.col}>
