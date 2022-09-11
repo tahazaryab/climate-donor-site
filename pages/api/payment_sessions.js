@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     try {
 
       const val = req.body;
-      console.log(val);
+      //console.log(val);
 
       // retrieve stripe price id from firebase
       const db = firebase.firestore();
@@ -18,7 +18,7 @@ export default async function handler(req, res) {
       const snapshot = await projectRef.get();
     
       if (snapshot.exists) {
-        console.log(snapshot.data());
+        //console.log(snapshot.data());
       } else {
         console.log("project not found")
       }

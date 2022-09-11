@@ -4,6 +4,10 @@ import { updateProjAmt } from '../../lib/firebase';
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
+console.log("WEBHOOK:");
+console.log(webhookSecret);
+
+
 // Must set bodyParser to false since Stripe requires the raw request body
 export const config = {
     api: {
@@ -12,6 +16,10 @@ export const config = {
   };  
 
 const handler = async (req, res) => {
+
+  console.log(webhookSecret);
+  console.log(sig);
+  
 
     if (req.method === "POST") {
 

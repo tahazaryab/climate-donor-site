@@ -149,7 +149,7 @@ const ProjectPage = () => {
                                 </div>
                             </div>
                             <div className={styles.row}>
-                                <Image width={630} height={420} src={project?.imageURLS[0]} fallback="error_project?.png" />
+                                <Image width={630} height={420} src="error_project?.png" fallback="error_project?.png" />
                                 <div className={styles.cardContent}>
                                     <div className={styles.cardContent__info}>
                                         <p>Funds Raised (USD)</p>
