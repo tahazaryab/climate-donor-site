@@ -3,7 +3,7 @@ import { buffer } from 'micro';
 import Cors from 'micro-cors';
 import { createTransaction, updateProjAmt } from '../../lib/firebase';
 
-
+console.log("old webhook");
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 

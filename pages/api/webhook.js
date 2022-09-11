@@ -4,9 +4,6 @@ import { updateProjAmt } from '../../lib/firebase';
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
-console.log("WEBHOOK:");
-console.log(webhookSecret);
-
 
 // Must set bodyParser to false since Stripe requires the raw request body
 export const config = {
@@ -17,24 +14,26 @@ export const config = {
 
 const handler = async (req, res) => {
 
-  console.log(webhookSecret);
-  console.log(sig);
-  
+    //console.log(req.body);
+    //console.log(req.rawBody);
 
     if (req.method === "POST") {
 
       const buf = await buffer(req);
       const sig = req.headers["stripe-signature"];
-  
+
+      console.log(sig);
+      //console.log(req.body);
       let event;
-  
+
       try {
         event = stripe.webhooks.constructEvent(buf, sig, webhookSecret);
       } catch (err) {
+        console.log(err.message);
         res.status(400).send(`Webhook Error: ${err.message}`);
         return;
       }
-
+      console.log("SUCCESSS");
       switch (event.type) {
         case "payment_intent.succeeded": {
           console.log("✅ Successful Payment");
