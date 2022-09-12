@@ -1,3 +1,4 @@
+import { useAuthUser, withAuthUser, AuthAction } from "next-firebase-auth";
 import React from "react";
 import styles from "../styles/Home.module.css";
 import NavBar from "../components/NavBar";
@@ -8,7 +9,6 @@ import HorizonCard from "../components/HorizonCard";
 import { CircularProgress } from "@material-ui/core";
 import { useRouter } from "next/router";
 
-import { useAuthUser, withAuthUser, AuthAction } from "next-firebase-auth";
 
 const Home = () => {
   const AuthUser = useAuthUser();

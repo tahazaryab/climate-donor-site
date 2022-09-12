@@ -1,7 +1,7 @@
+import { withAuthUser, AuthAction } from "next-firebase-auth";
 import NavBar from "../components/NavBar";
 import { Layout, Col, Row, Button, Form, Input, Checkbox } from "antd";
 import { signIn } from "../lib/firebase";
-import { withAuthUser, AuthAction } from "next-firebase-auth";
 import { useState } from "react";
 import Link from "next/link";
 

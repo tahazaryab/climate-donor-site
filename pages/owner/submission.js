@@ -1,3 +1,4 @@
+import { useAuthUser, withAuthUser, AuthAction } from "next-firebase-auth";
 import React, { useEffect, useState } from "react";
 import DBNavBar from "../../components/DBNavBar";
 import OwnerSidebar from "../../components/OwnerSidebar";
@@ -9,7 +10,6 @@ import { styled } from '@material-ui/core/styles';
 import { useRouter } from "next/router";
 import { UploadOutlined, DeleteFilled } from '@ant-design/icons';
 import { Upload } from 'antd';
-import { useAuthUser, withAuthUser, AuthAction } from "next-firebase-auth";
 import Tags from "../../data/interests.json";
 import { Card } from 'antd';
 
