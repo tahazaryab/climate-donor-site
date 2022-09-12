@@ -42,7 +42,6 @@ const ProjectSubmission = () => {
 			title: fieldsValue.projectName,
 			description: fieldsValue.description,
 			totalAmt: fieldsValue.funding,
-			status: 'pending',
 			src: imageURLS,
 			website: fieldsValue.website,
 			curAmt: 0,

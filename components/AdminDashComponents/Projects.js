@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
 import styles from "../../styles/Dashboard.module.css";
+import SearchBar from "../SearchBar";
 import ProjectTabs from "../ProjectTabs";
 import { Row, Table, Col, Select } from "antd";
-import { getAllProjects, updateStatus, getAllUsers } from "../../lib/firebase";
+import { getAllProjects, updateStatus } from "../../lib/firebase";
 import ProjectCard from "../ProjectCard";
+import { withThemeCreator } from "@material-ui/styles";
+import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
+
 
 
 const { Option } = Select;
+
+
 
 const red = "#fa1414";
 const orange = "#f08b2e";
@@ -102,7 +108,7 @@ function AdminProjectList(props) {
       }
     },
     {
-      title: 'Project Owner Email',
+      title: 'Project Owner',
       dataIndex: 'owner',
       render(text, row, index) {
         // let color = red;
@@ -190,8 +196,29 @@ function AdminProjectList(props) {
                           :
                           <span />
                   }
-
+                  {/* {data[index].status === "pending" ?
+                    <span>
+                      <span
+                        className={styles.projectRowButton}
+                        onClick={() => changeProjectStatus(getProject(parseInt(index)), index, "approved")}
+                      >
+                        <CheckOutlined style={{ color: 'green' }} />
+                      </span>
+                      <span
+                        className={styles.projectRowButton}
+                        onClick={() => changeProjectStatus(getProject(parseInt(index)), index, "rejected")}
+                      >
+                        <CloseOutlined style={{ color: 'red' }} />
+                      </span>
+                    </span>
+                    :
+                    <span />
+                  } */}
                 </Col>
+
+                {/* <Col span={6}>
+                  <span>{text}</span>
+                </Col> */}
 
               </Row>
 
@@ -228,46 +255,21 @@ function AdminProjectList(props) {
 
 export default function Projects(props) {
   const [projects, setProjects] = useState([]);
-  const [users, setUsers] = useState([]);
-  const [selectedMenu, setSelectedMenu] = useState(1);
-
-
+  const [selectedMenu, setSelectedMenu] = useState("1");
 
   const getProjects = async () => {
-
-    let allUsers = await getAllUsers();
-    setUsers(allUsers);
-
-    if (selectedMenu === 1) {
+    if (selectedMenu === "1") {
       let allProjects = await getAllProjects();
       setProjects(allProjects);
     }
-    else if (selectedMenu === 2) {
-      let allProjects = await getAllProjects();
-      setProjects(allProjects.filter(project => project.status === 'approved'));
-    }
-    else if (selectedMenu === 3) {
-      let allProjects = await getAllProjects();
-      setProjects(allProjects.filter(project => project.status === 'pending'));
-    }
-    else if (selectedMenu === 4) {
-      let allProjects = await getAllProjects();
-      setProjects(allProjects.filter(project => project.status === 'archived'));
-    }
-    else if (selectedMenu === 5) {
-      let allProjects = await getAllProjects();
-      setProjects(allProjects.filter(project => project.status === 'rejected'));
-    }
-
   };
 
   useEffect(() => {
     getProjects();
-  }, [projects]);
+  }, []);
 
   const getProject = (value) => {
     let project = { ...projects[value] };
-
     if (typeof project.published === "object") {
       project.published =
         project?.published?.toDate().toLocaleDateString() + "";
@@ -280,21 +282,14 @@ export default function Projects(props) {
 
   let tableData = [];
   for (let i = 0; i < projects.length; i++) {
-
     let proj = getProject(i);
-
-
-
     tableData.push({
       key: i,
       name: proj.title,
-      owner: users.find(user => user.id === proj.ownerId).email,
+      owner: proj.author,
       status: proj.status,
       last_action: proj.updated,
     });
-
-
-
   }
 
   return (
@@ -306,9 +301,9 @@ export default function Projects(props) {
       </div>
       <Row>
         <ProjectTabs
-          links={["ALL", "APPROVED", "PENDING", "ARCHIVED", "REJECTED"]}
+          links={["ALL", "LIVE", "PENDING", "ARCHIVED"]}
           onClick={(index) => {
-            setSelectedMenu(index);
+            setSelectedMenu(index + "");
           }}
         />
       </Row>
