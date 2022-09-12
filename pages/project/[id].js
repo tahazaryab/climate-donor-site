@@ -1,3 +1,8 @@
+import {
+    useAuthUser,
+    withAuthUser,
+    AuthAction
+} from 'next-firebase-auth'
 import styles from '../../styles/ProjectPage.module.css'
 import { Button, Image, Progress, Row, Layout, Modal} from 'antd'
 import { faUser, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
@@ -6,11 +11,6 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { getDoc } from '../../lib/firebase'
-import {
-    useAuthUser,
-    withAuthUser,
-    AuthAction
-} from 'next-firebase-auth'
 import { addDonation } from '../../lib/firebase'
 import { deleteProj } from '../../lib/firebase'
 import DBNavBar from "../../components/DBNavBar";
